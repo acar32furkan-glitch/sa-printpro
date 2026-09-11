@@ -48,6 +48,7 @@ const breadcrumbJsonLd = {
   title={category.name}
   description={`${category.name} kategorisinde ${products.length} ürün. ${siteConfig.name} kataloğunda fiyatları karşılaştırın.`}
   canonicalUrl={canonicalUrl}
+  noindex={products.length === 0}
 >
   <div class="mx-auto max-w-6xl px-4">
     <Breadcrumb items={breadcrumbItems} />

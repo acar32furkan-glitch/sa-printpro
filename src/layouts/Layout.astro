@@ -16,6 +16,32 @@ const {
 } = Astro.props
 
 const faviconHref = `/${siteConfig.faviconFile}`
+
+// 2026 GEO/SEO: Site geneli Organization + LocalBusiness şeması.
+// Tüm sayfalarda basılır; marka varlığını AI arama motorlarına tanıtır.
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'LocalBusiness'],
+  name: siteConfig.name,
+  url: siteConfig.domain,
+  logo: `${siteConfig.domain}/${siteConfig.logoFile}`,
+  image: `${siteConfig.domain}/${siteConfig.logoFile}`,
+  description: `${siteConfig.name} — reflektif sticker ve güvenlik etiketi ürünleri. Türkiye'de üretim.`,
+  ...(siteConfig.contact?.instagram
+    ? { sameAs: [`https://www.instagram.com/${siteConfig.contact.instagram}`] }
+    : {}),
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: `+${siteConfig.contact.whatsapp}`,
+    contactType: 'customer service',
+    areaServed: 'TR',
+    availableLanguage: ['Turkish'],
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'TR',
+  },
+}
 ---
 
 <!doctype html>
@@ -86,6 +112,11 @@ const faviconHref = `/${siteConfig.faviconFile}`
     </main>
 
     <Footer />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(organizationJsonLd)}
+    />
 
     <CookieBanner client:load />
 

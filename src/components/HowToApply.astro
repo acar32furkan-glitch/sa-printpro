@@ -20,6 +20,21 @@ const steps = [
 ]
 
 const show = siteConfig.showHowToApply === true
+
+// 2026 GEO: 3 adımlı uygulama rehberi HowTo şeması olarak sunulur.
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Sticker Uygulama Kılavuzu',
+  description: 'Reflektif sticker 3 adımda nasıl uygulanır?',
+  totalTime: 'PT5M',
+  step: steps.map((step, index) => ({
+    '@type': 'HowToStep',
+    position: index + 1,
+    name: step.title,
+    text: step.description,
+  })),
+}
 ---
 
 {
@@ -57,6 +72,11 @@ const show = siteConfig.showHowToApply === true
           </li>
         ))}
       </ol>
+
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(howToJsonLd)}
+      />
     </section>
   )
 }
