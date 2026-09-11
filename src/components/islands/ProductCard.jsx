@@ -24,12 +24,24 @@ function formatPrice(value) {
 export default function ProductCard({ product }) {
   const variants = Array.isArray(product?.variants) ? product.variants : []
 
-  const pricedVariants = variants.filter((variant) =>
-    Number.isFinite(Number(variant.salePrice ?? variant.price))
-  )
+  /**
+   * Effective selling price: prefer a positive `salePrice`, else `price`.
+   * Trendyol returns `salePrice: 0` for non-listed items, which must not be
+   * treated as a real price.
+   */
+  const effectivePrice = (variant) => {
+    const sale = Number(variant?.salePrice)
+    if (Number.isFinite(sale) && sale > 0) {
+      return sale
+    }
+    const base = Number(variant?.price)
+    return Number.isFinite(base) && base > 0 ? base : null
+  }
+
+  const pricedVariants = variants.filter((variant) => effectivePrice(variant) !== null)
 
   const cheapest = pricedVariants.reduce((min, variant) => {
-    const value = Number(variant.salePrice ?? variant.price)
+    const value = effectivePrice(variant)
     if (min === null || value < min) {
       return value
     }
@@ -40,14 +52,14 @@ export default function ProductCard({ product }) {
 
   const basePrice = pricedVariants.reduce((max, variant) => {
     const value = Number(variant.price)
-    if (!Number.isFinite(value)) {
+    if (!Number.isFinite(value) || value <= 0) {
       return max
     }
     return max === null || value > max ? value : max
   }, null)
 
   const hasDiscount =
-    basePrice !== null && Number.isFinite(basePrice) && salePrice < basePrice
+    basePrice !== null && Number.isFinite(basePrice) && salePrice > 0 && salePrice < basePrice
 
   const discountRate = hasDiscount
     ? Math.round(((basePrice - salePrice) / basePrice) * 100)

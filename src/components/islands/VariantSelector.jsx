@@ -77,12 +77,17 @@ export default function VariantSelector({ product, shopier }) {
 
   const selectedVariant = variants[resolvedIndex] || variants[0] || null
 
-  const price = selectedVariant ? Number(selectedVariant.price) : 0
-  const salePrice = selectedVariant ? Number(selectedVariant.salePrice) : 0
+  const rawPrice = selectedVariant ? Number(selectedVariant.price) : 0
+  const rawSalePrice = selectedVariant ? Number(selectedVariant.salePrice) : 0
   const stock = selectedVariant ? Number(selectedVariant.stock) : 0
 
-  const hasDiscount =
-    Number.isFinite(price) && Number.isFinite(salePrice) && salePrice < price
+  // Trendyol satışta olmayan ürünlerde `salePrice: 0` döner; bu durumda
+  // liste fiyatı gösterilir (aksi halde "0 TL" görünür).
+  const price = Number.isFinite(rawPrice) && rawPrice > 0 ? rawPrice : 0
+  const salePrice =
+    Number.isFinite(rawSalePrice) && rawSalePrice > 0 ? rawSalePrice : price
+
+  const hasDiscount = price > 0 && salePrice > 0 && salePrice < price
   const discountRate = hasDiscount
     ? Math.round(((price - salePrice) / price) * 100)
     : 0

@@ -328,17 +328,35 @@ async function fetchInventoryAndPrice(ctx) {
 }
 
 /**
- * Fiyat/stok kayıtlarını `barcode` (yoksa `id`) bazlı bir Map'e dönüştürür.
+ * Fiyat/stok kayıtlarını `barcode` (yoksa `contentId`) bazlı bir Map'e dönüştürür.
+ *
+ * V2 şeması: her kayıt `variants[]` dizisi içerir; fiyat/stok alanları
+ * (`listPrice`, `salePrice`, `quantity`) varyant seviyesindedir. V1 düz
+ * alanları da geriye dönük desteklenir.
  *
  * @param {object[]} inventoryItems
  * @returns {Map<string, object>}
  */
 function buildPriceMap(inventoryItems) {
   const map = new Map();
+
   for (const item of inventoryItems) {
-    const key = item?.barcode != null ? String(item.barcode) : item?.id != null ? String(item.id) : null;
-    if (key) map.set(key, item);
+    const contentId = item?.contentId ?? item?.id;
+    const variants =
+      Array.isArray(item?.variants) && item.variants.length > 0 ? item.variants : [item];
+
+    for (const variant of variants) {
+      const barcode = variant?.barcode != null ? String(variant.barcode) : null;
+      if (barcode) map.set(barcode, variant);
+    }
+
+    // Ürün seviyesinde de erişilebilsin (barcode yoksa fallback)
+    if (contentId != null) {
+      const key = String(contentId);
+      if (!map.has(key)) map.set(key, variants[0]);
+    }
   }
+
   return map;
 }
 
@@ -383,37 +401,70 @@ function normalizeImages(images) {
  * @returns {object}
  */
 function normalizeProduct(raw, priceMap) {
-  const id = String(raw?.id ?? raw?.productId ?? '');
+  // V2 şeması: ürün kimliği `contentId`; `id`/`productId` eski (V1) alanlardır.
+  const id = String(raw?.contentId ?? raw?.id ?? raw?.productId ?? '');
   const name = String(raw?.title ?? raw?.name ?? '');
 
-  // Fiyat/stok verisini barcode (yoksa id) üzerinden bul
-  const priceEntry =
-    (raw?.barcode != null && priceMap.get(String(raw.barcode))) ||
-    (id && priceMap.get(id)) ||
-    null;
+  // V2'de varyantlar `variants[]` altında gelir; her varyantın kendi
+  // barcode/fiyat/stok bilgisi vardır. V1 düz alanları da geriye dönük desteklenir.
+  const rawVariants = Array.isArray(raw?.variants) && raw.variants.length > 0 ? raw.variants : [raw];
 
-  const price = Number(priceEntry?.price ?? raw?.price ?? 0);
-  const rawSalePrice = priceEntry?.salePrice ?? raw?.salePrice;
-  const salePrice = rawSalePrice != null && rawSalePrice !== '' ? Number(rawSalePrice) : price;
-  const stock = Number(priceEntry?.quantity ?? priceEntry?.stock ?? raw?.quantity ?? raw?.stock ?? 0);
+  const variants = rawVariants.map((v) => {
+    const barcode = v?.barcode != null ? String(v.barcode) : '';
+
+    // Fiyat/stok verisini barcode (yoksa ürün id) üzerinden bul
+    const priceEntry =
+      (barcode && priceMap.get(barcode)) ||
+      (id && priceMap.get(id)) ||
+      null;
+
+    // V2: `listPrice` (liste fiyatı) ve `salePrice` (satış fiyatı).
+    // V1 uyumu için `price` alanı da desteklenir.
+    const price = Number(
+      priceEntry?.listPrice ?? priceEntry?.price ?? v?.listPrice ?? v?.price ?? raw?.price ?? 0
+    );
+    const rawSalePrice = priceEntry?.salePrice ?? v?.salePrice ?? raw?.salePrice;
+    // Trendyol satışta olmayan ürünlerde `salePrice: 0` döner; bu durumda
+    // liste fiyatına düşülür (aksi halde kartta "0 TL" görünür).
+    const salePrice =
+      rawSalePrice != null && rawSalePrice !== '' && Number(rawSalePrice) > 0
+        ? Number(rawSalePrice)
+        : price;
+    const stock = Number(
+      priceEntry?.quantity ??
+        priceEntry?.stock ??
+        v?.quantity ??
+        v?.stock ??
+        raw?.quantity ??
+        raw?.stock ??
+        0
+    );
+
+    // V2'de ürün özellikleri ürün seviyesindeki `attributes[]` dizisinde gelir;
+    // varyant seviyesindeki `attributes` genellikle boş bir dizidir. Boş dizi
+    // `??` ile "geçerli" sayılacağından uzunluk kontrolü yapılır.
+    const variantAttrs = Array.isArray(v?.attributes) ? v.attributes : [];
+    const productAttrs = Array.isArray(raw?.attributes) ? raw.attributes : [];
+    const effectiveAttrs = variantAttrs.length > 0 ? variantAttrs : productAttrs;
+
+    return {
+      barcode,
+      sku: String(v?.stockCode ?? v?.productCode ?? v?.sku ?? raw?.stockCode ?? ''),
+      attributes: normalizeAttributes(effectiveAttrs),
+      price,
+      salePrice,
+      stock
+    };
+  });
 
   const categoryId = String(raw?.categoryId ?? raw?.category?.id ?? '');
   const categoryName = String(raw?.categoryName ?? raw?.category?.name ?? '');
-
-  const variant = {
-    barcode: String(raw?.barcode ?? ''),
-    sku: String(raw?.stockCode ?? raw?.productCode ?? raw?.sku ?? ''),
-    attributes: normalizeAttributes(raw?.attributes),
-    price,
-    salePrice,
-    stock
-  };
 
   return {
     id,
     name,
     slug: withSuffix(slugify(name), id),
-    brand: String(raw?.brand ?? raw?.brandName ?? ''),
+    brand: String(raw?.brand?.name ?? raw?.brand ?? raw?.brandName ?? ''),
     category: {
       id: categoryId,
       name: categoryName,
@@ -421,7 +472,7 @@ function normalizeProduct(raw, priceMap) {
     },
     descriptionHtml: String(raw?.description ?? ''),
     images: normalizeImages(raw?.images),
-    variants: [variant]
+    variants
   };
 }
 

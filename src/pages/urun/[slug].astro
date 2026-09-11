@@ -64,14 +64,20 @@ const plainDescription = String(product.descriptionHtml || '')
 
 // Technical spec sheet rows derived from the first variant + site config.
 const firstVariant = variants[0] || {}
+
+// Trendyol `attributes` (varyant seviyesinde) → spec satırları.
+// Varyantta attribute yoksa ürün seviyesindeki ilk varyantın attribute'ları kullanılır.
+const attributeRows = Object.entries(firstVariant.attributes || {}).map(([key, value]) => ({
+  key: String(key).toLocaleUpperCase('tr-TR'),
+  value: String(value),
+}))
+
 const specRows = [
   { key: 'ÜRÜN KODU', value: firstVariant.sku || String(product.id) },
   { key: 'BARKOD', value: firstVariant.barcode || '—' },
   { key: 'KATEGORİ', value: product.category.name },
   { key: 'MARKA', value: product.brand || siteConfig.name },
-  { key: 'MALZEME', value: 'Reflektif folyo · UV korumalı' },
-  { key: 'YAPIŞKAN', value: 'Güçlü akrilik (iz bırakmaz)' },
-  { key: 'SU DAYANIMI', value: 'Su geçirmez · Dış mekân' },
+  ...attributeRows,
   { key: 'KARGO', value: siteConfig.badges.shipping },
 ]
 
@@ -237,9 +243,10 @@ const faqJsonLd = {
         <span class="h-px flex-1 bg-zinc-200 dark:bg-zinc-800"></span>
       </div>
       <div
-        class="prose prose-sm mt-4 max-w-none text-zinc-600 prose-headings:text-zinc-900 prose-a:text-zinc-900 prose-strong:text-zinc-900 dark:text-zinc-300 dark:prose-headings:text-zinc-100 dark:prose-a:text-zinc-100 dark:prose-strong:text-zinc-100"
-        set:html={product.descriptionHtml}
-      />
+        class="prose prose-sm mt-4 max-w-none whitespace-pre-line text-zinc-600 prose-headings:text-zinc-900 prose-a:text-zinc-900 prose-strong:text-zinc-900 dark:text-zinc-300 dark:prose-headings:text-zinc-100 dark:prose-a:text-zinc-100 dark:prose-strong:text-zinc-100"
+      >
+        {plainDescription || 'Bu ürün için açıklama bulunmuyor.'}
+      </div>
     </section>
 
     <!-- FAQ. -->
