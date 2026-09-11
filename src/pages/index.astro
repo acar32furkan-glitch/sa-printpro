@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import HowToApply from '../components/HowToApply.astro'
-import ProductGrid from '../components/islands/ProductGrid.jsx'
+import ProductCard from '../components/ProductCard.astro'
 import { siteConfig } from '../config/site.js'
 import {
   getAllBrandsWithCounts,
@@ -9,10 +9,16 @@ import {
   getSortedProducts,
 } from '../lib/products.js'
 
+const FEATURED_LIMIT = 12
+
 const products = getSortedProducts()
 const categories = getAllCategories()
 const brands = getAllBrandsWithCounts()
 const productCount = products.length
+
+// Ana sayfa vitrini: akıllı skora göre sıralanmış en iyi ürünler.
+// Tamamı sunucu tarafında (Astro) render edilir; client-side grid yoktur.
+const featuredProducts = products.slice(0, FEATURED_LIMIT)
 ---
 
 <Layout
@@ -82,10 +88,62 @@ const productCount = products.length
         </nav>
       )
     }
+
+    {
+      brands.length > 0 && (
+        <nav class="mt-4" aria-label="Motosiklet markaları">
+          <span class="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+            Motosiklet Markanı Seç
+          </span>
+          <ul class="mt-2 flex flex-wrap items-center gap-2">
+            {brands.map((brand) => (
+              <li>
+                <a
+                  href={`/marka/${brand.slug}`}
+                  class="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3.5 py-1.5 text-xs font-medium text-zinc-700 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-600"
+                >
+                  {brand.name}
+                  <span class="text-zinc-400 dark:text-zinc-500">
+                    {brand.count}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
   </section>
 
-  <section class="mx-auto max-w-6xl px-4 py-8" aria-label="Ürünler">
-    <ProductGrid client:idle products={products} brands={brands} />
+  <section class="mx-auto max-w-6xl px-4 py-8" aria-label="Öne Çıkan Ürünler">
+    <div class="flex flex-wrap items-baseline justify-between gap-2">
+      <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        Öne Çıkan Ürünler
+      </h2>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400">
+        En çok tercih edilen {featuredProducts.length} ürün
+      </p>
+    </div>
+
+    <ul class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+      {
+        featuredProducts.map((product) => (
+          <li>
+            <ProductCard product={product} />
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="mt-8 flex justify-center">
+      <a
+        href="/urunler"
+        class="inline-flex items-center gap-2 rounded-lg bg-zinc-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300 dark:focus-visible:ring-zinc-100 dark:focus-visible:ring-offset-zinc-900"
+      >
+        Tüm Ürünleri Gör ({productCount})
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
   </section>
 
   <HowToApply />
