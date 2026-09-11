@@ -1,10 +1,15 @@
 /**
  * FAZ 11 — Yerel Görsel Pipeline'ı (indirme + dönüştürme + logo filigranı).
  *
- * `src/data/products.json` içindeki her ürünün İLK görselini indirir, Sharp ile
- * maksimum 800x800px WebP (%85 kalite) formatına dönüştürür ve sağ alt köşeye
- * `public/logo.png` filigranını (maks. 130px genişlik, %40 opaklık, 20px padding)
- * basarak `public/uploads/products/${product.id}.webp` altına kaydeder.
+ * `src/data/products.json` içindeki her ürünün TÜM galeri görsellerini indirir,
+ * Sharp ile maksimum 800x800px WebP (%85 kalite) formatına dönüştürür ve sağ alt
+ * köşeye `public/logo.png` filigranını (maks. 130px genişlik, %40 opaklık, 20px
+ * padding) basarak `public/uploads/products/${product.id}-${index}.webp` altına
+ * kaydeder (index 0'dan başlar).
+ *
+ * Geriye dönük uyumluluk: ilk görsel (index 0) için ayrıca
+ * `public/uploads/products/${product.id}.webp` dosyası da üretilir; mevcut
+ * bileşenler bu yolu kullanmaya devam eder.
  *
  * Önbellek: hedef dosya zaten varsa indirme/işleme atlanır. Bu sayede script
  * tekrar tekrar çalıştırılabilir (idempotent) ve yalnızca eksik görselleri üretir.
@@ -127,24 +132,18 @@ async function applyWatermark(imageBuffer, logoBuffer) {
 }
 
 /**
- * Tek bir ürünün görselini işler: indir → dönüştür → filigran → kaydet.
+ * Tek bir görsel URL'ini indirir, dönüştürür, filigran basar ve verilen
+ * hedef yollara yazar. Hedef dosyalardan biri zaten varsa işlem atlanır.
  *
- * @param {object} product
+ * @param {string} sourceUrl
+ * @param {string[]} outputPaths Aynı içeriğin yazılacağı hedef yollar.
  * @param {Buffer} logoBuffer
- * @returns {Promise<'processed'|'cached'|'skipped'>}
+ * @returns {Promise<'processed'|'cached'>}
  */
-async function processProduct(product, logoBuffer) {
-  const images = Array.isArray(product?.images) ? product.images : []
-  const sourceUrl = images[0]
-
-  if (!sourceUrl) {
-    return 'skipped'
-  }
-
-  const outputPath = resolve(OUTPUT_DIR, `${product.id}.webp`)
-
-  // Önbellek: hedef dosya varsa yeniden indirme/işleme yapma.
-  if (await fileExists(outputPath)) {
+async function processImage(sourceUrl, outputPaths, logoBuffer) {
+  // Önbellek: tüm hedef dosyalar varsa yeniden indirme/işleme yapma.
+  const existence = await Promise.all(outputPaths.map((p) => fileExists(p)))
+  if (existence.every(Boolean)) {
     return 'cached'
   }
 
@@ -166,8 +165,57 @@ async function processProduct(product, logoBuffer) {
     .webp({ quality: WEBP_QUALITY })
     .toBuffer()
 
-  await writeFile(outputPath, webp)
+  // Eksik olan hedefleri yaz (mevcut dosyaları gereksiz yere ezme).
+  for (let i = 0; i < outputPaths.length; i += 1) {
+    if (!existence[i]) {
+      await writeFile(outputPaths[i], webp)
+    }
+  }
+
   return 'processed'
+}
+
+/**
+ * Tek bir ürünün TÜM galeri görsellerini işler.
+ *
+ * @param {object} product
+ * @param {Buffer} logoBuffer
+ * @returns {Promise<{processed: number, cached: number, skipped: number, failed: number}>}
+ */
+async function processProduct(product, logoBuffer) {
+  const images = Array.isArray(product?.images) ? product.images.filter(Boolean) : []
+  const result = { processed: 0, cached: 0, skipped: 0, failed: 0 }
+
+  if (images.length === 0) {
+    result.skipped += 1
+    return result
+  }
+
+  for (let index = 0; index < images.length; index += 1) {
+    const sourceUrl = images[index]
+    const outputPaths = [resolve(OUTPUT_DIR, `${product.id}-${index}.webp`)]
+
+    // Geriye dönük uyumluluk: ilk görsel için `{id}.webp` de üretilir.
+    if (index === 0) {
+      outputPaths.push(resolve(OUTPUT_DIR, `${product.id}.webp`))
+    }
+
+    try {
+      const outcome = await processImage(sourceUrl, outputPaths, logoBuffer)
+      if (outcome === 'processed') {
+        result.processed += 1
+      } else {
+        result.cached += 1
+      }
+    } catch (error) {
+      result.failed += 1
+      console.error(
+        `  ✗ ${product.id} görsel #${index} işlenemedi: ${error.message}`
+      )
+    }
+  }
+
+  return result
 }
 
 async function main() {
@@ -187,8 +235,14 @@ async function main() {
   const logoBuffer = await readFile(LOGO_FILE)
   await mkdir(OUTPUT_DIR, { recursive: true })
 
+  const totalImages = products.reduce(
+    (sum, product) =>
+      sum + (Array.isArray(product?.images) ? product.images.filter(Boolean).length : 0),
+    0
+  )
+
   console.log(
-    `[process-images] ${products.length} ürün işlenecek (toplam katalog: ${allProducts.length}).`
+    `[process-images] ${products.length} ürün / ${totalImages} görsel işlenecek (toplam katalog: ${allProducts.length}).`
   )
 
   let processed = 0
@@ -197,25 +251,23 @@ async function main() {
   let failed = 0
 
   for (const product of products) {
-    try {
-      const result = await processProduct(product, logoBuffer)
-      if (result === 'processed') {
-        processed += 1
-        console.log(`  ✓ ${product.id} → ${product.slug}`)
-      } else if (result === 'cached') {
-        cached += 1
-      } else {
-        skipped += 1
-        console.warn(`  ! ${product.id} görsel içermiyor, atlandı.`)
-      }
-    } catch (error) {
-      failed += 1
-      console.error(`  ✗ ${product.id} işlenemedi: ${error.message}`)
+    const result = await processProduct(product, logoBuffer)
+    processed += result.processed
+    cached += result.cached
+    skipped += result.skipped
+    failed += result.failed
+
+    if (result.processed > 0) {
+      console.log(
+        `  ✓ ${product.id} → ${product.slug} (${result.processed} yeni, ${result.cached} önbellek)`
+      )
+    } else if (result.skipped > 0) {
+      console.warn(`  ! ${product.id} görsel içermiyor, atlandı.`)
     }
   }
 
   console.log(
-    `[process-images] Tamamlandı → işlenen: ${processed}, önbellek: ${cached}, atlanan: ${skipped}, hata: ${failed}`
+    `[process-images] Tamamlandı → işlenen: ${processed}, önbellek: ${cached}, atlanan ürün: ${skipped}, hata: ${failed}`
   )
 }
 

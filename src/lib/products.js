@@ -34,6 +34,52 @@ const COMPETITOR_BRANDS = [
   'baskıbabası',
   'baski babası',
   'baskı babasi',
+  // Üçüncü taraf satıcı / pazaryeri mağaza adları (gerçek ürün markası değil).
+  'hediyelikevi',
+  'benimser reklam',
+  'run grafik shop',
+  'bay s plus',
+  'kaplama merkezi',
+  'beta moda hub',
+  'mavera stickers',
+  'adasya reklam',
+  'kurt reklam dünyası',
+  'modernsanatdükkanı',
+  'tasarım market',
+  'maral grup',
+  'ersa sticker',
+  'asilmeydan',
+  'wouw store',
+  'hsc store',
+  'yılmaz auto',
+  'yarımada bahçe',
+  'asil ticaret',
+  'uçgunmoto',
+  'cebecioto',
+  'mtl pleksi',
+  'stckrco',
+  'muasl',
+  'rez',
+  'allivo',
+  'arona',
+  'comtura',
+  'bricave',
+  'kumraldede',
+  'habole',
+  'bilge sea',
+  'motiker',
+  'home &',
+  'stıckman',
+  'sticker',
+  'favori',
+  'terapi',
+  'kahraman',
+  'erzline',
+  'carsesuar',
+  'teknotik',
+  'unifol',
+  '3m',
+  'bys',
 ]
 
 /**
@@ -81,10 +127,25 @@ export function sanitizeCatalogText(text) {
 
   let output = String(text)
 
-  // 1) Competitor seller titles → house brand.
+  // 1) Competitor seller titles → house brand. Matching is Turkish-aware
+  // (case- and diacritic-insensitive) so "BENİMSER REKLAM" is caught too.
   for (const brand of COMPETITOR_BRANDS) {
-    const pattern = new RegExp(brand.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi')
-    output = output.replace(pattern, 'SA Printpro')
+    const normalizedBrand = normalizeTr(brand)
+    const normalizedOutput = normalizeTr(output)
+    let searchFrom = 0
+    let result = ''
+    let cursor = 0
+    while (searchFrom <= normalizedOutput.length) {
+      const hit = normalizedOutput.indexOf(normalizedBrand, searchFrom)
+      if (hit === -1) {
+        break
+      }
+      result += output.slice(cursor, hit) + 'SA Printpro'
+      cursor = hit + normalizedBrand.length
+      searchFrom = cursor
+    }
+    result += output.slice(cursor)
+    output = result
   }
 
   // 2) Agency / corporate references → removed.
@@ -210,6 +271,50 @@ export function getProductPrimaryImage(product) {
   } catch {
     return cdnImage
   }
+}
+
+/**
+ * FAZ 11 — Tüm galeri görselleri için yerel öncelik.
+ *
+ * `scripts/process-images.mjs` her ürünün TÜM görsellerini
+ * `/uploads/products/${id}-${index}.webp` biçiminde üretir. Bu fonksiyon her
+ * görsel için yerel dosya mevcutsa onu, aksi halde ilgili CDN URL'ini döndürür.
+ *
+ * Node (build/SSG) ortamında `fs` köprüsü üzerinden dosya varlığı kontrol
+ * edilir; tarayıcıda (island) bu kontrol atlanır ve CDN görsellerine düşülür.
+ *
+ * @param {object} product
+ * @returns {string[]} Görsel URL'leri (yerel yol veya CDN adresi).
+ */
+export function getProductImages(product) {
+  if (!product) {
+    return []
+  }
+
+  const images = Array.isArray(product.images) ? product.images.filter(Boolean) : []
+
+  if (!product.id) {
+    return images
+  }
+
+  // Yalnızca Node (build/SSG) ortamında dosya sistemi kontrolü yapılabilir.
+  const isNode = typeof process !== 'undefined' && Boolean(process.versions?.node)
+  const existsSync = isNode
+    ? globalThis.__SA_PRINTPRO_FS__?.existsSync
+    : undefined
+
+  return images.map((cdnImage, index) => {
+    if (typeof existsSync !== 'function') {
+      return cdnImage
+    }
+    const localPath = `/uploads/products/${product.id}-${index}.webp`
+    try {
+      const absolute = `${process.cwd()}/public${localPath}`
+      return existsSync(absolute) ? localPath : cdnImage
+    } catch {
+      return cdnImage
+    }
+  })
 }
 
 /**

@@ -4,22 +4,19 @@ import { useMemo, useState } from 'react'
  * Product detail image gallery: a 4:5 primary frame with a thumbnail strip
  * below. Falls back to a neutral placeholder when no images exist.
  *
- * FAZ 11: `primaryImage` (yerel, logo filigranlı WebP) verildiğinde galerinin
- * ilk karesi olarak önceliklendirilir; kalan CDN görselleri onu takip eder.
+ * FAZ 11: `images` artık `getProductImages(product)` tarafından üretilen tam
+ * listeyi (yerel logo filigranlı WebP'ler + CDN fallback) taşır. Liste sırası
+ * korunur; ilk eleman ana kare olarak gösterilir.
  *
  * @param {object} props
  * @param {string[]} [props.images]
- * @param {string} [props.primaryImage]
  * @param {string} [props.title]
  */
-export default function Gallery({ images = [], primaryImage = '', title = '' }) {
-  const safeImages = useMemo(() => {
-    const list = Array.isArray(images) ? images.filter(Boolean) : []
-    if (primaryImage && !list.includes(primaryImage)) {
-      return [primaryImage, ...list]
-    }
-    return list
-  }, [images, primaryImage])
+export default function Gallery({ images = [], title = '' }) {
+  const safeImages = useMemo(
+    () => (Array.isArray(images) ? images.filter(Boolean) : []),
+    [images]
+  )
 
   const [activeIndex, setActiveIndex] = useState(0)
 

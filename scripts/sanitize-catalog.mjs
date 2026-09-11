@@ -25,7 +25,53 @@ const COMPETITOR_BRANDS = [
   'baskibabasi',
   'baskıbabası',
   'baski babası',
-  'baskı babasi'
+  'baskı babasi',
+  // Üçüncü taraf satıcı / pazaryeri mağaza adları (gerçek ürün markası değil).
+  'hediyelikevi',
+  'benimser reklam',
+  'run grafik shop',
+  'bay s plus',
+  'kaplama merkezi',
+  'beta moda hub',
+  'mavera stickers',
+  'adasya reklam',
+  'kurt reklam dünyası',
+  'modernsanatdükkanı',
+  'tasarım market',
+  'maral grup',
+  'ersa sticker',
+  'asilmeydan',
+  'wouw store',
+  'hsc store',
+  'yılmaz auto',
+  'yarımada bahçe',
+  'asil ticaret',
+  'uçgunmoto',
+  'cebecioto',
+  'mtl pleksi',
+  'stckrco',
+  'muasl',
+  'rez',
+  'allivo',
+  'arona',
+  'comtura',
+  'bricave',
+  'kumraldede',
+  'habole',
+  'bilge sea',
+  'motiker',
+  'home &',
+  'stıckman',
+  'sticker',
+  'favori',
+  'terapi',
+  'kahraman',
+  'erzline',
+  'carsesuar',
+  'teknotik',
+  'unifol',
+  '3m',
+  'bys'
 ];
 
 const COMPETITOR_ENTITIES = [
@@ -50,6 +96,64 @@ const COMPLIANCE_SENTENCE_PATTERNS = [
 ];
 
 /**
+ * Türkçe karakterleri ASCII karşılıklarına indirgeyip küçük harfe çevirir.
+ * `İ`/`I`/`ı`/`i` gibi harflerin JS regex `i` bayrağıyla eşleşmemesi
+ * sorununu çözer; marka eşleştirmesi bu normalize edilmiş metin üzerinden
+ * yapılır, böylece "BENİMSER REKLAM" da "benimser reklam" ile eşleşir.
+ *
+ * @param {string} str
+ * @returns {string}
+ */
+function normalizeTr(str) {
+  return String(str)
+    .replace(/[İIıi]/g, 'i')
+    .replace(/Ş/g, 's')
+    .replace(/ş/g, 's')
+    .replace(/Ğ/g, 'g')
+    .replace(/ğ/g, 'g')
+    .replace(/Ü/g, 'u')
+    .replace(/ü/g, 'u')
+    .replace(/Ö/g, 'o')
+    .replace(/ö/g, 'o')
+    .replace(/Ç/g, 'c')
+    .replace(/ç/g, 'c')
+    .toLowerCase();
+}
+
+/**
+ * Bir metin içindeki tüm rakip marka adlarını, Türkçe karakter farkı
+ * gözetmeksizin (case-insensitive + diacritic-insensitive) bulup
+ * "SA Printpro" ile değiştirir.
+ *
+ * @param {string} text
+ * @returns {string}
+ */
+function replaceCompetitorBrands(text) {
+  let output = String(text);
+  for (const brand of COMPETITOR_BRANDS) {
+    const normalizedBrand = normalizeTr(brand);
+    // Normalize edilmiş metin üzerinde eşleşme arar; orijinal metni
+    // karakter karakter tarayarak eşleşen aralığı "SA Printpro" ile değiştirir.
+    const normalizedOutput = normalizeTr(output);
+    let searchFrom = 0;
+    let result = '';
+    let cursor = 0;
+    while (searchFrom <= normalizedOutput.length) {
+      const hit = normalizedOutput.indexOf(normalizedBrand, searchFrom);
+      if (hit === -1) {
+        break;
+      }
+      result += output.slice(cursor, hit) + 'SA Printpro';
+      cursor = hit + normalizedBrand.length;
+      searchFrom = cursor;
+    }
+    result += output.slice(cursor);
+    output = result;
+  }
+  return output;
+}
+
+/**
  * Katalog metinlerinden rakip satıcı unvanlarını, ajans referanslarını,
  * telefon numaralarını, harici linkleri ve pazaryeri zorunlu uyum/uyarı
  * cümlelerini temizler.
@@ -62,10 +166,8 @@ function sanitizeCatalogText(text) {
 
   let output = String(text);
 
-  for (const brand of COMPETITOR_BRANDS) {
-    const pattern = new RegExp(brand.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
-    output = output.replace(pattern, 'SA Printpro');
-  }
+  // Rakip satıcı adları → "SA Printpro" (Türkçe karakter farkı gözetmeksizin).
+  output = replaceCompetitorBrands(output);
 
   for (const entity of COMPETITOR_ENTITIES) {
     const pattern = new RegExp(entity.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');

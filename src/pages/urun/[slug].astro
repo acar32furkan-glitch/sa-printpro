@@ -15,6 +15,7 @@ import {
   sanitizeCatalogText,
   detectCompatibleModels,
   getProductPrimaryImage,
+  getProductImages,
 } from '../../lib/products.js'
 import aiEnrichedData from '../../data/ai-enriched.json'
 
@@ -37,6 +38,10 @@ const aiData = aiEnrichedData?.[product.id] || null
 
 // FAZ 11: yerel (logo filigranlı) görsel varsa onu, yoksa CDN görselini kullan.
 const primaryImage = getProductPrimaryImage(product)
+
+// FAZ 11: galeri için TÜM görseller — yerel dosya varsa `/uploads/products/{id}-{i}.webp`,
+// yoksa ilgili CDN URL'i. Sıra korunur (index 0 ana kare).
+const galleryImages = getProductImages(product)
 
 const variants = Array.isArray(product.variants) ? product.variants : []
 
@@ -447,12 +452,7 @@ const faqJsonLd = {
   <article class="mx-auto max-w-6xl px-4 pb-12">
     <div class="mt-8 grid gap-8 lg:grid-cols-2">
       <div>
-        <Gallery
-          client:visible
-          images={product.images}
-          primaryImage={primaryImage}
-          title={displayTitle}
-        />
+        <Gallery client:visible images={galleryImages} title={displayTitle} />
       </div>
 
       <div class="flex flex-col gap-6">
