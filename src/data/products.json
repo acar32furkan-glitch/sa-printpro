@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T09:14:06.307Z",
+  "generatedAt": "2026-09-11T19:21:16.260Z",
   "products": [
     {
       "id": "1160687379",
@@ -139,8 +139,8 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez."
           },
-          "price": 299,
-          "salePrice": 299,
+          "price": 227,
+          "salePrice": 227,
           "stock": 20000
         }
       ]
@@ -296,9 +296,9 @@
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
             "Menşei": "TR"
           },
-          "price": 390,
-          "salePrice": 390,
-          "stock": 19995
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         },
         {
           "barcode": "TYBB3TF1EK3LGSW429",
@@ -309,9 +309,9 @@
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
             "Menşei": "TR"
           },
-          "price": 390,
-          "salePrice": 390,
-          "stock": 19995
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -3489,8 +3489,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 351,
-          "salePrice": 351,
+          "price": 282,
+          "salePrice": 282,
           "stock": 19904
         }
       ]
@@ -3519,9 +3519,9 @@
             "Renk": "Siyah",
             "Özellik": "Hava"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "price": 199,
+          "salePrice": 199,
+          "stock": 1977
         },
         {
           "barcode": "1325467898254",
@@ -3530,9 +3530,9 @@
             "Renk": "Siyah",
             "Özellik": "Hava"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "price": 199,
+          "salePrice": 199,
+          "stock": 1977
         }
       ]
     },
@@ -3590,9 +3590,9 @@
           "attributes": {
             "Renk": "Beyaz"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "price": 199,
+          "salePrice": 199,
+          "stock": 1999
         }
       ]
     },
@@ -3649,9 +3649,9 @@
           "attributes": {
             "Renk": "Siyah"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "price": 199,
+          "salePrice": 199,
+          "stock": 1999
         }
       ]
     },
@@ -4190,8 +4190,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 171,
-          "salePrice": 171,
+          "price": 199,
+          "salePrice": 199,
           "stock": 1842
         }
       ]
@@ -4343,16 +4343,6 @@
       ],
       "variants": [
         {
-          "barcode": "2876824768972486752897",
-          "sku": "ktm",
-          "attributes": {
-            "Menşei": "TR"
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        },
-        {
           "barcode": "2478593843857",
           "sku": "kkt",
           "attributes": {
@@ -4365,6 +4355,16 @@
         {
           "barcode": "29572975290749260",
           "sku": "ktm12",
+          "attributes": {
+            "Menşei": "TR"
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
+          "barcode": "2876824768972486752897",
+          "sku": "ktm",
           "attributes": {
             "Menşei": "TR"
           },
@@ -4418,8 +4418,8 @@
           "barcode": "29689287538658784",
           "sku": "ktm13",
           "attributes": {},
-          "price": 249,
-          "salePrice": 249,
+          "price": 282,
+          "salePrice": 282,
           "stock": 1991
         }
       ]
@@ -5506,10 +5506,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (arka)": "",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
           },
           "price": 0,
           "salePrice": 0,
@@ -5534,8 +5534,8 @@
       ],
       "variants": [
         {
-          "barcode": "Tasarımhediyenmotosticker00032",
-          "sku": "svenm",
+          "barcode": "90290529852895",
+          "sku": "",
           "attributes": {
             "Renk": "Siyah",
             "Özellik": "Diğer",
@@ -5551,8 +5551,8 @@
           "stock": 0
         },
         {
-          "barcode": "90290529852895",
-          "sku": "",
+          "barcode": "Tasarımhediyenmotosticker00032",
+          "sku": "svenm",
           "attributes": {
             "Renk": "Siyah",
             "Özellik": "Diğer",
@@ -5735,8 +5735,8 @@
             "Özellik": "Uzun",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilebilir, Satıcı ile İletişime Geçiniz.",
-            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)",
-            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr"
+            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr",
+            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)"
           },
           "price": 99,
           "salePrice": 99,
@@ -5887,10 +5887,10 @@
             "Özellik": "Kendinden Yapışkanlı",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": ""
           },
           "price": 199,
           "salePrice": 199,
@@ -6344,8 +6344,8 @@
             "Renk": "Kırmızı",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
