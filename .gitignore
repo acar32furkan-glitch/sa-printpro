@@ -8,5 +8,8 @@ dist/
 Thumbs.db
 *.log
 *.local
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
 .vscode/
 .idea/

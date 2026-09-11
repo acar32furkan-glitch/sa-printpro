@@ -1,0 +1,7 @@
+# Cloudflare Worker yerel geliştirme secret'ları (wrangler dev).
+# Bu dosyayı `.dev.vars` olarak kopyalayıp gerçek değerleri girin.
+# `.dev.vars` Git tarafından yok sayılır — ASLA commit etmeyin.
+
+SHOPIER_CLIENT_ID=your_client_id
+SHOPIER_CLIENT_SECRET=your_client_secret
+SHOPIER_REDIRECT_URI=https://saprintpro.com/shopier/oauth/callback

@@ -1,0 +1,26 @@
+# Cloudflare Worker — SA Printpro
+# "Workers with static assets" dağıtımı: Worker dinamik route'ları karşılar,
+# geri kalan istekler `./dist` içindeki statik Astro çıktısına yönlendirilir.
+#
+# GÜVENLİK: Secret'lar bu dosyaya GÖMÜLMEZ. Cloudflare'de tanımlayın:
+#   npx wrangler secret put SHOPIER_CLIENT_ID
+#   npx wrangler secret put SHOPIER_CLIENT_SECRET
+#   npx wrangler secret put SHOPIER_REDIRECT_URI
+# (veya dashboard → Worker → Settings → Variables and Secrets)
+
+name = "sa-printpro"
+main = "worker/index.js"
+compatibility_date = "2025-01-01"
+
+# Statik Astro çıktısı. `not_found_handling = "none"` → SPA fallback yok,
+# yalnızca gerçek dosyalar servis edilir (404 doğru şekilde döner).
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "none"
+
+# Yerel geliştirme için (opsiyonel). Gerçek değerler `.dev.vars` dosyasından
+# okunur — bu dosya Git tarafından yok sayılır (bkz. .gitignore `*.local`/`.env.*`).
+# Üretimde secret'lar `wrangler secret put` ile tanımlanır.
+[vars]
+SHOPIER_REDIRECT_URI = "https://saprintpro.com/shopier/oauth/callback"
