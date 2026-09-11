@@ -1,5 +1,9 @@
 ---
 import { BadgeCheck, ShieldCheck, Sun } from 'lucide-react'
+import { siteConfig } from '../config/site.js'
+
+// Trendyol CTA kapalıyken güven rozeti Trendyol'suz metne döner.
+const enableTrendyolCta = siteConfig.features?.enableTrendyolCta === true
 
 const badges = [
   {
@@ -9,8 +13,12 @@ const badges = [
   },
   {
     icon: ShieldCheck,
-    title: 'Trendyol Güvencesi & Hızlı Kargo',
-    description: 'Trendyol altyapısıyla güvenli ödeme ve 2 günde kargoda.',
+    title: enableTrendyolCta
+      ? 'Trendyol Güvencesi & Hızlı Kargo'
+      : 'Hızlı Kargo & Güvenli Alışveriş',
+    description: enableTrendyolCta
+      ? 'Trendyol altyapısıyla güvenli ödeme ve 2 günde kargoda.'
+      : 'Shopier ve WhatsApp üzerinden güvenli ödeme, 2 günde kargoda.',
   },
   {
     icon: Sun,

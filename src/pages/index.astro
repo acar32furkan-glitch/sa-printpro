@@ -30,24 +30,28 @@ const productCount = products.length
       </p>
     </div>
 
-    <a
-      href={siteConfig.trendyol.storeUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="mt-5 flex items-center gap-3 rounded-lg border border-[#F27A1A]/30 bg-[#F27A1A]/5 px-4 py-3 text-sm text-zinc-700 transition-colors hover:border-[#F27A1A] hover:bg-[#F27A1A]/10 dark:text-zinc-200"
-    >
-      <span
-        class="flex h-2 w-2 shrink-0 rounded-full bg-[#F27A1A]"
-        aria-hidden="true"
-      ></span>
-      <span class="text-pretty">
-        Trendyol mağazamızı takip ederek kupon fırsatlarından ve yeni reflektif
-        tasarımlardan anında haberdar olun.
-      </span>
-      <span class="ml-auto hidden shrink-0 text-xs font-semibold text-[#F27A1A] sm:inline">
-        Mağazaya Git →
-      </span>
-    </a>
+    {
+      siteConfig.features?.enableTrendyolCta === true && (
+        <a
+          href={siteConfig.trendyol.storeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-5 flex items-center gap-3 rounded-lg border border-[#F27A1A]/30 bg-[#F27A1A]/5 px-4 py-3 text-sm text-zinc-700 transition-colors hover:border-[#F27A1A] hover:bg-[#F27A1A]/10 dark:text-zinc-200"
+        >
+          <span
+            class="flex h-2 w-2 shrink-0 rounded-full bg-[#F27A1A]"
+            aria-hidden="true"
+          />
+          <span class="text-pretty">
+            Trendyol mağazamızı takip ederek kupon fırsatlarından ve yeni reflektif
+            tasarımlardan anında haberdar olun.
+          </span>
+          <span class="ml-auto hidden shrink-0 text-xs font-semibold text-[#F27A1A] sm:inline">
+            Mağazaya Git →
+          </span>
+        </a>
+      )
+    }
 
     {
       categories.length > 0 && (

@@ -125,10 +125,10 @@ export default function VariantSelector({ product, shopier }) {
   const trendyolUrl = getTrendyolProductUrl(product, selectedVariant)
   const showTrendyolCta = enableTrendyolCta && Boolean(trendyolUrl) && inStock
 
-  // Atölye özel üretim kalkanı: Trendyol linki yoksa (stok 0) veya varyant
-  // tükendiyse, müşteriyi rakip Buybox'a kaptırmak yerine atölye üretimine
-  // yönlendiren dev yeşil CTA gösterilir.
-  const showWorkshopCta = !showTrendyolCta
+  // Doğrudan satış modu: flag kapalıyken Shopier/WhatsApp birincil olur.
+  // Shopier haritasında varyant barkodu varsa Shopier, yoksa WhatsApp öne çıkar.
+  const showDirectSales = !enableTrendyolCta
+  const shopierPrimary = showDirectSales && Boolean(shopierUrl)
 
   /**
    * Fires the GA4 outbound event for the Trendyol Boost CTA when gtag exists.
@@ -182,7 +182,9 @@ export default function VariantSelector({ product, shopier }) {
               </span>
             </div>
             <div className="flex flex-wrap items-baseline gap-2 text-sm">
-              <span className="text-zinc-500 dark:text-zinc-400">Trendyol:</span>
+              <span className="text-zinc-500 dark:text-zinc-400">
+                {enableTrendyolCta ? 'Trendyol:' : 'Liste Fiyatı:'}
+              </span>
               <span className="text-zinc-400 line-through dark:text-zinc-500">
                 {formatPrice(trendyolPrice)}
               </span>
@@ -317,40 +319,59 @@ export default function VariantSelector({ product, shopier }) {
           </>
         ) : (
           <>
-            {/* Atölye özel üretim kalkanı — Trendyol linki yok / stok 0.
-                Müşteri rakip Buybox'a değil, doğrudan atölyeye yönlendirilir. */}
-            <a
-              href={workshopUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-whatsapp w-full py-4 text-base font-semibold shadow-lg shadow-emerald-600/20"
-            >
-              <Hammer className="h-5 w-5" aria-hidden="true" />
-              Atölyeden Özel Baskı Siparişi Ver (WhatsApp)
-            </a>
+            {/* Doğrudan satış modu — Trendyol CTA kapalı.
+                Birincil aksiyon: Shopier barkod eşleşmesi varsa Shopier,
+                yoksa indirimli WhatsApp siparişi. */}
+            {shopierPrimary ? (
+              <>
+                <a
+                  href={shopierUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-whatsapp w-full py-4 text-base font-semibold shadow-lg shadow-emerald-600/20"
+                >
+                  <ShoppingBag className="h-5 w-5" aria-hidden="true" />
+                  {showDirectPrice
+                    ? `Shopier ile Al · ${formatPrice(directPrice)}`
+                    : 'Shopier ile Güvenli Al'}
+                </a>
 
-            {shopierUrl && (
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary w-full"
+                >
+                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                  {showDirectPrice
+                    ? `İndirimli Al (WhatsApp) · ${formatPrice(directPrice)}`
+                    : 'WhatsApp ile Sipariş Ver'}
+                </a>
+              </>
+            ) : (
               <a
-                href={shopierUrl}
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary w-full"
+                className="btn-whatsapp w-full py-4 text-base font-semibold shadow-lg shadow-emerald-600/20"
               >
-                <ShoppingBag className="h-4 w-4" aria-hidden="true" />
+                <MessageCircle className="h-5 w-5" aria-hidden="true" />
                 {showDirectPrice
-                  ? `Shopier ile Al · ${formatPrice(directPrice)}`
-                  : 'Shopier ile Güvenli Al'}
+                  ? `İndirimli Sipariş Ver (WhatsApp) · ${formatPrice(directPrice)}`
+                  : 'WhatsApp ile Sipariş Ver'}
               </a>
             )}
 
             {/* Stok tükenmiş görünse de atölye üretimi bilgilendirme rozeti. */}
-            <p className="flex items-start gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2.5 text-xs leading-relaxed text-emerald-800 dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300">
-              <Info className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-              <span>
-                Bu ürün stokta tükenmiş görünse de SA Printpro atölyesinde
-                siparişiniz üzerine aynı gün özel basılmaktadır.
-              </span>
-            </p>
+            {!inStock && (
+              <p className="flex items-start gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2.5 text-xs leading-relaxed text-emerald-800 dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300">
+                <Info className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                <span>
+                  Bu ürün stokta tükenmiş görünse de SA Printpro atölyesinde
+                  siparişiniz üzerine aynı gün özel basılmaktadır.
+                </span>
+              </p>
+            )}
           </>
         )}
 

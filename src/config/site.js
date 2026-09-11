@@ -22,7 +22,7 @@ export const siteConfig = {
   features: {
     // false yapılırsa sitedeki tüm Trendyol butonları ve rozetleri gizlenir,
     // doğrudan satış (Shopier/WhatsApp) birincil olur.
-    enableTrendyolCta: true,
+    enableTrendyolCta: false,
     // Web'e özel indirimli fiyat gösterimi.
     enableDirectDiscount: true,
     // Doğrudan satış indirim oranı (0.20 = %20).

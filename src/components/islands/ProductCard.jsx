@@ -71,6 +71,7 @@ export default function ProductCard({ product }) {
 
   // Web'e özel doğrudan satış fiyatı (son hanesi her zaman 5).
   const features = siteConfig.features || {}
+  const enableTrendyolCta = features.enableTrendyolCta === true
   const enableDirectDiscount = features.enableDirectDiscount !== false
   const directDiscountPercent = Math.round((Number(features.directDiscountRate) || 0) * 100)
   const directPrice = enableDirectDiscount ? calculateDirectPrice(salePrice) : 0
@@ -144,7 +145,8 @@ export default function ProductCard({ product }) {
                 </span>
               </div>
               <span className="text-xs text-zinc-400 line-through dark:text-zinc-500">
-                Trendyol: {formatPrice(salePrice)}
+                {enableTrendyolCta ? 'Trendyol:' : 'Liste Fiyatı:'}{' '}
+                {formatPrice(salePrice)}
               </span>
             </>
           ) : (

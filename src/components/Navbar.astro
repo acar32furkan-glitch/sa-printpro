@@ -53,19 +53,23 @@ const currentPath = Astro.url.pathname
     </ul>
 
     <div class="ml-auto flex items-center gap-2">
-      <a
-        href={siteConfig.trendyol.storeUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="hidden items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-600 transition-colors hover:border-[#F27A1A] hover:text-zinc-900 sm:inline-flex dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-[#F27A1A] dark:hover:text-zinc-50"
-        aria-label="Trendyol mağazamızı ziyaret edin"
-      >
-        <span
-          class="h-2 w-2 rounded-full bg-[#F27A1A]"
-          aria-hidden="true"
-        ></span>
-        Trendyol Mağazamız
-      </a>
+      {
+        siteConfig.features?.enableTrendyolCta === true && (
+          <a
+            href={siteConfig.trendyol.storeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hidden items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-600 transition-colors hover:border-[#F27A1A] hover:text-zinc-900 sm:inline-flex dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-[#F27A1A] dark:hover:text-zinc-50"
+            aria-label="Trendyol mağazamızı ziyaret edin"
+          >
+            <span
+              class="h-2 w-2 rounded-full bg-[#F27A1A]"
+              aria-hidden="true"
+            />
+            Trendyol Mağazamız
+          </a>
+        )
+      }
       <div class="hidden w-56 sm:block lg:w-72">
         <SearchBar client:idle />
       </div>
