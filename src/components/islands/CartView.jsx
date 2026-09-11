@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useSyncExternalStore } from 'react'
+import { useCallback, useMemo, useState, useSyncExternalStore } from 'react'
 import { Minus, Plus, ShoppingBag, Trash2, MessageCircle } from 'lucide-react'
 import { siteConfig } from '../../config/site.js'
 import shopierMap from '../../config/shopier.json'
@@ -75,6 +75,11 @@ function buildWhatsappMessage(items, total) {
 export default function CartView() {
   const items = useCartItems()
 
+  // Hukuki zorunluluk: Mesafeli Satış Sözleşmesi ve Ön Bilgilendirme Formu
+  // onayı işaretlenmeden sipariş tamamlanamaz.
+  const [termsAccepted, setTermsAccepted] = useState(false)
+  const [showTermsWarning, setShowTermsWarning] = useState(false)
+
   const total = useMemo(
     () => items.reduce((sum, item) => sum + item.price * item.qty, 0),
     [items]
@@ -105,6 +110,12 @@ export default function CartView() {
    * varsa Shopier'e, aksi halde WhatsApp'a yönlendirir.
    */
   const handleCheckout = useCallback(() => {
+    // Onay kutusu işaretlenmeden checkout başlatılamaz.
+    if (!termsAccepted) {
+      setShowTermsWarning(true)
+      return
+    }
+
     if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
       window.gtag('event', 'begin_checkout', {
         currency: 'TRY',
@@ -131,7 +142,7 @@ export default function CartView() {
     if (typeof window !== 'undefined') {
       window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
     }
-  }, [items, total, allHaveShopier, whatsappUrl])
+  }, [items, total, allHaveShopier, whatsappUrl, termsAccepted])
 
   if (items.length === 0) {
     return (
@@ -275,10 +286,46 @@ export default function CartView() {
           </div>
         </dl>
 
+        <label className="flex cursor-pointer items-start gap-2.5 rounded-lg border border-zinc-200 bg-zinc-50 p-3 text-xs leading-relaxed text-zinc-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400">
+          <input
+            type="checkbox"
+            checked={termsAccepted}
+            onChange={(event) => {
+              setTermsAccepted(event.target.checked)
+              if (event.target.checked) {
+                setShowTermsWarning(false)
+              }
+            }}
+            className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded border-zinc-300 text-emerald-600 focus:ring-emerald-500 dark:border-zinc-600 dark:bg-zinc-800"
+          />
+          <span>
+            <a
+              href="/mesafeli-satis-sozlesmesi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-zinc-900 underline underline-offset-2 hover:text-emerald-700 dark:text-zinc-100 dark:hover:text-emerald-400"
+            >
+              Mesafeli Satış Sözleşmesi
+            </a>
+            {'’ni ve Ön Bilgilendirme Formu’nu okudum, onaylıyorum.'}
+          </span>
+        </label>
+
+        {showTermsWarning && !termsAccepted && (
+          <p
+            role="alert"
+            className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs font-medium text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-400"
+          >
+            Siparişi tamamlamak için lütfen sözleşme onayını işaretleyin.
+          </p>
+        )}
+
         <button
           type="button"
           onClick={handleCheckout}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/20 transition-colors hover:bg-emerald-700"
+          disabled={!termsAccepted}
+          aria-disabled={!termsAccepted}
+          className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/20 transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:bg-zinc-300 disabled:text-zinc-500 disabled:shadow-none dark:disabled:bg-zinc-700 dark:disabled:text-zinc-400"
         >
           {allHaveShopier ? (
             <>

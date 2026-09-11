@@ -1,0 +1,116 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Breadcrumb from '../components/Breadcrumb.astro'
+import { siteConfig } from '../config/site.js'
+
+const canonicalUrl = `${siteConfig.domain}/kvkk-aydinlatma-metni`
+
+const breadcrumbItems = [
+  { label: 'Ana Sayfa', href: '/' },
+  { label: 'KVKK Aydınlatma Metni' },
+]
+
+const sections = [
+  {
+    title: '1. Veri Sorumlusunun Kimliği',
+    body: `6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") m.10 uyarınca, kişisel verilerinizin işlenmesine ilişkin olarak aydınlatılmanız amacıyla bu metin hazırlanmıştır.
+
+Veri Sorumlusu: ${siteConfig.name}
+Ticari Unvan: [DOLDURULACAK: ticari unvan]
+Adres: [DOLDURULACAK: açık adres]
+Vergi Dairesi / VKN: [DOLDURULACAK: vergi dairesi ve vergi kimlik numarası]
+E-posta: ${siteConfig.contact.email}
+Telefon: +${siteConfig.contact.whatsapp}`,
+  },
+  {
+    title: '2. İşlenen Kişisel Veriler ve Toplama Yöntemi',
+    body: `Kişisel verileriniz; ${siteConfig.domain} internet sitesi, WhatsApp sipariş kanalı ve Shopier ödeme altyapısı üzerinden, elektronik ortamda ve otomatik yollarla toplanır. İşlenen veri kategorileri:
+
+• Kimlik: ad, soyad
+• İletişim: telefon numarası, e-posta adresi, teslimat adresi
+• Müşteri İşlem: sipariş bilgileri, ürün/varyant, adet, tutar, iade talepleri
+• İşlem Güvenliği: IP adresi, tarayıcı ve cihaz bilgisi, erişim kayıtları
+• Pazarlama (yalnızca açık rıza ile): anonim analitik kullanım verileri`,
+  },
+  {
+    title: '3. Kişisel Verilerin İşlenme Amaçları',
+    body: `Kişisel verileriniz KVKK m.5 ve m.6'da belirtilen şartlar dahilinde aşağıdaki amaçlarla işlenir:
+
+• Siparişin oluşturulması, hazırlanması, faturalandırılması ve teslim edilmesi
+• Müşteri ilişkileri ve sipariş süreçlerine ilişkin iletişimin yürütülmesi
+• İade, cayma hakkı ve ayıplı ürün taleplerinin değerlendirilmesi
+• Muhasebe, fatura ve tüketici mevzuatından doğan yasal yükümlülüklerin yerine getirilmesi
+• Site güvenliğinin sağlanması ve yetkisiz erişimin önlenmesi
+• Açık rızanız bulunması halinde, anonim istatistik ve analiz faaliyetlerinin yürütülmesi`,
+  },
+  {
+    title: '4. Hukuki Sebepler',
+    body: `Verileriniz; KVKK m.5/2 kapsamında "bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması", "veri sorumlusunun hukuki yükümlülüğünü yerine getirebilmesi için zorunlu olması" ve "meşru menfaat" hukuki sebeplerine; analitik çerezler bakımından ise KVKK m.5/1 kapsamındaki "açık rıza" hukuki sebebine dayanılarak işlenir.`,
+  },
+  {
+    title: '5. Kişisel Verilerin Aktarılması',
+    body: `Kişisel verileriniz; siparişin teslimi amacıyla anlaşmalı kargo firmalarına, ödemenin gerçekleştirilmesi amacıyla Shopier ödeme hizmet sağlayıcısına, sitenin barındırılması amacıyla hosting sağlayıcısına ve yalnızca açık rızanız bulunması halinde Google Analytics 4 hizmetine aktarılabilir. Ayrıca yetkili kamu kurum ve kuruluşlarına, mevzuatın öngördüğü hallerde ve ölçüde aktarım yapılabilir. Yurt dışına aktarım, KVKK m.9'da öngörülen şartlara uygun olarak gerçekleştirilir.`,
+  },
+  {
+    title: '6. Saklama Süresi',
+    body: `Kişisel verileriniz, işleme amaçlarının gerektirdiği süre ve ilgili mevzuatta öngörülen azami süreler boyunca saklanır. Sipariş ve fatura verileri Vergi Usul Kanunu ve 6563 sayılı Kanun uyarınca 10 (on) yıl; müşteri iletişim kayıtları en fazla 2 (iki) yıl saklanır. Süre sonunda veriler silinir, yok edilir veya anonim hale getirilir.`,
+  },
+  {
+    title: '7. İlgili Kişinin Hakları (KVKK m.11)',
+    body: `KVKK m.11 uyarınca herkes, veri sorumlusuna başvurarak kendisiyle ilgili;
+
+a) Kişisel verilerinin işlenip işlenmediğini öğrenme,
+b) İşlenmişse buna ilişkin bilgi talep etme,
+c) İşlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme,
+ç) Yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme,
+d) Eksik veya yanlış işlenmişse düzeltilmesini isteme,
+e) KVKK m.7 çerçevesinde silinmesini veya yok edilmesini isteme,
+f) (d) ve (e) bentleri uyarınca yapılan işlemlerin, aktarıldığı üçüncü kişilere bildirilmesini isteme,
+g) Münhasıran otomatik sistemler ile analiz edilmesi nedeniyle aleyhine bir sonucun ortaya çıkmasına itiraz etme,
+ğ) Kanuna aykırı işleme sebebiyle zarara uğraması hâlinde zararın giderilmesini talep etme haklarına sahiptir.`,
+  },
+  {
+    title: '8. Başvuru Yöntemi',
+    body: `Yukarıda belirtilen haklarınıza ilişkin taleplerinizi;
+
+• ${siteConfig.contact.email} adresine e-posta göndererek, veya
+• Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ'e uygun yazılı başvuru ile [DOLDURULACAK: açık adres] adresine ileterek
+
+veri sorumlusuna iletebilirsiniz. Başvurunuzda ad-soyad, imza, T.C. kimlik numarası, tebligata esas adres ve talep konusu bilgilerinin yer alması gerekmektedir. Başvurularınız, niteliğine göre en geç 30 (otuz) gün içinde ücretsiz olarak sonuçlandırılır.`,
+  },
+]
+---
+
+<Layout
+  title="KVKK Aydınlatma Metni"
+  description={`${siteConfig.name} 6698 sayılı KVKK kapsamında aydınlatma metni: veri sorumlusu, işlenen veriler, işleme amaçları, aktarım, saklama süresi, ilgili kişi hakları ve başvuru yöntemi.`}
+  canonicalUrl={canonicalUrl}
+>
+  <div class="mx-auto max-w-6xl px-4">
+    <Breadcrumb items={breadcrumbItems} />
+  </div>
+
+  <article class="mx-auto max-w-3xl px-4 pb-16">
+    <h1 class="text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl dark:text-zinc-50">
+      KVKK Aydınlatma Metni
+    </h1>
+    <p class="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+      Son güncelleme: {new Date().getFullYear()}
+    </p>
+
+    <div class="mt-8 flex flex-col gap-8">
+      {
+        sections.map((section) => (
+          <section>
+            <h2 class="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+              {section.title}
+            </h2>
+            <p class="mt-2 whitespace-pre-line text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              {section.body}
+            </p>
+          </section>
+        ))
+      }
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Breadcrumb from '../components/Breadcrumb.astro'
+import { siteConfig } from '../config/site.js'
+
+const canonicalUrl = `${siteConfig.domain}/mesafeli-satis-sozlesmesi`
+
+const breadcrumbItems = [
+  { label: 'Ana Sayfa', href: '/' },
+  { label: 'Mesafeli Satış Sözleşmesi' },
+]
+
+const whatsappDisplay = `+${siteConfig.contact.whatsapp}`
+
+const sections = [
+  {
+    title: '1. Taraflar',
+    body: `İşbu Mesafeli Satış Sözleşmesi ("Sözleşme"), 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği hükümleri uyarınca aşağıdaki taraflar arasında elektronik ortamda akdedilmiştir.
+
+SATICI:
+Ticari Unvan: [DOLDURULACAK: ticari unvan]
+Adres: [DOLDURULACAK: açık adres]
+Vergi Dairesi / VKN: [DOLDURULACAK: vergi dairesi ve vergi kimlik numarası]
+Telefon: ${whatsappDisplay}
+E-posta: ${siteConfig.contact.email}
+MERSİS No: [DOLDURULACAK: MERSİS numarası]
+
+ALICI:
+Sipariş sırasında WhatsApp yazışması ve/veya ödeme sayfası üzerinden ad, soyad, teslimat adresi, telefon ve e-posta bilgilerini bildiren tüketici.`,
+  },
+  {
+    title: '2. Sözleşmenin Konusu',
+    body: `Sözleşmenin konusu, ALICI'nın SATICI'ya ait ${siteConfig.domain} internet sitesi üzerinden elektronik ortamda sipariş verdiği, nitelik ve satış fiyatı sipariş özetinde ve ödeme sayfasında belirtilen reflektif sticker, güvenlik etiketi ve benzeri basılı ürünlerin satışı ve teslimi ile ilgili tarafların hak ve yükümlülüklerinin belirlenmesidir.`,
+  },
+  {
+    title: '3. Sözleşme Konusu Ürün ve Ödeme Bilgileri',
+    body: `Sipariş konusu ürünlerin adı, adedi, varyantı (ölçü/renk/model), birim fiyatı ve toplam satış bedeli; sipariş sırasında oluşturulan sepet özetinde ve WhatsApp sipariş yazışmasında açıkça gösterilir. Kargo bedeli, ${siteConfig.badges.freeShippingThreshold} TL ve üzeri siparişlerde ALICI'dan alınmaz (${siteConfig.badges.freeShipping}); bu tutarın altındaki siparişlerde kargo bedeli sipariş özetinde ayrıca belirtilir.
+
+Ödeme Yöntemi: Ödemeler, SATICI'nın anlaşmalı olduğu Shopier güvenli ödeme altyapısı üzerinden kredi kartı veya banka kartı ile gerçekleştirilir. Sipariş, WhatsApp üzerinden alınır; ödeme bağlantısı sipariş teyidinin ardından ALICI'ya iletilir. Kart bilgileri SATICI tarafından görülmez ve saklanmaz; ödeme işlemi ilgili ödeme kuruluşu tarafından PCI-DSS uyumlu altyapıda yürütülür.`,
+  },
+  {
+    title: '4. Teslimat ve Kargo Şartları',
+    body: `${siteConfig.badges.shipping}. Siparişler, ödemenin onaylanmasını takiben en geç 30 (otuz) gün içinde, anlaşmalı kargo firması aracılığıyla ALICI'nın sipariş sırasında bildirdiği teslimat adresine gönderilir. Kargo transit süresi genel olarak 1-3 iş günüdür. Teslimat, ALICI'nın bildirdiği adreste ALICI'ya veya ALICI'nın belirlediği üçüncü kişiye yapılır. Adres bilgisindeki hatalardan kaynaklanan teslim edilememe durumundan SATICI sorumlu değildir.`,
+  },
+  {
+    title: '5. Cayma Hakkı',
+    body: `ALICI, sözleşme konusu ürünü teslim aldığı tarihten itibaren 14 (on dört) gün içinde hiçbir gerekçe göstermeksizin ve cezai şart ödemeksizin cayma hakkına sahiptir. Cayma hakkının kullanılması ve iade sürecine ilişkin ayrıntılı bilgi için "İade ve Cayma Hakkı" sayfasını inceleyebilirsiniz. Cayma hakkı, Mesafeli Sözleşmeler Yönetmeliği m.15 kapsamında; ALICI'nın istekleri veya kişisel ihtiyaçları doğrultusunda hazırlanan (kişiye özel üretim) ürünlerde kullanılamaz.`,
+  },
+  {
+    title: '6. Ayıplı Ürün ve Garanti',
+    body: `Teslim edilen ürünün ayıplı (hasarlı, eksik veya tanımına uymayan) olması halinde ALICI, 6502 sayılı Kanun m.11 kapsamındaki seçimlik haklarını (satılanı geri vermeye hazır olduğunu bildirerek sözleşmeden dönme, satılanı alıkoyup ayıp oranında bedel indirimi, ücretsiz onarım veya ayıpsız misli ile değişim) kullanabilir. Bu durumda ALICI'nın ürünü teslim aldıktan sonra en kısa sürede SATICI ile iletişime geçmesi gerekir.`,
+  },
+  {
+    title: '7. Uyuşmazlıkların Çözümü',
+    body: `İşbu Sözleşme'den doğan uyuşmazlıklarda; Ticaret Bakanlığı tarafından her yıl ilan edilen parasal sınırlar dahilinde ALICI'nın yerleşim yerindeki veya tüketici işleminin yapıldığı yerdeki Tüketici Hakem Heyetleri, bu sınırların üzerindeki uyuşmazlıklarda ise Tüketici Mahkemeleri yetkilidir. ALICI, şikâyet ve itirazlarını yukarıda belirtilen iletişim kanalları üzerinden SATICI'ya iletebilir.`,
+  },
+  {
+    title: '8. Yürürlük',
+    body: `ALICI, sipariş öncesinde işbu Sözleşme'yi ve Ön Bilgilendirme Formu'nu okuyup onayladığını, sipariş sırasında verdiği bilgilerin doğru olduğunu kabul eder. Sözleşme, siparişin onaylanmasıyla birlikte elektronik ortamda kurulmuş sayılır ve taraflar arasında hüküm doğurur.`,
+  },
+  {
+    title: '9. İletişim',
+    body: `Sorularınız için ${siteConfig.contact.email} adresinden veya WhatsApp (${whatsappDisplay}) üzerinden bize ulaşabilirsiniz.`,
+  },
+]
+---
+
+<Layout
+  title="Mesafeli Satış Sözleşmesi"
+  description={`${siteConfig.name} mesafeli satış sözleşmesi: taraflar, sipariş ve ödeme (WhatsApp + Shopier), teslimat, 14 gün cayma hakkı ve uyuşmazlık çözüm yolları.`}
+  canonicalUrl={canonicalUrl}
+>
+  <div class="mx-auto max-w-6xl px-4">
+    <Breadcrumb items={breadcrumbItems} />
+  </div>
+
+  <article class="mx-auto max-w-3xl px-4 pb-16">
+    <h1 class="text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl dark:text-zinc-50">
+      Mesafeli Satış Sözleşmesi
+    </h1>
+    <p class="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+      Son güncelleme: {new Date().getFullYear()}
+    </p>
+
+    <div class="mt-8 flex flex-col gap-8">
+      {
+        sections.map((section) => (
+          <section>
+            <h2 class="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+              {section.title}
+            </h2>
+            <p class="mt-2 whitespace-pre-line text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              {section.body}
+            </p>
+          </section>
+        ))
+      }
+    </div>
+  </article>
+</Layout>

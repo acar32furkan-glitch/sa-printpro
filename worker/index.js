@@ -33,6 +33,36 @@ const CATEGORY_REDIRECTS = {
 };
 
 /**
+ * SEVIYE 1 — Yasal sayfa ayristirmasi sonrasi 301 yonlendirme haritasi.
+ *
+ * Eski birlesik yasal sayfalar (mesafeli satis + iade, gizlilik + cerez) ayri
+ * sayfalara bolundu. Bu harita, eski URL'leri yeni karsiliklarina kalici (301)
+ * olarak yonlendirir; boylece eski linkler ve arama motoru indeksleri korunur.
+ *
+ * Anahtar: eski yol (pathname). Deger: yeni yol (pathname).
+ */
+const LEGAL_REDIRECTS = {
+  '/mesafeli-satis-ve-iade': '/mesafeli-satis-sozlesmesi',
+  '/gizlilik-ve-cerez-politikasi': '/gizlilik-politikasi',
+};
+
+/**
+ * Eski yasal sayfa yolunu (opsiyonel son egik cizgi ile) yeni sayfaya esler.
+ * Eslesme yoksa `null` doner.
+ *
+ * @param {string} pathname
+ * @returns {string|null} Yonlendirilecek hedef yol ya da null.
+ */
+function resolveLegalRedirect(pathname) {
+  const normalized =
+    pathname.length > 1 && pathname.endsWith('/')
+      ? pathname.slice(0, -1)
+      : pathname;
+
+  return LEGAL_REDIRECTS[normalized] || null;
+}
+
+/**
  * `/kategori/<slug>` yolunu (opsiyonel son egik cizgi ile) ayristirir.
  * Eslesme yoksa `null` doner.
  *
@@ -260,6 +290,15 @@ export default {
       if (redirectTarget) {
         const location = new URL(redirectTarget, url.origin);
         // Query string (varsa) korunur; boylece UTM/izleme parametreleri kaybolmaz.
+        location.search = url.search;
+        return Response.redirect(location.toString(), 301);
+      }
+
+      // SEVIYE 1: Eski birlesik yasal sayfalari yeni ayri sayfalara 301 ile
+      // yonlendir.
+      const legalTarget = resolveLegalRedirect(pathname);
+      if (legalTarget) {
+        const location = new URL(legalTarget, url.origin);
         location.search = url.search;
         return Response.redirect(location.toString(), 301);
       }

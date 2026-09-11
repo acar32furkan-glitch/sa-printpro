@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Breadcrumb from '../components/Breadcrumb.astro'
+import { siteConfig } from '../config/site.js'
+
+const canonicalUrl = `${siteConfig.domain}/gizlilik-politikasi`
+
+const breadcrumbItems = [
+  { label: 'Ana Sayfa', href: '/' },
+  { label: 'Gizlilik Politikası' },
+]
+
+const sections = [
+  {
+    title: '1. Veri Sorumlusu',
+    body: `Bu web sitesi ${siteConfig.name} tarafından işletilmektedir. 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamında veri sorumlusu ${siteConfig.name}'dir.
+
+Ticari Unvan: [DOLDURULACAK: ticari unvan]
+Adres: [DOLDURULACAK: açık adres]
+E-posta: ${siteConfig.contact.email}
+Telefon: +${siteConfig.contact.whatsapp}`,
+  },
+  {
+    title: '2. İşlenen Kişisel Veriler',
+    body: `Sitemiz bir vitrin (showcase) platformudur; sitemiz üzerinden doğrudan üyelik oluşturulmaz ve ödeme alınmaz. Siparişler WhatsApp üzerinden alınır, ödemeler Shopier güvenli ödeme altyapısı üzerinden gerçekleştirilir. Bu kapsamda işlenen veriler:
+
+• Kimlik ve iletişim verileri: ad, soyad, telefon numarası, e-posta adresi
+• Teslimat verileri: teslimat adresi, alıcı bilgileri
+• Sipariş verileri: sipariş edilen ürün, adet, varyant, sipariş tutarı ve tarihi
+• İşlem güvenliği verileri: IP adresi, tarayıcı/cihaz bilgisi, ziyaret tarih ve saati
+• Çerez verileri: çerez tercihleri ve (onay verilmesi halinde) anonim analitik veriler
+
+Ödeme kartı bilgileri (kart numarası, CVV, son kullanma tarihi) SATICI tarafından hiçbir şekilde görülmez, işlenmez ve saklanmaz; bu veriler yalnızca ilgili ödeme kuruluşu (Shopier) tarafından PCI-DSS uyumlu altyapıda işlenir.`,
+  },
+  {
+    title: '3. Kişisel Verilerin İşlenme Amaçları',
+    body: `Kişisel verileriniz aşağıdaki amaçlarla işlenir:
+
+• Siparişin alınması, hazırlanması, faturalandırılması ve teslim edilmesi
+• Sipariş ve teslimat süreçlerine ilişkin müşteri iletişiminin sağlanması
+• İade, cayma hakkı ve ayıplı ürün taleplerinin işleme alınması
+• Yasal yükümlülüklerin (fatura, muhasebe, tüketici mevzuatı) yerine getirilmesi
+• Site güvenliğinin sağlanması ve kötüye kullanımın önlenmesi
+• Açık rızanız bulunması halinde, site trafiğinin anonim olarak analiz edilmesi ve hizmet kalitesinin ölçülmesi`,
+  },
+  {
+    title: '4. Hukuki Sebepler',
+    body: `Verileriniz; KVKK m.5/2 kapsamında "sözleşmenin kurulması veya ifası için gerekli olması", "hukuki yükümlülüğün yerine getirilmesi" ve "meşru menfaat" hukuki sebeplerine; analitik çerezler bakımından ise KVKK m.5/1 kapsamındaki "açık rıza" hukuki sebebine dayanılarak işlenir.`,
+  },
+  {
+    title: '5. Saklama Süresi',
+    body: `Kişisel verileriniz, işleme amaçlarının gerektirdiği süre boyunca ve ilgili mevzuatta öngörülen azami süreler dikkate alınarak saklanır:
+
+• Sipariş ve fatura verileri: 6563 sayılı Kanun ve Vergi Usul Kanunu uyarınca 10 (on) yıl
+• Müşteri iletişim kayıtları: talebin sonuçlandırılmasından itibaren en fazla 2 (iki) yıl
+• Çerez tercihleri: tarayıcınızın yerel depolamasında (localStorage), siz silene kadar
+• Analitik veriler: Google Analytics 4 varsayılan saklama süresi (en fazla 14 ay)
+
+Saklama süresi sona erdiğinde veriler silinir, yok edilir veya anonim hale getirilir.`,
+  },
+  {
+    title: '6. Kişisel Verilerin Aktarılması (3. Taraflar)',
+    body: `Kişisel verileriniz, yalnızca hizmetin gerektirdiği ölçüde ve yasal sınırlar içinde aşağıdaki üçüncü taraflarla paylaşılabilir:
+
+• Shopier (ödeme hizmet sağlayıcısı): ödeme işleminin gerçekleştirilmesi amacıyla ad, iletişim ve sipariş bilgileri
+• Kargo firmaları: siparişin teslim edilmesi amacıyla ad, adres ve telefon bilgileri
+• Barındırma (hosting) sağlayıcısı: sitenin yayınlanması ve teknik günlük kayıtları
+• Google Analytics 4: yalnızca açık rızanız bulunması halinde, IP anonimleştirmesi uygulanarak anonim kullanım istatistikleri
+• Yetkili kamu kurum ve kuruluşları: mevzuat gereği talep edilmesi halinde
+
+Yurt dışına aktarım söz konusu olduğunda KVKK m.9 hükümlerine uygun hareket edilir.`,
+  },
+  {
+    title: '7. Veri Güvenliği',
+    body: `Verilerinizin hukuka aykırı işlenmesini ve erişilmesini önlemek amacıyla; HTTPS/TLS şifreleme, erişim yetkilendirmesi, güvenli barındırma altyapısı ve düzenli güncelleme gibi teknik ve idari tedbirler uygulanır. Ödeme kartı verileri sistemlerimizde tutulmaz.`,
+  },
+  {
+    title: '8. KVKK Kapsamındaki Haklarınız',
+    body: `KVKK m.11 uyarınca; kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, işlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme, yurt içinde/yurt dışında aktarıldığı üçüncü kişileri bilme, eksik veya yanlış işlenmişse düzeltilmesini isteme, silinmesini veya yok edilmesini isteme, aktarıldığı üçüncü kişilere bildirilmesini isteme, münhasıran otomatik sistemlerle analiz edilmesi nedeniyle aleyhinize bir sonucun ortaya çıkmasına itiraz etme ve kanuna aykırı işleme nedeniyle zarara uğramanız halinde zararın giderilmesini talep etme haklarına sahipsiniz.
+
+Taleplerinizi ${siteConfig.contact.email} adresine iletebilirsiniz. Başvurularınız en geç 30 (otuz) gün içinde ücretsiz olarak sonuçlandırılır.`,
+  },
+  {
+    title: '9. Politika Güncellemeleri',
+    body: `Bu politika, mevzuat değişikliklerine ve hizmet kapsamındaki güncellemelere bağlı olarak revize edilebilir. Güncel sürüm her zaman bu sayfada yayımlanır.`,
+  },
+]
+---
+
+<Layout
+  title="Gizlilik Politikası"
+  description={`${siteConfig.name} gizlilik politikası: hangi kişisel veriler işlenir, işleme amaçları, saklama süreleri, Shopier ve kargo gibi üçüncü taraflarla paylaşım ve KVKK haklarınız.`}
+  canonicalUrl={canonicalUrl}
+>
+  <div class="mx-auto max-w-6xl px-4">
+    <Breadcrumb items={breadcrumbItems} />
+  </div>
+
+  <article class="mx-auto max-w-3xl px-4 pb-16">
+    <h1 class="text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl dark:text-zinc-50">
+      Gizlilik Politikası
+    </h1>
+    <p class="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+      Son güncelleme: {new Date().getFullYear()}
+    </p>
+
+    <div class="mt-8 flex flex-col gap-8">
+      {
+        sections.map((section) => (
+          <section>
+            <h2 class="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+              {section.title}
+            </h2>
+            <p class="mt-2 whitespace-pre-line text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              {section.body}
+            </p>
+          </section>
+        ))
+      }
+    </div>
+  </article>
+</Layout>

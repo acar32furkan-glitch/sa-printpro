@@ -45,7 +45,14 @@ export default function CookieBanner() {
       <div className="flex flex-col gap-4 p-4">
         <p className="text-sm text-zinc-600 dark:text-zinc-300">
           Deneyiminizi iyileştirmek ve site trafiğini analiz etmek için çerezler
-          kullanıyoruz. Detaylar için gizlilik politikamızı inceleyebilirsiniz.
+          kullanıyoruz. Detaylar için{' '}
+          <a
+            href="/cerez-politikasi"
+            className="font-medium text-zinc-900 underline underline-offset-2 hover:text-zinc-600 dark:text-zinc-100 dark:hover:text-zinc-300"
+          >
+            çerez politikamızı
+          </a>{' '}
+          inceleyebilirsiniz.
         </p>
         <div className="flex items-center gap-2">
           <button
