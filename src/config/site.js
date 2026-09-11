@@ -17,6 +17,7 @@ export const siteConfig = {
   },
   ga4Id: 'G-HK6Q53CMG1',
   searchConsoleVerification: 'google419bc019c17c40b5',
+  merchantCenterVerification: 'qStkrwJrl6uF-imyYuA0nvG2eFIdtyF3I8CSr_jVYmM',
   showHowToApply: true,
   features: {
     // false yapılırsa sitedeki tüm Trendyol butonları ve rozetleri gizlenir,
@@ -82,8 +83,8 @@ export const siteConfig = {
     { brand: 'Bajaj', model: 'Dominar 400', keywords: ['dominar 400', 'dominar400'] },
   ],
   trendyol: {
-    sellerId: '907993',
-    storeUrl: 'https://www.trendyol.com/magaza/sa-printpro-m-907993',
+    sellerId: '855597',
+    storeUrl: 'https://www.trendyol.com/magaza/sa-printpro-m-855597?sst=0',
     utmParams:
       '?utm_source=saprintpro_web&utm_medium=showcase&utm_campaign=trendyol_boost',
     appDeepLinkPrefix: 'trendyol://?Page=Product&ContentId=',

@@ -40,3 +40,12 @@ const absoluteImage = image.startsWith('http')
     />
   )
 }
+
+{
+  siteConfig.merchantCenterVerification && (
+    <meta
+      name="google-site-verification"
+      content={siteConfig.merchantCenterVerification}
+    />
+  )
+}
