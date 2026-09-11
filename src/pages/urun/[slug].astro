@@ -8,7 +8,11 @@ import Gallery from '../../components/islands/Gallery.jsx'
 import VariantSelector from '../../components/islands/VariantSelector.jsx'
 import ProductShare from '../../components/islands/ProductShare.jsx'
 import { siteConfig } from '../../config/site.js'
-import { getAllProducts, getProductsByCategory } from '../../lib/products.js'
+import {
+  getAllProducts,
+  getProductsByCategory,
+  sanitizeCatalogText,
+} from '../../lib/products.js'
 
 export function getStaticPaths() {
   return getAllProducts().map((product) => ({
@@ -110,8 +114,9 @@ function decodeHtmlEntities(value) {
   return decoded
 }
 
-const plainDescription = decodeHtmlEntities(
-  String(product.descriptionHtml || '').replace(/<[^>]*>/g, ' ')
+// Rakip satıcı izlerini ve bozuk karakterleri meta verisinden arındır.
+const plainDescription = sanitizeCatalogText(
+  decodeHtmlEntities(String(product.descriptionHtml || '').replace(/<[^>]*>/g, ' '))
 )
   .replace(/\s+/g, ' ')
   .trim()
@@ -120,6 +125,10 @@ const metaDescription =
   plainDescription.length > 0
     ? plainDescription.slice(0, 160)
     : `${product.name} - En uygun fiyat, dayanıklı malzeme ve hızlı kargo avantajıyla SA Printpro'da.`
+
+// SEO başlık formatı: "<Ürün Adı> Modelleri ve Fiyatı" — `Seo.astro` sonuna
+// otomatik olarak "| SA Printpro" ekler, bu yüzden burada tekrarlanmaz.
+const metaTitle = `${sanitizeCatalogText(product.name)} Modelleri ve Fiyatı`
 
 // Technical spec sheet rows derived from the first variant + site config.
 const firstVariant = variants[0] || {}
@@ -197,7 +206,7 @@ const shippingDetails = {
 const productJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Product',
-  name: product.name,
+  name: sanitizeCatalogText(product.name),
   description: plainDescription,
   image: Array.isArray(product.images) ? product.images : [],
   sku: variants[0]?.sku || product.id,
@@ -273,7 +282,7 @@ const faqJsonLd = {
 ---
 
 <Layout
-  title={product.name}
+  title={metaTitle}
   description={metaDescription}
   image={Array.isArray(product.images) ? product.images[0] : undefined}
   canonicalUrl={canonicalUrl}

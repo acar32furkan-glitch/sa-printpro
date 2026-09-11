@@ -134,6 +134,68 @@ function slugify(text) {
 }
 
 /**
+ * Üçüncü taraf (rakip) satıcı unvanları — katalogda asla görünmemeli.
+ * Eşleştirme Türkçe-duyarlı ve büyük/küçük harf bağımsızdır.
+ */
+const COMPETITOR_BRANDS = [
+  'baskı babası',
+  'baski babasi',
+  'baskibabasi',
+  'baskıbabası',
+  'baski babası',
+  'baskı babasi'
+];
+
+/** Kurumsal / ajans referansları — satıcı kimliğini sızdırır. */
+const COMPETITOR_ENTITIES = [
+  'meca ajans kurumsal reklam ve baskı hizmetleri',
+  'meca ajans'
+];
+
+/**
+ * Katalog metinlerinden (ürün adı, açıklama, varyant özellikleri) rakip
+ * satıcı unvanlarını, ajans referanslarını, telefon numaralarını ve harici
+ * linkleri temizler.
+ *
+ * Rakip marka unvanları cümle akışını bozmamak için "SA Printpro" ile
+ * değiştirilir; ajans referansları, telefon numaraları ve harici URL'ler
+ * tamamen silinir.
+ *
+ * @param {string} text
+ * @returns {string}
+ */
+function sanitizeCatalogText(text) {
+  if (text === null || text === undefined) return '';
+
+  let output = String(text);
+
+  // 1) Rakip satıcı unvanları → SA Printpro
+  for (const brand of COMPETITOR_BRANDS) {
+    const pattern = new RegExp(brand.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+    output = output.replace(pattern, 'SA Printpro');
+  }
+
+  // 2) Ajans / kurumsal referanslar → sil
+  for (const entity of COMPETITOR_ENTITIES) {
+    const pattern = new RegExp(entity.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+    output = output.replace(pattern, '');
+  }
+
+  // 3) Telefon numaraları (TR mobil + genel uluslararası) → sil
+  output = output
+    .replace(/(?:\+?90[\s.-]?)?0?5\d{2}[\s.-]?\d{3}[\s.-]?\d{2}[\s.-]?\d{2}/g, '')
+    .replace(/\+\d{1,3}[\s.-]?\d{3}[\s.-]?\d{3}[\s.-]?\d{2}[\s.-]?\d{2}/g, '');
+
+  // 4) Harici linkler / çıplak alan adları → sil
+  output = output
+    .replace(/https?:\/\/[^\s<>"')]+/gi, '')
+    .replace(/\bwww\.[a-z0-9-]+\.[a-z]{2,}(\/[^\s<>"')]*)?/gi, '');
+
+  // 5) Silme sonrası kalan fazla boşlukları toparla
+  return output.replace(/\s{2,}/g, ' ').trim();
+}
+
+/**
  * Çakışmayı önlemek için slug'a kısa bir sonek ekler.
  *
  * @param {string} baseSlug
@@ -374,7 +436,8 @@ function normalizeAttributes(attributes) {
     const name = attr?.attributeName ?? attr?.name;
     const value = attr?.attributeValue ?? attr?.value;
     if (name != null && value != null) {
-      result[String(name)] = String(value);
+      // Özellik değerlerindeki rakip satıcı izlerini de temizle.
+      result[String(name)] = sanitizeCatalogText(String(value));
     }
   }
   return result;
@@ -403,7 +466,8 @@ function normalizeImages(images) {
 function normalizeProduct(raw, priceMap) {
   // V2 şeması: ürün kimliği `contentId`; `id`/`productId` eski (V1) alanlardır.
   const id = String(raw?.contentId ?? raw?.id ?? raw?.productId ?? '');
-  const name = String(raw?.title ?? raw?.name ?? '');
+  // Rakip satıcı izlerini kaynağında temizle.
+  const name = sanitizeCatalogText(String(raw?.title ?? raw?.name ?? ''));
 
   // V2'de varyantlar `variants[]` altında gelir; her varyantın kendi
   // barcode/fiyat/stok bilgisi vardır. V1 düz alanları da geriye dönük desteklenir.
@@ -464,13 +528,15 @@ function normalizeProduct(raw, priceMap) {
     id,
     name,
     slug: withSuffix(slugify(name), id),
-    brand: String(raw?.brand?.name ?? raw?.brand ?? raw?.brandName ?? ''),
+    brand: sanitizeCatalogText(
+      String(raw?.brand?.name ?? raw?.brand ?? raw?.brandName ?? '')
+    ),
     category: {
       id: categoryId,
       name: categoryName,
       slug: slugify(categoryName)
     },
-    descriptionHtml: String(raw?.description ?? ''),
+    descriptionHtml: sanitizeCatalogText(String(raw?.description ?? '')),
     images: normalizeImages(raw?.images),
     variants
   };

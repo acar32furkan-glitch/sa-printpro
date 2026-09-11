@@ -24,6 +24,72 @@ function normalizeTr(str) {
 }
 
 /**
+ * Third-party seller titles that must never surface on the storefront.
+ * Matching is Turkish-aware and case-insensitive (see `normalizeTr`).
+ */
+const COMPETITOR_BRANDS = [
+  'baskı babası',
+  'baski babasi',
+  'baskibabasi',
+  'baskıbabası',
+  'baski babası',
+  'baskı babasi',
+]
+
+/**
+ * Corporate / agency references that leak the upstream seller identity.
+ */
+const COMPETITOR_ENTITIES = [
+  'meca ajans kurumsal reklam ve baskı hizmetleri',
+  'meca ajans',
+]
+
+/**
+ * Removes competitor seller names, agency references, phone numbers and
+ * external links from any catalog text (product name, description, variant
+ * attributes, etc.).
+ *
+ * Competitor brand titles are replaced with the house brand ("SA Printpro")
+ * so sentences stay grammatical; agency references, phone numbers and
+ * external URLs are stripped entirely.
+ *
+ * @param {string} text
+ * @returns {string}
+ */
+export function sanitizeCatalogText(text) {
+  if (text === null || text === undefined) {
+    return ''
+  }
+
+  let output = String(text)
+
+  // 1) Competitor seller titles → house brand.
+  for (const brand of COMPETITOR_BRANDS) {
+    const pattern = new RegExp(brand.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi')
+    output = output.replace(pattern, 'SA Printpro')
+  }
+
+  // 2) Agency / corporate references → removed.
+  for (const entity of COMPETITOR_ENTITIES) {
+    const pattern = new RegExp(entity.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi')
+    output = output.replace(pattern, '')
+  }
+
+  // 3) Phone numbers (TR mobile + generic international) → removed.
+  output = output
+    .replace(/(?:\+?90[\s.-]?)?0?5\d{2}[\s.-]?\d{3}[\s.-]?\d{2}[\s.-]?\d{2}/g, '')
+    .replace(/\+\d{1,3}[\s.-]?\d{3}[\s.-]?\d{3}[\s.-]?\d{2}[\s.-]?\d{2}/g, '')
+
+  // 4) External links / bare domains → removed.
+  output = output
+    .replace(/https?:\/\/[^\s<>"')]+/gi, '')
+    .replace(/\bwww\.[a-z0-9-]+\.[a-z]{2,}(\/[^\s<>"')]*)?/gi, '')
+
+  // 5) Collapse the whitespace left behind by removals.
+  return output.replace(/\s{2,}/g, ' ').trim()
+}
+
+/**
  * Returns all products.
  * @returns {Array<object>}
  */
@@ -167,6 +233,25 @@ export function getTrendyolProductUrl(product, variant) {
   const sellerId = String(trendyol.sellerId || '')
   const utmParams = String(trendyol.utmParams || '')
 
+  // Buybox koruma kalkanı: stok yoksa Trendyol linki ÜRETİLMEZ. Aksi halde
+  // müşteri Trendyol Buybox'ındaki rakip satıcıya kaptırılır.
+  const variants = Array.isArray(product?.variants) ? product.variants : []
+  const productStock = variants.reduce(
+    (sum, item) => sum + (Number(item?.stock) || 0),
+    0
+  )
+
+  if (productStock <= 0) {
+    return null
+  }
+
+  if (variant) {
+    const variantStock = Number(variant?.stock) || 0
+    if (variantStock <= 0) {
+      return null
+    }
+  }
+
   const contentId = product?.contentId || product?.id
 
   // `utmParams` is authored with a leading "?" so it can be appended to any
@@ -185,6 +270,7 @@ export function getTrendyolProductUrl(product, variant) {
       .toLowerCase()
       .replace(/\s+/g, '-')
 
+    // merchantId ZORUNLU — satıcı koruma kalkanı.
     return `https://www.trendyol.com/${brand}/${slug}-p-${contentId}?merchantId=${sellerId}${utmSuffix}`
   }
 

@@ -113,7 +113,10 @@ export default function VariantSelector({ product, shopier }) {
   const showDirectPrice = enableDirectDiscount && directPrice > 0 && trendyolPrice > 0
 
   // Trendyol Boost CTA — hedef link seçili varyanta göre anlık güncellenir.
+  // Buybox koruma kalkanı: stok yoksa `getTrendyolProductUrl` null döner ve
+  // buton tamamen gizlenir; müşteri rakip satıcıya kaptırılmaz.
   const trendyolUrl = getTrendyolProductUrl(product, selectedVariant)
+  const showTrendyolCta = enableTrendyolCta && Boolean(trendyolUrl) && inStock
 
   /**
    * Fires the GA4 outbound event for the Trendyol Boost CTA when gtag exists.
@@ -253,7 +256,7 @@ export default function VariantSelector({ product, shopier }) {
 
       {/* Multi-channel purchase CTA — hiyerarşi feature flag'e göre değişir. */}
       <div className="flex flex-col gap-3">
-        {enableTrendyolCta ? (
+        {showTrendyolCta ? (
           <>
             <a
               href={trendyolUrl}
