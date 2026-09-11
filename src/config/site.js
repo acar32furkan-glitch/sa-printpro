@@ -11,9 +11,18 @@ export const siteConfig = {
   },
   badges: {
     shipping: '2 Günde Kargoda',
-    returns: '15 Gün İade',
+    returns: '14 Gün İade',
     freeShipping: '350 TL Üzeri Kargo Bedava',
     freeShippingThreshold: 350,
+  },
+  // Kurumsal/şeffaflık bilgileri. Yasal sayfalardaki (mesafeli satış, KVKK,
+  // gizlilik) [DOLDURULACAK: ...] alanlarıyla birebir tutarlı tutulmalıdır.
+  company: {
+    legalName: '[DOLDURULACAK: ticari unvan]',
+    address: '[DOLDURULACAK: açık adres]',
+    phone: '+90 554 299 30 58',
+    email: 'info@saprintpro.com',
+    taxOffice: '[DOLDURULACAK: vergi dairesi ve VKN]',
   },
   ga4Id: 'G-HK6Q53CMG1',
   searchConsoleVerification: 'google419bc019c17c40b5',

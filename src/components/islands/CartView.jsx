@@ -79,6 +79,9 @@ export default function CartView() {
   // onayı işaretlenmeden sipariş tamamlanamaz.
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [showTermsWarning, setShowTermsWarning] = useState(false)
+  // Ödeme sağlayıcısı hazır olmadığında veya bir hata oluştuğunda gösterilen
+  // nazik uyarı. Sepet bu durumda ASLA temizlenmez.
+  const [checkoutNotice, setCheckoutNotice] = useState(null)
 
   const total = useMemo(
     () => items.reduce((sum, item) => sum + item.price * item.qty, 0),
@@ -116,6 +119,9 @@ export default function CartView() {
       return
     }
 
+    // Yeni denemede önceki uyarıyı temizle.
+    setCheckoutNotice(null)
+
     if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
       window.gtag('event', 'begin_checkout', {
         currency: 'TRY',
@@ -130,17 +136,37 @@ export default function CartView() {
       })
     }
 
+    // Ödeme sağlayıcısı (Shopier) hazır olduğunda: ödeme sayfasına yönlendir.
+    // Dönüşte kullanıcı /siparis-basarili veya /siparis-basarisiz sayfasına
+    // düşer. Sepet, başarılı ödeme onayı gelene kadar TEMİZLENMEZ.
     if (allHaveShopier) {
-      // Shopier OAuth onayı gelene kadar bu yol hazırdır; onay sonrası çalışır.
-      const firstUrl = resolveShopierUrl(shopierMap, items[0]?.barcode)
-      if (firstUrl && typeof window !== 'undefined') {
-        window.open(firstUrl, '_blank', 'noopener,noreferrer')
+      try {
+        const firstUrl = resolveShopierUrl(shopierMap, items[0]?.barcode)
+        if (firstUrl && typeof window !== 'undefined') {
+          window.location.href = firstUrl
+          return
+        }
+        // Shopier linki çözülemedi: kullanıcıyı hata sayfasına yönlendir.
+        if (typeof window !== 'undefined') {
+          window.location.href = '/siparis-basarisiz?reason=shopier-link'
+        }
+      } catch {
+        setCheckoutNotice(
+          'Ödeme sayfasına yönlendirilirken bir sorun oluştu. Sepetiniz korunuyor; lütfen tekrar deneyin veya WhatsApp ile sipariş verin.'
+        )
       }
       return
     }
 
+    // Ödeme sağlayıcısı hazır değilse WhatsApp akışına düş.
     if (typeof window !== 'undefined') {
-      window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
+      try {
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
+      } catch {
+        setCheckoutNotice(
+          'WhatsApp yönlendirmesi açılamadı. Sepetiniz korunuyor; lütfen tekrar deneyin.'
+        )
+      }
     }
   }, [items, total, allHaveShopier, whatsappUrl, termsAccepted])
 
@@ -317,6 +343,15 @@ export default function CartView() {
             className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs font-medium text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-400"
           >
             Siparişi tamamlamak için lütfen sözleşme onayını işaretleyin.
+          </p>
+        )}
+
+        {checkoutNotice && (
+          <p
+            role="alert"
+            className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-medium text-amber-800 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-300"
+          >
+            {checkoutNotice}
           </p>
         )}
 

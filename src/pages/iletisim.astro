@@ -24,6 +24,21 @@ const channels = [
     cta: 'E-posta Gönder',
   },
 ]
+
+// Kurumsal/şeffaflık bilgileri. Yasal sayfalardaki [DOLDURULACAK: ...]
+// alanlarıyla tutarlıdır; eksik alanlar işaretli bırakılır.
+const company = siteConfig.company || {}
+const companyInfo = [
+  { label: 'Ticari Unvan', value: company.legalName },
+  { label: 'Açık Adres', value: company.address },
+  {
+    label: 'Telefon',
+    value: company.phone,
+    href: `tel:${String(company.phone || '').replace(/\s/g, '')}`,
+  },
+  { label: 'E-posta', value: company.email, href: `mailto:${company.email}` },
+  { label: 'Vergi Dairesi / VKN', value: company.taxOffice },
+].filter((entry) => Boolean(entry.value))
 ---
 
 <Layout
@@ -66,5 +81,40 @@ const channels = [
         ))
       }
     </ul>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 pb-12">
+    <div class="rounded-lg border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+      <h2 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+        Kurumsal Bilgiler
+      </h2>
+      <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+        Satıcı/şirket bilgileri ve yasal iletişim detayları.
+      </p>
+
+      <dl class="mt-4 grid gap-x-8 gap-y-3 text-sm sm:grid-cols-2">
+        {
+          companyInfo.map((entry) => (
+            <div class="flex flex-col gap-0.5 border-b border-zinc-100 pb-2 sm:flex-row sm:gap-2 dark:border-zinc-800">
+              <dt class="shrink-0 font-medium text-zinc-500 dark:text-zinc-400">
+                {entry.label}:
+              </dt>
+              <dd class="text-zinc-700 dark:text-zinc-200">
+                {entry.href ? (
+                  <a
+                    href={entry.href}
+                    class="transition-colors hover:text-zinc-900 dark:hover:text-zinc-50"
+                  >
+                    {entry.value}
+                  </a>
+                ) : (
+                  entry.value
+                )}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
   </section>
 </Layout>

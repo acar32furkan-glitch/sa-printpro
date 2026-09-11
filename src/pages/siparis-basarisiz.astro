@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { siteConfig } from '../config/site.js'
+
+// Ödeme hata dönüş sayfası: kişiye özel ve dinamik içerik barındırır,
+// arama motorlarına kapalıdır (noindex, follow).
+const canonicalUrl = `${siteConfig.domain}/siparis-basarisiz`
+
+const whatsappNumber = String(siteConfig.contact.whatsapp || '').replace(/\D/g, '')
+const whatsappUrl = `https://wa.me/${whatsappNumber}`
+
+const reasons = [
+  'Kart bilgilerinde yazım hatası veya eksik bilgi girilmiş olabilir.',
+  'Kartınızın internet alışverişine kapalı olması veya limit yetersizliği.',
+  'Bankanızın güvenlik doğrulaması (3D Secure) tamamlanmamış olabilir.',
+  'Ödeme sırasında bağlantı kesilmiş veya sayfa zaman aşımına uğramış olabilir.',
+]
+---
+
+<Layout
+  title="Ödeme Tamamlanamadı"
+  description="Ödemeniz tamamlanamadı. Olası nedenler ve tekrar deneme seçenekleri."
+  canonicalUrl={canonicalUrl}
+  noindex={true}
+>
+  <section class="mx-auto max-w-3xl px-4 py-12">
+    <div class="flex flex-col items-center gap-4 rounded-lg border border-red-200 bg-red-50 px-6 py-10 text-center dark:border-red-900 dark:bg-red-950">
+      <span
+        class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-600 text-2xl font-bold text-white"
+        aria-hidden="true"
+      >
+        !
+      </span>
+      <h1 class="text-2xl font-bold tracking-tight text-red-900 dark:text-red-100">
+        Ödeme Tamamlanamadı
+      </h1>
+      <p class="max-w-xl text-sm text-red-800 dark:text-red-200">
+        İşleminiz sırasında bir sorun oluştu ve ödeme tamamlanamadı. Endişelenmeyin,
+        sepetinizdeki ürünler kaybolmadı.
+      </p>
+    </div>
+
+    <div class="mt-8 rounded-lg border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+      <h2 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+        Olası Nedenler
+      </h2>
+      <ul class="mt-4 flex flex-col gap-2 text-sm text-zinc-600 dark:text-zinc-400">
+        {
+          reasons.map((reason) => (
+            <li class="flex gap-2">
+              <span class="text-zinc-400 dark:text-zinc-500" aria-hidden="true">
+                •
+              </span>
+              <span>{reason}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-6 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950 dark:text-emerald-200">
+        Sepetinizdeki ürünler tarayıcınızda güvenle saklanmaya devam ediyor.
+        Sepetinize dönüp ödemeyi tekrar deneyebilirsiniz.
+      </div>
+
+      <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+        <a
+          href="/sepet"
+          class="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-emerald-700"
+        >
+          Sepete Dön ve Tekrar Dene
+        </a>
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center rounded-lg border border-zinc-300 px-5 py-2.5 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-800"
+        >
+          WhatsApp ile Sipariş Ver
+        </a>
+      </div>
+
+      <p class="mt-4 text-xs text-zinc-500 dark:text-zinc-400">
+        Sorun devam ederse WhatsApp üzerinden bize ulaşın; siparişinizi manuel olarak
+        tamamlamanıza yardımcı olalım.
+      </p>
+    </div>
+  </section>
+</Layout>

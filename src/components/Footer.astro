@@ -26,6 +26,17 @@ const badges = [
   siteConfig.badges?.freeShipping,
 ].filter(Boolean)
 
+// Kurumsal/şeffaflık bilgileri. Yasal sayfalardaki [DOLDURULACAK: ...]
+// alanlarıyla tutarlıdır; eksik alanlar işaretli bırakılır.
+const company = siteConfig.company || {}
+const companyInfo = [
+  { label: 'Ticari Unvan', value: company.legalName },
+  { label: 'Adres', value: company.address },
+  { label: 'Telefon', value: company.phone, href: `tel:${String(company.phone || '').replace(/\s/g, '')}` },
+  { label: 'E-posta', value: company.email, href: `mailto:${company.email}` },
+  { label: 'Vergi Dairesi / VKN', value: company.taxOffice },
+].filter((entry) => Boolean(entry.value))
+
 const legalLinks = [
   { label: 'Hakkımızda', href: '/hakkimizda' },
   { label: 'Mesafeli Satış Sözleşmesi', href: '/mesafeli-satis-sozlesmesi' },
@@ -74,6 +85,35 @@ const legalLinks = [
           ))
         }
       </ul>
+    </div>
+
+    <div class="border-t border-zinc-200 pt-6 dark:border-zinc-800">
+      <h2 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        Kurumsal Bilgiler
+      </h2>
+      <dl class="mt-3 grid gap-x-8 gap-y-2 text-xs sm:grid-cols-2">
+        {
+          companyInfo.map((entry) => (
+            <div class="flex flex-col gap-0.5 sm:flex-row sm:gap-2">
+              <dt class="shrink-0 font-medium text-zinc-500 dark:text-zinc-400">
+                {entry.label}:
+              </dt>
+              <dd class="text-zinc-600 dark:text-zinc-300">
+                {entry.href ? (
+                  <a
+                    href={entry.href}
+                    class="transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
+                  >
+                    {entry.value}
+                  </a>
+                ) : (
+                  entry.value
+                )}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
     </div>
 
     <div
