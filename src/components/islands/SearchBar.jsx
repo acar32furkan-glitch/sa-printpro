@@ -43,7 +43,56 @@ function normalizeTr(str) {
 }
 
 /**
+ * Computes the Levenshtein edit distance between two strings using a
+ * rolling single-row dynamic-programming approach (pure JS, no deps).
+ * @param {string} a
+ * @param {string} b
+ * @returns {number}
+ */
+function levenshtein(a, b) {
+  const s = String(a || '')
+  const t = String(b || '')
+  if (s === t) return 0
+  if (s.length === 0) return t.length
+  if (t.length === 0) return s.length
+
+  let prev = Array.from({ length: t.length + 1 }, (_, i) => i)
+  for (let i = 1; i <= s.length; i += 1) {
+    const curr = [i]
+    for (let j = 1; j <= t.length; j += 1) {
+      const cost = s[i - 1] === t[j - 1] ? 0 : 1
+      curr[j] = Math.min(curr[j - 1] + 1, prev[j] + 1, prev[j - 1] + cost)
+    }
+    prev = curr
+  }
+  return prev[t.length]
+}
+
+/**
+ * Returns the smallest edit distance between the query and any word of the
+ * given text, enabling typo-tolerant ("jant serdi" → "jant şeridi") matches.
+ * @param {string} text
+ * @param {string} query
+ * @returns {number}
+ */
+function minWordDistance(text, query) {
+  const words = normalizeTr(text).split(/\s+/).filter(Boolean)
+  if (words.length === 0) {
+    return Number.POSITIVE_INFINITY
+  }
+  return words.reduce(
+    (min, word) => Math.min(min, levenshtein(word, query)),
+    Number.POSITIVE_INFINITY
+  )
+}
+
+/**
  * Filters the slim search index by name, category or barcode.
+ *
+ * First performs a fast substring pass. When that yields no results, it falls
+ * back to a typo-tolerant pass that keeps items whose closest word is within
+ * an edit distance of 2 from the query.
+ *
  * @param {Array<object>} index
  * @param {string} query
  * @returns {Array<object>}
@@ -54,7 +103,7 @@ function filterIndex(index, query) {
     return []
   }
 
-  return index.filter((item) => {
+  const exact = index.filter((item) => {
     if (normalizeTr(item.name).includes(normalizedQuery)) {
       return true
     }
@@ -62,6 +111,16 @@ function filterIndex(index, query) {
       return true
     }
     return normalizeTr(item.barcode).includes(normalizedQuery)
+  })
+
+  if (exact.length > 0) {
+    return exact
+  }
+
+  // Typo-tolerant fallback: distance <= 2 against the closest word.
+  return index.filter((item) => {
+    const candidates = [item.name, item.category, item.barcode]
+    return candidates.some((value) => minWordDistance(value, normalizedQuery) <= 2)
   })
 }
 

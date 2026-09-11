@@ -5,10 +5,10 @@ import { siteConfig } from '../config/site.js'
 import {
   getAllBrandsWithCounts,
   getAllCategories,
-  getAllProducts,
+  getSortedProducts,
 } from '../lib/products.js'
 
-const products = getAllProducts()
+const products = getSortedProducts()
 const categories = getAllCategories()
 const brands = getAllBrandsWithCounts()
 ---

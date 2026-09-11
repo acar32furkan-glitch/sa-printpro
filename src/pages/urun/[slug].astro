@@ -155,6 +155,44 @@ const faqs = [
   },
 ]
 
+// 2026 Google Merchant Center uyumlu iade politikası ve kargo detayları.
+const merchantReturnPolicy = {
+  '@type': 'MerchantReturnPolicy',
+  applicableCountry: 'TR',
+  returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+  merchantReturnDays: 15,
+  returnMethod: 'https://schema.org/ReturnByMail',
+  returnFees: 'https://schema.org/FreeReturn',
+}
+
+const shippingDetails = {
+  '@type': 'OfferShippingDetails',
+  shippingRate: {
+    '@type': 'MonetaryAmount',
+    value: 0,
+    currency: 'TRY',
+  },
+  shippingDestination: {
+    '@type': 'DefinedRegion',
+    addressCountry: 'TR',
+  },
+  deliveryTime: {
+    '@type': 'ShippingDeliveryTime',
+    handlingTime: {
+      '@type': 'QuantitativeValue',
+      minValue: 0,
+      maxValue: 1,
+      unitCode: 'DAY',
+    },
+    transitTime: {
+      '@type': 'QuantitativeValue',
+      minValue: 1,
+      maxValue: 3,
+      unitCode: 'DAY',
+    },
+  },
+}
+
 const productJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Product',
@@ -176,8 +214,23 @@ const productJsonLd = {
       ? 'https://schema.org/InStock'
       : 'https://schema.org/OutOfStock',
     url: canonicalUrl,
+    hasMerchantReturnPolicy: merchantReturnPolicy,
+    shippingDetails,
   },
 }
+
+// AIO & SearchGPT uyumlu semantik teknik özellik tablosu.
+// Sabit üretim gerçekleri, API'den gelen dinamik `attributes` ile birleştirilir.
+const aioRows = [
+  { key: 'Malzeme', value: '1. Kalite Döküm Reflektif Folyo' },
+  { key: 'Gece Görünürlüğü', value: 'Yüksek Yansıma (Petek Doku)' },
+  {
+    key: 'Dayanıklılık',
+    value: 'Su, Basınçlı Yıkama ve UV Işınlarına Dayanıklı (Solmaz)',
+  },
+  { key: 'Menşei', value: 'Türkiye (SA Printpro Üretimi)' },
+  ...attributeRows,
+]
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -278,6 +331,36 @@ const faqJsonLd = {
       >
         {
           specRows.map((row) => (
+            <div class="flex items-center justify-between gap-4 bg-white px-4 py-3 dark:bg-zinc-900">
+              <dt class="text-xs text-zinc-500 dark:text-zinc-400">
+                {row.key}
+              </dt>
+              <dd class="text-right text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                {row.value}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <!-- AIO & SearchGPT uyumlu teknik özellik tablosu. -->
+    <section class="mt-12" aria-labelledby="product-aio-title">
+      <div class="flex items-center gap-3">
+        <h2
+          id="product-aio-title"
+          class="text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-50"
+        >
+          Teknik Özellikler ve Üretim Bilgileri
+        </h2>
+        <span class="h-px flex-1 bg-zinc-200 dark:bg-zinc-800"></span>
+      </div>
+
+      <dl
+        class="mt-4 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-zinc-200 bg-zinc-200 sm:grid-cols-2 dark:border-zinc-800 dark:bg-zinc-800"
+      >
+        {
+          aioRows.map((row) => (
             <div class="flex items-center justify-between gap-4 bg-white px-4 py-3 dark:bg-zinc-900">
               <dt class="text-xs text-zinc-500 dark:text-zinc-400">
                 {row.key}

@@ -318,3 +318,88 @@ export function getProductsByBrand(brandSlug) {
     (product) => detectProductBrand(product).slug === brandSlug
   )
 }
+
+/**
+ * Finds a single motorcycle brand definition by its slug.
+ *
+ * @param {string} slug
+ * @returns {{name: string, slug: string, keywords: Array<string>}|undefined}
+ */
+export function getBrandBySlug(slug) {
+  const brands = Array.isArray(siteConfig.motorcycleBrands)
+    ? siteConfig.motorcycleBrands
+    : []
+  return brands.find((brand) => brand.slug === slug)
+}
+
+/**
+ * Computes the discount rate (0..1) of a product from its cheapest variant.
+ * A positive `salePrice` below `price` yields the reduction; otherwise 0.
+ *
+ * @param {object} product
+ * @returns {number}
+ */
+function discountRate(product) {
+  const variants = Array.isArray(product?.variants) ? product.variants : []
+  let best = 0
+
+  for (const variant of variants) {
+    const list = Number(variant?.price)
+    const sale = Number(variant?.salePrice)
+    if (!Number.isFinite(list) || list <= 0) {
+      continue
+    }
+    if (!Number.isFinite(sale) || sale <= 0 || sale >= list) {
+      continue
+    }
+    const rate = (list - sale) / list
+    if (rate > best) {
+      best = rate
+    }
+  }
+
+  return best
+}
+
+/**
+ * Smart ranking score used to surface the most attractive products first.
+ *
+ * Formula:
+ *   (totalStock * 0.2) + (discountRate * 1.5) + (images.length * 5)
+ *   - (totalStock === 0 ? 10000 : 0)
+ *
+ * Out-of-stock products are pushed to the bottom via the large penalty.
+ *
+ * @param {object} product
+ * @returns {number}
+ */
+export function calculateProductScore(product) {
+  if (!product) {
+    return 0
+  }
+
+  const stock = totalStock(product)
+  const discount = discountRate(product)
+  const images = Array.isArray(product.images) ? product.images.length : 0
+
+  return (
+    stock * 0.2 +
+    discount * 1.5 +
+    images * 5 -
+    (stock === 0 ? 10000 : 0)
+  )
+}
+
+/**
+ * Returns a new array of products sorted by descending smart score.
+ * The input array is never mutated.
+ *
+ * @param {Array<object>} products
+ * @returns {Array<object>}
+ */
+export function getSortedProducts(products) {
+  const list = Array.isArray(products) ? products : getAllProducts()
+  return [...list].sort(
+    (a, b) => calculateProductScore(b) - calculateProductScore(a)
+  )
+}
