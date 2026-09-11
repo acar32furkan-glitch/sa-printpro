@@ -144,18 +144,65 @@ const plainDescription = sanitizeCatalogText(
 // FAZ 11: AI hook'u meta açıklamanın başına eklenir (varsa).
 const aiHook = typeof aiData?.hook === 'string' ? aiData.hook.trim() : ''
 
-const metaDescription = aiHook
-  ? aiHook.slice(0, 160)
-  : plainDescription.length > 0
-    ? plainDescription.slice(0, 160)
-    : `${product.name} - En uygun fiyat, dayanıklı malzeme ve hızlı kargo avantajıyla SA Printpro'da.`
+/**
+ * Meta açıklamayı 160 karaktere indirger. Astro, `"` gibi karakterleri
+ * `"` olarak kaçırdığı için ham uzunluk şişebilir; bu yüzden kaçış
+ * sonrası uzunluğu güvenli sınırda tutmak adına tırnak/özel karakterleri
+ * sadeleştirip kırpıyoruz.
+ * @param {string} value
+ * @returns {string}
+ */
+function clampMetaDescription(value) {
+  const cleaned = String(value || '')
+    .replace(/["'`]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+  if (cleaned.length <= 160) {
+    return cleaned
+  }
+  // Kelime ortasında kesmemek için son boşluktan kırp.
+  const truncated = cleaned.slice(0, 160)
+  const lastSpace = truncated.lastIndexOf(' ')
+  return (lastSpace > 120 ? truncated.slice(0, lastSpace) : truncated).trim()
+}
+
+const metaDescription = clampMetaDescription(
+  aiHook ||
+    (plainDescription.length > 0
+      ? plainDescription
+      : `${product.name} - En uygun fiyat, dayanıklı malzeme ve hızlı kargo avantajıyla SA Printpro'da.`)
+)
 
 // FAZ 11: AI zenginleştirmesi varsa sadeleştirilmiş başlık önceliklendirilir.
 const displayTitle = aiData?.cleanTitle || sanitizeCatalogText(product.name)
 
+/**
+ * Bir ürünün nihai görünen başlığını (AI cleanTitle varsa onu) döndürür.
+ * Tekrar tespiti, ham `name` yerine bu değer üzerinden yapılmalıdır; aksi
+ * halde AI başlıkları aynı olan ürünler gözden kaçar.
+ * @param {object} item
+ * @returns {string}
+ */
+function effectiveTitle(item) {
+  const enriched = aiEnrichedData?.[item.id]
+  return String(enriched?.cleanTitle || sanitizeCatalogText(item.name || '')).trim()
+}
+
+// Aynı görünen başlığa sahip ürünler (ör. renk varyantları ayrı kayıtlar) aynı
+// <title>'ı üretip SEO'da tekrar cezasına yol açıyordu. Çakışma varsa ürün
+// kodunu başlığa ekleyerek her sayfayı benzersiz kılıyoruz.
+const normalizedTitle = displayTitle.trim().toLocaleLowerCase('tr-TR')
+const hasDuplicateTitle = getAllProducts().some(
+  (item) =>
+    item.slug !== product.slug &&
+    effectiveTitle(item).toLocaleLowerCase('tr-TR') === normalizedTitle
+)
+
 // SEO başlık formatı: "<Ürün Adı> Modelleri ve Fiyatı" — `Seo.astro` sonuna
 // otomatik olarak "| SA Printpro" ekler, bu yüzden burada tekrarlanmaz.
-const metaTitle = `${displayTitle} Modelleri ve Fiyatı`
+const metaTitle = hasDuplicateTitle
+  ? `${displayTitle} (${product.id}) Modelleri ve Fiyatı`
+  : `${displayTitle} Modelleri ve Fiyatı`
 
 // Technical spec sheet rows derived from the first variant + site config.
 const firstVariant = variants[0] || {}
@@ -280,6 +327,11 @@ const imageObjects = orderedImages.map((url) => ({
   caption: `${displayTitle} - Motosiklet Reflektif Sticker SA Printpro`,
 }))
 
+// Google Merchant Center, `offers.price`/`lowPrice` alanı 0 olan ürünleri
+// "geçersiz fiyat" olarak işaretler. Fiyatı olmayan ürünlerde `offers` bloğu
+// tamamen atlanır; böylece zengin sonuçlarda hatalı "0 TL" gösterilmez.
+const hasValidPrice = Number.isFinite(lowestPrice) && Number(lowestPrice) > 0
+
 const productJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Product',
@@ -291,19 +343,23 @@ const productJsonLd = {
     '@type': 'Brand',
     name: product.brand || siteConfig.name,
   },
-  offers: {
-    '@type': 'AggregateOffer',
-    priceCurrency: 'TRY',
-    lowPrice: lowestPrice ?? 0,
-    highPrice: highestPrice ?? lowestPrice ?? 0,
-    offerCount: pricedVariants.length,
-    availability: inStock
-      ? 'https://schema.org/InStock'
-      : 'https://schema.org/OutOfStock',
-    url: canonicalUrl,
-    hasMerchantReturnPolicy: merchantReturnPolicy,
-    shippingDetails,
-  },
+  ...(hasValidPrice
+    ? {
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'TRY',
+          lowPrice: lowestPrice,
+          highPrice: highestPrice ?? lowestPrice,
+          offerCount: pricedVariants.length,
+          availability: inStock
+            ? 'https://schema.org/InStock'
+            : 'https://schema.org/OutOfStock',
+          url: canonicalUrl,
+          hasMerchantReturnPolicy: merchantReturnPolicy,
+          shippingDetails,
+        },
+      }
+    : {}),
 }
 
 // AIO & SearchGPT uyumlu semantik teknik özellik tablosu.

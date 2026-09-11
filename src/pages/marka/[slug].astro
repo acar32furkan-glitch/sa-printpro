@@ -28,8 +28,14 @@ const brandName = brandConfig?.name || brand.name
 
 const canonicalUrl = `${siteConfig.domain}/marka/${brand.slug}`
 
-const seoTitle = `${brandName} Uyumlu Motosiklet Sticker ve Şeritleri | SA Printpro`
-const seoDescription = `${brandName} modelleriyle tam uyumlu reflektif jant şeritleri, depo kaplama ve güvenlik etiketleri. En uygun fiyat ve doğrudan sipariş indirimiyle keşfedin.`
+// `Seo.astro` başlığa otomatik olarak "| SA Printpro" ekler; bu yüzden burada
+// marka adı tekrar edilmez (aksi halde çift sonek oluşur).
+const seoTitle = `${brandName} Uyumlu Motosiklet Sticker ve Şeritleri`
+// Meta açıklama 160 karakter sınırını aşmamalı (Google kesme riski).
+const seoDescription = `${brandName} uyumlu reflektif jant şeritleri, depo kaplama ve güvenlik etiketleri. En uygun fiyat ve doğrudan sipariş indirimiyle keşfedin.`.slice(
+  0,
+  160
+)
 
 const breadcrumbItems = [
   { label: 'Ana Sayfa', href: '/' },

@@ -12,6 +12,7 @@ const {
   image = `${siteConfig.domain}/${siteConfig.logoFile}`,
   canonicalUrl = Astro.url.href,
   type = 'website',
+  noindex = false,
 } = Astro.props
 
 const faviconHref = `/${siteConfig.faviconFile}`
@@ -46,6 +47,7 @@ const faviconHref = `/${siteConfig.faviconFile}`
       image={image}
       canonicalUrl={canonicalUrl}
       type={type}
+      noindex={noindex}
     />
 
     <script is:inline>

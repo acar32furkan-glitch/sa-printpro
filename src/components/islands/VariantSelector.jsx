@@ -197,18 +197,27 @@ export default function VariantSelector({ product, shopier }) {
           </>
         ) : (
           <div className="flex flex-wrap items-baseline gap-3">
-            <span className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-              {formatPrice(trendyolPrice)}
-            </span>
-            {hasDiscount && (
+            {trendyolPrice > 0 ? (
               <>
-                <span className="text-lg text-zinc-400 line-through dark:text-zinc-500">
-                  {formatPrice(price)}
+                <span className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+                  {formatPrice(trendyolPrice)}
                 </span>
-                <span className="inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-2xs font-semibold text-white dark:bg-zinc-50 dark:text-zinc-900">
-                  %{discountRate} İndirim
-                </span>
+                {hasDiscount && (
+                  <>
+                    <span className="text-lg text-zinc-400 line-through dark:text-zinc-500">
+                      {formatPrice(price)}
+                    </span>
+                    <span className="inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-2xs font-semibold text-white dark:bg-zinc-50 dark:text-zinc-900">
+                      %{discountRate} İndirim
+                    </span>
+                  </>
+                )}
               </>
+            ) : (
+              // Fiyatı olmayan ürünlerde "0 TL" göstermek yerine bilgilendir.
+              <span className="text-2xl font-bold tracking-tight text-amber-600 dark:text-amber-400">
+                Fiyat Sorunuz
+              </span>
             )}
           </div>
         )}

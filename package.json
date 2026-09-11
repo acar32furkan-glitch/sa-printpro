@@ -9,6 +9,7 @@
     "build": "node scripts/build-search-index.mjs && node scripts/generate-feed.mjs && astro build",
     "preview": "astro preview",
     "lint": "eslint .",
+    "audit": "node scripts/qa-audit.mjs",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "sync": "node scripts/fetch-trendyol.mjs",

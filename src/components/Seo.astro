@@ -7,6 +7,7 @@ const {
   image = `${siteConfig.domain}/${siteConfig.logoFile}`,
   canonicalUrl = Astro.url.href,
   type = 'website',
+  noindex = false,
 } = Astro.props
 
 const fullTitle = title === siteConfig.name ? title : `${title} | ${siteConfig.name}`
@@ -18,6 +19,8 @@ const absoluteImage = image.startsWith('http')
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalUrl} />
+
+{noindex && <meta name="robots" content="noindex, follow" />}
 
 <meta property="og:site_name" content={siteConfig.name} />
 <meta property="og:title" content={fullTitle} />
