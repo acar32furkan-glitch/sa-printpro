@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T19:21:16.260Z",
+  "generatedAt": "2026-09-11T19:25:21.305Z",
   "products": [
     {
       "id": "1160687379",
@@ -583,6 +583,33 @@
           "sku": "opc",
           "attributes": {
             "Renk": "Kırmızı",
+            "Menşei": "TR"
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        }
+      ]
+    },
+    {
+      "id": "899048656",
+      "name": "Ktm duke Ktm rc Jant şeridi reflektif",
+      "slug": "ktm-duke-ktm-rc-jant-seridi-reflektif-899048656",
+      "brand": "SA Printpro",
+      "category": {
+        "id": "2181",
+        "name": "Motosiklet Jant Şerit",
+        "slug": "motosiklet-jant-serit"
+      },
+      "descriptionHtml": "- KTM Duke ve KTM RC modellerine özel tasarlanmış, jant şeritleriyle uyumlu ve estetik bir görünüm sunar.; - Reflektif malzeme kullanımı sayesinde düşük ışık koşullarında bile görünürlüğü artırır, güvenli sürüş sağlar.; - Türkiye'de üretilmiş olup yerel üretim avantajlarından faydalanmanızı - Kolay montaj imkanı sunarak.; - Dayanıklı yapısı ile uzun süreli kullanım için idealdir; sık değiştirme gerektirmez.;",
+      "images": [
+        "https://cdn.dsmcdn.com/ty1635/prod/QC/20250211/23/590acc64-df96-315c-9d75-9e9914428073/1_org_zoom.jpg"
+      ],
+      "variants": [
+        {
+          "barcode": "2478593843857",
+          "sku": "kkt",
+          "attributes": {
             "Menşei": "TR"
           },
           "price": 0,
@@ -3513,7 +3540,7 @@
       ],
       "variants": [
         {
-          "barcode": "2134567235668",
+          "barcode": "1325467898254",
           "sku": "13ktm",
           "attributes": {
             "Renk": "Siyah",
@@ -3524,7 +3551,7 @@
           "stock": 1977
         },
         {
-          "barcode": "1325467898254",
+          "barcode": "2134567235668",
           "sku": "13ktm",
           "attributes": {
             "Renk": "Siyah",
@@ -4337,21 +4364,11 @@
         "name": "Motosiklet Jant Şerit",
         "slug": "motosiklet-jant-serit"
       },
-      "descriptionHtml": "- KTM Duke ve KTM RC modellerine özel tasarlanmış, jant şeritleriyle uyumlu ve estetik bir görünüm sunar.; - Reflektif malzeme kullanımı sayesinde düşük ışık koşullarında bile görünürlüğü artırır, güvenli sürüş sağlar.; - Türkiye'de üretilmiş olup yerel üretim avantajlarından faydalanmanızı - Kolay montaj imkanı sunarak.; - Dayanıklı yapısı ile uzun süreli kullanım için idealdir; sık değiştirme gerektirmez.;",
+      "descriptionHtml": "KTM için özel hazırlanmıştır. Lastik ve janta birebir uyar.1 set yani 1 motora yetecek kadar şerit gönderilir.",
       "images": [
         "https://cdn.dsmcdn.com/ty1152/product/media/images/prod/SPM/PIM/20240131/16/7ae1fb28-a3fd-3002-a600-4b5dc078505c/1_org_zoom.jpg"
       ],
       "variants": [
-        {
-          "barcode": "2478593843857",
-          "sku": "kkt",
-          "attributes": {
-            "Menşei": "TR"
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        },
         {
           "barcode": "29572975290749260",
           "sku": "ktm12",
@@ -4360,7 +4377,7 @@
           },
           "price": 0,
           "salePrice": 0,
-          "stock": 0
+          "stock": 5
         },
         {
           "barcode": "2876824768972486752897",
@@ -4370,7 +4387,7 @@
           },
           "price": 0,
           "salePrice": 0,
-          "stock": 0
+          "stock": 5
         }
       ]
     },
@@ -5534,8 +5551,8 @@
       ],
       "variants": [
         {
-          "barcode": "90290529852895",
-          "sku": "",
+          "barcode": "Tasarımhediyenmotosticker00032",
+          "sku": "svenm",
           "attributes": {
             "Renk": "Siyah",
             "Özellik": "Diğer",
@@ -5551,8 +5568,8 @@
           "stock": 0
         },
         {
-          "barcode": "Tasarımhediyenmotosticker00032",
-          "sku": "svenm",
+          "barcode": "90290529852895",
+          "sku": "",
           "attributes": {
             "Renk": "Siyah",
             "Özellik": "Diğer",
@@ -5649,10 +5666,10 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5735,8 +5752,8 @@
             "Özellik": "Uzun",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilebilir, Satıcı ile İletişime Geçiniz.",
-            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr",
-            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)"
+            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)",
+            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr"
           },
           "price": 99,
           "salePrice": 99,
@@ -5766,8 +5783,8 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -6344,8 +6361,8 @@
             "Renk": "Kırmızı",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
