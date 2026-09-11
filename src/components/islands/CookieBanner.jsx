@@ -1,6 +1,37 @@
-import { useState } from 'react'
+import { useCallback, useState, useSyncExternalStore } from 'react'
 import { Cookie } from 'lucide-react'
 import { getConsent, setConsent } from '../../lib/consent.js'
+
+/**
+ * Consent değişikliklerine abone olur. `setConsent` çağrıldığında tüm
+ * aboneler bilgilendirilir; böylece banner aynı sekmede anında gizlenir.
+ */
+const consentListeners = new Set()
+
+/**
+ * Abonelik kaydı. `useSyncExternalStore` uyumludur.
+ * @param {() => void} listener
+ * @returns {() => void}
+ */
+function subscribeConsent(listener) {
+  consentListeners.add(listener)
+  return () => {
+    consentListeners.delete(listener)
+  }
+}
+
+/**
+ * Tüm abonelere consent değişikliğini bildirir.
+ */
+function emitConsentChange() {
+  for (const listener of consentListeners) {
+    try {
+      listener()
+    } catch {
+      // Bir abone hata verirse diğerlerini etkilemesin.
+    }
+  }
+}
 
 /**
  * Floating quality-control info card (bottom-right) for KVKK cookie consent.
@@ -8,22 +39,34 @@ import { getConsent, setConsent } from '../../lib/consent.js'
  * been stored (SSR-safe hydration).
  */
 export default function CookieBanner() {
-  // Lazy initializer: on the server `getConsent()` returns null, so the banner
-  // is not rendered during SSR. On the client it reflects the stored decision
-  // immediately, avoiding a setState-in-effect cascade.
-  const [visible, setVisible] = useState(() => getConsent() === null)
+  // `useSyncExternalStore` sunucuda `null` (banner gizli), istemcide ise
+  // localStorage'daki gerçek değeri döndürür. Bu sayede:
+  //  - SSR ile ilk istemci render'ı BİREBİR aynıdır (hydration uyuşmazlığı yok),
+  //  - effect içinde setState çağrılmaz (cascading render yok),
+  //  - tercih kaydedilmişse banner hiç görünmez.
+  const consent = useSyncExternalStore(
+    subscribeConsent,
+    () => getConsent(),
+    () => null
+  )
 
-  const handleAccept = () => {
+  // Kullanıcı bu oturumda bir karar verdi mi? (Banner'ı anında gizlemek için.)
+  const [decided, setDecided] = useState(false)
+
+  const handleAccept = useCallback(() => {
     setConsent(true)
-    setVisible(false)
-  }
+    setDecided(true)
+    emitConsentChange()
+  }, [])
 
-  const handleReject = () => {
+  const handleReject = useCallback(() => {
     setConsent(false)
-    setVisible(false)
-  }
+    setDecided(true)
+    emitConsentChange()
+  }, [])
 
-  if (!visible) {
+  // Karar verilmişse (bu oturumda veya daha önce) banner gösterilmez.
+  if (decided || consent !== null) {
     return null
   }
 

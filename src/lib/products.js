@@ -27,6 +27,15 @@ function normalizeTr(str) {
  * Third-party seller titles that must never surface on the storefront.
  * Matching is Turkish-aware and case-insensitive (see `normalizeTr`).
  */
+/**
+ * Üçüncü taraf satıcı / pazaryeri mağaza adları (gerçek ürün markası değil).
+ *
+ * ÖNEMLİ: Bu liste YALNIZCA tam mağaza unvanlarını içermelidir. Ürün türünü
+ * veya jenerik bir kelimeyi (ör. "sticker", "rez", "3m", "favori") içeren kısa
+ * parçalar EKLENMEMELİDİR — aksi halde ürün başlıklarındaki meşru kelimeler
+ * yanlışlıkla "SA Printpro" ile değiştirilir ve hem başlıklar bozulur hem de
+ * SEO'da aranan kelimeler kaybolur.
+ */
 const COMPETITOR_BRANDS = [
   'baskı babası',
   'baski babasi',
@@ -34,7 +43,6 @@ const COMPETITOR_BRANDS = [
   'baskıbabası',
   'baski babası',
   'baskı babasi',
-  // Üçüncü taraf satıcı / pazaryeri mağaza adları (gerçek ürün markası değil).
   'hediyelikevi',
   'benimser reklam',
   'run grafik shop',
@@ -59,7 +67,6 @@ const COMPETITOR_BRANDS = [
   'mtl pleksi',
   'stckrco',
   'muasl',
-  'rez',
   'allivo',
   'arona',
   'comtura',
@@ -68,18 +75,11 @@ const COMPETITOR_BRANDS = [
   'habole',
   'bilge sea',
   'motiker',
-  'home &',
   'stıckman',
-  'sticker',
-  'favori',
-  'terapi',
-  'kahraman',
   'erzline',
   'carsesuar',
   'teknotik',
   'unifol',
-  '3m',
-  'bys',
 ]
 
 /**

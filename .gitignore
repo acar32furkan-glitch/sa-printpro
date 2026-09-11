@@ -15,3 +15,4 @@ Thumbs.db
 .idea/
 qa-audit-report.json
 .wrangler/
+.logo-backup/

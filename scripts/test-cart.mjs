@@ -11,6 +11,9 @@
 // --- localStorage taklidi -------------------------------------------------
 const store = new Map()
 
+// `storage` olayını taklit edebilmek için basit bir dinleyici kaydı tutuyoruz.
+const storageListeners = new Set()
+
 globalThis.window = {
   localStorage: {
     getItem: (key) => (store.has(key) ? store.get(key) : null),
@@ -18,6 +21,29 @@ globalThis.window = {
     removeItem: (key) => store.delete(key),
     clear: () => store.clear(),
   },
+  addEventListener: (type, handler) => {
+    if (type === 'storage') {
+      storageListeners.add(handler)
+    }
+  },
+  removeEventListener: (type, handler) => {
+    if (type === 'storage') {
+      storageListeners.delete(handler)
+    }
+  },
+}
+
+/**
+ * Başka bir sekmede yapılan değişikliği taklit eder: localStorage'a yazar ve
+ * `storage` olayını tetikler.
+ * @param {string} key
+ * @param {string} value
+ */
+function simulateOtherTabWrite(key, value) {
+  store.set(key, String(value))
+  for (const handler of storageListeners) {
+    handler({ key, newValue: String(value) })
+  }
 }
 
 const {
@@ -29,6 +55,7 @@ const {
   getCount,
   getTotal,
   getItemKey,
+  subscribe,
 } = await import('../src/lib/cart.js')
 
 let passed = 0
@@ -100,16 +127,16 @@ assert('Farklı varyant ayrı satır', getItems().length === 2)
 assert('Toplam 450', getTotal() === 450)
 
 // 5) Adet güncelleme.
-updateQty('BC-1', 5)
+updateQty('bc:BC-1', 5)
 assert('BC-1 adedi 5', getItems().find((i) => i.barcode === 'BC-1').qty === 5)
 assert('Toplam 650', getTotal() === 650)
 
 // 6) Adet 0 → satır silinir.
-updateQty('BC-2', 0)
+updateQty('bc:BC-2', 0)
 assert('Adet 0 satırı sildi', getItems().length === 1)
 
 // 7) removeItem.
-removeItem('BC-1')
+removeItem('bc:BC-1')
 assert('removeItem satırı sildi', getItems().length === 0)
 assert('Toplam 0', getTotal() === 0)
 
@@ -120,17 +147,129 @@ assert('Bozuk JSON güvenli (boş dizi)', getItems().length === 0)
 // 9) getItemKey barkod önceliği.
 assert(
   'getItemKey barkod kullanır',
-  getItemKey({ barcode: 'X', id: '1', variant: 'v' }) === 'X'
+  getItemKey({ barcode: 'X', id: '1', variant: 'v' }) === 'bc:X'
 )
 assert(
   'getItemKey barkod yoksa id::variant',
-  getItemKey({ barcode: '', id: '1', variant: 'v' }) === '1::v'
+  getItemKey({ barcode: '', id: '1', variant: 'v' }) === 'id:1::v'
 )
 
 // 10) clear.
 addItem({ id: '9', name: 'Test', slug: 'test', barcode: 'BC-9', price: 10, qty: 3 })
 clear()
 assert('clear sepeti boşalttı', getItems().length === 0)
+
+// ---------------------------------------------------------------------------
+// REGRESYON TESTLERİ — bildirilen sepet hataları
+// ---------------------------------------------------------------------------
+
+console.log('\n--- Regresyon: barkodlu/barkodsuz satır karışması ---')
+
+// 11) Barkodlu bir satır ile barkodsuz bir satır ASLA birleşmemeli.
+clear()
+addItem({
+  id: '42',
+  name: 'Ürün',
+  slug: 'urun',
+  variant: 'Renk: Beyaz',
+  barcode: 'BC-A',
+  price: 100,
+  qty: 1,
+})
+addItem({
+  id: '42',
+  name: 'Ürün',
+  slug: 'urun',
+  variant: 'Renk: Beyaz',
+  barcode: '',
+  price: 100,
+  qty: 1,
+})
+assert('Barkodlu + barkodsuz ayrı satır kaldı', getItems().length === 2)
+assert('Toplam 200 (yanlış birleşme yok)', getTotal() === 200)
+
+// 12) Barkodsuz iki farklı varyant ayrı satır olmalı.
+clear()
+addItem({ id: '7', name: 'Ürün', slug: 'urun', variant: 'Renk: Beyaz', barcode: '', price: 50, qty: 1 })
+addItem({ id: '7', name: 'Ürün', slug: 'urun', variant: 'Renk: Siyah', barcode: '', price: 60, qty: 1 })
+assert('Barkodsuz farklı varyantlar ayrı satır', getItems().length === 2)
+assert('Toplam 110', getTotal() === 110)
+
+// 13) Barkodsuz aynı varyant birleşmeli.
+addItem({ id: '7', name: 'Ürün', slug: 'urun', variant: 'Renk: Beyaz', barcode: '', price: 50, qty: 2 })
+assert('Barkodsuz aynı varyant birleşti', getItems().length === 2)
+assert('Beyaz varyant adedi 3', getItems().find((i) => i.variant === 'Renk: Beyaz').qty === 3)
+
+console.log('\n--- Regresyon: fiyat/adet doğruluğu ---')
+
+// 14) Toplam = Σ (birim fiyat × adet).
+clear()
+addItem({ id: '1', name: 'A', slug: 'a', variant: 'v1', barcode: 'P1', price: 199, qty: 3 })
+addItem({ id: '2', name: 'B', slug: 'b', variant: 'v2', barcode: 'P2', price: 55, qty: 2 })
+assert('Toplam doğru (199*3 + 55*2 = 707)', getTotal() === 707)
+assert('Adet doğru (3 + 2 = 5)', getCount() === 5)
+
+// 15) Fiyat güncellemesi mevcut satıra yansır (aynı varyant tekrar eklenince).
+addItem({ id: '1', name: 'A', slug: 'a', variant: 'v1', barcode: 'P1', price: 149, qty: 1 })
+assert('Güncel fiyat korundu (149)', getItems().find((i) => i.barcode === 'P1').price === 149)
+assert('Adet 4 oldu', getItems().find((i) => i.barcode === 'P1').qty === 4)
+assert('Toplam 149*4 + 55*2 = 706', getTotal() === 706)
+
+console.log('\n--- Regresyon: adet sınırları ---')
+
+// 16) Negatif adet satırı siler.
+clear()
+addItem({ id: '1', name: 'A', slug: 'a', variant: 'v1', barcode: 'N1', price: 10, qty: 2 })
+updateQty('bc:N1', -5)
+assert('Negatif adet satırı sildi', getItems().length === 0)
+
+// 17) Ondalıklı adet aşağı yuvarlanır.
+clear()
+addItem({ id: '1', name: 'A', slug: 'a', variant: 'v1', barcode: 'F1', price: 10, qty: 1 })
+updateQty('bc:F1', 3.9)
+assert('Ondalıklı adet 3e yuvarlandı', getItems()[0].qty === 3)
+
+// 18) Geçersiz adet (NaN) satırı silmez, 0'a düşer → silinir.
+clear()
+addItem({ id: '1', name: 'A', slug: 'a', variant: 'v1', barcode: 'G1', price: 10, qty: 2 })
+updateQty('bc:G1', 'abc')
+assert('Geçersiz adet satırı sildi (0)', getItems().length === 0)
+
+console.log('\n--- Regresyon: sepet kalıcılığı (localStorage) ---')
+
+// 19) Yazılan sepet localStorage\'dan yeniden okunabilir (sayfa yenileme).
+clear()
+addItem({ id: '1', name: 'Kalıcı', slug: 'kalici', variant: 'v1', barcode: 'K1', price: 77, qty: 2 })
+const persisted = JSON.parse(store.get('saprintpro_cart_v1'))
+assert('localStorage\'a yazıldı', Array.isArray(persisted) && persisted.length === 1)
+assert('Kalıcı adet 2', persisted[0].qty === 2)
+assert('Kalıcı fiyat 77', persisted[0].price === 77)
+
+console.log('\n--- Regresyon: sekmeler arası senkronizasyon (storage event) ---')
+
+// 20) Başka sekmede yapılan değişiklik aboneye bildirilir.
+clear()
+let notified = null
+const unsubscribe = subscribe((items) => {
+  notified = items
+})
+
+simulateOtherTabWrite(
+  'saprintpro_cart_v1',
+  JSON.stringify([
+    { id: '1', name: 'Diğer Sekme', slug: 'd', variant: 'v', barcode: 'X1', price: 12, qty: 4 },
+  ])
+)
+assert('storage olayı aboneye ulaştı', notified !== null)
+assert('Abone güncel sepeti gördü', Array.isArray(notified) && notified.length === 1)
+assert('Abone adedi doğru (4)', notified && notified[0].qty === 4)
+
+// 21) İlgisiz anahtar aboneyi tetiklememeli.
+notified = null
+simulateOtherTabWrite('baska_anahtar', 'deger')
+assert('İlgisiz anahtar aboneyi tetiklemedi', notified === null)
+
+unsubscribe()
 
 console.log(`\nSonuç: ${passed} geçti, ${failed} başarısız\n`)
 process.exit(failed > 0 ? 1 : 0)

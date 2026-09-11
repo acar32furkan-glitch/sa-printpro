@@ -15,6 +15,9 @@
     "sync": "node scripts/fetch-trendyol.mjs",
     "import-shopier": "node scripts/import-shopier-csv.mjs",
     "images": "node scripts/process-images.mjs",
+    "logos": "node scripts/process-logos.mjs",
+    "repair-catalog": "node scripts/repair-catalog.mjs",
+    "test:cart": "node scripts/test-cart.mjs",
     "enrich": "node scripts/enrich-catalog-ai.mjs"
   },
   "keywords": [

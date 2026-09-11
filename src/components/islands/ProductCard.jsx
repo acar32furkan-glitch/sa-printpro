@@ -87,12 +87,23 @@ export default function ProductCard({ product }) {
   // FAZ 11: yerel (logo filigranlı) görsel varsa onu, yoksa CDN görselini kullan.
   const image = getProductPrimaryImage(product)
 
-  // Sepete eklenecek varsayılan varyant: en ucuz fiyatlı, stokta olan varyant.
+  // Sepete eklenecek varsayılan varyant: stokta olan ilk varyant.
   const defaultVariant =
     pricedVariants.find((variant) => Number(variant.stock) > 0) ||
     pricedVariants[0] ||
     variants[0] ||
     null
+
+  // KRİTİK: Sepete yazılan fiyat, seçilen varyantın KENDİ fiyatı olmalıdır.
+  // Kart üzerinde gösterilen `salePrice`/`directPrice` en ucuz varyanta ait
+  // olabilir; bu değerleri sepete yazmak, barkodu başka bir varyanta ait olan
+  // bir satır için yanlış fiyat oluşturur (yanlış tahsilat riski).
+  const defaultVariantPrice = effectivePrice(defaultVariant) ?? 0
+  const defaultVariantDirectPrice = enableDirectDiscount
+    ? calculateDirectPrice(defaultVariantPrice)
+    : 0
+  const defaultVariantShowDirect =
+    enableDirectDiscount && defaultVariantPrice > 0 && defaultVariantDirectPrice > 0
 
   const cartItem = {
     id: String(product.id ?? ''),
@@ -104,7 +115,7 @@ export default function ProductCard({ product }) {
           .join(', ')
       : defaultVariant?.sku || '',
     barcode: defaultVariant?.barcode || '',
-    price: showDirectPrice ? directPrice : salePrice,
+    price: defaultVariantShowDirect ? defaultVariantDirectPrice : defaultVariantPrice,
     qty: 1,
     image,
   }

@@ -115,11 +115,14 @@ export default function CartView() {
     [items]
   )
 
-  // Tüm satırların Shopier linki varsa Shopier'e yönlendirilebilir.
+  // Shopier yönlendirmesi YALNIZCA tek satırlık sepetlerde güvenlidir: Shopier
+  // ürün URL'i tek bir ürünü temsil eder ve sepetin geri kalanını sessizce
+  // düşürür. Birden fazla satır varsa WhatsApp akışına düşülür; böylece hiçbir
+  // ürün kaybolmaz.
   const allHaveShopier = useMemo(
     () =>
-      items.length > 0 &&
-      items.every((item) => Boolean(resolveShopierUrl(shopierMap, item.barcode))),
+      items.length === 1 &&
+      Boolean(resolveShopierUrl(shopierMap, items[0]?.barcode)),
     [items]
   )
 
@@ -308,7 +311,7 @@ export default function CartView() {
                 </div>
               </div>
 
-              <div className="hidden shrink-0 text-right text-sm font-semibold text-zinc-900 sm:block dark:text-zinc-100">
+              <div className="shrink-0 text-right text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                 {formatPrice(item.price * item.qty)}
               </div>
             </li>

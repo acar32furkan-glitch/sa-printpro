@@ -77,16 +77,36 @@ function normalizeItem(item) {
 
 /**
  * İki sepet öğesinin aynı varyantı temsil edip etmediğini belirler.
- * Öncelik: barkod → id + varyant etiketi.
+ *
+ * Kural: iki satır ancak ve ancak AYNI kimlik anahtarına sahipse birleşir.
+ * Barkod varsa kimlik barkoddur; yoksa `id::variant` kullanılır. Barkodlu bir
+ * satır ile barkodsuz bir satır ASLA birleşmez — aksi halde farklı varyantlar
+ * (ör. biri barkodlu, diğeri barkodsuz) yanlışlıkla tek satırda toplanır ve
+ * yanlış fiyat/adet oluşur.
+ *
  * @param {object} a
  * @param {object} b
  * @returns {boolean}
  */
 function isSameLine(a, b) {
-  if (a.barcode && b.barcode) {
-    return a.barcode === b.barcode
+  return lineKey(a) === lineKey(b)
+}
+
+/**
+ * Bir sepet öğesi için kararlı, tekil satır anahtarı üretir.
+ * Barkod varsa barkod; yoksa `id::variant` biçimi kullanılır.
+ * @param {object} item
+ * @returns {string}
+ */
+function lineKey(item) {
+  if (!item) {
+    return ''
   }
-  return a.id === b.id && a.variant === b.variant
+  const barcode = String(item.barcode ?? '').trim()
+  if (barcode !== '') {
+    return `bc:${barcode}`
+  }
+  return `id:${String(item.id ?? '').trim()}::${String(item.variant ?? '').trim()}`
 }
 
 /**
@@ -156,9 +176,35 @@ export function subscribe(listener) {
     return () => {}
   }
   listeners.add(listener)
+  ensureStorageSync()
   return () => {
     listeners.delete(listener)
   }
+}
+
+/**
+ * Farklı sekmeler arasında sepet senkronizasyonu.
+ *
+ * `storage` olayı YALNIZCA başka bir sekmede yapılan değişikliklerde tetiklenir
+ * (aynı sekmede tetiklenmez), bu yüzden sonsuz döngü riski yoktur. Olay
+ * geldiğinde abonelere güncel sepet bildirilir; böylece navbar rozeti ve sepet
+ * sayfası diğer sekmelerle senkron kalır.
+ */
+let storageSyncBound = false
+
+function ensureStorageSync() {
+  if (storageSyncBound || !isBrowser() || typeof window.addEventListener !== 'function') {
+    return
+  }
+  storageSyncBound = true
+
+  window.addEventListener('storage', (event) => {
+    // Yalnızca kendi anahtarımızdaki değişiklikleri dikkate al.
+    if (event.key !== null && event.key !== STORAGE_KEY) {
+      return
+    }
+    emit()
+  })
 }
 
 /**
@@ -208,10 +254,7 @@ export function removeItem(key) {
     return getItems()
   }
 
-  const items = readRaw().filter((entry) => {
-    const entryKey = entry.barcode || `${entry.id}::${entry.variant}`
-    return entryKey !== target
-  })
+  const items = readRaw().filter((entry) => lineKey(entry) !== target)
 
   writeRaw(items)
   return items
@@ -234,14 +277,10 @@ export function updateQty(key, qty) {
   let items = readRaw()
 
   if (nextQty <= 0) {
-    items = items.filter((entry) => {
-      const entryKey = entry.barcode || `${entry.id}::${entry.variant}`
-      return entryKey !== target
-    })
+    items = items.filter((entry) => lineKey(entry) !== target)
   } else {
     for (const entry of items) {
-      const entryKey = entry.barcode || `${entry.id}::${entry.variant}`
-      if (entryKey === target) {
+      if (lineKey(entry) === target) {
         entry.qty = nextQty
         break
       }
@@ -283,10 +322,7 @@ export function getTotal() {
  * @returns {string}
  */
 export function getItemKey(item) {
-  if (!item) {
-    return ''
-  }
-  return item.barcode || `${item.id}::${item.variant}`
+  return lineKey(item)
 }
 
 /**
