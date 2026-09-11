@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+# Kişiye özel / dinamik sayfalar: indekslenmemeli (noindex ile tutarlı).
+Disallow: /sepet
+Disallow: /siparis-basarili
+Disallow: /siparis-basarisiz
 
 # 2026 GEO: AI arama motorları ve asistanları için açık erişim.
 User-agent: GPTBot

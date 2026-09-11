@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState, useSyncExternalStore } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
 import { Minus, Plus, ShoppingBag, Trash2, MessageCircle } from 'lucide-react'
 import { siteConfig } from '../../config/site.js'
 import shopierMap from '../../config/shopier.json'
@@ -69,6 +69,28 @@ function buildWhatsappMessage(items, total) {
 }
 
 /**
+ * GA4 `view_cart` olayını fırlatır (gtag guard'lı). GA4 yüklü değilse
+ * sessizce atlanır; mevcut `add_to_cart` / `begin_checkout` deseniyle aynı.
+ * @param {Array<object>} items
+ * @param {number} total
+ */
+function trackViewCart(items, total) {
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    window.gtag('event', 'view_cart', {
+      currency: 'TRY',
+      value: total,
+      items: items.map((item) => ({
+        item_id: item.barcode || item.id,
+        item_name: item.name,
+        item_variant: item.variant,
+        price: Number(item.price) || 0,
+        quantity: Number(item.qty) || 1,
+      })),
+    })
+  }
+}
+
+/**
  * Sepet sayfası istemci bileşeni: ürün listesi, adet artır/azalt, sil,
  * toplam tutar ve checkout (Shopier / WhatsApp) akışı.
  */
@@ -100,6 +122,17 @@ export default function CartView() {
       items.every((item) => Boolean(resolveShopierUrl(shopierMap, item.barcode))),
     [items]
   )
+
+  // GA4 `view_cart`: sepet sayfası açıldığında yalnızca BİR kez fırlatılır.
+  // Sepet boşsa veya GA4 yüklü değilse sessizce atlanır.
+  const viewCartTracked = useRef(false)
+  useEffect(() => {
+    if (viewCartTracked.current || items.length === 0) {
+      return
+    }
+    viewCartTracked.current = true
+    trackViewCart(items, total)
+  }, [items, total])
 
   const whatsappNumber = String(siteConfig.contact.whatsapp || '').replace(/\D/g, '')
 

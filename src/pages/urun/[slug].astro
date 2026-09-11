@@ -331,9 +331,28 @@ const orderedImages =
   primaryImage && !productImages.includes(primaryImage)
     ? [primaryImage, ...productImages]
     : productImages
+
+/**
+ * Structured data (`Product.image`) için görsel URL'ini mutlak hale getirir.
+ * Google, JSON-LD içinde göreli (`/uploads/...`) URL kabul etmez; bu yüzden
+ * site alan adıyla birleştirilir. Zaten mutlak olan URL'ler korunur.
+ * @param {string} url
+ * @returns {string}
+ */
+function toAbsoluteImageUrl(url) {
+  const value = String(url || '').trim()
+  if (value === '') {
+    return value
+  }
+  if (/^https?:\/\//i.test(value)) {
+    return value
+  }
+  return `${siteConfig.domain}${value.startsWith('/') ? '' : '/'}${value}`
+}
+
 const imageObjects = orderedImages.map((url) => ({
   '@type': 'ImageObject',
-  url,
+  url: toAbsoluteImageUrl(url),
   caption: `${displayTitle} - Motosiklet Reflektif Sticker SA Printpro`,
 }))
 
