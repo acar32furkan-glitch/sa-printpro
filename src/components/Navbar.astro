@@ -3,6 +3,7 @@ import Logo from './Logo.astro'
 import SearchBar from './islands/SearchBar.jsx'
 import ThemeToggle from './islands/ThemeToggle.jsx'
 import MobileNav from './islands/MobileNav.jsx'
+import CartButton from './islands/CartButton.jsx'
 import { siteConfig } from '../config/site.js'
 
 const links = [
@@ -74,6 +75,7 @@ const currentPath = Astro.url.pathname
       <div class="hidden w-56 sm:block lg:w-72">
         <SearchBar client:idle />
       </div>
+      <CartButton client:load />
       <ThemeToggle client:load />
       <MobileNav client:load links={links} currentPath={currentPath} />
     </div>

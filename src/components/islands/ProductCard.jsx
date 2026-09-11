@@ -1,5 +1,6 @@
 import { siteConfig } from '../../config/site.js'
 import { calculateDirectPrice, getProductPrimaryImage } from '../../lib/products.js'
+import AddToCartButton from './AddToCartButton.jsx'
 
 /**
  * Formats a numeric price as a Turkish Lira string.
@@ -86,12 +87,34 @@ export default function ProductCard({ product }) {
   // FAZ 11: yerel (logo filigranlı) görsel varsa onu, yoksa CDN görselini kullan.
   const image = getProductPrimaryImage(product)
 
+  // Sepete eklenecek varsayılan varyant: en ucuz fiyatlı, stokta olan varyant.
+  const defaultVariant =
+    pricedVariants.find((variant) => Number(variant.stock) > 0) ||
+    pricedVariants[0] ||
+    variants[0] ||
+    null
+
+  const cartItem = {
+    id: String(product.id ?? ''),
+    name: product.name,
+    slug: product.slug,
+    variant: defaultVariant?.attributes
+      ? Object.entries(defaultVariant.attributes)
+          .map(([key, value]) => `${key}: ${value}`)
+          .join(', ')
+      : defaultVariant?.sku || '',
+    barcode: defaultVariant?.barcode || '',
+    price: showDirectPrice ? directPrice : salePrice,
+    qty: 1,
+    image,
+  }
+
   return (
-    <a
-      href={`/urun/${product.slug}`}
-      className="group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white transition-all duration-200 ease-smooth hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-lift dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
-    >
-      <div className="relative aspect-[4/5] w-full overflow-hidden border-b border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-800">
+    <div className="group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white transition-all duration-200 ease-smooth hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-lift dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700">
+      <a
+        href={`/urun/${product.slug}`}
+        className="relative block aspect-[4/5] w-full overflow-hidden border-b border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-800"
+      >
         {image ? (
           <img
             src={image}
@@ -123,15 +146,16 @@ export default function ProductCard({ product }) {
             <span className="badge-out">Tükendi</span>
           </span>
         )}
-      </div>
+      </a>
 
       <div className="flex flex-1 flex-col gap-2 p-3.5">
-        <h3
-          className="line-clamp-2 text-sm font-medium leading-snug text-zinc-900 dark:text-zinc-100"
+        <a
+          href={`/urun/${product.slug}`}
+          className="line-clamp-2 text-sm font-medium leading-snug text-zinc-900 hover:underline dark:text-zinc-100"
           title={product.name}
         >
           {product.name}
-        </h3>
+        </a>
 
         <div className="mt-auto flex flex-col gap-1.5 pt-1">
           {showDirectPrice ? (
@@ -192,7 +216,15 @@ export default function ProductCard({ product }) {
             )}
           </span>
         </div>
+
+        {hasPrice && (
+          <AddToCartButton
+            item={cartItem}
+            disabled={!inStock}
+            className="mt-1 w-full !px-3 !py-2 !text-xs"
+          />
+        )}
       </div>
-    </a>
+    </div>
   )
 }

@@ -10,6 +10,7 @@ import {
 import { siteConfig } from '../../config/site.js'
 import { getTrendyolProductUrl, calculateDirectPrice } from '../../lib/products.js'
 import shopierMap from '../../config/shopier.json'
+import AddToCartButton from './AddToCartButton.jsx'
 
 /**
  * Formats a numeric price as a Turkish Lira string.
@@ -146,6 +147,18 @@ export default function VariantSelector({ product, shopier }) {
   const whatsappNumber = String(siteConfig.contact.whatsapp || '').replace(/\D/g, '')
   const attributeSummary = formatAttributes(selectedVariant?.attributes)
   const variantLabel = attributeSummary || 'Varsayılan'
+
+  // Sepete eklenecek öğe — seçili varyant ve doğrudan indirimli fiyat.
+  const cartItem = {
+    id: String(product?.id ?? ''),
+    name: product?.name || '',
+    slug: product?.slug || '',
+    variant: variantLabel,
+    barcode,
+    price: showDirectPrice ? directPrice : trendyolPrice,
+    qty: 1,
+    image: Array.isArray(product?.images) ? product.images[0] || '' : '',
+  }
 
   // İndirimli doğrudan sipariş mesajı — web'e özel fiyatı vurgular.
   const whatsappMessage = showDirectPrice
@@ -382,6 +395,15 @@ export default function VariantSelector({ product, shopier }) {
               </p>
             )}
           </>
+        )}
+
+        {/* Sepete Ekle — mevcut WhatsApp/Shopier butonlarının YANINA eklenir. */}
+        {trendyolPrice > 0 && (
+          <AddToCartButton
+            item={cartItem}
+            disabled={!inStock}
+            className="w-full py-3"
+          />
         )}
 
         <p className="flex items-center justify-center gap-2 text-xs text-zinc-400 dark:text-zinc-500">
