@@ -132,8 +132,14 @@ function filterIndex(index, query) {
  *
  * @param {object} props
  * @param {string} [props.placeholder]
+ * @param {boolean} [props.autoFocus] Mobil arama overlay'i için otomatik odak.
+ * @param {() => void} [props.onNavigate] Sonuca tıklanınca çağrılır (overlay kapatma).
  */
-export default function SearchBar({ placeholder = 'Ürün / barkod ara...' }) {
+export default function SearchBar({
+  placeholder = 'Ürün / barkod ara...',
+  autoFocus = false,
+  onNavigate,
+}) {
   const [query, setQuery] = useState('')
   const [debouncedQuery, setDebouncedQuery] = useState('')
   const [isOpen, setIsOpen] = useState(false)
@@ -285,6 +291,7 @@ export default function SearchBar({ placeholder = 'Ürün / barkod ara...' }) {
           aria-expanded={showDropdown}
           aria-controls="search-results"
           autoComplete="off"
+          autoFocus={autoFocus}
           className="w-full rounded-lg border border-zinc-300 bg-white py-2 pl-9 pr-9 text-xs text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-500 dark:focus:border-zinc-100 dark:focus-visible:ring-zinc-100 dark:focus-visible:ring-offset-zinc-900"
         />
         {query !== '' && (
@@ -325,7 +332,12 @@ export default function SearchBar({ placeholder = 'Ürün / barkod ara...' }) {
                 <li key={product.id || product.slug}>
                   <a
                     href={`/urun/${product.slug}`}
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                      setIsOpen(false)
+                      if (typeof onNavigate === 'function') {
+                        onNavigate()
+                      }
+                    }}
                     className="flex items-center gap-3 px-3 py-2.5 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800"
                   >
                     <span className="h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800">

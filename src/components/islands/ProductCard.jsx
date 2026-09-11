@@ -129,6 +129,19 @@ export default function ProductCard({ product }) {
           </div>
         )}
 
+        {/* SEVİYE 3 — UX: Stok durumu rozeti (tutarlı, her kartta görünür). */}
+        {inStock ? (
+          <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-md border border-emerald-200 bg-emerald-50/95 px-2 py-1 text-2xs font-semibold text-emerald-700 backdrop-blur-sm dark:border-emerald-900/50 dark:bg-emerald-950/90 dark:text-emerald-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
+            Stokta
+          </span>
+        ) : (
+          <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-md border border-zinc-300 bg-white/95 px-2 py-1 text-2xs font-semibold text-zinc-600 backdrop-blur-sm dark:border-zinc-700 dark:bg-zinc-950/90 dark:text-zinc-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-zinc-400" aria-hidden="true" />
+            Tükendi
+          </span>
+        )}
+
         {hasDiscount && (
           <span className="absolute bottom-2 left-2 inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-2xs font-semibold text-white dark:bg-zinc-50 dark:text-zinc-900">
             %{discountRate} İndirim

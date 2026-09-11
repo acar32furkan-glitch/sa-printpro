@@ -1,17 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import SearchBar from '../components/islands/SearchBar.jsx'
 import { siteConfig } from '../config/site.js'
+import { getAllCategories, getSortedProducts } from '../lib/products.js'
+
+// SEVİYE 3 — UX: Kullanıcıyı kaybetmemek için 404 sayfasında arama kutusu,
+// popüler kategoriler ve öne çıkan ürünler sunulur.
+const categories = getAllCategories().slice(0, 8)
+const popularProducts = getSortedProducts().slice(0, 4)
+
+const whatsappNumber = String(siteConfig.contact?.whatsapp || '').replace(/\D/g, '')
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+  'Merhaba, aradığım ürünü sitede bulamadım. Yardımcı olur musunuz?'
+)}`
 ---
 
 <Layout
   title="Sayfa Bulunamadı"
-  description="Aradığınız sayfa bulunamadı. Kataloğa dönerek ürünlere göz atabilirsiniz."
+  description="Aradığınız sayfa bulunamadı. Arama yaparak, popüler kategorilere göz atarak veya öne çıkan ürünlere bakarak aradığınızı bulabilirsiniz."
   canonicalUrl={`${siteConfig.domain}/404`}
   noindex={true}
 >
-  <section
-    class="mx-auto flex max-w-6xl flex-col items-center px-4 py-24 text-center"
-  >
+  <section class="mx-auto flex max-w-6xl flex-col items-center px-4 py-16 text-center sm:py-24">
     <span class="text-6xl font-bold tracking-tight text-zinc-900 sm:text-7xl dark:text-zinc-50">
       404
     </span>
@@ -20,12 +30,114 @@ import { siteConfig } from '../config/site.js'
       Sayfa Bulunamadı
     </h1>
     <p class="mt-2 max-w-md text-sm text-zinc-500 dark:text-zinc-400">
-      Aradığınız sayfa taşınmış veya hiç var olmamış olabilir. Kataloğa dönerek
-      tüm ürünlerimize göz atabilirsiniz.
+      Aradığınız sayfa taşınmış veya hiç var olmamış olabilir. Aşağıdaki arama
+      kutusunu kullanabilir ya da popüler kategorilere göz atabilirsiniz.
     </p>
 
-    <a href="/urunler" class="btn-primary mt-8">
-      Kataloğa Dön
-    </a>
+    <!-- Arama kutusu yönlendirmesi: kullanıcıyı doğrudan ürüne götürür. -->
+    <div class="mt-8 w-full max-w-md text-left">
+      <label
+        for="notfound-search"
+        class="mb-2 block text-xs font-medium text-zinc-500 dark:text-zinc-400"
+      >
+        Ürün veya barkod ara
+      </label>
+      <div id="notfound-search">
+        <SearchBar client:load placeholder="Ürün / barkod ara..." />
+      </div>
+    </div>
+
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+      <a href="/" class="btn-primary">Ana Sayfaya Dön</a>
+      <a href="/urunler" class="btn-secondary">Tüm Ürünler</a>
+      {
+        whatsappNumber !== '' && (
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-whatsapp"
+          >
+            WhatsApp ile Sor
+          </a>
+        )
+      }
+    </div>
   </section>
+
+  {
+    categories.length > 0 && (
+      <section class="mx-auto max-w-6xl px-4 pb-12" aria-labelledby="notfound-categories">
+        <div class="flex items-center gap-3">
+          <h2
+            id="notfound-categories"
+            class="text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-50"
+          >
+            Popüler Kategoriler
+          </h2>
+          <span class="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
+        </div>
+
+        <ul class="mt-4 flex flex-wrap items-center gap-2">
+          {categories.map((category) => (
+            <li>
+              <a
+                href={`/kategori/${category.slug}`}
+                class="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3.5 py-1.5 text-xs font-medium text-zinc-700 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-600"
+              >
+                {category.name}
+                <span class="text-zinc-400 dark:text-zinc-500">{category.count}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    popularProducts.length > 0 && (
+      <section class="mx-auto max-w-6xl px-4 pb-16" aria-labelledby="notfound-products">
+        <div class="flex items-center gap-3">
+          <h2
+            id="notfound-products"
+            class="text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-50"
+          >
+            Öne Çıkan Ürünler
+          </h2>
+          <span class="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
+        </div>
+
+        <ul class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          {popularProducts.map((product) => (
+            <li>
+              <a
+                href={`/urun/${product.slug}`}
+                class="group flex h-full flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white transition-all duration-200 ease-smooth hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-lift dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
+              >
+                <span class="flex aspect-[4/5] w-full items-center justify-center overflow-hidden border-b border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-800">
+                  {product.images?.[0] ? (
+                    <img
+                      src={product.images[0]}
+                      alt={product.name}
+                      loading="lazy"
+                      decoding="async"
+                      class="h-full w-full object-cover transition-transform duration-500 ease-smooth group-hover:scale-105"
+                    />
+                  ) : (
+                    <span class="text-xs text-zinc-400 dark:text-zinc-600">
+                      Görsel yok
+                    </span>
+                  )}
+                </span>
+                <span class="line-clamp-2 p-3.5 text-sm font-medium leading-snug text-zinc-900 dark:text-zinc-100">
+                  {product.name}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
 </Layout>
