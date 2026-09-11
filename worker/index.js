@@ -15,6 +15,44 @@
 /** Shopier OAuth token endpoint'i (varsayilan). Gerekirse env ile override edilebilir. */
 const DEFAULT_TOKEN_ENDPOINT = 'https://www.shopier.com/oauth/token';
 
+/**
+ * FAZ B — B3: Kategori birlestirme sonrasi 301 yonlendirme haritasi.
+ *
+ * Ince/zayif kategoriler birlestirildigi icin eski kategori slug'lari artik
+ * statik olarak URETILMEZ. Bu harita, eski URL'leri yeni birlesik kategoriye
+ * kalici (301) olarak yonlendirir; boylece eski linkler ve arama motoru
+ * indeksleri yeni sayfaya tasinir.
+ *
+ * Anahtar: eski kategori slug'i. Deger: yeni kategori slug'i.
+ */
+const CATEGORY_REDIRECTS = {
+  ayna: 'duvar-dekorasyon',
+  'duvar-sticker': 'duvar-dekorasyon',
+  'duvar-dekorasyon-urunu': 'duvar-dekorasyon',
+  'motosiklet-luzumlu-urun': 'tankpad-sticker',
+};
+
+/**
+ * `/kategori/<slug>` yolunu (opsiyonel son egik cizgi ile) ayristirir.
+ * Eslesme yoksa `null` doner.
+ *
+ * @param {string} pathname
+ * @returns {string|null} Yonlendirilecek hedef yol ya da null.
+ */
+function resolveCategoryRedirect(pathname) {
+  const match = /^\/kategori\/([^/]+)\/?$/.exec(pathname);
+  if (!match) {
+    return null;
+  }
+
+  const target = CATEGORY_REDIRECTS[match[1]];
+  if (!target) {
+    return null;
+  }
+
+  return `/kategori/${target}`;
+}
+
 /** Basit HTML kacis — kullanici girdisini yanita basmadan once temizler. */
 function escapeHtml(value) {
   const AMP = String.fromCharCode(38) + 'amp;'; // &
@@ -213,6 +251,19 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const { pathname } = url;
+
+    // FAZ B — B3: Eski kategori URL'lerini yeni birlesik kategoriye 301 ile
+    // yonlendir. Yalnizca GET/HEAD istekleri yonlendirilir; diger metotlar
+    // statik akisa birakilir.
+    if (request.method === 'GET' || request.method === 'HEAD') {
+      const redirectTarget = resolveCategoryRedirect(pathname);
+      if (redirectTarget) {
+        const location = new URL(redirectTarget, url.origin);
+        // Query string (varsa) korunur; boylece UTM/izleme parametreleri kaybolmaz.
+        location.search = url.search;
+        return Response.redirect(location.toString(), 301);
+      }
+    }
 
     if (pathname === '/shopier/oauth/callback' && request.method === 'GET') {
       return handleOAuthCallback(request, env);

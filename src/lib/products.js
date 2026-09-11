@@ -327,23 +327,90 @@ export function getProductBySlug(slug) {
 }
 
 /**
- * Builds a de-duplicated, alphabetically sorted category list with product counts.
+ * FAZ B — B3: Kategori birleştirme katmanı.
+ *
+ * Trendyol'dan gelen ham kategori slug'larını, vitrinde gösterilecek
+ * birleştirilmiş/sadeleştirilmiş kategorilere eşler. Bu katman sayesinde
+ * `src/data/products.json` HAM VERİSİ DEĞİŞMEZ; sonraki Trendyol sync'i
+ * eşlemeyi otomatik olarak korur.
+ *
+ * Anahtar: kaynak kategori slug'ı (products.json içindeki `category.slug`).
+ * Değer: `{ name, slug }` — birleşik görünen kategori.
+ *
+ * Birleştirme kararları (ince/zayıf kategoriler güçlü kategorilere taşınır):
+ *  - "Duvar Sticker" + "Duvar Dekorasyon Ürünü" + "Ayna" → "Duvar & Dekorasyon"
+ *  - "Motosiklet Lüzumlu Ürün" → "Tankpad & Sticker"
+ *  - Diğerleri (arma-sticker-fosfor-serit, motosiklet-jant-serit, reflektor,
+ *    ofis-sarf-tuketim-malzemesi) aynen kalır.
+ *
+ * @type {Record<string, {name: string, slug: string}>}
+ */
+export const CATEGORY_MAP = {
+  'duvar-sticker': { name: 'Duvar & Dekorasyon', slug: 'duvar-dekorasyon' },
+  'duvar-dekorasyon-urunu': { name: 'Duvar & Dekorasyon', slug: 'duvar-dekorasyon' },
+  ayna: { name: 'Duvar & Dekorasyon', slug: 'duvar-dekorasyon' },
+  'motosiklet-luzumlu-urun': { name: 'Tankpad & Sticker', slug: 'tankpad-sticker' },
+}
+
+/**
+ * Eski (kaldırılan) kategori slug'larından yeni birleşik slug'lara 301
+ * yönlendirme haritası. `worker/index.js` bu haritayı kullanır; ayrıca
+ * dokümantasyon/doğrulama amaçlı burada da tutulur.
+ *
+ * @type {Record<string, string>}
+ */
+export const CATEGORY_REDIRECTS = {
+  ayna: 'duvar-dekorasyon',
+  'duvar-sticker': 'duvar-dekorasyon',
+  'duvar-dekorasyon-urunu': 'duvar-dekorasyon',
+  'motosiklet-luzumlu-urun': 'tankpad-sticker',
+}
+
+/**
+ * Bir ürünün ham kategorisini birleşik görünen kategoriye çevirir.
+ * Eşleme yoksa ham kategori aynen döndürülür.
+ *
+ * @param {{id?: string, name?: string, slug?: string}|undefined} category
+ * @returns {{id: string, name: string, slug: string}|undefined}
+ */
+export function resolveCategory(category) {
+  if (!category) {
+    return undefined
+  }
+
+  const mapped = CATEGORY_MAP[category.slug]
+  if (!mapped) {
+    return category
+  }
+
+  return {
+    id: category.id,
+    name: mapped.name,
+    slug: mapped.slug,
+  }
+}
+
+/**
+ * Builds a de-duplicated, alphabetically sorted category list with product
+ * counts, applying the `CATEGORY_MAP` merge layer so thin categories collapse
+ * into their consolidated counterparts.
+ *
  * @returns {Array<{id: string, name: string, slug: string, count: number}>}
  */
 export function getAllCategories() {
   const map = new Map()
 
   for (const product of getAllProducts()) {
-    const category = product.category
+    const category = resolveCategory(product.category)
     if (!category) {
       continue
     }
 
-    const existing = map.get(category.id)
+    const existing = map.get(category.slug)
     if (existing) {
       existing.count += 1
     } else {
-      map.set(category.id, {
+      map.set(category.slug, {
         id: category.id,
         name: category.name,
         slug: category.slug,
@@ -356,14 +423,17 @@ export function getAllCategories() {
 }
 
 /**
- * Returns all products belonging to the given category slug.
+ * Returns all products belonging to the given (consolidated) category slug.
+ * The merge layer is applied so legacy slugs resolve to their new category.
+ *
  * @param {string} categorySlug
  * @returns {Array<object>}
  */
 export function getProductsByCategory(categorySlug) {
-  return getAllProducts().filter(
-    (product) => product.category && product.category.slug === categorySlug
-  )
+  return getAllProducts().filter((product) => {
+    const category = resolveCategory(product.category)
+    return category && category.slug === categorySlug
+  })
 }
 
 /**

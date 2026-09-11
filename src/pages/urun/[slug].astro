@@ -12,6 +12,7 @@ import { siteConfig } from '../../config/site.js'
 import {
   getAllProducts,
   getProductsByCategory,
+  resolveCategory,
   sanitizeCatalogText,
   detectCompatibleModels,
   getProductPrimaryImage,
@@ -71,16 +72,20 @@ const totalStock = variants.reduce(
 )
 const inStock = totalStock > 0
 
+// FAZ B — B3: Ham kategoriyi birleşik görünen kategoriye çevir; breadcrumb,
+// kategori linkleri ve ilgili ürünler yeni birleşik kategoriyle tutarlı olsun.
+const category = resolveCategory(product.category) || product.category
+
 const canonicalUrl = `${siteConfig.domain}/urun/${product.slug}`
-const categoryUrl = `${siteConfig.domain}/kategori/${product.category.slug}`
+const categoryUrl = `${siteConfig.domain}/kategori/${category.slug}`
 
 const breadcrumbItems = [
   { label: 'Ana Sayfa', href: '/' },
-  { label: product.category.name, href: `/kategori/${product.category.slug}` },
+  { label: category.name, href: `/kategori/${category.slug}` },
   { label: product.name },
 ]
 
-const relatedProducts = getProductsByCategory(product.category.slug)
+const relatedProducts = getProductsByCategory(category.slug)
   .filter((item) => item.slug !== product.slug)
   .slice(0, 4)
 
@@ -222,7 +227,7 @@ const attributeRows = Object.entries(firstVariant.attributes || {}).map(([key, v
 const specRows = [
   { key: 'ÜRÜN KODU', value: firstVariant.sku || String(product.id) },
   { key: 'BARKOD', value: firstVariant.barcode || '—' },
-  { key: 'KATEGORİ', value: product.category.name },
+  { key: 'KATEGORİ', value: category.name },
   { key: 'MARKA', value: product.brand || siteConfig.name },
   ...attributeRows,
   { key: 'KARGO', value: siteConfig.badges.shipping },
@@ -412,7 +417,7 @@ const breadcrumbJsonLd = {
     {
       '@type': 'ListItem',
       position: 2,
-      name: product.category.name,
+      name: category.name,
       item: categoryUrl,
     },
     {
@@ -459,10 +464,10 @@ const faqJsonLd = {
         <div class="flex flex-col gap-3">
           <div class="flex flex-wrap items-center gap-2">
             <a
-              href={`/kategori/${product.category.slug}`}
+              href={`/kategori/${category.slug}`}
               class="inline-flex w-fit items-center rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-medium text-zinc-600 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600"
             >
-              {product.category.name}
+              {category.name}
             </a>
             <span class="text-xs text-zinc-400 dark:text-zinc-500">
               {firstVariant.barcode || firstVariant.sku || product.id}
