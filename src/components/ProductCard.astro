@@ -28,6 +28,7 @@ const cheapest = pricedVariants.reduce((min, variant) => {
 }, null)
 
 const salePrice = cheapest ?? 0
+const hasPrice = cheapest !== null && cheapest > 0
 
 const basePrice = pricedVariants.reduce((max, variant) => {
   const value = Number(variant.price)
@@ -75,6 +76,7 @@ function formatPrice(value) {
           src={image}
           alt={product.name}
           loading="lazy"
+          decoding="async"
           class="h-full w-full object-cover transition-transform duration-500 ease-smooth group-hover:scale-105"
         />
       ) : (
@@ -88,6 +90,14 @@ function formatPrice(value) {
       hasDiscount && (
         <span class="absolute bottom-2 left-2 inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-2xs font-semibold text-white dark:bg-zinc-50 dark:text-zinc-900">
           %{discountRate} İndirim
+        </span>
+      )
+    }
+
+    {
+      !hasPrice && (
+        <span class="absolute bottom-2 left-2 inline-flex items-center rounded-md bg-amber-500 px-2 py-1 text-2xs font-semibold text-white">
+          Fiyat Sorunuz
         </span>
       )
     }
@@ -111,13 +121,21 @@ function formatPrice(value) {
 
     <div class="mt-auto flex flex-col gap-1.5 pt-1">
       <div class="flex items-baseline gap-2">
-        <span class="text-base font-bold text-zinc-900 dark:text-zinc-50">
-          {formatPrice(salePrice)}
-        </span>
         {
-          hasDiscount && (
-            <span class="text-xs text-zinc-400 line-through dark:text-zinc-500">
-              {formatPrice(basePrice)}
+          hasPrice ? (
+            <>
+              <span class="text-base font-bold text-zinc-900 dark:text-zinc-50">
+                {formatPrice(salePrice)}
+              </span>
+              {hasDiscount && (
+                <span class="text-xs text-zinc-400 line-through dark:text-zinc-500">
+                  {formatPrice(basePrice)}
+                </span>
+              )}
+            </>
+          ) : (
+            <span class="text-sm font-semibold text-amber-600 dark:text-amber-400">
+              Fiyat Sorunuz
             </span>
           )
         }

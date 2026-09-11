@@ -33,6 +33,7 @@ export default function Gallery({ images = [], title = '' }) {
             alt={title ? `${title} - görsel ${resolvedIndex + 1}` : 'Ürün görseli'}
             className="h-full w-full animate-fade-in object-cover"
             loading="eager"
+            decoding="async"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-xs text-zinc-400 dark:text-zinc-600">
@@ -70,6 +71,7 @@ export default function Gallery({ images = [], title = '' }) {
                     }
                     className="h-full w-full object-cover"
                     loading="lazy"
+                    decoding="async"
                   />
                 </button>
               </li>

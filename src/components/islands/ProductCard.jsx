@@ -49,6 +49,7 @@ export default function ProductCard({ product }) {
   }, null)
 
   const salePrice = cheapest ?? 0
+  const hasPrice = cheapest !== null && cheapest > 0
 
   const basePrice = pricedVariants.reduce((max, variant) => {
     const value = Number(variant.price)
@@ -84,6 +85,7 @@ export default function ProductCard({ product }) {
             src={image}
             alt={product.name}
             loading="lazy"
+            decoding="async"
             className="h-full w-full object-cover transition-transform duration-500 ease-smooth group-hover:scale-105"
           />
         ) : (
@@ -95,6 +97,12 @@ export default function ProductCard({ product }) {
         {hasDiscount && (
           <span className="absolute bottom-2 left-2 inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-2xs font-semibold text-white dark:bg-zinc-50 dark:text-zinc-900">
             %{discountRate} İndirim
+          </span>
+        )}
+
+        {!hasPrice && (
+          <span className="absolute bottom-2 left-2 inline-flex items-center rounded-md bg-amber-500 px-2 py-1 text-2xs font-semibold text-white">
+            Fiyat Sorunuz
           </span>
         )}
 
@@ -115,12 +123,20 @@ export default function ProductCard({ product }) {
 
         <div className="mt-auto flex flex-col gap-1.5 pt-1">
           <div className="flex items-baseline gap-2">
-            <span className="text-base font-bold text-zinc-900 dark:text-zinc-50">
-              {formatPrice(salePrice)}
-            </span>
-            {hasDiscount && (
-              <span className="text-xs text-zinc-400 line-through dark:text-zinc-500">
-                {formatPrice(basePrice)}
+            {hasPrice ? (
+              <>
+                <span className="text-base font-bold text-zinc-900 dark:text-zinc-50">
+                  {formatPrice(salePrice)}
+                </span>
+                {hasDiscount && (
+                  <span className="text-xs text-zinc-400 line-through dark:text-zinc-500">
+                    {formatPrice(basePrice)}
+                  </span>
+                )}
+              </>
+            ) : (
+              <span className="text-sm font-semibold text-amber-600 dark:text-amber-400">
+                Fiyat Sorunuz
               </span>
             )}
           </div>

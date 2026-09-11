@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Search, X } from 'lucide-react'
-import productsData from '../../data/products.json'
-import { searchProducts } from '../../lib/products.js'
+
+const SEARCH_INDEX_URL = '/search-index.json'
+const DEBOUNCE_MS = 200
+const MAX_RESULTS = 6
 
 /**
  * Formats a numeric price as a Turkish Lira string.
@@ -10,7 +12,7 @@ import { searchProducts } from '../../lib/products.js'
  */
 function formatPrice(value) {
   const numeric = Number(value)
-  if (!Number.isFinite(numeric)) {
+  if (!Number.isFinite(numeric) || numeric <= 0) {
     return ''
   }
   return `${numeric.toLocaleString('tr-TR', {
@@ -20,66 +22,108 @@ function formatPrice(value) {
 }
 
 /**
- * Returns the effective display price for a product (lowest sale price).
- * @param {object} product
- * @returns {number}
+ * Normalizes a string for Turkish-aware, case-insensitive comparison.
+ * @param {string} str
+ * @returns {string}
  */
-function displayPrice(product) {
-  const variants = Array.isArray(product?.variants) ? product.variants : []
-  if (variants.length === 0) {
-    return 0
-  }
-  return (
-    variants.reduce((min, variant) => {
-      const value = Number(variant.salePrice ?? variant.price)
-      if (!Number.isFinite(value)) {
-        return min
-      }
-      return min === null || value < min ? value : min
-    }, null) ?? 0
-  )
+function normalizeTr(str) {
+  return String(str || '')
+    .replace(/[İIıi]/g, 'i')
+    .replace(/Ş/g, 's')
+    .replace(/ş/g, 's')
+    .replace(/Ğ/g, 'g')
+    .replace(/ğ/g, 'g')
+    .replace(/Ü/g, 'u')
+    .replace(/ü/g, 'u')
+    .replace(/Ö/g, 'o')
+    .replace(/ö/g, 'o')
+    .replace(/Ç/g, 'c')
+    .replace(/ç/g, 'c')
+    .toLowerCase()
 }
 
 /**
- * Resolves the primary barcode / SKU shown on the result row.
- * @param {object} product
- * @returns {string}
+ * Filters the slim search index by name, category or barcode.
+ * @param {Array<object>} index
+ * @param {string} query
+ * @returns {Array<object>}
  */
-function primaryCode(product) {
-  const variants = Array.isArray(product?.variants) ? product.variants : []
-  const first = variants[0]
-  return first?.barcode || first?.sku || String(product?.id || '')
+function filterIndex(index, query) {
+  const normalizedQuery = normalizeTr(query.trim())
+  if (normalizedQuery === '') {
+    return []
+  }
+
+  return index.filter((item) => {
+    if (normalizeTr(item.name).includes(normalizedQuery)) {
+      return true
+    }
+    if (normalizeTr(item.category).includes(normalizedQuery)) {
+      return true
+    }
+    return normalizeTr(item.barcode).includes(normalizedQuery)
+  })
 }
 
 /**
  * Client-side product search with an instant dropdown result list (barcode,
- * category, price). Reflects the query into the URL via `?q=` and closes on
- * outside click or Escape.
+ * category, price). The product index is fetched lazily from
+ * `/search-index.json` on first focus and cached in a ref, so the island
+ * bundle no longer embeds the full catalog. Input changes are debounced.
  *
  * @param {object} props
- * @param {Array<object>} [props.products]
  * @param {string} [props.placeholder]
  */
-export default function SearchBar({
-  products,
-  placeholder = 'Ürün / barkod ara...',
-}) {
-  const allProducts = useMemo(
-    () => (Array.isArray(products) ? products : productsData.products || []),
-    [products]
-  )
-
+export default function SearchBar({ placeholder = 'Ürün / barkod ara...' }) {
   const [query, setQuery] = useState('')
+  const [debouncedQuery, setDebouncedQuery] = useState('')
   const [isOpen, setIsOpen] = useState(false)
-  const containerRef = useRef(null)
+  const [index, setIndex] = useState([])
 
-  const results = useMemo(() => {
-    const trimmed = query.trim()
-    if (trimmed === '') {
-      return []
+  const containerRef = useRef(null)
+  const indexRef = useRef(null)
+  const fetchPromiseRef = useRef(null)
+  const debounceRef = useRef(null)
+
+  /**
+   * Fetches the search index once and caches both the promise and the result.
+   * Subsequent calls reuse the in-flight promise or the cached array.
+   */
+  const loadIndex = useCallback(() => {
+    if (indexRef.current) {
+      return Promise.resolve(indexRef.current)
     }
-    return searchProducts(allProducts, trimmed).slice(0, 6)
-  }, [allProducts, query])
+    if (fetchPromiseRef.current) {
+      return fetchPromiseRef.current
+    }
+
+    const promise = fetch(SEARCH_INDEX_URL)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Arama dizini yüklenemedi (${response.status})`)
+        }
+        return response.json()
+      })
+      .then((data) => {
+        const list = Array.isArray(data) ? data : []
+        indexRef.current = list
+        setIndex(list)
+        return list
+      })
+      .catch(() => {
+        // Allow a later retry if the network request failed.
+        fetchPromiseRef.current = null
+        return []
+      })
+
+    fetchPromiseRef.current = promise
+    return promise
+  }, [])
+
+  const handleFocus = useCallback(() => {
+    loadIndex()
+    setIsOpen(query.trim() !== '')
+  }, [loadIndex, query])
 
   const syncUrl = useCallback((value) => {
     if (typeof window === 'undefined') {
@@ -101,15 +145,37 @@ export default function SearchBar({
       setQuery(value)
       setIsOpen(value.trim() !== '')
       syncUrl(value)
+      loadIndex()
+
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current)
+      }
+      debounceRef.current = setTimeout(() => {
+        setDebouncedQuery(value)
+      }, DEBOUNCE_MS)
     },
-    [syncUrl]
+    [loadIndex, syncUrl]
   )
 
   const handleClear = useCallback(() => {
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current)
+    }
     setQuery('')
+    setDebouncedQuery('')
     setIsOpen(false)
     syncUrl('')
   }, [syncUrl])
+
+  // Clear any pending debounce timer on unmount.
+  useEffect(
+    () => () => {
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current)
+      }
+    },
+    []
+  )
 
   useEffect(() => {
     if (typeof document === 'undefined') {
@@ -136,6 +202,11 @@ export default function SearchBar({
     }
   }, [])
 
+  const results = useMemo(
+    () => filterIndex(index, debouncedQuery).slice(0, MAX_RESULTS),
+    [index, debouncedQuery]
+  )
+
   const showDropdown = isOpen && query.trim() !== ''
 
   return (
@@ -149,7 +220,7 @@ export default function SearchBar({
           type="search"
           value={query}
           onChange={handleChange}
-          onFocus={() => setIsOpen(query.trim() !== '')}
+          onFocus={handleFocus}
           placeholder={placeholder}
           aria-label="Ürün ara"
           aria-expanded={showDropdown}
@@ -199,12 +270,13 @@ export default function SearchBar({
                     className="flex items-center gap-3 px-3 py-2.5 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800"
                   >
                     <span className="h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800">
-                      {product.images?.[0] && (
+                      {product.image && (
                         <img
-                          src={product.images[0]}
+                          src={product.image}
                           alt={product.name}
                           className="h-full w-full object-cover"
                           loading="lazy"
+                          decoding="async"
                         />
                       )}
                     </span>
@@ -213,13 +285,13 @@ export default function SearchBar({
                         {product.name}
                       </span>
                       <span className="flex items-center gap-2 text-xs text-zinc-400 dark:text-zinc-500">
-                        <span className="truncate">{primaryCode(product)}</span>
+                        <span className="truncate">{product.barcode}</span>
                         <span aria-hidden="true">·</span>
-                        <span className="truncate">{product.category?.name}</span>
+                        <span className="truncate">{product.category}</span>
                       </span>
                     </span>
                     <span className="shrink-0 text-xs font-semibold text-zinc-900 dark:text-zinc-100">
-                      {formatPrice(displayPrice(product))}
+                      {formatPrice(product.salePrice ?? product.price) || 'Fiyat Sorunuz'}
                     </span>
                   </a>
                 </li>

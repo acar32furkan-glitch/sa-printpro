@@ -8,7 +8,7 @@ import { featuredSlugs } from '../config/featured.js'
  */
 function normalizeTr(str) {
   return str
-    .replace(/[İI]/g, 'i')
+    .replace(/[İIıi]/g, 'i')
     .replace(/Ş/g, 's')
     .replace(/ş/g, 's')
     .replace(/Ğ/g, 'g')

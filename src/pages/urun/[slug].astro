@@ -57,10 +57,66 @@ const relatedProducts = getProductsByCategory(product.category.slug)
   .filter((item) => item.slug !== product.slug)
   .slice(0, 4)
 
-const plainDescription = String(product.descriptionHtml || '')
-  .replace(/<[^>]*>/g, ' ')
+/**
+ * Decodes the common HTML entities that Trendyol descriptions contain so the
+ * meta description and JSON-LD never leak raw `&nbsp;` / `&` sequences.
+ * @param {string} value
+ * @returns {string}
+ */
+function decodeHtmlEntities(value) {
+  const named = {
+    ['&nbsp;']: ' ',
+    ['&amp;']: '&',
+    ['&quot;']: '"',
+    ['&#39;']: '\'',
+    ['&apos;']: '\'',
+    ['&lt;']: '<',
+    ['&gt;']: '>',
+    ['&hellip;']: '\u2026',
+    ['&mdash;']: '\u2014',
+    ['&ndash;']: '\u2013',
+    ['&rsquo;']: '\u2019',
+    ['&lsquo;']: '\u2018',
+    ['&rdquo;']: '\u201D',
+    ['&ldquo;']: '\u201C',
+    ['&deg;']: '\u00B0',
+    ['&times;']: '\u00D7',
+    ['&euro;']: '\u20AC',
+    ['&trade;']: '\u2122',
+    ['&reg;']: '\u00AE',
+    ['&copy;']: '\u00A9',
+  }
+  const decodeOnce = (input) =>
+    String(input || '')
+      .replace(/&#x([0-9a-f]+);/gi, (_, hex) =>
+        String.fromCodePoint(parseInt(hex, 16))
+      )
+      .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(Number(dec)))
+      .replace(/&[a-z]+;/gi, (entity) => named[entity.toLowerCase()] ?? ' ')
+
+  // Kaynak veri bazen çift kodlanmış olabiliyor (ör. &quot;); sabitlenene
+  // kadar çözerek meta etiketlerde ham entity kalmasını engelle.
+  let decoded = String(value || '')
+  for (let i = 0; i < 3; i += 1) {
+    const next = decodeOnce(decoded)
+    if (next === decoded) {
+      break
+    }
+    decoded = next
+  }
+  return decoded
+}
+
+const plainDescription = decodeHtmlEntities(
+  String(product.descriptionHtml || '').replace(/<[^>]*>/g, ' ')
+)
   .replace(/\s+/g, ' ')
   .trim()
+
+const metaDescription =
+  plainDescription.length > 0
+    ? plainDescription.slice(0, 160)
+    : `${product.name} - En uygun fiyat, dayanıklı malzeme ve hızlı kargo avantajıyla SA Printpro'da.`
 
 // Technical spec sheet rows derived from the first variant + site config.
 const firstVariant = variants[0] || {}
@@ -162,7 +218,7 @@ const faqJsonLd = {
 
 <Layout
   title={product.name}
-  description={plainDescription.slice(0, 160)}
+  description={metaDescription}
   image={Array.isArray(product.images) ? product.images[0] : undefined}
   canonicalUrl={canonicalUrl}
   type="product"

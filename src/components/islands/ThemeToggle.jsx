@@ -5,7 +5,8 @@ const STORAGE_KEY = 'theme'
 
 /**
  * Resolves the theme that should be active on first paint.
- * Priority: stored preference > OS preference > light (default).
+ * Priority: stored preference > light (default). The OS preference is
+ * intentionally ignored so the site always starts in light mode.
  * @returns {'light'|'dark'}
  */
 function resolveInitialTheme() {
@@ -20,13 +21,6 @@ function resolveInitialTheme() {
     }
   } catch {
     // Ignore storage failures (private mode, quota, etc.)
-  }
-
-  if (
-    typeof window.matchMedia === 'function' &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  ) {
-    return 'dark'
   }
 
   return 'light'
@@ -53,40 +47,6 @@ export default function ThemeToggle() {
   useEffect(() => {
     applyTheme(theme)
   }, [theme])
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
-      return undefined
-    }
-
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-
-    const handleChange = (event) => {
-      let stored = null
-      try {
-        stored = window.localStorage.getItem(STORAGE_KEY)
-      } catch {
-        stored = null
-      }
-
-      // Only follow the OS when the user has not made an explicit choice.
-      if (stored === 'dark' || stored === 'light') {
-        return
-      }
-
-      const next = event.matches ? 'dark' : 'light'
-      setTheme(next)
-      applyTheme(next)
-    }
-
-    if (typeof mediaQuery.addEventListener === 'function') {
-      mediaQuery.addEventListener('change', handleChange)
-      return () => mediaQuery.removeEventListener('change', handleChange)
-    }
-
-    mediaQuery.addListener(handleChange)
-    return () => mediaQuery.removeListener(handleChange)
-  }, [])
 
   const toggleTheme = useCallback(() => {
     setTheme((current) => {

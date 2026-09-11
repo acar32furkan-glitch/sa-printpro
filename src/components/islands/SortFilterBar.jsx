@@ -13,7 +13,7 @@ const SORT_OPTIONS = [
  */
 function readInitialState() {
   if (typeof window === 'undefined') {
-    return { sort: 'default', inStock: false }
+    return { sort: 'default', inStock: true }
   }
 
   const params = new URLSearchParams(window.location.search)
@@ -22,7 +22,9 @@ function readInitialState() {
 
   return {
     sort: SORT_OPTIONS.some((option) => option.value === sort) ? sort : 'default',
-    inStock: inStock === 'true' || inStock === '1',
+    // Stokta olmayan ürünler varsayılan olarak gizlenir; kullanıcı
+    // `?inStock=false` ile tümünü görebilir.
+    inStock: inStock === null ? true : inStock === 'true' || inStock === '1',
   }
 }
 

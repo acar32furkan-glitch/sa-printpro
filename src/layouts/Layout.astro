@@ -28,6 +28,9 @@ const faviconHref = `/${siteConfig.faviconFile}`
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)" />
 
+    <link rel="preconnect" href="https://cdn.dsmcdn.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.dsmcdn.com" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,13 +48,12 @@ const faviconHref = `/${siteConfig.faviconFile}`
 
     <script is:inline>
       // Runs before first paint to avoid a flash of the wrong theme.
+      // The site defaults to light mode; dark is only applied when the user
+      // has explicitly chosen it (stored preference).
       (function () {
         try {
           var stored = localStorage.getItem('theme')
-          var prefersDark =
-            !('theme' in localStorage) &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches
-          if (stored === 'dark' || prefersDark) {
+          if (stored === 'dark') {
             document.documentElement.classList.add('dark')
           } else {
             document.documentElement.classList.remove('dark')
