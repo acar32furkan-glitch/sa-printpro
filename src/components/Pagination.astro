@@ -1,0 +1,121 @@
+---
+import { getPageNumbers, pageUrl } from '../lib/pagination.js'
+
+/**
+ * FAZ B — B4: Erişilebilir, gerçek `<a href>` tabanlı statik sayfalama.
+ *
+ * JavaScript olmayan istemciler ve arama motorları tüm sayfalara
+ * gezinebilir. Sayfa 1 parametresiz URL'e (`/urunler`), diğer sayfalar
+ * `/urunler/2` biçimine işaret eder.
+ */
+const {
+  basePath,
+  currentPage = 1,
+  totalPages = 1,
+  ariaLabel = 'Sayfalama',
+} = Astro.props
+
+const current = Math.max(1, Number(currentPage) || 1)
+const total = Math.max(1, Number(totalPages) || 1)
+
+const hasPrev = current > 1
+const hasNext = current < total
+
+const prevUrl = hasPrev ? pageUrl(basePath, current - 1) : null
+const nextUrl = hasNext ? pageUrl(basePath, current + 1) : null
+
+const pageNumbers = getPageNumbers(current, total)
+
+const linkBase =
+  'inline-flex h-9 min-w-9 items-center justify-center rounded-lg border px-3 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 dark:focus-visible:ring-zinc-100 dark:focus-visible:ring-offset-zinc-900'
+const linkIdle =
+  'border-zinc-300 bg-white text-zinc-700 hover:border-zinc-500 hover:text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-500 dark:hover:text-zinc-50'
+const linkActive =
+  'border-zinc-900 bg-zinc-900 text-white dark:border-zinc-100 dark:bg-zinc-100 dark:text-zinc-900'
+const linkDisabled =
+  'cursor-not-allowed border-zinc-200 bg-zinc-50 text-zinc-300 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-600'
+---
+
+{
+  total > 1 && (
+    <nav aria-label={ariaLabel} class="mt-10 flex justify-center">
+      <ul class="flex flex-wrap items-center justify-center gap-1.5">
+        <li>
+          {hasPrev ? (
+            <a
+              href={prevUrl}
+              rel="prev"
+              aria-label="Önceki sayfa"
+              class={`${linkBase} ${linkIdle}`}
+            >
+              ← Önceki
+            </a>
+          ) : (
+            <span
+              aria-disabled="true"
+              aria-label="Önceki sayfa yok"
+              class={`${linkBase} ${linkDisabled}`}
+            >
+              ← Önceki
+            </span>
+          )}
+        </li>
+
+        {pageNumbers.map((entry) =>
+          entry === '…' ? (
+            <li>
+              <span
+                aria-hidden="true"
+                class="inline-flex h-9 min-w-9 items-center justify-center px-1 text-sm text-zinc-400 dark:text-zinc-500"
+              >
+                …
+              </span>
+            </li>
+          ) : (
+            <li>
+              {entry === current ? (
+                <a
+                  href={pageUrl(basePath, entry)}
+                  aria-current="page"
+                  aria-label={`Sayfa ${entry}, geçerli sayfa`}
+                  class={`${linkBase} ${linkActive}`}
+                >
+                  {entry}
+                </a>
+              ) : (
+                <a
+                  href={pageUrl(basePath, entry)}
+                  aria-label={`Sayfa ${entry}`}
+                  class={`${linkBase} ${linkIdle}`}
+                >
+                  {entry}
+                </a>
+              )}
+            </li>
+          )
+        )}
+
+        <li>
+          {hasNext ? (
+            <a
+              href={nextUrl}
+              rel="next"
+              aria-label="Sonraki sayfa"
+              class={`${linkBase} ${linkIdle}`}
+            >
+              Sonraki →
+            </a>
+          ) : (
+            <span
+              aria-disabled="true"
+              aria-label="Sonraki sayfa yok"
+              class={`${linkBase} ${linkDisabled}`}
+            >
+              Sonraki →
+            </span>
+          )}
+        </li>
+      </ul>
+    </nav>
+  )
+}

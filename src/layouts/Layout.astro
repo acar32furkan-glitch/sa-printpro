@@ -13,6 +13,9 @@ const {
   canonicalUrl = Astro.url.href,
   type = 'website',
   noindex = false,
+  // FAZ B — B4: Statik sayfalama için rel="prev"/rel="next" hedefleri.
+  prevUrl = null,
+  nextUrl = null,
 } = Astro.props
 
 const faviconHref = `/${siteConfig.faviconFile}`
@@ -74,6 +77,8 @@ const organizationJsonLd = {
       canonicalUrl={canonicalUrl}
       type={type}
       noindex={noindex}
+      prevUrl={prevUrl}
+      nextUrl={nextUrl}
     />
 
     <script is:inline>

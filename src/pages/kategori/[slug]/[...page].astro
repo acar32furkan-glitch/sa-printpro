@@ -1,0 +1,153 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import Breadcrumb from '../../../components/Breadcrumb.astro'
+import Pagination from '../../../components/Pagination.astro'
+import ProductGridStatic from '../../../components/islands/ProductGridStatic.jsx'
+import { siteConfig } from '../../../config/site.js'
+import {
+  getAllBrandsWithCounts,
+  getAllCategories,
+  getProductsByCategory,
+  getSortedProducts,
+} from '../../../lib/products.js'
+import { PAGE_SIZE, getTotalPages, pageUrl, paginate } from '../../../lib/pagination.js'
+
+/**
+ * FAZ B — B4: `/kategori/{slug}` için path-based statik sayfalama.
+ *
+ * Sayfa 1 → `/kategori/{slug}`, sayfa 2 → `/kategori/{slug}/2`, ...
+ * Ürün sayısı 24'ten azsa yalnızca 1 sayfa üretilir.
+ */
+export function getStaticPaths() {
+  const paths = []
+
+  for (const category of getAllCategories()) {
+    const products = getSortedProducts(getProductsByCategory(category.slug))
+    const totalPages = getTotalPages(products.length, PAGE_SIZE)
+
+    for (let page = 1; page <= totalPages; page += 1) {
+      paths.push({
+        params: {
+          slug: category.slug,
+          // Sayfa 1 parametresiz URL, diğerleri `/kategori/{slug}/N`.
+          page: page === 1 ? undefined : String(page),
+        },
+        props: {
+          category,
+          page,
+          totalPages,
+          products: paginate(products, page, PAGE_SIZE),
+        },
+      })
+    }
+  }
+
+  return paths
+}
+
+const { category, page, totalPages, products } = Astro.props
+
+const brands = getAllBrandsWithCounts()
+
+const basePath = `/kategori/${category.slug}`
+const canonicalUrl = `${siteConfig.domain}${pageUrl(basePath, page)}`
+
+const prevUrl =
+  page > 1 ? `${siteConfig.domain}${pageUrl(basePath, page - 1)}` : null
+const nextUrl =
+  page < totalPages ? `${siteConfig.domain}${pageUrl(basePath, page + 1)}` : null
+
+const pageSuffix = page > 1 ? ` — Sayfa ${page}` : ''
+const title = `${category.name}${pageSuffix}`
+// Sayfa numarası açıklamaya eklenir; böylece sayfalanan URL'lerin meta
+// açıklamaları birbirinden farklı olur (yinelenen içerik sinyalini önler).
+const description = (
+  page > 1
+    ? `${category.name} kategorisinde ${category.count} ürün — Sayfa ${page}/${totalPages}. ${siteConfig.name} kataloğunda fiyatları karşılaştırın.`
+    : `${category.name} kategorisinde ${category.count} ürün. ${siteConfig.name} kataloğunda fiyatları karşılaştırın.`
+).slice(0, 160)
+
+const breadcrumbItems = [
+  { label: 'Ana Sayfa', href: '/' },
+  { label: category.name, href: page > 1 ? basePath : undefined },
+  ...(page > 1 ? [{ label: `Sayfa ${page}` }] : []),
+]
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Ana Sayfa',
+      item: `${siteConfig.domain}/`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: category.name,
+      item: `${siteConfig.domain}${basePath}`,
+    },
+    ...(page > 1
+      ? [
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: `Sayfa ${page}`,
+            item: canonicalUrl,
+          },
+        ]
+      : []),
+  ],
+}
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  prevUrl={prevUrl}
+  nextUrl={nextUrl}
+  noindex={category.count === 0}
+>
+  <div class="mx-auto max-w-6xl px-4">
+    <Breadcrumb items={breadcrumbItems} />
+  </div>
+
+  <section class="mx-auto max-w-6xl px-4 pb-12">
+    <header class="flex flex-wrap items-baseline justify-between gap-2">
+      <h1 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        {category.name}
+      </h1>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400">
+        {category.count} ürün
+        {totalPages > 1 && ` · Sayfa ${page}/${totalPages}`}
+      </p>
+    </header>
+
+    {
+      category.count === 0 ? (
+        <p class="mt-8 rounded-lg border border-dashed border-zinc-300 px-6 py-16 text-center text-sm text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
+          Bu kategoride henüz ürün bulunmuyor.
+        </p>
+      ) : (
+        <div class="mt-8">
+          <ProductGridStatic client:idle products={products} brands={brands} />
+        </div>
+      )
+    }
+
+    <Pagination
+      basePath={basePath}
+      currentPage={page}
+      totalPages={totalPages}
+      ariaLabel={`${category.name} ürün sayfaları`}
+    />
+  </section>
+
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(breadcrumbJsonLd)}
+  />
+</Layout>

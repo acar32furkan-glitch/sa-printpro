@@ -1,0 +1,115 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Pagination from '../../components/Pagination.astro'
+import ProductGridStatic from '../../components/islands/ProductGridStatic.jsx'
+import { siteConfig } from '../../config/site.js'
+import {
+  getAllBrandsWithCounts,
+  getAllCategories,
+  getSortedProducts,
+} from '../../lib/products.js'
+import { PAGE_SIZE, getTotalPages, pageUrl, paginate } from '../../lib/pagination.js'
+
+/**
+ * FAZ B — B4: `/urunler` için path-based statik sayfalama.
+ *
+ * Sayfa 1 → `/urunler`, sayfa 2 → `/urunler/2`, ... Her sayfa 24 ürünü
+ * sunucu tarafında statik HTML olarak render eder (arama motorları ve JS'siz
+ * istemciler görebilir). Sıralama/stok/marka filtresi, sayfadaki 24 ürün
+ * üzerinde client-side çalışan `ProductGridStatic` adasıyla korunur.
+ */
+export function getStaticPaths() {
+  const products = getSortedProducts()
+  const totalPages = getTotalPages(products.length, PAGE_SIZE)
+
+  return Array.from({ length: totalPages }, (_, index) => {
+    const page = index + 1
+    return {
+      // Sayfa 1 parametresiz URL (`/urunler`), diğerleri `/urunler/N`.
+      params: { page: page === 1 ? undefined : String(page) },
+      props: {
+        page,
+        totalPages,
+        products: paginate(products, page, PAGE_SIZE),
+      },
+    }
+  })
+}
+
+const { page, totalPages, products } = Astro.props
+
+const allProducts = getSortedProducts()
+const totalProducts = allProducts.length
+const categories = getAllCategories()
+const brands = getAllBrandsWithCounts()
+
+const basePath = '/urunler'
+const canonicalUrl = `${siteConfig.domain}${pageUrl(basePath, page)}`
+
+const prevUrl =
+  page > 1 ? `${siteConfig.domain}${pageUrl(basePath, page - 1)}` : null
+const nextUrl =
+  page < totalPages ? `${siteConfig.domain}${pageUrl(basePath, page + 1)}` : null
+
+const pageSuffix = page > 1 ? ` — Sayfa ${page}` : ''
+const title = `Ürünler${pageSuffix}`
+// Sayfa numarası açıklamaya eklenir; böylece sayfalanan URL'lerin meta
+// açıklamaları birbirinden farklı olur (yinelenen içerik sinyalini önler).
+const description = (
+  page > 1
+    ? `${siteConfig.name} kataloğundaki tüm ürünler (${totalProducts} adet) — Sayfa ${page}/${totalPages}. Fiyata göre sıralayın, stoktakileri filtreleyin.`
+    : `${siteConfig.name} kataloğundaki tüm ürünler (${totalProducts} adet). Fiyata göre sıralayın, stoktakileri filtreleyin.`
+).slice(0, 160)
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  prevUrl={prevUrl}
+  nextUrl={nextUrl}
+>
+  <section class="mx-auto max-w-6xl px-4 pt-8">
+    <div class="flex flex-wrap items-baseline justify-between gap-2">
+      <h1 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        Tüm Ürünler
+      </h1>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400">
+        {totalProducts} ürün · {categories.length} kategori
+        {totalPages > 1 && ` · Sayfa ${page}/${totalPages}`}
+      </p>
+    </div>
+
+    {
+      categories.length > 0 && (
+        <nav class="mt-5" aria-label="Kategoriler">
+          <ul class="flex flex-wrap items-center gap-2">
+            {categories.map((category) => (
+              <li>
+                <a
+                  href={`/kategori/${category.slug}`}
+                  class="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3.5 py-1.5 text-xs font-medium text-zinc-700 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-600"
+                >
+                  {category.name}
+                  <span class="text-zinc-400 dark:text-zinc-500">
+                    {category.count}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-8" aria-label="Ürünler">
+    <ProductGridStatic client:idle products={products} brands={brands} />
+    <Pagination
+      basePath={basePath}
+      currentPage={page}
+      totalPages={totalPages}
+      ariaLabel="Ürün sayfaları"
+    />
+  </section>
+</Layout>
