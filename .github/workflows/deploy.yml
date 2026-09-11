@@ -1,0 +1,62 @@
+name: Deploy to Cloudflare Workers
+
+# ---------------------------------------------------------------------------
+# Otomatik dağıtım (CI/CD) — SA Printpro
+#
+# Bu iş akışı, `main` dalına yapılan her push'ta statik Astro çıktısını
+# derler ve Cloudflare Worker'a (`sa-printpro`) dağıtır. Ayrıca Actions
+# sekmesinden manuel olarak da tetiklenebilir.
+#
+# GEREKLİ GITHUB SECRET'LARI (Settings > Secrets and variables > Actions):
+#   - CLOUDFLARE_API_TOKEN   : Workers Scripts:Edit izinli API token
+#   - CLOUDFLARE_ACCOUNT_ID  : Cloudflare hesap kimliği
+#
+# NOT: `sync.yml` ve `trendyol-sync.yml` yalnızca katalog senkronizasyonu
+# yapar; dağıtım YAPMAZ. Dağıtım tek sorumluluk olarak bu dosyadadır.
+# ---------------------------------------------------------------------------
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Aynı anda birden fazla dağıtımı engelle; yeni push eskiyi iptal etsin.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Build & Deploy Worker
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1) Depoyu çek
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2) Node.js kurulumu (npm cache ile)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 3) Bağımlılıkları kur (peer-dependency çakışmaları için legacy flag)
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      # 4) Statik siteyi derle (dist/ üretilir)
+      - name: Build site
+        run: npm run build
+
+      # 5) Cloudflare Worker'a dağıt (wrangler.toml kullanılır)
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
