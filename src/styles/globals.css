@@ -78,6 +78,11 @@
     @apply inline-flex items-center justify-center gap-2 rounded-lg border border-zinc-900 bg-zinc-900 px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-50 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-white;
   }
 
+  /* Trendyol Boost CTA — brand orange (#F27A1A). */
+  .btn-trendyol {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-[#d96a12] bg-[#F27A1A] px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#d96a12] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
   /* WhatsApp / emerald CTA. */
   .btn-whatsapp {
     @apply inline-flex items-center justify-center gap-2 rounded-lg border border-emerald-700 bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-50;

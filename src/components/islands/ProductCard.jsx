@@ -1,3 +1,6 @@
+import { siteConfig } from '../../config/site.js'
+import { calculateDirectPrice } from '../../lib/products.js'
+
 /**
  * Formats a numeric price as a Turkish Lira string.
  * @param {number} value
@@ -66,6 +69,13 @@ export default function ProductCard({ product }) {
     ? Math.round(((basePrice - salePrice) / basePrice) * 100)
     : 0
 
+  // Web'e özel doğrudan satış fiyatı (son hanesi her zaman 5).
+  const features = siteConfig.features || {}
+  const enableDirectDiscount = features.enableDirectDiscount !== false
+  const directDiscountPercent = Math.round((Number(features.directDiscountRate) || 0) * 100)
+  const directPrice = enableDirectDiscount ? calculateDirectPrice(salePrice) : 0
+  const showDirectPrice = enableDirectDiscount && hasPrice && directPrice > 0
+
   const totalStock = variants.reduce(
     (sum, variant) => sum + (Number(variant.stock) || 0),
     0
@@ -122,24 +132,40 @@ export default function ProductCard({ product }) {
         </h3>
 
         <div className="mt-auto flex flex-col gap-1.5 pt-1">
-          <div className="flex items-baseline gap-2">
-            {hasPrice ? (
-              <>
-                <span className="text-base font-bold text-zinc-900 dark:text-zinc-50">
-                  {formatPrice(salePrice)}
+          {showDirectPrice ? (
+            <>
+              <div className="flex items-baseline gap-2">
+                <span className="text-base font-bold text-emerald-600 dark:text-emerald-400">
+                  {formatPrice(directPrice)}
                 </span>
-                {hasDiscount && (
-                  <span className="text-xs text-zinc-400 line-through dark:text-zinc-500">
-                    {formatPrice(basePrice)}
-                  </span>
-                )}
-              </>
-            ) : (
-              <span className="text-sm font-semibold text-amber-600 dark:text-amber-400">
-                Fiyat Sorunuz
+                <span className="inline-flex items-center rounded bg-emerald-600 px-1.5 py-0.5 text-2xs font-semibold text-white">
+                  %{directDiscountPercent} İndirimli
+                </span>
+              </div>
+              <span className="text-xs text-zinc-400 line-through dark:text-zinc-500">
+                Trendyol: {formatPrice(salePrice)}
               </span>
-            )}
-          </div>
+            </>
+          ) : (
+            <div className="flex items-baseline gap-2">
+              {hasPrice ? (
+                <>
+                  <span className="text-base font-bold text-zinc-900 dark:text-zinc-50">
+                    {formatPrice(salePrice)}
+                  </span>
+                  {hasDiscount && (
+                    <span className="text-xs text-zinc-400 line-through dark:text-zinc-500">
+                      {formatPrice(basePrice)}
+                    </span>
+                  )}
+                </>
+              ) : (
+                <span className="text-sm font-semibold text-amber-600 dark:text-amber-400">
+                  Fiyat Sorunuz
+                </span>
+              )}
+            </div>
+          )}
 
           <span className="flex items-center gap-1.5 text-xs">
             {inStock ? (

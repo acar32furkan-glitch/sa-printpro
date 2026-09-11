@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
-import { ShoppingBag, MessageCircle } from 'lucide-react'
+import { ShoppingBag, MessageCircle, ShoppingCart, BadgePercent } from 'lucide-react'
 import { siteConfig } from '../../config/site.js'
+import { getTrendyolProductUrl, calculateDirectPrice } from '../../lib/products.js'
 import shopierMap from '../../config/shopier.json'
 
 /**
@@ -97,11 +98,44 @@ export default function VariantSelector({ product, shopier }) {
   const sku = selectedVariant?.sku || ''
   const shopierUrl = resolveShopierUrl(shopierData, barcode)
 
+  // Feature flags — Trendyol CTA ve web'e özel indirim davranışını yönetir.
+  const features = siteConfig.features || {}
+  const enableTrendyolCta = features.enableTrendyolCta !== false
+  const enableDirectDiscount = features.enableDirectDiscount !== false
+
+  // Trendyol liste fiyatı (indirim varsa salePrice, yoksa price).
+  const trendyolPrice = hasDiscount ? salePrice : price
+
+  // Web'e özel doğrudan satış fiyatı — son hanesi her zaman 5.
+  const directPrice = enableDirectDiscount ? calculateDirectPrice(trendyolPrice) : 0
+  const directDiscountRate = Number(features.directDiscountRate) || 0
+  const directDiscountPercent = Math.round(directDiscountRate * 100)
+  const showDirectPrice = enableDirectDiscount && directPrice > 0 && trendyolPrice > 0
+
+  // Trendyol Boost CTA — hedef link seçili varyanta göre anlık güncellenir.
+  const trendyolUrl = getTrendyolProductUrl(product, selectedVariant)
+
+  /**
+   * Fires the GA4 outbound event for the Trendyol Boost CTA when gtag exists.
+   */
+  function handleTrendyolClick() {
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('event', 'outbound_trendyol_click', {
+        product_name: product?.name || '',
+        barcode,
+        price: hasDiscount ? salePrice : price,
+      })
+    }
+  }
+
   const whatsappNumber = String(siteConfig.contact.whatsapp || '').replace(/\D/g, '')
   const attributeSummary = formatAttributes(selectedVariant?.attributes)
-  const whatsappMessage = `Merhaba, ${product?.name || ''} (${
-    attributeSummary || 'Varsayılan'
-  } - Barkod: ${barcode}) siparişi vermek istiyorum.`
+  const variantLabel = attributeSummary || 'Varsayılan'
+
+  // İndirimli doğrudan sipariş mesajı — web'e özel fiyatı vurgular.
+  const whatsappMessage = showDirectPrice
+    ? `Merhaba, ${product?.name || ''} (${variantLabel}) için web sitenize özel indirimli ${directPrice} TL fiyatından sipariş vermek istiyorum.`
+    : `Merhaba, ${product?.name || ''} (${variantLabel} - Barkod: ${barcode}) siparişi vermek istiyorum.`
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     whatsappMessage
   )}`
@@ -109,22 +143,48 @@ export default function VariantSelector({ product, shopier }) {
   return (
     <div className="flex flex-col gap-6">
       {/* Price block. */}
-      <div className="flex flex-col gap-2 border-y border-zinc-200 py-4 dark:border-zinc-800">
-        <div className="flex flex-wrap items-baseline gap-3">
-          <span className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            {formatPrice(hasDiscount ? salePrice : price)}
-          </span>
-          {hasDiscount && (
-            <>
-              <span className="text-lg text-zinc-400 line-through dark:text-zinc-500">
-                {formatPrice(price)}
+      <div className="flex flex-col gap-3 border-y border-zinc-200 py-4 dark:border-zinc-800">
+        {showDirectPrice ? (
+          <>
+            <div className="flex flex-wrap items-baseline gap-3">
+              <span className="text-3xl font-bold tracking-tight text-emerald-600 dark:text-emerald-400">
+                {formatPrice(directPrice)}
               </span>
-              <span className="inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-2xs font-semibold text-white dark:bg-zinc-50 dark:text-zinc-900">
-                %{discountRate} İndirim
+              <span className="inline-flex items-center gap-1 rounded-md bg-emerald-600 px-2 py-1 text-2xs font-semibold text-white">
+                <BadgePercent className="h-3 w-3" aria-hidden="true" />
+                Doğrudan Siparişte: {formatPrice(directPrice)} (%{directDiscountPercent}{' '}
+                İndirimli)
               </span>
-            </>
-          )}
-        </div>
+            </div>
+            <div className="flex flex-wrap items-baseline gap-2 text-sm">
+              <span className="text-zinc-500 dark:text-zinc-400">Trendyol:</span>
+              <span className="text-zinc-400 line-through dark:text-zinc-500">
+                {formatPrice(trendyolPrice)}
+              </span>
+              {hasDiscount && (
+                <span className="text-xs text-zinc-400 dark:text-zinc-500">
+                  (liste {formatPrice(price)})
+                </span>
+              )}
+            </div>
+          </>
+        ) : (
+          <div className="flex flex-wrap items-baseline gap-3">
+            <span className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+              {formatPrice(trendyolPrice)}
+            </span>
+            {hasDiscount && (
+              <>
+                <span className="text-lg text-zinc-400 line-through dark:text-zinc-500">
+                  {formatPrice(price)}
+                </span>
+                <span className="inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-2xs font-semibold text-white dark:bg-zinc-50 dark:text-zinc-900">
+                  %{discountRate} İndirim
+                </span>
+              </>
+            )}
+          </div>
+        )}
         <span className="text-xs text-zinc-400 dark:text-zinc-500">
           KDV Dahil · Barkod {barcode || '—'}
           {sku ? ` · SKU ${sku}` : ''}
@@ -191,40 +251,87 @@ export default function VariantSelector({ product, shopier }) {
         )}
       </div>
 
-      {/* Dual-channel purchase CTA. */}
+      {/* Multi-channel purchase CTA — hiyerarşi feature flag'e göre değişir. */}
       <div className="flex flex-col gap-3">
-        {shopierUrl ? (
-          <a
-            href={shopierUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary w-full"
-          >
-            <ShoppingBag className="h-5 w-5" aria-hidden="true" />
-            Shopier ile Güvenli Al
-          </a>
-        ) : (
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-whatsapp w-full"
-          >
-            <MessageCircle className="h-5 w-5" aria-hidden="true" />
-            WhatsApp ile Sipariş Ver
-          </a>
-        )}
+        {enableTrendyolCta ? (
+          <>
+            <a
+              href={trendyolUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleTrendyolClick}
+              className="btn-trendyol w-full"
+            >
+              <ShoppingCart className="h-5 w-5" aria-hidden="true" />
+              {"Trendyol'dan Satın Al"}
+            </a>
 
-        {shopierUrl && (
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-secondary w-full"
-          >
-            <MessageCircle className="h-4 w-4" aria-hidden="true" />
-            WhatsApp ile Sipariş Ver
-          </a>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-whatsapp w-full"
+            >
+              <MessageCircle className="h-5 w-5" aria-hidden="true" />
+              {showDirectPrice
+                ? `İndirimli Al (WhatsApp) · ${formatPrice(directPrice)}`
+                : 'WhatsApp ile Sipariş Ver'}
+            </a>
+
+            {shopierUrl && (
+              <a
+                href={shopierUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary w-full"
+              >
+                <ShoppingBag className="h-4 w-4" aria-hidden="true" />
+                Shopier ile Güvenli Al
+              </a>
+            )}
+          </>
+        ) : (
+          <>
+            {shopierUrl ? (
+              <a
+                href={shopierUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-whatsapp w-full py-3.5 text-base"
+              >
+                <ShoppingBag className="h-5 w-5" aria-hidden="true" />
+                {showDirectPrice
+                  ? `Shopier ile Al · ${formatPrice(directPrice)}`
+                  : 'Shopier ile Güvenli Al'}
+              </a>
+            ) : (
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-whatsapp w-full py-3.5 text-base"
+              >
+                <MessageCircle className="h-5 w-5" aria-hidden="true" />
+                {showDirectPrice
+                  ? `İndirimli Al (WhatsApp) · ${formatPrice(directPrice)}`
+                  : 'WhatsApp ile Sipariş Ver'}
+              </a>
+            )}
+
+            {shopierUrl && (
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary w-full"
+              >
+                <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                {showDirectPrice
+                  ? `İndirimli Al (WhatsApp) · ${formatPrice(directPrice)}`
+                  : 'WhatsApp ile Sipariş Ver'}
+              </a>
+            )}
+          </>
         )}
 
         <p className="flex items-center justify-center gap-2 text-xs text-zinc-400 dark:text-zinc-500">
