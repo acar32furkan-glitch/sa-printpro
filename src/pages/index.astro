@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro'
+import HowToApply from '../components/HowToApply.astro'
+import ProductGrid from '../components/islands/ProductGrid.jsx'
+import { siteConfig } from '../config/site.js'
+import { getAllCategories, getAllProducts } from '../lib/products.js'
+
+const products = getAllProducts()
+const categories = getAllCategories()
+const productCount = products.length
+---
+
+<Layout
+  title={siteConfig.name}
+  description={`${siteConfig.name} — ${productCount} reflektif sticker ve güvenlik etiketi ürünü. Kategorilere göz atın, fiyata göre sıralayın.`}
+  canonicalUrl={`${siteConfig.domain}/`}
+>
+  <section class="mx-auto max-w-6xl px-4 pt-8">
+    <div class="flex flex-wrap items-baseline justify-between gap-2">
+      <h1 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        Ürünler
+      </h1>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400">
+        {productCount} ürün · {categories.length} kategori
+      </p>
+    </div>
+
+    {
+      categories.length > 0 && (
+        <nav class="mt-5" aria-label="Kategoriler">
+          <ul class="flex flex-wrap items-center gap-2">
+            <li>
+              <a
+                href="/urunler"
+                class="inline-flex items-center rounded-full border border-zinc-900 bg-zinc-900 px-3.5 py-1.5 text-xs font-medium text-white transition-colors hover:bg-zinc-700 dark:border-zinc-100 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+              >
+                Tümü
+              </a>
+            </li>
+            {categories.map((category) => (
+              <li>
+                <a
+                  href={`/kategori/${category.slug}`}
+                  class="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3.5 py-1.5 text-xs font-medium text-zinc-700 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-600"
+                >
+                  {category.name}
+                  <span class="text-zinc-400 dark:text-zinc-500">
+                    {category.count}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-8" aria-label="Ürünler">
+    <ProductGrid client:idle products={products} />
+  </section>
+
+  <HowToApply />
+</Layout>

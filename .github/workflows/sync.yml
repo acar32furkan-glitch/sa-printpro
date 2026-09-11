@@ -1,0 +1,79 @@
+name: Trendyol Catalog Sync
+
+# ---------------------------------------------------------------------------
+# FAZ 5 — Otomasyon / CI-CD
+#
+# Trendyol Seller API (V2) üzerinden onaylı ürün kataloğunu çeker, normalize
+# eder ve `src/data/products.json` dosyasını günceller. Değişiklik yoksa
+# commit atılmaz (no-op); API hatasında mevcut katalog korunur ve iş akışı
+# zarifçe sonlanır — canlı site asla bozulmaz.
+#
+# Master Prompt §3 ile tam uyumludur.
+# ---------------------------------------------------------------------------
+
+on:
+  # Günde iki kez: 05:00 ve 17:00 UTC
+  schedule:
+    - cron: '0 5,17 * * *'
+  # Manuel tetikleme (Actions sekmesinden "Run workflow")
+  workflow_dispatch:
+
+# Commit & push yapabilmek için yazma izni gerekir.
+permissions:
+  contents: write
+
+# Aynı anda birden fazla senkronizasyon çalışmasını engelle.
+concurrency:
+  group: trendyol-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Sync Trendyol catalog
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1) Depoyu çek
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2) Node.js kurulumu (npm cache ile)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 3) Bağımlılıkları kur (peer-dependency çakışmaları için legacy flag)
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      # 4) Trendyol senkronizasyonu — kimlik bilgileri secret'lardan enjekte edilir
+      - name: Sync Trendyol catalog
+        env:
+          TRENDYOL_API_KEY: ${{ secrets.TRENDYOL_API_KEY }}
+          TRENDYOL_API_SECRET: ${{ secrets.TRENDYOL_API_SECRET }}
+          TRENDYOL_SUPPLIER_ID: ${{ secrets.TRENDYOL_SUPPLIER_ID }}
+        run: npm run sync
+
+      # 5) Değişiklik kontrolü — yoksa güvenli çıkış (no-op)
+      - name: Check for catalog changes
+        id: changes
+        run: |
+          if git diff --quiet -- src/data/products.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No catalog changes detected — skipping commit."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Catalog changes detected — commit will be created."
+          fi
+
+      # 6) Değişiklik varsa commit & push
+      - name: Commit and push changes
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "Trendyol Sync Bot"
+          git config user.email "actions@github.com"
+          git add src/data/products.json
+          git commit -m "chore(data): auto-sync trendyol catalog [skip ci]"
+          git push

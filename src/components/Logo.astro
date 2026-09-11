@@ -1,0 +1,24 @@
+---
+import { siteConfig } from '../config/site.js'
+---
+
+<a
+  href="/"
+  class="group inline-flex shrink-0 items-center rounded-lg transition-opacity hover:opacity-80"
+  aria-label={`${siteConfig.name} — ana sayfa`}
+>
+  <img
+    src={`/${siteConfig.logoFile}`}
+    alt={siteConfig.name}
+    width="800"
+    height="339"
+    class="h-9 w-auto object-contain dark:hidden"
+  />
+  <img
+    src={`/${siteConfig.logoDarkFile}`}
+    alt={siteConfig.name}
+    width="800"
+    height="339"
+    class="hidden h-9 w-auto object-contain dark:block"
+  />
+</a>

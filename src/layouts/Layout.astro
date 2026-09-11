@@ -1,0 +1,93 @@
+---
+import Seo from '../components/Seo.astro'
+import Navbar from '../components/Navbar.astro'
+import Footer from '../components/Footer.astro'
+import CookieBanner from '../components/islands/CookieBanner.jsx'
+import { siteConfig } from '../config/site.js'
+import '../styles/globals.css'
+
+const {
+  title = siteConfig.name,
+  description = `${siteConfig.name} — reflektif sticker ve güvenlik etiketi ürünleri.`,
+  image = `${siteConfig.domain}/${siteConfig.logoFile}`,
+  canonicalUrl = Astro.url.href,
+  type = 'website',
+} = Astro.props
+
+const faviconHref = `/${siteConfig.faviconFile}`
+---
+
+<!doctype html>
+<html lang="tr" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/png" href={faviconHref} />
+    <link rel="apple-touch-icon" href={faviconHref} />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    />
+
+    <Seo
+      title={title}
+      description={description}
+      image={image}
+      canonicalUrl={canonicalUrl}
+      type={type}
+    />
+
+    <script is:inline>
+      // Runs before first paint to avoid a flash of the wrong theme.
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          var prefersDark =
+            !('theme' in localStorage) &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+          if (stored === 'dark' || prefersDark) {
+            document.documentElement.classList.add('dark')
+          } else {
+            document.documentElement.classList.remove('dark')
+          }
+        } catch (error) {
+          // Storage unavailable (private mode, etc.) — fall back to light.
+        }
+      })()
+    </script>
+  </head>
+
+  <body
+    class="flex min-h-screen flex-col bg-white font-sans text-zinc-900 antialiased selection:bg-zinc-900 selection:text-white dark:bg-zinc-950 dark:text-zinc-100"
+  >
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:border focus:border-zinc-900 focus:bg-zinc-900 focus:px-4 focus:py-2 focus:text-xs focus:font-semibold focus:text-white dark:focus:border-zinc-50 dark:focus:bg-zinc-50 dark:focus:text-zinc-900"
+    >
+      İçeriğe geç
+    </a>
+
+    <Navbar />
+
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <CookieBanner client:load />
+
+    <script>
+      import { initConsent } from '../lib/consent.js'
+
+      // Re-activates GA4 when a previous visit already granted consent.
+      initConsent()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+---
+import { siteConfig } from '../config/site.js'
+
+const year = new Date().getFullYear()
+
+const whatsappNumber = String(siteConfig.contact.whatsapp || '').replace(/\D/g, '')
+
+const channels = [
+  {
+    label: 'WhatsApp',
+    href: `https://wa.me/${whatsappNumber}`,
+  },
+  {
+    label: 'Instagram',
+    href: `https://instagram.com/${siteConfig.contact.instagram}`,
+  },
+  {
+    label: 'E-posta',
+    href: `mailto:${siteConfig.contact.email}`,
+  },
+]
+
+const badges = [
+  siteConfig.badges?.shipping,
+  siteConfig.badges?.returns,
+  siteConfig.badges?.freeShipping,
+].filter(Boolean)
+---
+
+<footer class="border-t border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-950">
+  <div class="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10">
+    <div class="flex flex-wrap items-center gap-2">
+      {
+        badges.map((badge) => (
+          <span class="inline-flex items-center rounded-md border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300">
+            {badge}
+          </span>
+        ))
+      }
+    </div>
+
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+      <div class="flex flex-col gap-2">
+        <span class="text-base font-bold text-zinc-900 dark:text-zinc-50">
+          {siteConfig.name}
+        </span>
+        <span class="text-sm text-zinc-500 dark:text-zinc-400">
+          Reflektif sticker ve güvenlik etiketi ürünleri.
+        </span>
+      </div>
+
+      <ul class="flex flex-wrap items-center gap-5">
+        {
+          channels.map((channel) => (
+            <li>
+              <a
+                href={channel.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+              >
+                {channel.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div
+      class="flex flex-col gap-3 border-t border-zinc-200 pt-6 sm:flex-row sm:items-center sm:justify-between dark:border-zinc-800"
+    >
+      <p class="text-xs text-zinc-500 dark:text-zinc-400">
+        © {year} {siteConfig.name}. Tüm hakları saklıdır.
+      </p>
+    </div>
+  </div>
+</footer>

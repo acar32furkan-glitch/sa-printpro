@@ -1,0 +1,107 @@
+{
+  "generatedAt": "2026-09-11T00:00:00.000Z",
+  "products": [
+    {
+      "id": "12345",
+      "name": "Reflektif Sticker - Yuvarlak Güvenlik Etiketi",
+      "slug": "reflektif-sticker-yuvarlak-guvenlik-etiketi-12345",
+      "brand": "SA Printpro",
+      "category": {
+        "id": "101",
+        "name": "Reflektif Sticker",
+        "slug": "reflektif-sticker"
+      },
+      "descriptionHtml": "<p>Yüksek görünürlüklü yuvarlak reflektif güvenlik etiketi. Gece ve düşük ışık koşullarında maksimum yansıma sağlar. Su geçirmez, UV dayanımlı ve dış mekân kullanımına uygundur.</p><ul><li>Çap: 16 cm / 20 cm</li><li>Yansıma sınıfı: R2</li><li>Yapışkan: Güçlü akrilik</li></ul>",
+      "images": [
+        "https://cdn.dsmcdn.com/ty1234/product/media/images/20260911/reflective-round-sticker-16cm.jpg",
+        "https://cdn.dsmcdn.com/ty1235/product/media/images/20260911/reflective-round-sticker-20cm.jpg"
+      ],
+      "variants": [
+        {
+          "barcode": "8680001",
+          "sku": "STK-RND-16-WHT",
+          "attributes": { "Renk": "Beyaz", "Boyut": "16cm" },
+          "price": 120,
+          "salePrice": 99,
+          "stock": 50
+        },
+        {
+          "barcode": "8680002",
+          "sku": "STK-RND-20-WHT",
+          "attributes": { "Renk": "Beyaz", "Boyut": "20cm" },
+          "price": 150,
+          "salePrice": 129,
+          "stock": 32
+        }
+      ]
+    },
+    {
+      "id": "12346",
+      "name": "Reflektif Sticker - Dikdörtgen Araç Etiketi",
+      "slug": "reflektif-sticker-dikdortgen-arac-etiketi-12346",
+      "brand": "SA Printpro",
+      "category": {
+        "id": "101",
+        "name": "Reflektif Sticker",
+        "slug": "reflektif-sticker"
+      },
+      "descriptionHtml": "<p>Araç ve römorklar için dikdörtgen reflektif etiket. Yüksek yansıtıcılık ile gece güvenliğini artırır. Kolay uygulanır, iz bırakmadan çıkarılabilir.</p><ul><li>Ölçü: 10x20 cm / 15x30 cm</li><li>Renk: Kırmızı-Beyaz</li><li>Dış mekân dayanımlı</li></ul>",
+      "images": [
+        "https://cdn.dsmcdn.com/ty1236/product/media/images/20260911/reflective-rectangle-sticker-red.jpg",
+        "https://cdn.dsmcdn.com/ty1237/product/media/images/20260911/reflective-rectangle-sticker-yellow.jpg"
+      ],
+      "variants": [
+        {
+          "barcode": "8680003",
+          "sku": "STK-RCT-10X20-RED",
+          "attributes": { "Renk": "Kırmızı", "Boyut": "10x20cm" },
+          "price": 89,
+          "salePrice": 89,
+          "stock": 120
+        },
+        {
+          "barcode": "8680004",
+          "sku": "STK-RCT-15X30-YLW",
+          "attributes": { "Renk": "Sarı", "Boyut": "15x30cm" },
+          "price": 139,
+          "salePrice": 119,
+          "stock": 0
+        }
+      ]
+    },
+    {
+      "id": "12347",
+      "name": "Reflektif Sticker - Özel Kesim Logo Etiketi",
+      "slug": "reflektif-sticker-ozel-kesim-logo-etiketi-12347",
+      "brand": "SA Printpro",
+      "category": {
+        "id": "101",
+        "name": "Reflektif Sticker",
+        "slug": "reflektif-sticker"
+      },
+      "descriptionHtml": "<p>Markanıza özel kesim reflektif logo etiketi. Kask, bisiklet, motosiklet ve ekipmanlar için ideal. Yüksek yansıma performansı ve uzun ömürlü yapışkan.</p><ul><li>Özel kesim: Logo/şekil</li><li>Yansıma sınıfı: R3</li><li>Su ve çizilmeye dayanıklı</li></ul>",
+      "images": [
+        "https://cdn.dsmcdn.com/ty1238/product/media/images/20260911/reflective-custom-logo-sticker-black.jpg",
+        "https://cdn.dsmcdn.com/ty1239/product/media/images/20260911/reflective-custom-logo-sticker-silver.jpg"
+      ],
+      "variants": [
+        {
+          "barcode": "8680005",
+          "sku": "STK-CST-LOGO-BLK",
+          "attributes": { "Renk": "Siyah", "Boyut": "8cm" },
+          "price": 199,
+          "salePrice": 169,
+          "stock": 18
+        },
+        {
+          "barcode": "8680006",
+          "sku": "STK-CST-LOGO-SLV",
+          "attributes": { "Renk": "Gümüş", "Boyut": "12cm" },
+          "price": 249,
+          "salePrice": 219,
+          "stock": 7
+        }
+      ]
+    }
+  ]
+}

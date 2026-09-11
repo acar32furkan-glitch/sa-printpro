@@ -1,0 +1,558 @@
+#!/usr/bin/env node
+/**
+ * Trendyol ürün senkronizasyon script'i (FAZ 1).
+ *
+ * Trendyol Seller API (V2) üzerinden onaylı ürünleri ve fiyat/stok verisini çeker,
+ * Master Prompt §4 normalize şemasına dönüştürür ve `src/data/products.json`
+ * dosyasına atomik olarak yazar.
+ *
+ * Harici bağımlılık YOK — yalnızca Node built-in modülleri ve global `fetch`.
+ *
+ * Kullanım:
+ *   node scripts/fetch-trendyol.mjs
+ *   npm run sync
+ */
+
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
+
+// ---------------------------------------------------------------------------
+// Sabitler
+// ---------------------------------------------------------------------------
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const PROJECT_ROOT = path.resolve(__dirname, '..');
+
+const ENV_FILE = path.join(PROJECT_ROOT, '.env.local');
+const DATA_DIR = path.join(PROJECT_ROOT, 'src', 'data');
+const OUTPUT_FILE = path.join(DATA_DIR, 'products.json');
+const TMP_FILE = path.join(DATA_DIR, 'products.json.tmp');
+
+const BASE_URL = 'https://apigw.trendyol.com';
+const PAGE_SIZE = 100; // Trendyol üst sınırı
+const PAGE_DELAY_MS = 250; // Sayfalar arası bekleme (rate limit)
+const MAX_ATTEMPTS = 3; // İstek başına maksimum deneme
+const BACKOFF_BASE_MS = 1000; // Üssel geri çekilme tabanı: 1s → 2s → 4s
+
+// ---------------------------------------------------------------------------
+// Yardımcılar
+// ---------------------------------------------------------------------------
+
+/** Belirtilen milisaniye kadar bekler. */
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/** Türkçe log yardımcıları. */
+const log = {
+  info: (msg) => console.log(`[bilgi] ${msg}`),
+  step: (msg) => console.log(`[adım]  ${msg}`),
+  warn: (msg) => console.warn(`[uyarı] ${msg}`),
+  error: (msg) => console.error(`[hata]  ${msg}`),
+  success: (msg) => console.log(`[tamam] ${msg}`)
+};
+
+/**
+ * `.env.local` dosyasını manuel olarak parse eder (dotenv bağımlılığı yok).
+ * `process.env` içinde zaten tanımlı olan değerler korunur (öncelikli).
+ *
+ * @returns {Record<string, string>} Ortam değişkenleri haritası.
+ */
+function loadEnv() {
+  const env = {};
+
+  if (fs.existsSync(ENV_FILE)) {
+    const content = fs.readFileSync(ENV_FILE, 'utf8');
+    for (const rawLine of content.split(/\r?\n/)) {
+      const line = rawLine.trim();
+      if (!line || line.startsWith('#')) continue;
+
+      const eqIndex = line.indexOf('=');
+      if (eqIndex === -1) continue;
+
+      const key = line.slice(0, eqIndex).trim();
+      let value = line.slice(eqIndex + 1).trim();
+
+      // Çevreleyen tırnakları kaldır
+      if (
+        (value.startsWith('"') && value.endsWith('"')) ||
+        (value.startsWith("'") && value.endsWith("'"))
+      ) {
+        value = value.slice(1, -1);
+      }
+
+      if (key) env[key] = value;
+    }
+  }
+
+  // process.env öncelikli (CI ortamları için)
+  for (const key of ['TRENDYOL_API_KEY', 'TRENDYOL_API_SECRET', 'TRENDYOL_SUPPLIER_ID']) {
+    if (process.env[key]) env[key] = process.env[key];
+  }
+
+  return env;
+}
+
+/**
+ * Türkçe karakterleri sadeleştirip lowercase-hyphenate slug üretir.
+ *
+ * @param {string} text
+ * @returns {string}
+ */
+function slugify(text) {
+  if (!text) return '';
+
+  const map = {
+    İ: 'i',
+    I: 'i',
+    ı: 'i',
+    Ş: 's',
+    ş: 's',
+    Ğ: 'g',
+    ğ: 'g',
+    Ü: 'u',
+    ü: 'u',
+    Ö: 'o',
+    ö: 'o',
+    Ç: 'c',
+    ç: 'c'
+  };
+
+  return String(text)
+    .split('')
+    .map((ch) => map[ch] ?? ch)
+    .join('')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // kalan aksanları temizle
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .replace(/-{2,}/g, '-');
+}
+
+/**
+ * Çakışmayı önlemek için slug'a kısa bir sonek ekler.
+ *
+ * @param {string} baseSlug
+ * @param {string} suffix
+ * @returns {string}
+ */
+function withSuffix(baseSlug, suffix) {
+  const clean = slugify(suffix);
+  if (!clean) return baseSlug;
+  return baseSlug ? `${baseSlug}-${clean}` : clean;
+}
+
+/**
+ * `Retry-After` header'ını milisaniyeye çevirir.
+ * Saniye (ör. "5") veya HTTP-date formatını destekler.
+ *
+ * @param {string|null} headerValue
+ * @returns {number|null} Bekleme süresi (ms) veya parse edilemezse null.
+ */
+function parseRetryAfter(headerValue) {
+  if (!headerValue) return null;
+
+  const trimmed = headerValue.trim();
+
+  // Saniye formatı
+  if (/^\d+$/.test(trimmed)) {
+    return Number(trimmed) * 1000;
+  }
+
+  // HTTP-date formatı
+  const dateMs = Date.parse(trimmed);
+  if (!Number.isNaN(dateMs)) {
+    const delta = dateMs - Date.now();
+    return delta > 0 ? delta : 0;
+  }
+
+  return null;
+}
+
+/**
+ * 429 (rate limit) durumunda `Retry-After` header'ına uyar, yoksa üssel
+ * geri çekilme uygular. Diğer non-2xx hatalarda net hata fırlatır.
+ *
+ * @param {string} url
+ * @param {RequestInit} options
+ * @returns {Promise<any>} Parse edilmiş JSON gövdesi.
+ */
+async function fetchWithRetry(url, options) {
+  let lastError = null;
+
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    let response;
+    try {
+      response = await fetch(url, options);
+    } catch (networkError) {
+      lastError = networkError;
+      log.warn(`Ağ hatası (deneme ${attempt}/${MAX_ATTEMPTS}): ${networkError.message}`);
+      if (attempt < MAX_ATTEMPTS) {
+        const waitMs = BACKOFF_BASE_MS * 2 ** (attempt - 1);
+        log.info(`Yeniden denemeden önce ${waitMs}ms bekleniyor...`);
+        await sleep(waitMs);
+        continue;
+      }
+      throw new Error(`Ağ isteği başarısız oldu: ${networkError.message}`);
+    }
+
+    if (response.ok) {
+      return response.json();
+    }
+
+    // 429 — rate limit
+    if (response.status === 429) {
+      const retryAfterMs = parseRetryAfter(response.headers.get('retry-after'));
+      const waitMs = retryAfterMs ?? BACKOFF_BASE_MS * 2 ** (attempt - 1);
+
+      if (attempt < MAX_ATTEMPTS) {
+        log.warn(
+          `429 (rate limit) — deneme ${attempt}/${MAX_ATTEMPTS}. ` +
+            `${waitMs}ms bekleniyor${retryAfterMs !== null ? ' (Retry-After)' : ' (üssel backoff)'}...`
+        );
+        await sleep(waitMs);
+        continue;
+      }
+
+      lastError = new Error(`429 rate limit — ${MAX_ATTEMPTS} denemede aşılamadı: ${url}`);
+      break;
+    }
+
+    // Diğer non-2xx hatalar — net hata fırlat
+    const bodyText = await response.text().catch(() => '');
+    throw new Error(
+      `HTTP ${response.status} ${response.statusText} — ${url}` +
+        (bodyText ? `\nYanıt: ${bodyText.slice(0, 500)}` : '')
+    );
+  }
+
+  throw lastError ?? new Error(`İstek başarısız oldu: ${url}`);
+}
+
+/**
+ * Trendyol API için ortak header'ları üretir.
+ *
+ * @param {string} apiKey
+ * @param {string} apiSecret
+ * @param {string} supplierId
+ * @returns {Record<string, string>}
+ */
+function buildHeaders(apiKey, apiSecret, supplierId) {
+  const basic = Buffer.from(`${apiKey}:${apiSecret}`).toString('base64');
+  return {
+    Authorization: `Basic ${basic}`,
+    // ZORUNLU: yoksa 403 döner
+    'User-Agent': `${supplierId} - SelfIntegration`,
+    Accept: 'application/json'
+  };
+}
+
+/**
+ * Onaylı ürünleri sayfalayarak çeker.
+ * `page=0`'dan başlar, boş dizi dönene kadar döngü sürer.
+ * `totalElements`/`totalPages` varsayımı YAPILMAZ.
+ *
+ * @param {object} ctx
+ * @returns {Promise<object[]>}
+ */
+async function fetchAllApprovedProducts(ctx) {
+  const { supplierId, headers } = ctx;
+  const all = [];
+  let page = 0;
+
+  log.step('Onaylı ürünler çekiliyor...');
+
+  for (;;) {
+    const url =
+      `${BASE_URL}/integration/product/sellers/${supplierId}/products/approved` +
+      `?page=${page}&size=${PAGE_SIZE}`;
+
+    const data = await fetchWithRetry(url, { method: 'GET', headers });
+    const items = Array.isArray(data?.content) ? data.content : [];
+
+    if (items.length === 0) {
+      log.info(`Sayfa ${page}: boş dizi — döngü sonlandırılıyor.`);
+      break;
+    }
+
+    all.push(...items);
+    log.info(`Sayfa ${page}: ${items.length} ürün alındı (toplam: ${all.length}).`);
+
+    page += 1;
+    await sleep(PAGE_DELAY_MS);
+  }
+
+  log.success(`Toplam ${all.length} onaylı ürün çekildi.`);
+  return all;
+}
+
+/**
+ * Fiyat/stok verisini sayfalayarak çeker.
+ *
+ * @param {object} ctx
+ * @returns {Promise<object[]>}
+ */
+async function fetchInventoryAndPrice(ctx) {
+  const { supplierId, headers } = ctx;
+  const all = [];
+  let page = 0;
+
+  log.step('Fiyat/stok verisi çekiliyor...');
+
+  for (;;) {
+    const url =
+      `${BASE_URL}/integration/product/sellers/${supplierId}/products/approved/inventory-and-price` +
+      `?page=${page}&size=${PAGE_SIZE}`;
+
+    const data = await fetchWithRetry(url, { method: 'GET', headers });
+    const items = Array.isArray(data?.content) ? data.content : [];
+
+    if (items.length === 0) {
+      log.info(`Sayfa ${page}: boş dizi — döngü sonlandırılıyor.`);
+      break;
+    }
+
+    all.push(...items);
+    log.info(`Sayfa ${page}: ${items.length} kayıt alındı (toplam: ${all.length}).`);
+
+    page += 1;
+    await sleep(PAGE_DELAY_MS);
+  }
+
+  log.success(`Toplam ${all.length} fiyat/stok kaydı çekildi.`);
+  return all;
+}
+
+/**
+ * Fiyat/stok kayıtlarını `barcode` (yoksa `id`) bazlı bir Map'e dönüştürür.
+ *
+ * @param {object[]} inventoryItems
+ * @returns {Map<string, object>}
+ */
+function buildPriceMap(inventoryItems) {
+  const map = new Map();
+  for (const item of inventoryItems) {
+    const key = item?.barcode != null ? String(item.barcode) : item?.id != null ? String(item.id) : null;
+    if (key) map.set(key, item);
+  }
+  return map;
+}
+
+/**
+ * Trendyol `attributes` dizisini `{ [name]: value }` map'ine çevirir.
+ *
+ * @param {object[]|undefined} attributes
+ * @returns {Record<string, string>}
+ */
+function normalizeAttributes(attributes) {
+  const result = {};
+  if (!Array.isArray(attributes)) return result;
+
+  for (const attr of attributes) {
+    const name = attr?.attributeName ?? attr?.name;
+    const value = attr?.attributeValue ?? attr?.value;
+    if (name != null && value != null) {
+      result[String(name)] = String(value);
+    }
+  }
+  return result;
+}
+
+/**
+ * Trendyol `images` dizisini URL listesine çevirir.
+ *
+ * @param {Array<object|string>|undefined} images
+ * @returns {string[]}
+ */
+function normalizeImages(images) {
+  if (!Array.isArray(images)) return [];
+  return images
+    .map((img) => (typeof img === 'string' ? img : img?.url))
+    .filter((url) => typeof url === 'string' && url.length > 0);
+}
+
+/**
+ * Ham Trendyol ürününü §4 normalize şemasına dönüştürür.
+ *
+ * @param {object} raw
+ * @param {Map<string, object>} priceMap
+ * @returns {object}
+ */
+function normalizeProduct(raw, priceMap) {
+  const id = String(raw?.id ?? raw?.productId ?? '');
+  const name = String(raw?.title ?? raw?.name ?? '');
+
+  // Fiyat/stok verisini barcode (yoksa id) üzerinden bul
+  const priceEntry =
+    (raw?.barcode != null && priceMap.get(String(raw.barcode))) ||
+    (id && priceMap.get(id)) ||
+    null;
+
+  const price = Number(priceEntry?.price ?? raw?.price ?? 0);
+  const rawSalePrice = priceEntry?.salePrice ?? raw?.salePrice;
+  const salePrice = rawSalePrice != null && rawSalePrice !== '' ? Number(rawSalePrice) : price;
+  const stock = Number(priceEntry?.quantity ?? priceEntry?.stock ?? raw?.quantity ?? raw?.stock ?? 0);
+
+  const categoryId = String(raw?.categoryId ?? raw?.category?.id ?? '');
+  const categoryName = String(raw?.categoryName ?? raw?.category?.name ?? '');
+
+  const variant = {
+    barcode: String(raw?.barcode ?? ''),
+    sku: String(raw?.stockCode ?? raw?.productCode ?? raw?.sku ?? ''),
+    attributes: normalizeAttributes(raw?.attributes),
+    price,
+    salePrice,
+    stock
+  };
+
+  return {
+    id,
+    name,
+    slug: withSuffix(slugify(name), id),
+    brand: String(raw?.brand ?? raw?.brandName ?? ''),
+    category: {
+      id: categoryId,
+      name: categoryName,
+      slug: slugify(categoryName)
+    },
+    descriptionHtml: String(raw?.description ?? ''),
+    images: normalizeImages(raw?.images),
+    variants: [variant]
+  };
+}
+
+/**
+ * Aynı `id`'ye sahip ürünleri birleştirir (dedup) ve varyantları toplar.
+ *
+ * @param {object[]} normalizedProducts
+ * @returns {object[]}
+ */
+function dedupeProducts(normalizedProducts) {
+  const map = new Map();
+
+  for (const product of normalizedProducts) {
+    if (!product.id) continue;
+
+    if (!map.has(product.id)) {
+      map.set(product.id, product);
+      continue;
+    }
+
+    // Aynı ürünün farklı varyantı — varyantı ekle
+    const existing = map.get(product.id);
+    const incoming = product.variants[0];
+    const alreadyExists = existing.variants.some(
+      (v) => v.barcode && v.barcode === incoming.barcode
+    );
+    if (!alreadyExists) {
+      existing.variants.push(incoming);
+    }
+  }
+
+  return Array.from(map.values());
+}
+
+/**
+ * Bir nesnenin SHA-256 hash'ini üretir.
+ *
+ * @param {string} content
+ * @returns {string}
+ */
+function sha256(content) {
+  return crypto.createHash('sha256').update(content, 'utf8').digest('hex');
+}
+
+/**
+ * Mevcut `products.json` içeriğini okur (yoksa null).
+ *
+ * @returns {string|null}
+ */
+function readExistingCatalog() {
+  if (!fs.existsSync(OUTPUT_FILE)) return null;
+  try {
+    return fs.readFileSync(OUTPUT_FILE, 'utf8');
+  } catch {
+    return null;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Ana akış
+// ---------------------------------------------------------------------------
+
+async function main() {
+  log.step('Trendyol senkronizasyonu başlatılıyor...');
+
+  // 1) Ortam değişkenleri
+  const env = loadEnv();
+  const apiKey = env.TRENDYOL_API_KEY;
+  const apiSecret = env.TRENDYOL_API_SECRET;
+  const supplierId = env.TRENDYOL_SUPPLIER_ID;
+
+  const missing = [];
+  if (!apiKey) missing.push('TRENDYOL_API_KEY');
+  if (!apiSecret) missing.push('TRENDYOL_API_SECRET');
+  if (!supplierId) missing.push('TRENDYOL_SUPPLIER_ID');
+
+  if (missing.length > 0) {
+    log.error(
+      `Eksik ortam değişkenleri: ${missing.join(', ')}. ` +
+        `Lütfen .env.local dosyasını doldurun (.env.example referans alın).`
+    );
+    process.exit(1);
+  }
+
+  const ctx = {
+    supplierId,
+    headers: buildHeaders(apiKey, apiSecret, supplierId)
+  };
+
+  // 2) Veri çekme
+  const approvedProducts = await fetchAllApprovedProducts(ctx);
+  const inventoryItems = await fetchInventoryAndPrice(ctx);
+
+  // 3) Birleştirme + normalize
+  log.step('Veriler birleştiriliyor ve normalize ediliyor...');
+  const priceMap = buildPriceMap(inventoryItems);
+  const normalized = approvedProducts.map((raw) => normalizeProduct(raw, priceMap));
+  const products = dedupeProducts(normalized);
+  log.success(`${products.length} benzersiz ürün normalize edildi.`);
+
+  // 4) Katalog nesnesi
+  const catalog = {
+    generatedAt: new Date().toISOString(),
+    products
+  };
+  const serialized = JSON.stringify(catalog, null, 2) + '\n';
+
+  // 5) No-op tespiti (hash karşılaştırması)
+  const existing = readExistingCatalog();
+  if (existing !== null) {
+    const existingHash = sha256(existing);
+    const newHash = sha256(serialized);
+    if (existingHash === newHash) {
+      log.info('No changes detected, skipping write');
+      process.exit(0);
+    }
+  }
+
+  // 6) Atomic write
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+    log.info(`Dizin oluşturuldu: ${path.relative(PROJECT_ROOT, DATA_DIR)}`);
+  }
+
+  fs.writeFileSync(TMP_FILE, serialized, 'utf8');
+  fs.renameSync(TMP_FILE, OUTPUT_FILE);
+  log.success(`Katalog yazıldı: ${path.relative(PROJECT_ROOT, OUTPUT_FILE)}`);
+}
+
+main().catch((error) => {
+  log.error(`Senkronizasyon başarısız oldu: ${error.message}`);
+  log.error('Mevcut products.json dosyasına DOKUNULMADI.');
+  process.exit(1);
+});

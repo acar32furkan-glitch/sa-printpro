@@ -1,0 +1,42 @@
+---
+import { siteConfig } from '../config/site.js'
+
+const {
+  title = siteConfig.name,
+  description = `${siteConfig.name} — reflektif sticker ve güvenlik etiketi ürünleri.`,
+  image = `${siteConfig.domain}/${siteConfig.logoFile}`,
+  canonicalUrl = Astro.url.href,
+  type = 'website',
+} = Astro.props
+
+const fullTitle = title === siteConfig.name ? title : `${title} | ${siteConfig.name}`
+const absoluteImage = image.startsWith('http')
+  ? image
+  : `${siteConfig.domain}${image.startsWith('/') ? '' : '/'}${image}`
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+<meta property="og:site_name" content={siteConfig.name} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={absoluteImage} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:type" content={type} />
+<meta property="og:locale" content="tr_TR" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={absoluteImage} />
+
+{
+  siteConfig.searchConsoleVerification && (
+    <meta
+      name="google-site-verification"
+      content={siteConfig.searchConsoleVerification}
+    />
+  )
+}

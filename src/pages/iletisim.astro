@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { siteConfig } from '../config/site.js'
+
+const whatsappNumber = String(siteConfig.contact.whatsapp || '').replace(/\D/g, '')
+
+const channels = [
+  {
+    label: 'WhatsApp',
+    description: 'Hızlı sipariş ve ürün soruları için yazın.',
+    href: `https://wa.me/${whatsappNumber}`,
+    cta: 'WhatsApp ile Yaz',
+  },
+  {
+    label: 'Instagram',
+    description: 'Yeni ürünler ve kampanyalar için bizi takip edin.',
+    href: `https://instagram.com/${siteConfig.contact.instagram}`,
+    cta: 'Instagram Profili',
+  },
+  {
+    label: 'E-posta',
+    description: 'Toptan ve kurumsal talepler için e-posta gönderin.',
+    href: `mailto:${siteConfig.contact.email}`,
+    cta: 'E-posta Gönder',
+  },
+]
+---
+
+<Layout
+  title="İletişim"
+  description={`${siteConfig.name} ile iletişime geçin: WhatsApp, Instagram ve e-posta kanalları.`}
+  canonicalUrl={`${siteConfig.domain}/iletisim`}
+>
+  <section class="mx-auto max-w-6xl px-4 pt-8">
+    <h1 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+      İletişim
+    </h1>
+    <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+      Sipariş ve ürün sorularınız için bize ulaşın.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-8">
+    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        channels.map((channel) => (
+          <li class="flex flex-col gap-4 rounded-lg border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="flex flex-col gap-1">
+              <h2 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+                {channel.label}
+              </h2>
+              <p class="text-sm text-zinc-600 dark:text-zinc-400">
+                {channel.description}
+              </p>
+            </div>
+
+            <a
+              href={channel.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary mt-auto w-full"
+            >
+              {channel.cta}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>

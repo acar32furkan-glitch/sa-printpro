@@ -1,0 +1,62 @@
+---
+import { siteConfig } from '../config/site.js'
+
+const steps = [
+  {
+    title: 'Temizle',
+    description:
+      'Uygulama yapacağınız yüzeyi toz, kir ve yağdan arındırın. Kuru ve pürüzsüz bir yüzey yapışma gücünü artırır.',
+  },
+  {
+    title: 'Hizala',
+    description:
+      'Koruyucu folyoyu yavaşça çıkarın ve etiketi hizalayarak yüzeye yerleştirin. Hava kabarcığı oluşmamasına dikkat edin.',
+  },
+  {
+    title: 'Yapıştır & Fönle',
+    description:
+      'Etiketin merkezinden kenarlara doğru kuvvetlice bastırın. Tam yapışma için 24 saat boyunca yıkamayın.',
+  },
+]
+
+const show = siteConfig.showHowToApply === true
+---
+
+{
+  show && (
+    <section
+      class="mx-auto max-w-6xl px-4 py-12"
+      aria-labelledby="how-to-apply-title"
+    >
+      <div class="flex items-center gap-3">
+        <h2
+          id="how-to-apply-title"
+          class="text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-50"
+        >
+          Sticker Uygulama Kılavuzu
+        </h2>
+        <span class="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
+      </div>
+      <p class="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+        3 adımda kolay uygulama.
+      </p>
+
+      <ol class="mt-8 grid gap-4 sm:grid-cols-3">
+        {steps.map((step, index) => (
+          <li class="flex flex-col gap-4 rounded-lg border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white dark:bg-zinc-50 dark:text-zinc-900">
+              {index + 1}
+            </span>
+
+            <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+              {step.title}
+            </h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">
+              {step.description}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )
+}

@@ -1,0 +1,312 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Breadcrumb from '../../components/Breadcrumb.astro'
+import ProductCard from '../../components/ProductCard.astro'
+import Gallery from '../../components/islands/Gallery.jsx'
+import VariantSelector from '../../components/islands/VariantSelector.jsx'
+import { siteConfig } from '../../config/site.js'
+import { getAllProducts, getProductsByCategory } from '../../lib/products.js'
+
+export function getStaticPaths() {
+  return getAllProducts().map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }))
+}
+
+const { product } = Astro.props
+
+const variants = Array.isArray(product.variants) ? product.variants : []
+
+const pricedVariants = variants.filter((variant) =>
+  Number.isFinite(Number(variant.salePrice ?? variant.price))
+)
+
+const lowestPrice = pricedVariants.reduce((min, variant) => {
+  const value = Number(variant.salePrice ?? variant.price)
+  if (min === null || value < min) {
+    return value
+  }
+  return min
+}, null)
+
+const highestPrice = pricedVariants.reduce((max, variant) => {
+  const value = Number(variant.salePrice ?? variant.price)
+  if (max === null || value > max) {
+    return value
+  }
+  return max
+}, null)
+
+const totalStock = variants.reduce(
+  (sum, variant) => sum + (Number(variant.stock) || 0),
+  0
+)
+const inStock = totalStock > 0
+
+const canonicalUrl = `${siteConfig.domain}/urun/${product.slug}`
+const categoryUrl = `${siteConfig.domain}/kategori/${product.category.slug}`
+
+const breadcrumbItems = [
+  { label: 'Ana Sayfa', href: '/' },
+  { label: product.category.name, href: `/kategori/${product.category.slug}` },
+  { label: product.name },
+]
+
+const relatedProducts = getProductsByCategory(product.category.slug)
+  .filter((item) => item.slug !== product.slug)
+  .slice(0, 4)
+
+const plainDescription = String(product.descriptionHtml || '')
+  .replace(/<[^>]*>/g, ' ')
+  .replace(/\s+/g, ' ')
+  .trim()
+
+// Technical spec sheet rows derived from the first variant + site config.
+const firstVariant = variants[0] || {}
+const specRows = [
+  { key: 'ÜRÜN KODU', value: firstVariant.sku || String(product.id) },
+  { key: 'BARKOD', value: firstVariant.barcode || '—' },
+  { key: 'KATEGORİ', value: product.category.name },
+  { key: 'MARKA', value: product.brand || siteConfig.name },
+  { key: 'MALZEME', value: 'Reflektif folyo · UV korumalı' },
+  { key: 'YAPIŞKAN', value: 'Güçlü akrilik (iz bırakmaz)' },
+  { key: 'SU DAYANIMI', value: 'Su geçirmez · Dış mekân' },
+  { key: 'KARGO', value: siteConfig.badges.shipping },
+]
+
+const faqs = [
+  {
+    question: 'Bu ürün reflektif mi?',
+    answer: `${product.name}, gece ve düşük ışık koşullarında yüksek görünürlük sağlayan reflektif bir üründür.`,
+  },
+  {
+    question: 'Kargo süresi ne kadar?',
+    answer: `${siteConfig.badges.shipping}. ${siteConfig.badges.freeShipping} (${siteConfig.badges.freeShippingThreshold} TL ve üzeri siparişlerde).`,
+  },
+  {
+    question: 'Nasıl uygulanır?',
+    answer:
+      'Yüzeyi toz ve yağdan arındırın, koruyucu folyoyu çıkarıp etiketi hizalayarak yerleştirin ve merkezden kenarlara doğru bastırın. Tam yapışma için 24 saat yıkamayın.',
+  },
+]
+
+const productJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: product.name,
+  description: plainDescription,
+  image: Array.isArray(product.images) ? product.images : [],
+  sku: variants[0]?.sku || product.id,
+  brand: {
+    '@type': 'Brand',
+    name: product.brand || siteConfig.name,
+  },
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'TRY',
+    lowPrice: lowestPrice ?? 0,
+    highPrice: highestPrice ?? lowestPrice ?? 0,
+    offerCount: pricedVariants.length,
+    availability: inStock
+      ? 'https://schema.org/InStock'
+      : 'https://schema.org/OutOfStock',
+    url: canonicalUrl,
+  },
+}
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Ana Sayfa',
+      item: `${siteConfig.domain}/`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: product.category.name,
+      item: categoryUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: product.name,
+      item: canonicalUrl,
+    },
+  ],
+}
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+}
+---
+
+<Layout
+  title={product.name}
+  description={plainDescription.slice(0, 160)}
+  image={Array.isArray(product.images) ? product.images[0] : undefined}
+  canonicalUrl={canonicalUrl}
+  type="product"
+>
+  <div class="mx-auto max-w-6xl px-4">
+    <Breadcrumb items={breadcrumbItems} />
+  </div>
+
+  <article class="mx-auto max-w-6xl px-4 pb-12">
+    <div class="mt-8 grid gap-8 lg:grid-cols-2">
+      <div>
+        <Gallery client:visible images={product.images} title={product.name} />
+      </div>
+
+      <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <a
+              href={`/kategori/${product.category.slug}`}
+              class="inline-flex w-fit items-center rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-medium text-zinc-600 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600"
+            >
+              {product.category.name}
+            </a>
+            <span class="text-xs text-zinc-400 dark:text-zinc-500">
+              {firstVariant.barcode || firstVariant.sku || product.id}
+            </span>
+          </div>
+          <h1
+            class="text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl dark:text-zinc-50"
+          >
+            {product.name}
+          </h1>
+        </div>
+
+        <VariantSelector client:visible product={product} />
+      </div>
+    </div>
+
+    <!-- Specification table. -->
+    <section class="mt-12" aria-labelledby="product-spec-title">
+      <div class="flex items-center gap-3">
+        <h2
+          id="product-spec-title"
+          class="text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-50"
+        >
+          Ürün Özellikleri
+        </h2>
+        <span class="h-px flex-1 bg-zinc-200 dark:bg-zinc-800"></span>
+      </div>
+
+      <dl
+        class="mt-4 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-zinc-200 bg-zinc-200 sm:grid-cols-2 dark:border-zinc-800 dark:bg-zinc-800"
+      >
+        {
+          specRows.map((row) => (
+            <div class="flex items-center justify-between gap-4 bg-white px-4 py-3 dark:bg-zinc-900">
+              <dt class="text-xs text-zinc-500 dark:text-zinc-400">
+                {row.key}
+              </dt>
+              <dd class="text-right text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                {row.value}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <!-- Product description. -->
+    <section class="mt-12" aria-labelledby="product-description-title">
+      <div class="flex items-center gap-3">
+        <h2
+          id="product-description-title"
+          class="text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-50"
+        >
+          Ürün Açıklaması
+        </h2>
+        <span class="h-px flex-1 bg-zinc-200 dark:bg-zinc-800"></span>
+      </div>
+      <div
+        class="prose prose-sm mt-4 max-w-none text-zinc-600 prose-headings:text-zinc-900 prose-a:text-zinc-900 prose-strong:text-zinc-900 dark:text-zinc-300 dark:prose-headings:text-zinc-100 dark:prose-a:text-zinc-100 dark:prose-strong:text-zinc-100"
+        set:html={product.descriptionHtml}
+      />
+    </section>
+
+    <!-- FAQ. -->
+    <section class="mt-12" aria-labelledby="product-faq-title">
+      <div class="flex items-center gap-3">
+        <h2
+          id="product-faq-title"
+          class="text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-50"
+        >
+          Sıkça Sorulan Sorular
+        </h2>
+        <span class="h-px flex-1 bg-zinc-200 dark:bg-zinc-800"></span>
+      </div>
+
+      <div class="mt-4 flex flex-col gap-3">
+        {
+          faqs.map((faq) => (
+            <details class="group rounded-lg border border-zinc-200 bg-white px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-medium text-zinc-900 marker:content-none dark:text-zinc-100">
+                <span>{faq.question}</span>
+                <span
+                  class="text-xs text-zinc-400 transition-transform group-open:rotate-45 dark:text-zinc-500"
+                  aria-hidden="true"
+                >
+                  +
+                </span>
+              </summary>
+              <p class="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
+                {faq.answer}
+              </p>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+
+    {
+      relatedProducts.length > 0 && (
+        <section class="mt-12" aria-labelledby="related-products-title">
+          <div class="flex items-center gap-3">
+            <h2
+              id="related-products-title"
+              class="text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-50"
+            >
+              Benzer Ürünler
+            </h2>
+            <span class="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
+          </div>
+          <ul class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {relatedProducts.map((related) => (
+              <li>
+                <ProductCard product={related} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </article>
+
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(productJsonLd)}
+  />
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(breadcrumbJsonLd)}
+  />
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+</Layout>
