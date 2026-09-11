@@ -1,5 +1,12 @@
 import { useMemo, useState } from 'react'
-import { ShoppingBag, MessageCircle, ShoppingCart, BadgePercent } from 'lucide-react'
+import {
+  ShoppingBag,
+  MessageCircle,
+  ShoppingCart,
+  BadgePercent,
+  Hammer,
+  Info,
+} from 'lucide-react'
 import { siteConfig } from '../../config/site.js'
 import { getTrendyolProductUrl, calculateDirectPrice } from '../../lib/products.js'
 import shopierMap from '../../config/shopier.json'
@@ -118,6 +125,11 @@ export default function VariantSelector({ product, shopier }) {
   const trendyolUrl = getTrendyolProductUrl(product, selectedVariant)
   const showTrendyolCta = enableTrendyolCta && Boolean(trendyolUrl) && inStock
 
+  // Atölye özel üretim kalkanı: Trendyol linki yoksa (stok 0) veya varyant
+  // tükendiyse, müşteriyi rakip Buybox'a kaptırmak yerine atölye üretimine
+  // yönlendiren dev yeşil CTA gösterilir.
+  const showWorkshopCta = !showTrendyolCta
+
   /**
    * Fires the GA4 outbound event for the Trendyol Boost CTA when gtag exists.
    */
@@ -141,6 +153,16 @@ export default function VariantSelector({ product, shopier }) {
     : `Merhaba, ${product?.name || ''} (${variantLabel} - Barkod: ${barcode}) siparişi vermek istiyorum.`
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     whatsappMessage
+  )}`
+
+  // Atölye özel baskı mesaj şablonu — Trendyol'da tükenen ürün için.
+  const workshopMessage = `Merhaba, Trendyol'da tükenen ${
+    product?.name || ''
+  } (${variantLabel}) ürününü atölye özel baskısı olarak indirimli ${
+    directPrice || trendyolPrice
+  } TL fiyatından sipariş vermek istiyorum.`
+  const workshopUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    workshopMessage
   )}`
 
   return (
@@ -295,45 +317,40 @@ export default function VariantSelector({ product, shopier }) {
           </>
         ) : (
           <>
-            {shopierUrl ? (
+            {/* Atölye özel üretim kalkanı — Trendyol linki yok / stok 0.
+                Müşteri rakip Buybox'a değil, doğrudan atölyeye yönlendirilir. */}
+            <a
+              href={workshopUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-whatsapp w-full py-4 text-base font-semibold shadow-lg shadow-emerald-600/20"
+            >
+              <Hammer className="h-5 w-5" aria-hidden="true" />
+              Atölyeden Özel Baskı Siparişi Ver (WhatsApp)
+            </a>
+
+            {shopierUrl && (
               <a
                 href={shopierUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-whatsapp w-full py-3.5 text-base"
+                className="btn-secondary w-full"
               >
-                <ShoppingBag className="h-5 w-5" aria-hidden="true" />
+                <ShoppingBag className="h-4 w-4" aria-hidden="true" />
                 {showDirectPrice
                   ? `Shopier ile Al · ${formatPrice(directPrice)}`
                   : 'Shopier ile Güvenli Al'}
               </a>
-            ) : (
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-whatsapp w-full py-3.5 text-base"
-              >
-                <MessageCircle className="h-5 w-5" aria-hidden="true" />
-                {showDirectPrice
-                  ? `İndirimli Al (WhatsApp) · ${formatPrice(directPrice)}`
-                  : 'WhatsApp ile Sipariş Ver'}
-              </a>
             )}
 
-            {shopierUrl && (
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary w-full"
-              >
-                <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                {showDirectPrice
-                  ? `İndirimli Al (WhatsApp) · ${formatPrice(directPrice)}`
-                  : 'WhatsApp ile Sipariş Ver'}
-              </a>
-            )}
+            {/* Stok tükenmiş görünse de atölye üretimi bilgilendirme rozeti. */}
+            <p className="flex items-start gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2.5 text-xs leading-relaxed text-emerald-800 dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300">
+              <Info className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+              <span>
+                Bu ürün stokta tükenmiş görünse de SA Printpro atölyesinde
+                siparişiniz üzerine aynı gün özel basılmaktadır.
+              </span>
+            </p>
           </>
         )}
 

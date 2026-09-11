@@ -196,6 +196,55 @@ function sanitizeCatalogText(text) {
 }
 
 /**
+ * Başlıklarda satıcıların sıkça başvurduğu keyword stuffing kalıplarını
+ * sadeleştirir (ör. "Reflektif Reflektif Reflektif").
+ */
+const STUFFING_PATTERNS = [
+  /\b(\p{L}+)(?:\s+\1\b)+/giu // aynı kelimenin arka arkaya tekrarı
+];
+
+/**
+ * Rakip satıcı/ajans unvanlarını temizleyip keyword stuffing'i sadeleştiren
+ * kanonik giriş noktası. Marka/ajans temizliği için `sanitizeCatalogText`'e
+ * delege eder; böylece iki katman senkron kalır.
+ *
+ * @param {string} text
+ * @returns {string}
+ */
+function sanitizeProductContent(text) {
+  let output = sanitizeCatalogText(text);
+
+  // Ardışık tekrar eden kelimeleri tekilleştir (keyword stuffing).
+  for (const pattern of STUFFING_PATTERNS) {
+    output = output.replace(pattern, '$1');
+  }
+
+  // Aynı kelimenin 3+ kez geçtiği başlıklarda fazlalıkları at.
+  const words = output.split(/\s+/).filter(Boolean);
+  const seen = new Map();
+  const deduped = [];
+  for (const word of words) {
+    const key = word
+      .replace(/[İIıi]/g, 'i')
+      .replace(/[Şş]/g, 's')
+      .replace(/[Ğğ]/g, 'g')
+      .replace(/[Üü]/g, 'u')
+      .replace(/[Öö]/g, 'o')
+      .replace(/[Çç]/g, 'c')
+      .toLowerCase();
+    const count = seen.get(key) || 0;
+    // Kısa bağlaçlar (ve, ile, için) tekrar edebilir; onları koru.
+    if (count >= 1 && key.length > 3) {
+      continue;
+    }
+    seen.set(key, count + 1);
+    deduped.push(word);
+  }
+
+  return deduped.join(' ').replace(/\s{2,}/g, ' ').trim();
+}
+
+/**
  * Çakışmayı önlemek için slug'a kısa bir sonek ekler.
  *
  * @param {string} baseSlug
@@ -437,7 +486,7 @@ function normalizeAttributes(attributes) {
     const value = attr?.attributeValue ?? attr?.value;
     if (name != null && value != null) {
       // Özellik değerlerindeki rakip satıcı izlerini de temizle.
-      result[String(name)] = sanitizeCatalogText(String(value));
+      result[String(name)] = sanitizeProductContent(String(value));
     }
   }
   return result;
@@ -466,8 +515,8 @@ function normalizeImages(images) {
 function normalizeProduct(raw, priceMap) {
   // V2 şeması: ürün kimliği `contentId`; `id`/`productId` eski (V1) alanlardır.
   const id = String(raw?.contentId ?? raw?.id ?? raw?.productId ?? '');
-  // Rakip satıcı izlerini kaynağında temizle.
-  const name = sanitizeCatalogText(String(raw?.title ?? raw?.name ?? ''));
+  // Rakip satıcı izlerini ve keyword stuffing'i kaynağında temizle.
+  const name = sanitizeProductContent(String(raw?.title ?? raw?.name ?? ''));
 
   // V2'de varyantlar `variants[]` altında gelir; her varyantın kendi
   // barcode/fiyat/stok bilgisi vardır. V1 düz alanları da geriye dönük desteklenir.
@@ -528,7 +577,7 @@ function normalizeProduct(raw, priceMap) {
     id,
     name,
     slug: withSuffix(slugify(name), id),
-    brand: sanitizeCatalogText(
+    brand: sanitizeProductContent(
       String(raw?.brand?.name ?? raw?.brand ?? raw?.brandName ?? '')
     ),
     category: {
@@ -536,7 +585,7 @@ function normalizeProduct(raw, priceMap) {
       name: categoryName,
       slug: slugify(categoryName)
     },
-    descriptionHtml: sanitizeCatalogText(String(raw?.description ?? '')),
+    descriptionHtml: sanitizeProductContent(String(raw?.description ?? '')),
     images: normalizeImages(raw?.images),
     variants
   };

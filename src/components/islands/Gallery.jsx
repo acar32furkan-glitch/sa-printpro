@@ -30,7 +30,11 @@ export default function Gallery({ images = [], title = '' }) {
           <img
             key={activeImage}
             src={activeImage}
-            alt={title ? `${title} - görsel ${resolvedIndex + 1}` : 'Ürün görseli'}
+            alt={
+              title
+                ? `${title} - Motosiklet Reflektif Sticker SA Printpro`
+                : 'Motosiklet Reflektif Sticker SA Printpro'
+            }
             className="h-full w-full animate-fade-in object-cover"
             loading="eager"
             decoding="async"
@@ -66,8 +70,8 @@ export default function Gallery({ images = [], title = '' }) {
                     src={image}
                     alt={
                       title
-                        ? `${title} - küçük görsel ${index + 1}`
-                        : `Küçük görsel ${index + 1}`
+                        ? `${title} - Motosiklet Reflektif Sticker SA Printpro`
+                        : 'Motosiklet Reflektif Sticker SA Printpro'
                     }
                     className="h-full w-full object-cover"
                     loading="lazy"

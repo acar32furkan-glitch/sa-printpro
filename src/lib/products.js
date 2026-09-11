@@ -90,6 +90,50 @@ export function sanitizeCatalogText(text) {
 }
 
 /**
+ * Keyword-stuffing patterns that Trendyol sellers abuse in titles, e.g.
+ * "Sticker Çıkartma Etiket Reflektif Reflektörlü ...". Collapsing these keeps
+ * titles readable and prevents duplicate-keyword penalties in search.
+ */
+const STUFFING_PATTERNS = [
+  /\b(\p{L}+)(?:\s+\1\b)+/giu, // aynı kelimenin arka arkaya tekrarı
+]
+
+/**
+ * Removes competitor seller/agency titles and simplifies keyword-stuffed
+ * titles. This is the canonical entry point used by the storefront and the
+ * sync pipeline; it delegates to `sanitizeCatalogText` for the brand/entity
+ * scrubbing so both stay in sync.
+ *
+ * @param {string} text
+ * @returns {string}
+ */
+export function sanitizeProductContent(text) {
+  let output = sanitizeCatalogText(text)
+
+  // Ardışık tekrar eden kelimeleri tekilleştir (keyword stuffing).
+  for (const pattern of STUFFING_PATTERNS) {
+    output = output.replace(pattern, '$1')
+  }
+
+  // Aynı kelimenin 3+ kez geçtiği başlıklarda fazlalıkları at.
+  const words = output.split(/\s+/).filter(Boolean)
+  const seen = new Map()
+  const deduped = []
+  for (const word of words) {
+    const key = normalizeTr(word)
+    const count = seen.get(key) || 0
+    // Kısa bağlaçlar (ve, ile, için) tekrar edebilir; onları koru.
+    if (count >= 1 && key.length > 3) {
+      continue
+    }
+    seen.set(key, count + 1)
+    deduped.push(word)
+  }
+
+  return deduped.join(' ').replace(/\s{2,}/g, ' ').trim()
+}
+
+/**
  * Returns all products.
  * @returns {Array<object>}
  */
@@ -361,6 +405,71 @@ export function detectProductBrand(product) {
   }
 
   return fallback
+}
+
+/**
+ * Detects the specific motorcycle models a product is compatible with by
+ * scanning its name and variant attribute values against the configured
+ * `motorcycleModels` keyword lists.
+ *
+ * Returns a de-duplicated array of `{ brand, model }` entries in config order.
+ * An empty array means the product is universal (no specific model matched).
+ *
+ * @param {object} product
+ * @returns {Array<{brand: string, model: string}>}
+ */
+export function detectCompatibleModels(product) {
+  const models = Array.isArray(siteConfig.motorcycleModels)
+    ? siteConfig.motorcycleModels
+    : []
+
+  if (!product || models.length === 0) {
+    return []
+  }
+
+  // Build a single normalized haystack from the product name plus every
+  // attribute value across all variants.
+  const parts = [product.name || '']
+
+  if (Array.isArray(product.variants)) {
+    for (const variant of product.variants) {
+      const attributes = variant?.attributes
+      if (attributes && typeof attributes === 'object') {
+        for (const value of Object.values(attributes)) {
+          if (value !== null && value !== undefined) {
+            parts.push(String(value))
+          }
+        }
+      }
+    }
+  }
+
+  const haystack = normalizeTr(parts.join(' '))
+  const matched = []
+  const seen = new Set()
+
+  for (const entry of models) {
+    const brand = String(entry?.brand || '')
+    const model = String(entry?.model || '')
+    const keywords = Array.isArray(entry?.keywords) ? entry.keywords : []
+
+    const hit = keywords.some((keyword) =>
+      haystack.includes(normalizeTr(String(keyword)))
+    )
+
+    if (!hit) {
+      continue
+    }
+
+    const key = `${brand}::${model}`
+    if (seen.has(key)) {
+      continue
+    }
+    seen.add(key)
+    matched.push({ brand, model })
+  }
+
+  return matched
 }
 
 /**

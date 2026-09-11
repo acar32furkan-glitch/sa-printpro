@@ -12,6 +12,7 @@ import {
   getAllProducts,
   getProductsByCategory,
   sanitizeCatalogText,
+  detectCompatibleModels,
 } from '../../lib/products.js'
 
 export function getStaticPaths() {
@@ -63,6 +64,11 @@ const breadcrumbItems = [
 const relatedProducts = getProductsByCategory(product.category.slug)
   .filter((item) => item.slug !== product.slug)
   .slice(0, 4)
+
+// Programatik SEO: ürünün uyumlu olduğu motosiklet modelleri.
+// Hiçbir model tespit edilemezse ürün "üniversal" kabul edilir.
+const compatibleModels = detectCompatibleModels(product)
+const isUniversal = compatibleModels.length === 0
 
 /**
  * Decodes the common HTML entities that Trendyol descriptions contain so the
@@ -203,12 +209,20 @@ const shippingDetails = {
   },
 }
 
+// Google Görsel SEO: `image` alanı zengin `ImageObject` formatında sunulur.
+const productImages = Array.isArray(product.images) ? product.images : []
+const imageObjects = productImages.map((url) => ({
+  '@type': 'ImageObject',
+  url,
+  caption: `${sanitizeCatalogText(product.name)} - Motosiklet Reflektif Sticker SA Printpro`,
+}))
+
 const productJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Product',
   name: sanitizeCatalogText(product.name),
   description: plainDescription,
-  image: Array.isArray(product.images) ? product.images : [],
+  image: imageObjects,
   sku: variants[0]?.sku || product.id,
   brand: {
     '@type': 'Brand',
@@ -316,6 +330,28 @@ const faqJsonLd = {
           >
             {product.name}
           </h1>
+
+          <!-- Programatik SEO: uyumlu motosiklet modeli rozetleri. -->
+          <div class="flex flex-col gap-2">
+            <span class="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+              Uyumlu Motosiklet Modelleri
+            </span>
+            <div class="flex flex-wrap gap-1.5">
+              {
+                isUniversal ? (
+                  <span class="inline-flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-2xs font-medium text-emerald-700 dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300">
+                    ✓ Üniversal - Tüm Motosiklet ve Araçlara Uyumlu
+                  </span>
+                ) : (
+                  compatibleModels.map((entry) => (
+                    <span class="inline-flex items-center rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-2xs font-medium text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200">
+                      {entry.brand} {entry.model}
+                    </span>
+                  ))
+                )
+              }
+            </div>
+          </div>
         </div>
 
         <VariantSelector client:visible product={product} />

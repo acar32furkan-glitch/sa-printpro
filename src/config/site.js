@@ -51,6 +51,36 @@ export const siteConfig = {
     { name: 'TVS', slug: 'tvs', keywords: ['tvs', 'jupiter', 'raider', 'apache'] },
     { name: 'Universal / Genel', slug: 'universal', keywords: ['universal', 'genel'] },
   ],
+  // Programatik SEO: motor modeli bazlı uyumluluk rozetleri için anahtar
+  // kelime listesi. `detectCompatibleModels` bu listeyi tarar.
+  motorcycleModels: [
+    // Honda
+    { brand: 'Honda', model: 'PCX', keywords: ['pcx'] },
+    { brand: 'Honda', model: 'Forza', keywords: ['forza'] },
+    { brand: 'Honda', model: 'CBR', keywords: ['cbr'] },
+    { brand: 'Honda', model: 'Activa', keywords: ['activa'] },
+    { brand: 'Honda', model: 'Dio', keywords: ['dio'] },
+    { brand: 'Honda', model: 'CB250R', keywords: ['cb250r', 'cb 250r'] },
+    { brand: 'Honda', model: 'ADV', keywords: ['adv'] },
+    // Yamaha
+    { brand: 'Yamaha', model: 'R25', keywords: ['r25'] },
+    { brand: 'Yamaha', model: 'MT-25', keywords: ['mt-25', 'mt25'] },
+    { brand: 'Yamaha', model: 'MT-07', keywords: ['mt-07', 'mt07'] },
+    { brand: 'Yamaha', model: 'MT-09', keywords: ['mt-09', 'mt09'] },
+    { brand: 'Yamaha', model: 'NMAX', keywords: ['nmax'] },
+    { brand: 'Yamaha', model: 'XMAX', keywords: ['xmax'] },
+    { brand: 'Yamaha', model: 'Tracer', keywords: ['tracer'] },
+    // CFMoto
+    { brand: 'CFMoto', model: '250SR', keywords: ['250sr'] },
+    { brand: 'CFMoto', model: '250NK', keywords: ['250nk'] },
+    { brand: 'CFMoto', model: '450SR', keywords: ['450sr'] },
+    { brand: 'CFMoto', model: 'NK250', keywords: ['nk250'] },
+    // Bajaj
+    { brand: 'Bajaj', model: 'Pulsar NS200', keywords: ['ns200', 'pulsar ns200'] },
+    { brand: 'Bajaj', model: 'Pulsar RS200', keywords: ['rs200', 'pulsar rs200'] },
+    { brand: 'Bajaj', model: 'Dominar 250', keywords: ['dominar 250', 'dominar250'] },
+    { brand: 'Bajaj', model: 'Dominar 400', keywords: ['dominar 400', 'dominar400'] },
+  ],
   trendyol: {
     sellerId: '907993',
     storeUrl: 'https://www.trendyol.com/magaza/sa-printpro-m-907993',
