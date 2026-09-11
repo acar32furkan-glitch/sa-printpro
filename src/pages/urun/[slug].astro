@@ -1,4 +1,5 @@
 ---
+import { existsSync } from 'node:fs'
 import Layout from '../../layouts/Layout.astro'
 import Breadcrumb from '../../components/Breadcrumb.astro'
 import ProductCard from '../../components/ProductCard.astro'
@@ -13,7 +14,9 @@ import {
   getProductsByCategory,
   sanitizeCatalogText,
   detectCompatibleModels,
+  getProductPrimaryImage,
 } from '../../lib/products.js'
+import aiEnrichedData from '../../data/ai-enriched.json'
 
 export function getStaticPaths() {
   return getAllProducts().map((product) => ({
@@ -23,6 +26,17 @@ export function getStaticPaths() {
 }
 
 const { product } = Astro.props
+
+// FAZ 11: `getProductPrimaryImage` yerel dosya kontrolü için `node:fs`'e
+// ihtiyaç duyar. Bu bağımlılığı tarayıcı paketinden uzak tutmak için yalnızca
+// SSG (Node) bağlamında global bir köprü üzerinden enjekte ederiz.
+globalThis.__SA_PRINTPRO_FS__ = { existsSync }
+
+// FAZ 11: DeepSeek ile üretilmiş zenginleştirilmiş içerik (varsa).
+const aiData = aiEnrichedData?.[product.id] || null
+
+// FAZ 11: yerel (logo filigranlı) görsel varsa onu, yoksa CDN görselini kullan.
+const primaryImage = getProductPrimaryImage(product)
 
 const variants = Array.isArray(product.variants) ? product.variants : []
 
@@ -127,14 +141,21 @@ const plainDescription = sanitizeCatalogText(
   .replace(/\s+/g, ' ')
   .trim()
 
-const metaDescription =
-  plainDescription.length > 0
+// FAZ 11: AI hook'u meta açıklamanın başına eklenir (varsa).
+const aiHook = typeof aiData?.hook === 'string' ? aiData.hook.trim() : ''
+
+const metaDescription = aiHook
+  ? aiHook.slice(0, 160)
+  : plainDescription.length > 0
     ? plainDescription.slice(0, 160)
     : `${product.name} - En uygun fiyat, dayanıklı malzeme ve hızlı kargo avantajıyla SA Printpro'da.`
 
+// FAZ 11: AI zenginleştirmesi varsa sadeleştirilmiş başlık önceliklendirilir.
+const displayTitle = aiData?.cleanTitle || sanitizeCatalogText(product.name)
+
 // SEO başlık formatı: "<Ürün Adı> Modelleri ve Fiyatı" — `Seo.astro` sonuna
 // otomatik olarak "| SA Printpro" ekler, bu yüzden burada tekrarlanmaz.
-const metaTitle = `${sanitizeCatalogText(product.name)} Modelleri ve Fiyatı`
+const metaTitle = `${displayTitle} Modelleri ve Fiyatı`
 
 // Technical spec sheet rows derived from the first variant + site config.
 const firstVariant = variants[0] || {}
@@ -155,7 +176,17 @@ const specRows = [
   { key: 'KARGO', value: siteConfig.badges.shipping },
 ]
 
-const faqs = [
+// FAZ 11: AI tarafından üretilen SSS'ler (varsa) statik SSS'lerin önüne eklenir.
+const aiFaqs = Array.isArray(aiData?.faqs)
+  ? aiData.faqs
+      .filter((faq) => faq && faq.question && faq.answer)
+      .map((faq) => ({
+        question: String(faq.question),
+        answer: String(faq.answer),
+      }))
+  : []
+
+const staticFaqs = [
   {
     question: 'Bu ürün reflektif mi?',
     answer: `${product.name}, gece ve düşük ışık koşullarında yüksek görünürlük sağlayan reflektif bir üründür.`,
@@ -170,6 +201,33 @@ const faqs = [
       'Yüzeyi toz ve yağdan arındırın, koruyucu folyoyu çıkarıp etiketi hizalayarak yerleştirin ve merkezden kenarlara doğru bastırın. Tam yapışma için 24 saat yıkamayın.',
   },
 ]
+
+// AI SSS'leri önce gelir; aynı soru metni tekrar etmesin.
+const seenQuestions = new Set(aiFaqs.map((faq) => faq.question.toLocaleLowerCase('tr-TR')))
+const faqs = [
+  ...aiFaqs,
+  ...staticFaqs.filter(
+    (faq) => !seenQuestions.has(faq.question.toLocaleLowerCase('tr-TR'))
+  ),
+]
+
+// FAZ 11: AI detaylı teknik özellikleri → spec satırları.
+const detailedSpecs = aiData?.detailedSpecs || {}
+const aiSpecRows = [
+  { key: 'Malzeme', value: detailedSpecs.material },
+  { key: 'Dayanıklılık', value: detailedSpecs.durability },
+  { key: 'Gece Görünürlüğü', value: detailedSpecs.nightVisibility },
+  { key: 'Sökülebilirlik', value: detailedSpecs.removal },
+].filter((row) => row.value)
+
+// FAZ 11: AI uygulama rehberi (varsa).
+const aiApplicationGuide =
+  typeof aiData?.applicationGuide === 'string' ? aiData.applicationGuide.trim() : ''
+
+// FAZ 11: AI uyumlu modeller (varsa) — rozetlerde kullanılır.
+const aiCompatibleModels = Array.isArray(aiData?.compatibleModels)
+  ? aiData.compatibleModels.filter(Boolean).map((model) => String(model))
+  : []
 
 // 2026 Google Merchant Center uyumlu iade politikası ve kargo detayları.
 const merchantReturnPolicy = {
@@ -210,18 +268,23 @@ const shippingDetails = {
 }
 
 // Google Görsel SEO: `image` alanı zengin `ImageObject` formatında sunulur.
+// FAZ 11: yerel (logo filigranlı) görsel varsa ilk sıraya alınır.
 const productImages = Array.isArray(product.images) ? product.images : []
-const imageObjects = productImages.map((url) => ({
+const orderedImages =
+  primaryImage && !productImages.includes(primaryImage)
+    ? [primaryImage, ...productImages]
+    : productImages
+const imageObjects = orderedImages.map((url) => ({
   '@type': 'ImageObject',
   url,
-  caption: `${sanitizeCatalogText(product.name)} - Motosiklet Reflektif Sticker SA Printpro`,
+  caption: `${displayTitle} - Motosiklet Reflektif Sticker SA Printpro`,
 }))
 
 const productJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Product',
-  name: sanitizeCatalogText(product.name),
-  description: plainDescription,
+  name: displayTitle,
+  description: aiHook || plainDescription,
   image: imageObjects,
   sku: variants[0]?.sku || product.id,
   brand: {
@@ -245,13 +308,25 @@ const productJsonLd = {
 
 // AIO & SearchGPT uyumlu semantik teknik özellik tablosu.
 // Sabit üretim gerçekleri, API'den gelen dinamik `attributes` ile birleştirilir.
+// FAZ 11: AI detaylı özellikleri varsa sabit değerlerin yerine geçer.
 const aioRows = [
-  { key: 'Malzeme', value: '1. Kalite Döküm Reflektif Folyo' },
-  { key: 'Gece Görünürlüğü', value: 'Yüksek Yansıma (Petek Doku)' },
+  {
+    key: 'Malzeme',
+    value: detailedSpecs.material || '1. Kalite Döküm Reflektif Folyo',
+  },
+  {
+    key: 'Gece Görünürlüğü',
+    value: detailedSpecs.nightVisibility || 'Yüksek Yansıma (Petek Doku)',
+  },
   {
     key: 'Dayanıklılık',
-    value: 'Su, Basınçlı Yıkama ve UV Işınlarına Dayanıklı (Solmaz)',
+    value:
+      detailedSpecs.durability ||
+      'Su, Basınçlı Yıkama ve UV Işınlarına Dayanıklı (Solmaz)',
   },
+  ...(detailedSpecs.removal
+    ? [{ key: 'Sökülebilirlik', value: detailedSpecs.removal }]
+    : []),
   { key: 'Menşei', value: 'Türkiye (SA Printpro Üretimi)' },
   ...attributeRows,
 ]
@@ -298,7 +373,7 @@ const faqJsonLd = {
 <Layout
   title={metaTitle}
   description={metaDescription}
-  image={Array.isArray(product.images) ? product.images[0] : undefined}
+  image={primaryImage || (Array.isArray(product.images) ? product.images[0] : undefined)}
   canonicalUrl={canonicalUrl}
   type="product"
 >
@@ -309,7 +384,12 @@ const faqJsonLd = {
   <article class="mx-auto max-w-6xl px-4 pb-12">
     <div class="mt-8 grid gap-8 lg:grid-cols-2">
       <div>
-        <Gallery client:visible images={product.images} title={product.name} />
+        <Gallery
+          client:visible
+          images={product.images}
+          primaryImage={primaryImage}
+          title={displayTitle}
+        />
       </div>
 
       <div class="flex flex-col gap-6">
@@ -328,8 +408,17 @@ const faqJsonLd = {
           <h1
             class="text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl dark:text-zinc-50"
           >
-            {product.name}
+            {displayTitle}
           </h1>
+
+          <!-- FAZ 11: AI hook — açıklama üstünde dikkat çekici giriş. -->
+          {
+            aiHook && (
+              <p class="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+                {aiHook}
+              </p>
+            )
+          }
 
           <!-- Programatik SEO: uyumlu motosiklet modeli rozetleri. -->
           <div class="flex flex-col gap-2">
@@ -338,7 +427,13 @@ const faqJsonLd = {
             </span>
             <div class="flex flex-wrap gap-1.5">
               {
-                isUniversal ? (
+                aiCompatibleModels.length > 0 ? (
+                  aiCompatibleModels.map((model) => (
+                    <span class="inline-flex items-center rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-2xs font-medium text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200">
+                      {model}
+                    </span>
+                  ))
+                ) : isUniversal ? (
                   <span class="inline-flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-2xs font-medium text-emerald-700 dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300">
                     ✓ Üniversal - Tüm Motosiklet ve Araçlara Uyumlu
                   </span>
@@ -473,6 +568,26 @@ const faqJsonLd = {
         }
       </div>
     </section>
+
+    <!-- FAZ 11: AI uygulama rehberi (ürüne özel, varsa). -->
+    {
+      aiApplicationGuide && (
+        <section class="mt-12" aria-labelledby="product-application-title">
+          <div class="flex items-center gap-3">
+            <h2
+              id="product-application-title"
+              class="text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-50"
+            >
+              Uygulama Rehberi
+            </h2>
+            <span class="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
+          </div>
+          <div class="prose prose-sm mt-4 max-w-none whitespace-pre-line text-zinc-600 prose-strong:text-zinc-900 dark:text-zinc-300 dark:prose-strong:text-zinc-100">
+            {aiApplicationGuide}
+          </div>
+        </section>
+      )
+    }
 
     <!-- Application guide (static value layer for SEO). -->
     <HowToApply />

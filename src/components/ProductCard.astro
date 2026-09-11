@@ -1,6 +1,6 @@
 ---
 import { siteConfig } from '../config/site.js'
-import { calculateDirectPrice } from '../lib/products.js'
+import { calculateDirectPrice, getProductPrimaryImage } from '../lib/products.js'
 
 const { product } = Astro.props
 
@@ -61,7 +61,8 @@ const totalStock = variants.reduce(
 )
 const inStock = totalStock > 0
 
-const image = Array.isArray(product?.images) ? product.images[0] : ''
+// FAZ 11: yerel (logo filigranlı) görsel varsa onu, yoksa CDN görselini kullan.
+const image = getProductPrimaryImage(product)
 
 function formatPrice(value) {
   const numeric = Number(value)

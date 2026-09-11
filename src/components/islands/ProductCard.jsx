@@ -1,5 +1,5 @@
 import { siteConfig } from '../../config/site.js'
-import { calculateDirectPrice } from '../../lib/products.js'
+import { calculateDirectPrice, getProductPrimaryImage } from '../../lib/products.js'
 
 /**
  * Formats a numeric price as a Turkish Lira string.
@@ -82,7 +82,8 @@ export default function ProductCard({ product }) {
   )
   const inStock = totalStock > 0
 
-  const image = Array.isArray(product?.images) ? product.images[0] : ''
+  // FAZ 11: yerel (logo filigranlı) görsel varsa onu, yoksa CDN görselini kullan.
+  const image = getProductPrimaryImage(product)
 
   return (
     <a

@@ -1,0 +1,32 @@
+{
+  "1160687379": {
+    "cleanTitle": "Kırmızı Universal Reflektif Jant Şeridi",
+    "hook": "Gece sürüşlerinde fark edilmek artık çok kolay. Yüksek yansımalı jant şeridi ile motosikletinize hem şıklık hem güvenlik katın.",
+    "detailedSpecs": {
+      "material": "1. Kalite Döküm Reflektif Folyo",
+      "durability": "Su, basınçlı yıkama ve UV ışınlarına dayanıklı",
+      "nightVisibility": "Yüksek yansıma, petek doku",
+      "removal": "İz bırakmadan sökülebilir"
+    },
+    "applicationGuide": "1. Jant yüzeyini toz ve yağdan arındırın.\n2. Koruyucu folyoyu yavaşça çıkarın.\n3. Şeridi jant kenarına hizalayarak yerleştirin.\n4. Merkezden kenarlara doğru bastırın.\n5. 24 saat yıkamayın.",
+    "compatibleModels": [
+      "Honda PCX",
+      "Yamaha NMAX",
+      "Mondial Drift L"
+    ],
+    "faqs": [
+      {
+        "question": "Jant şeridi kaç derece sıcaklığa dayanır?",
+        "answer": "-20°C ile +80°C arasında performansını korur."
+      },
+      {
+        "question": "Kaç metre şerit geliyor?",
+        "answer": "Her set 4 adet jant segmenti için yeterli uzunlukta şerit içerir."
+      }
+    ],
+    "_meta": {
+      "model": "deepseek-chat",
+      "enrichedAt": "2026-09-11T07:05:48.218Z"
+    }
+  }
+}

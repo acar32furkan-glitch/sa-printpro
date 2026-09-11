@@ -142,6 +142,54 @@ export function getAllProducts() {
 }
 
 /**
+ * FAZ 11 — Yerel görsel önceliği.
+ *
+ * `scripts/process-images.mjs` her ürünün ilk görselini logo filigranlı yerel
+ * bir WebP dosyasına (`/uploads/products/${id}.webp`) dönüştürür. Bu fonksiyon
+ * yerel dosya mevcutsa onu, aksi halde CDN görselini döndürür.
+ *
+ * Not: Astro statik derlemesi sırasında `public/` içeriği doğrudan kopyalanır;
+ * bu yüzden yerel dosyanın varlığını derleme zamanında `fs` ile kontrol ederiz.
+ * Tarayıcı tarafında (island) `fs` bulunmadığından bu kontrol güvenli biçimde
+ * atlanır ve CDN görseline düşülür.
+ *
+ * @param {object} product
+ * @returns {string} Görsel URL'i (yerel yol veya CDN adresi) ya da ''.
+ */
+export function getProductPrimaryImage(product) {
+  if (!product) {
+    return ''
+  }
+
+  const images = Array.isArray(product.images) ? product.images : []
+  const cdnImage = images[0] || ''
+
+  if (!product.id) {
+    return cdnImage
+  }
+
+  const localPath = `/uploads/products/${product.id}.webp`
+
+  // Yalnızca Node (build/SSG) ortamında dosya sistemi kontrolü yapılabilir.
+  // Tarayıcıda `process.versions.node` bulunmaz; bu durumda CDN görseline düşülür.
+  if (typeof process === 'undefined' || !process.versions?.node) {
+    return cdnImage
+  }
+
+  try {
+    // `node:fs` yalnızca Node ortamında yüklenir; tarayıcı paketine sızmaz.
+    const { existsSync } = globalThis.__SA_PRINTPRO_FS__ || {}
+    if (typeof existsSync !== 'function') {
+      return cdnImage
+    }
+    const absolute = `${process.cwd()}/public${localPath}`
+    return existsSync(absolute) ? localPath : cdnImage
+  } catch {
+    return cdnImage
+  }
+}
+
+/**
  * Finds a single product by its slug.
  * @param {string} slug
  * @returns {object|undefined}
