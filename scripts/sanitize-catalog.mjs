@@ -34,8 +34,25 @@ const COMPETITOR_ENTITIES = [
 ];
 
 /**
+ * Pazaryerinin (Trendyol) ürün açıklamalarına zorunlu olarak eklediği
+ * uyum/uyarı cümleleri. Kendi vitrinimizde olumsuz mesaj verdiği için
+ * cümle bazında silinir. Kalıplar bilinçli olarak dar tutulmuştur.
+ */
+const COMPLIANCE_SENTENCE_PATTERNS = [
+  // "ECE uygunluk sembolü ..." / "ECE uygunluk beyanı ..." cümleleri.
+  /[^.!?\n]*\bECE\b[^.!?\n]*(?:uygunluk|uygun|sembol|işaret|beyan|standart|belge)[^.!?\n]*[.!?]?/giu,
+  // "İthalatçı, yetkili temsilci veya ifa hizmet sağlayıcı bilgisi ..." cümleleri.
+  /[^.!?\n]*\b(?:ithalatçı|ithalatci|yetkili temsilci|ifa hizmet sağlayıcı)\b[^.!?\n]*[.!?]?/giu,
+  // "Türkiye'de ... tarafından ithal edilmiştir" kalıpları.
+  /[^.!?\n]*\bithal edilmiştir\b[^.!?\n]*[.!?]?/giu,
+  // Pazaryeri zorunlu uyum şablonları: "Bu ürün ... yönetmeliğine uygundur".
+  /[^.!?\n]*\bBu ürün\b[^.!?\n]*\b(?:yönetmeliğine|yönetmelik|mevzuatına|standardına|uygundur|uygun olduğu)\b[^.!?\n]*[.!?]?/giu
+];
+
+/**
  * Katalog metinlerinden rakip satıcı unvanlarını, ajans referanslarını,
- * telefon numaralarını ve harici linkleri temizler.
+ * telefon numaralarını, harici linkleri ve pazaryeri zorunlu uyum/uyarı
+ * cümlelerini temizler.
  *
  * @param {string} text
  * @returns {string}
@@ -62,6 +79,10 @@ function sanitizeCatalogText(text) {
   output = output
     .replace(/https?:\/\/[^\s<>"')]+/gi, '')
     .replace(/\bwww\.[a-z0-9-]+\.[a-z]{2,}(\/[^\s<>"')]*)?/gi, '');
+
+  for (const pattern of COMPLIANCE_SENTENCE_PATTERNS) {
+    output = output.replace(pattern, ' ');
+  }
 
   return output.replace(/\s{2,}/g, ' ').trim();
 }

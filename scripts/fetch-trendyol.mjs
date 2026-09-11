@@ -153,13 +153,30 @@ const COMPETITOR_ENTITIES = [
 ];
 
 /**
+ * Pazaryerinin (Trendyol) ürün açıklamalarına zorunlu olarak eklediği
+ * uyum/uyarı cümleleri. Kendi vitrinimizde "bu ürün güvenli olmayabilir /
+ * ithalatçısı bilinmiyor" mesajı verdiği için cümle bazında silinir.
+ * Kalıplar bilinçli olarak dar tutulmuştur; normal ürün metnine dokunmaz.
+ */
+const COMPLIANCE_SENTENCE_PATTERNS = [
+  // "ECE uygunluk sembolü ..." / "ECE uygunluk beyanı ..." cümleleri.
+  /[^.!?\n]*\bECE\b[^.!?\n]*(?:uygunluk|uygun|sembol|işaret|beyan|standart|belge)[^.!?\n]*[.!?]?/giu,
+  // "İthalatçı, yetkili temsilci veya ifa hizmet sağlayıcı bilgisi ..." cümleleri.
+  /[^.!?\n]*\b(?:ithalatçı|ithalatci|yetkili temsilci|ifa hizmet sağlayıcı)\b[^.!?\n]*[.!?]?/giu,
+  // "Türkiye'de ... tarafından ithal edilmiştir" kalıpları.
+  /[^.!?\n]*\bithal edilmiştir\b[^.!?\n]*[.!?]?/giu,
+  // Pazaryeri zorunlu uyum şablonları: "Bu ürün ... yönetmeliğine uygundur".
+  /[^.!?\n]*\bBu ürün\b[^.!?\n]*\b(?:yönetmeliğine|yönetmelik|mevzuatına|standardına|uygundur|uygun olduğu)\b[^.!?\n]*[.!?]?/giu
+];
+
+/**
  * Katalog metinlerinden (ürün adı, açıklama, varyant özellikleri) rakip
- * satıcı unvanlarını, ajans referanslarını, telefon numaralarını ve harici
- * linkleri temizler.
+ * satıcı unvanlarını, ajans referanslarını, telefon numaralarını, harici
+ * linkleri ve pazaryeri zorunlu uyum/uyarı cümlelerini temizler.
  *
  * Rakip marka unvanları cümle akışını bozmamak için "SA Printpro" ile
- * değiştirilir; ajans referansları, telefon numaraları ve harici URL'ler
- * tamamen silinir.
+ * değiştirilir; ajans referansları, telefon numaraları, harici URL'ler ve
+ * uyum cümleleri tamamen silinir.
  *
  * @param {string} text
  * @returns {string}
@@ -191,7 +208,12 @@ function sanitizeCatalogText(text) {
     .replace(/https?:\/\/[^\s<>"')]+/gi, '')
     .replace(/\bwww\.[a-z0-9-]+\.[a-z]{2,}(\/[^\s<>"')]*)?/gi, '');
 
-  // 5) Silme sonrası kalan fazla boşlukları toparla
+  // 5) Pazaryeri zorunlu uyum/uyarı cümleleri → sil
+  for (const pattern of COMPLIANCE_SENTENCE_PATTERNS) {
+    output = output.replace(pattern, ' ');
+  }
+
+  // 6) Silme sonrası kalan fazla boşlukları toparla
   return output.replace(/\s{2,}/g, ' ').trim();
 }
 

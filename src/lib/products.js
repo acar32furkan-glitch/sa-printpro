@@ -45,13 +45,31 @@ const COMPETITOR_ENTITIES = [
 ]
 
 /**
- * Removes competitor seller names, agency references, phone numbers and
- * external links from any catalog text (product name, description, variant
- * attributes, etc.).
+ * Marketplace-mandated compliance / warning sentences that Trendyol injects
+ * into product descriptions. These read as "this product may not be safe /
+ * we don't know who imported it" on our own storefront, so they are removed
+ * sentence-by-sentence. Patterns are intentionally narrow (anchored on the
+ * compliance vocabulary) so ordinary product copy is never touched.
+ */
+const COMPLIANCE_SENTENCE_PATTERNS = [
+  // "ECE uygunluk sembolü ..." / "ECE uygunluk beyanı ..." cümleleri.
+  /[^.!?\n]*\bECE\b[^.!?\n]*(?:uygunluk|uygun|sembol|işaret|beyan|standart|belge)[^.!?\n]*[.!?]?/giu,
+  // "İthalatçı, yetkili temsilci veya ifa hizmet sağlayıcı bilgisi ..." cümleleri.
+  /[^.!?\n]*\b(?:ithalatçı|ithalatci|yetkili temsilci|ifa hizmet sağlayıcı)\b[^.!?\n]*[.!?]?/giu,
+  // "Türkiye'de ... tarafından ithal edilmiştir" kalıpları.
+  /[^.!?\n]*\bithal edilmiştir\b[^.!?\n]*[.!?]?/giu,
+  // Pazaryeri zorunlu uyum şablonları: "Bu ürün ... yönetmeliğine uygundur".
+  /[^.!?\n]*\bBu ürün\b[^.!?\n]*\b(?:yönetmeliğine|yönetmelik|mevzuatına|standardına|uygundur|uygun olduğu)\b[^.!?\n]*[.!?]?/giu,
+]
+
+/**
+ * Removes competitor seller names, agency references, phone numbers,
+ * external links and marketplace-mandated compliance/warning sentences from
+ * any catalog text (product name, description, variant attributes, etc.).
  *
  * Competitor brand titles are replaced with the house brand ("SA Printpro")
- * so sentences stay grammatical; agency references, phone numbers and
- * external URLs are stripped entirely.
+ * so sentences stay grammatical; agency references, phone numbers, external
+ * URLs and compliance sentences are stripped entirely.
  *
  * @param {string} text
  * @returns {string}
@@ -85,7 +103,12 @@ export function sanitizeCatalogText(text) {
     .replace(/https?:\/\/[^\s<>"')]+/gi, '')
     .replace(/\bwww\.[a-z0-9-]+\.[a-z]{2,}(\/[^\s<>"')]*)?/gi, '')
 
-  // 5) Collapse the whitespace left behind by removals.
+  // 5) Marketplace-mandated compliance / warning sentences → removed.
+  for (const pattern of COMPLIANCE_SENTENCE_PATTERNS) {
+    output = output.replace(pattern, ' ')
+  }
+
+  // 6) Collapse the whitespace left behind by removals.
   return output.replace(/\s{2,}/g, ' ').trim()
 }
 

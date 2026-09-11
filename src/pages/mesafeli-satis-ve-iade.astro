@@ -13,11 +13,11 @@ const breadcrumbItems = [
 const sections = [
   {
     title: '1. Taraflar ve Konu',
-    body: `İşbu metin, ${siteConfig.name} ile alıcı arasında 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği kapsamında akdedilen mesafeli satış sözleşmesinin şartlarını özetler. Sitemiz bir vitrin (showcase) platformudur; sipariş ve ödeme işlemleri yönlendirme yapılan aracı platformlar üzerinden tamamlanır.`,
+    body: `İşbu metin, ${siteConfig.name} ile alıcı arasında 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği kapsamında akdedilen mesafeli satış sözleşmesinin şartlarını özetler. Sitemiz bir vitrin (showcase) platformudur; siparişler WhatsApp üzerinden alınır, ödeme ise Shopier güvenli ödeme altyapısı üzerinden tamamlanır.`,
   },
   {
     title: '2. Sipariş ve Ödeme',
-    body: 'Sitemizde doğrudan ödeme alınmaz. "Satın Al" butonları sizi Trendyol veya Shopier gibi güvenli aracı platformlara yönlendirir. Sipariş, ödeme, fatura ve teslimat süreçleri ilgili platformun kendi mesafeli satış sözleşmesi ve politikalarına tabidir.',
+    body: `Siparişler, ürün sayfalarındaki "İndirimli Sipariş Ver (WhatsApp)" butonu aracılığıyla WhatsApp üzerinden alınır. Siparişiniz ve teslimat bilgileriniz WhatsApp yazışması sırasında teyit edilir. Ödeme, Shopier güvenli ödeme altyapısı üzerinden kredi kartı veya banka kartı ile gerçekleştirilir; ödeme bağlantısı sipariş teyidinin ardından tarafımızca iletilir. Fatura ve teslimat süreçleri, sipariş teyidini takiben işletilir.`,
   },
   {
     title: '3. Cayma Hakkı (15 Gün İade)',
@@ -25,11 +25,11 @@ const sections = [
   },
   {
     title: '4. İade Süreci',
-    body: 'Cayma hakkını kullanmak için siparişinizi verdiğiniz aracı platform üzerinden iade talebi oluşturmanız yeterlidir. İade talebi onaylandığında ürün, kargo firması aracılığıyla tarafımıza ulaştırılır. Ürünün tarafımıza ulaşmasını takiben en geç 14 gün içinde bedel iadesi, ödeme yaptığınız yönteme uygun şekilde gerçekleştirilir.',
+    body: `Cayma hakkını kullanmak için WhatsApp (${siteConfig.contact.whatsapp}) veya ${siteConfig.contact.email} üzerinden bizimle iletişime geçmeniz yeterlidir. Talebiniz onaylandığında ürün, kargo firması aracılığıyla tarafımıza ulaştırılır. Ürünün tarafımıza ulaşmasını takiben en geç 14 gün içinde bedel iadesi, ödeme yaptığınız yönteme (Shopier üzerinden yapılan ödemelerde ilgili karta) uygun şekilde gerçekleştirilir.`,
   },
   {
     title: '5. Kargo ve Teslimat',
-    body: `${siteConfig.badges.shipping}. ${siteConfig.badges.freeShipping} (${siteConfig.badges.freeShippingThreshold} TL ve üzeri siparişlerde). Kargo süresi, siparişin onaylanmasını takiben 1-3 iş günü transit süresini kapsar. Teslimat, aracı platformun anlaşmalı kargo firması aracılığıyla yapılır.`,
+    body: `${siteConfig.badges.shipping}. ${siteConfig.badges.freeShipping} (${siteConfig.badges.freeShippingThreshold} TL ve üzeri siparişlerde). Kargo süresi, siparişin onaylanmasını takiben 1-3 iş günü transit süresini kapsar. Teslimat, anlaşmalı kargo firmamız aracılığıyla sipariş sırasında bildirdiğiniz adrese yapılır.`,
   },
   {
     title: '6. Ayıplı Ürün ve Garanti',

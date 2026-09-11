@@ -332,13 +332,20 @@ const imageObjects = orderedImages.map((url) => ({
 // tamamen atlanır; böylece zengin sonuçlarda hatalı "0 TL" gösterilmez.
 const hasValidPrice = Number.isFinite(lowestPrice) && Number(lowestPrice) > 0
 
+// Google Merchant Center / zengin sonuçlar için ürün kimlik alanları.
+// `sku` varyant SKU'suna, `mpn` ise varyant barkoduna (varsa) dayanır.
+const primaryVariant = variants[0] || {}
+const productSku = primaryVariant.sku || product.id
+const productMpn = primaryVariant.barcode || undefined
+
 const productJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Product',
   name: displayTitle,
   description: aiHook || plainDescription,
   image: imageObjects,
-  sku: variants[0]?.sku || product.id,
+  sku: productSku,
+  ...(productMpn ? { mpn: productMpn } : {}),
   brand: {
     '@type': 'Brand',
     name: product.brand || siteConfig.name,
