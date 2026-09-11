@@ -6,6 +6,7 @@ import ProductTrustBadges from '../../components/ProductTrustBadges.astro'
 import HowToApply from '../../components/HowToApply.astro'
 import Gallery from '../../components/islands/Gallery.jsx'
 import VariantSelector from '../../components/islands/VariantSelector.jsx'
+import ProductShare from '../../components/islands/ProductShare.jsx'
 import { siteConfig } from '../../config/site.js'
 import { getAllProducts, getProductsByCategory } from '../../lib/products.js'
 
@@ -309,6 +310,8 @@ const faqJsonLd = {
         </div>
 
         <VariantSelector client:visible product={product} />
+
+        <ProductShare client:idle slug={product.slug} title={product.name} />
 
         <ProductTrustBadges />
       </div>

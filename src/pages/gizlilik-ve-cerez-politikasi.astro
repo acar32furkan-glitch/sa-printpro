@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Breadcrumb from '../components/Breadcrumb.astro'
+import { siteConfig } from '../config/site.js'
+
+const canonicalUrl = `${siteConfig.domain}/gizlilik-ve-cerez-politikasi`
+
+const breadcrumbItems = [
+  { label: 'Ana Sayfa', href: '/' },
+  { label: 'Gizlilik ve Çerez Politikası' },
+]
+
+const sections = [
+  {
+    title: '1. Veri Sorumlusu',
+    body: `Bu web sitesi ${siteConfig.name} tarafından işletilmektedir. 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamında veri sorumlusu ${siteConfig.name}'dir. İletişim: ${siteConfig.contact.email}.`,
+  },
+  {
+    title: '2. İşlenen Kişisel Veriler',
+    body: 'Sitemiz üzerinden doğrudan bir üyelik veya ödeme işlemi gerçekleştirilmemektedir. Sipariş ve ödeme işlemleri, yönlendirme yaptığımız aracı platformlar (Trendyol, Shopier) üzerinden tamamlanır. Bu platformlara ilettiğiniz ad, adres, telefon ve ödeme bilgileri ilgili platformun kendi gizlilik politikasına tabidir. Sitemiz yalnızca anonim ziyaret istatistikleri ve teknik günlük kayıtları işleyebilir.',
+  },
+  {
+    title: '3. Çerezler (Cookies)',
+    body: 'Sitemizde zorunlu çerezler ve — açık rızanızı vermeniz halinde — analitik çerezler kullanılır. Zorunlu çerezler sitenin temel işlevleri (tema tercihi, çerez onay durumu) için gereklidir. Analitik çerezler (Google Analytics 4) yalnızca onayınız sonrasında etkinleşir ve IP anonimleştirmesi uygulanır.',
+  },
+  {
+    title: '4. Çerez Tercihlerinizin Yönetimi',
+    body: 'Siteyi ilk ziyaretinizde görüntülenen çerez bildirimi üzerinden analitik çerezleri kabul edebilir veya reddedebilirsiniz. Tercihinizi dilediğiniz zaman tarayıcınızın çerez ayarlarından değiştirebilir veya silebilirsiniz.',
+  },
+  {
+    title: '5. Kişisel Verilerin İşlenme Amaçları ve Hukuki Sebep',
+    body: 'Veriler; site güvenliğinin sağlanması, hizmet kalitesinin ölçülmesi ve yasal yükümlülüklerin yerine getirilmesi amacıyla, KVKK m.5 kapsamındaki "meşru menfaat" ve "açık rıza" hukuki sebeplerine dayanılarak işlenir.',
+  },
+  {
+    title: '6. Verilerin Aktarılması',
+    body: 'Kişisel verileriniz; barındırma (hosting) ve analitik hizmet sağlayıcıları ile yalnızca hizmetin gerektirdiği ölçüde ve yasal sınırlar içinde paylaşılabilir. Yurt dışına aktarım söz konusu olduğunda KVKK m.9 hükümlerine uygun hareket edilir.',
+  },
+  {
+    title: '7. KVKK Kapsamındaki Haklarınız',
+    body: 'KVKK m.11 uyarınca; kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, düzeltilmesini veya silinmesini isteme ve işlemenin sınırlandırılmasını talep etme haklarına sahipsiniz. Taleplerinizi yukarıdaki e-posta adresine iletebilirsiniz.',
+  },
+  {
+    title: '8. Politika Güncellemeleri',
+    body: 'Bu politika, mevzuat değişikliklerine bağlı olarak güncellenebilir. Güncel sürüm her zaman bu sayfada yayımlanır.',
+  },
+]
+---
+
+<Layout
+  title="Gizlilik ve Çerez Politikası"
+  description={`${siteConfig.name} gizlilik, KVKK aydınlatma ve çerez politikası. Kişisel verilerinizin nasıl işlendiğini ve çerez tercihlerinizi öğrenin.`}
+  canonicalUrl={canonicalUrl}
+>
+  <div class="mx-auto max-w-6xl px-4">
+    <Breadcrumb items={breadcrumbItems} />
+  </div>
+
+  <article class="mx-auto max-w-3xl px-4 pb-16">
+    <h1 class="text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl dark:text-zinc-50">
+      Gizlilik ve Çerez Politikası
+    </h1>
+    <p class="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+      Son güncelleme: {new Date().getFullYear()}
+    </p>
+
+    <div class="mt-8 flex flex-col gap-8">
+      {
+        sections.map((section) => (
+          <section>
+            <h2 class="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+              {section.title}
+            </h2>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              {section.body}
+            </p>
+          </section>
+        ))
+      }
+    </div>
+  </article>
+</Layout>

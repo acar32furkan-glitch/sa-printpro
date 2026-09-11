@@ -80,3 +80,10 @@ jobs:
           git add src/data/products.json
           git commit -m "chore(data): auto-sync trendyol catalog [skip ci]"
           git push
+
+      # 7) IndexNow ping — katalog değiştiğinde arama motorlarını otomatik bilgilendir
+      - name: Notify IndexNow
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: node scripts/notify-indexnow.mjs
