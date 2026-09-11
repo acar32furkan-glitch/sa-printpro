@@ -5,7 +5,7 @@ export const siteConfig = {
   logoDarkFile: 'logo-dark.png',
   faviconFile: 'favicon.png',
   contact: {
-    whatsapp: '905XXXXXXXXX',
+    whatsapp: '905542993058',
     instagram: 'saprintpro',
     email: 'info@saprintpro.com',
   },
@@ -15,8 +15,8 @@ export const siteConfig = {
     freeShipping: '350 TL Üzeri Kargo Bedava',
     freeShippingThreshold: 350,
   },
-  ga4Id: 'G-XXXXXXXXXX',
-  searchConsoleVerification: '',
+  ga4Id: 'G-HK6Q53CMG1',
+  searchConsoleVerification: 'google419bc019c17c40b5',
   showHowToApply: true,
   features: {
     // false yapılırsa sitedeki tüm Trendyol butonları ve rozetleri gizlenir,
