@@ -75,10 +75,29 @@ const organizationJsonLd = {
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      Font CSS'i render-blocking olmaktan çıkar: `media="print"` ile düşük
+      öncelikte indirilir, yüklendiğinde `onload` ile `all`'a çevrilir.
+      `display=swap` sayesinde metin font yüklenmeden de görünür kalır.
+      `<noscript>` fallback'i JS kapalı istemciler için stilleri garanti eder.
+    -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      />
+    </noscript>
 
     <Seo
       title={title}

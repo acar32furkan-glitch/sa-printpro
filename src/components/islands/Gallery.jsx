@@ -41,6 +41,7 @@ export default function Gallery({ images = [], title = '' }) {
             }
             className="h-full w-full animate-fade-in object-cover"
             loading="eager"
+            fetchPriority="high"
             decoding="async"
           />
         ) : (

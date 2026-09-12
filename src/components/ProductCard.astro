@@ -2,7 +2,10 @@
 import { siteConfig } from '../config/site.js'
 import { calculateDirectPrice, getProductPrimaryImage } from '../lib/products.js'
 
-const { product } = Astro.props
+// `priority` — ilk ekranda (above-the-fold) görünen kartlar için LCP
+// optimizasyonu. true olduğunda görsel eager + fetchpriority="high" yüklenir;
+// alt sıradaki kartlar lazy kalır.
+const { product, priority = false } = Astro.props
 
 const variants = Array.isArray(product?.variants) ? product.variants : []
 
@@ -87,7 +90,8 @@ function formatPrice(value) {
         <img
           src={image}
           alt={product.name}
-          loading="lazy"
+          loading={priority ? 'eager' : 'lazy'}
+          fetchpriority={priority ? 'high' : 'auto'}
           decoding="async"
           class="h-full w-full object-cover transition-transform duration-500 ease-smooth group-hover:scale-105"
         />
@@ -151,14 +155,14 @@ function formatPrice(value) {
         showDirectPrice ? (
           <>
             <div class="flex items-baseline gap-2">
-              <span class="text-base font-bold text-emerald-600 dark:text-emerald-400">
+              <span class="text-base font-bold text-emerald-700 dark:text-emerald-400">
                 {formatPrice(directPrice)}
               </span>
-              <span class="inline-flex items-center rounded bg-emerald-600 px-1.5 py-0.5 text-2xs font-semibold text-white">
+              <span class="inline-flex items-center rounded bg-emerald-700 px-1.5 py-0.5 text-2xs font-semibold text-white">
                 %{directDiscountPercent} İndirimli
               </span>
             </div>
-            <span class="text-xs text-zinc-400 line-through dark:text-zinc-500">
+            <span class="text-xs text-zinc-500 line-through dark:text-zinc-400">
               {enableTrendyolCta ? 'Trendyol:' : 'Liste Fiyatı:'}
               {formatPrice(salePrice)}
             </span>
@@ -171,7 +175,7 @@ function formatPrice(value) {
                   {formatPrice(salePrice)}
                 </span>
                 {hasDiscount && (
-                  <span class="text-xs text-zinc-400 line-through dark:text-zinc-500">
+                  <span class="text-xs text-zinc-500 line-through dark:text-zinc-400">
                     {formatPrice(basePrice)}
                   </span>
                 )}

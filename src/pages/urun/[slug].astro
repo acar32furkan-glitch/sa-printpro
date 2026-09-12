@@ -224,12 +224,15 @@ const attributeRows = Object.entries(firstVariant.attributes || {}).map(([key, v
   value: String(value),
 }))
 
+// Tekilleştirilmiş özellik tablosu: daha önce "Ürün Özellikleri" ve
+// "Teknik Özellikler ve Üretim Bilgileri" bölümleri aynı `attributeRows`
+// satırlarını iki kez render ediyordu. Artık tek bir tablo üretiliyor;
+// aynı anahtar (key) yalnızca bir kez görünür.
 const specRows = [
   { key: 'ÜRÜN KODU', value: firstVariant.sku || String(product.id) },
   { key: 'BARKOD', value: firstVariant.barcode || '—' },
   { key: 'KATEGORİ', value: category.name },
   { key: 'MARKA', value: product.brand || siteConfig.name },
-  ...attributeRows,
   { key: 'KARGO', value: siteConfig.badges.shipping },
 ]
 
@@ -398,9 +401,11 @@ const productJsonLd = {
     : {}),
 }
 
-// AIO & SearchGPT uyumlu semantik teknik özellik tablosu.
+// AIO & SearchGPT uyumlu semantik teknik özellik satırları.
 // Sabit üretim gerçekleri, API'den gelen dinamik `attributes` ile birleştirilir.
 // FAZ 11: AI detaylı özellikleri varsa sabit değerlerin yerine geçer.
+// NOT: `attributeRows` artık burada TEKRAR edilmez; tekilleştirme için
+// aşağıdaki `mergedSpecRows` birleşimine bakın.
 const aioRows = [
   {
     key: 'Malzeme',
@@ -420,8 +425,24 @@ const aioRows = [
     ? [{ key: 'Sökülebilirlik', value: detailedSpecs.removal }]
     : []),
   { key: 'Menşei', value: 'Türkiye (SA Printpro Üretimi)' },
-  ...attributeRows,
 ]
+
+// Tek tablo: temel kimlik satırları + AI teknik satırları + API attribute'ları.
+// Aynı `key` (büyük/küçük harf duyarsız) yalnızca ilk görüldüğü yerde tutulur;
+// böylece sayfada tekrarlı satır kalmaz.
+const mergedSpecRows = (() => {
+  const seen = new Set()
+  const rows = []
+  for (const row of [...specRows, ...aioRows, ...attributeRows]) {
+    const normalized = String(row.key).trim().toLocaleLowerCase('tr-TR')
+    if (seen.has(normalized)) {
+      continue
+    }
+    seen.add(normalized)
+    rows.push(row)
+  }
+  return rows
+})()
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -488,7 +509,7 @@ const faqJsonLd = {
             >
               {category.name}
             </a>
-            <span class="text-xs text-zinc-400 dark:text-zinc-500">
+            <span class="text-xs text-zinc-500 dark:text-zinc-400">
               {firstVariant.barcode || firstVariant.sku || product.id}
             </span>
           </div>
@@ -544,7 +565,7 @@ const faqJsonLd = {
       </div>
     </div>
 
-    <!-- Specification table. -->
+    <!-- Tekilleştirilmiş özellik tablosu (Ürün + Teknik + API attribute'ları). -->
     <section class="mt-12" aria-labelledby="product-spec-title">
       <div class="flex items-center gap-3">
         <h2
@@ -560,37 +581,7 @@ const faqJsonLd = {
         class="mt-4 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-zinc-200 bg-zinc-200 sm:grid-cols-2 dark:border-zinc-800 dark:bg-zinc-800"
       >
         {
-          specRows.map((row) => (
-            <div class="flex items-center justify-between gap-4 bg-white px-4 py-3 dark:bg-zinc-900">
-              <dt class="text-xs text-zinc-500 dark:text-zinc-400">
-                {row.key}
-              </dt>
-              <dd class="text-right text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                {row.value}
-              </dd>
-            </div>
-          ))
-        }
-      </dl>
-    </section>
-
-    <!-- AIO & SearchGPT uyumlu teknik özellik tablosu. -->
-    <section class="mt-12" aria-labelledby="product-aio-title">
-      <div class="flex items-center gap-3">
-        <h2
-          id="product-aio-title"
-          class="text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-50"
-        >
-          Teknik Özellikler ve Üretim Bilgileri
-        </h2>
-        <span class="h-px flex-1 bg-zinc-200 dark:bg-zinc-800"></span>
-      </div>
-
-      <dl
-        class="mt-4 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-zinc-200 bg-zinc-200 sm:grid-cols-2 dark:border-zinc-800 dark:bg-zinc-800"
-      >
-        {
-          aioRows.map((row) => (
+          mergedSpecRows.map((row) => (
             <div class="flex items-center justify-between gap-4 bg-white px-4 py-3 dark:bg-zinc-900">
               <dt class="text-xs text-zinc-500 dark:text-zinc-400">
                 {row.key}
@@ -641,7 +632,7 @@ const faqJsonLd = {
               <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-medium text-zinc-900 marker:content-none dark:text-zinc-100">
                 <span>{faq.question}</span>
                 <span
-                  class="text-xs text-zinc-400 transition-transform group-open:rotate-45 dark:text-zinc-500"
+                  class="text-xs text-zinc-500 transition-transform group-open:rotate-45 dark:text-zinc-400"
                   aria-hidden="true"
                 >
                   +

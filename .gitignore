@@ -16,3 +16,6 @@ Thumbs.db
 qa-audit-report.json
 .wrangler/
 .logo-backup/
+# Lighthouse / PageSpeed rapor çıktıları (yerel analiz artefaktları)
+saprintpro.com-*.json
+lighthouse-report*.json

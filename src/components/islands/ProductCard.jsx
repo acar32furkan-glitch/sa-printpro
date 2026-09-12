@@ -185,14 +185,14 @@ export default function ProductCard({ product }) {
           {showDirectPrice ? (
             <>
               <div className="flex items-baseline gap-2">
-                <span className="text-base font-bold text-emerald-600 dark:text-emerald-400">
+                <span className="text-base font-bold text-emerald-700 dark:text-emerald-400">
                   {formatPrice(directPrice)}
                 </span>
-                <span className="inline-flex items-center rounded bg-emerald-600 px-1.5 py-0.5 text-2xs font-semibold text-white">
+                <span className="inline-flex items-center rounded bg-emerald-700 px-1.5 py-0.5 text-2xs font-semibold text-white">
                   %{directDiscountPercent} İndirimli
                 </span>
               </div>
-              <span className="text-xs text-zinc-400 line-through dark:text-zinc-500">
+              <span className="text-xs text-zinc-500 line-through dark:text-zinc-400">
                 {enableTrendyolCta ? 'Trendyol:' : 'Liste Fiyatı:'}{' '}
                 {formatPrice(salePrice)}
               </span>
@@ -205,7 +205,7 @@ export default function ProductCard({ product }) {
                     {formatPrice(salePrice)}
                   </span>
                   {hasDiscount && (
-                    <span className="text-xs text-zinc-400 line-through dark:text-zinc-500">
+                    <span className="text-xs text-zinc-500 line-through dark:text-zinc-400">
                       {formatPrice(basePrice)}
                     </span>
                   )}

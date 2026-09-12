@@ -185,27 +185,21 @@ export default function VariantSelector({ product, shopier }) {
         {showDirectPrice ? (
           <>
             <div className="flex flex-wrap items-baseline gap-3">
-              <span className="text-3xl font-bold tracking-tight text-emerald-600 dark:text-emerald-400">
+              <span className="text-3xl font-bold tracking-tight text-emerald-700 dark:text-emerald-400">
                 {formatPrice(directPrice)}
               </span>
-              <span className="inline-flex items-center gap-1 rounded-md bg-emerald-600 px-2 py-1 text-2xs font-semibold text-white">
+              <span className="inline-flex items-center gap-1 rounded-md bg-emerald-700 px-2 py-1 text-2xs font-semibold text-white">
                 <BadgePercent className="h-3 w-3" aria-hidden="true" />
-                Doğrudan Siparişte: {formatPrice(directPrice)} (%{directDiscountPercent}{' '}
-                İndirimli)
+                {`Web'e Özel Fiyat (%${directDiscountPercent} İndirimli)`}
               </span>
             </div>
             <div className="flex flex-wrap items-baseline gap-2 text-sm">
-              <span className="text-zinc-500 dark:text-zinc-400">
+              <span className="text-zinc-600 dark:text-zinc-400">
                 {enableTrendyolCta ? 'Trendyol:' : 'Liste Fiyatı:'}
               </span>
-              <span className="text-zinc-400 line-through dark:text-zinc-500">
+              <span className="text-zinc-500 line-through dark:text-zinc-400">
                 {formatPrice(trendyolPrice)}
               </span>
-              {hasDiscount && (
-                <span className="text-xs text-zinc-400 dark:text-zinc-500">
-                  (liste {formatPrice(price)})
-                </span>
-              )}
             </div>
           </>
         ) : (
@@ -217,7 +211,7 @@ export default function VariantSelector({ product, shopier }) {
                 </span>
                 {hasDiscount && (
                   <>
-                    <span className="text-lg text-zinc-400 line-through dark:text-zinc-500">
+                    <span className="text-lg text-zinc-500 line-through dark:text-zinc-400">
                       {formatPrice(price)}
                     </span>
                     <span className="inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-2xs font-semibold text-white dark:bg-zinc-50 dark:text-zinc-900">
@@ -234,7 +228,7 @@ export default function VariantSelector({ product, shopier }) {
             )}
           </div>
         )}
-        <span className="text-xs text-zinc-400 dark:text-zinc-500">
+        <span className="text-xs text-zinc-500 dark:text-zinc-400">
           KDV Dahil · Barkod {barcode || '—'}
           {sku ? ` · SKU ${sku}` : ''}
         </span>
