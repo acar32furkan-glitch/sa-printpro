@@ -136,6 +136,16 @@ function slugify(text) {
 /**
  * Üçüncü taraf (rakip) satıcı unvanları — katalogda asla görünmemeli.
  * Eşleştirme Türkçe-duyarlı ve büyük/küçük harf bağımsızdır.
+ *
+ * ÖNEMLİ: Bu liste YALNIZCA tam mağaza unvanlarını içermelidir. Ürün türünü
+ * veya jenerik bir kelimeyi (ör. "sticker", "rez", "3m", "favori") içeren kısa
+ * parçalar EKLENMEMELİDİR — aksi halde ürün başlıklarındaki meşru kelimeler
+ * yanlışlıkla "SA Printpro" ile değiştirilir ve hem başlıklar bozulur hem de
+ * SEO'da aranan kelimeler kaybolur.
+ *
+ * Bu liste `src/lib/products.js` ve `scripts/sanitize-catalog.mjs` ile
+ * senkron tutulmalıdır; aşağıdaki `assertNoGenericBrands` guard'ı jenerik
+ * kelime eklenmesini senkronizasyon anında engeller.
  */
 const COMPETITOR_BRANDS = [
   'baskı babası',
@@ -143,8 +153,119 @@ const COMPETITOR_BRANDS = [
   'baskibabasi',
   'baskıbabası',
   'baski babası',
-  'baskı babasi'
+  'baskı babasi',
+  'hediyelikevi',
+  'benimser reklam',
+  'run grafik shop',
+  'bay s plus',
+  'kaplama merkezi',
+  'beta moda hub',
+  'mavera stickers',
+  'adasya reklam',
+  'kurt reklam dünyası',
+  'modernsanatdükkanı',
+  'tasarım market',
+  'maral grup',
+  'ersa sticker',
+  'asilmeydan',
+  'wouw store',
+  'hsc store',
+  'yılmaz auto',
+  'yarımada bahçe',
+  'asil ticaret',
+  'uçgunmoto',
+  'cebecioto',
+  'mtl pleksi',
+  'stckrco',
+  'muasl',
+  'allivo',
+  'arona',
+  'comtura',
+  'bricave',
+  'kumraldede',
+  'habole',
+  'bilge sea',
+  'motiker',
+  'stıckman',
+  'erzline',
+  'carsesuar',
+  'teknotik',
+  'unifol'
 ];
+
+/**
+ * Jenerik ürün türü / malzeme kelimeleri. Bunlar ASLA `COMPETITOR_BRANDS`
+ * içine girmemelidir; aksi halde ürün başlıklarındaki meşru kelimeler
+ * yanlışlıkla "SA Printpro" ile değiştirilir (ör. "Granaj Sticker Etiket"
+ * → "Granaj SA Printpro Etiket") ve hem başlıklar bozulur hem de SEO'da
+ * aranan kelimeler kaybolur.
+ *
+ * Bu liste, geçmişte yaşanan "sticker → SA Printpro" regresyonunun bir daha
+ * oluşmaması için bir güvenlik ağıdır: aşağıdaki `assertNoGenericBrands`
+ * fonksiyonu, listeye jenerik bir kelime eklenirse senkronizasyon anında
+ * hata fırlatır.
+ */
+const GENERIC_TITLE_WORDS = new Set([
+  'sticker',
+  'stickers',
+  'etiket',
+  'çıkartma',
+  'cikartma',
+  'folyo',
+  'jant',
+  'şerit',
+  'serit',
+  'granaj',
+  'grenaj',
+  'kaplama',
+  'reflektif',
+  'reflektor',
+  'reflektör',
+  'hologram',
+  'kupon',
+  'arma',
+  'logo',
+  'motor',
+  'motosiklet',
+  'araba',
+  'oto',
+  'kask',
+  'aksesuar',
+  'rez',
+  '3m',
+  'favori'
+]);
+
+/**
+ * `COMPETITOR_BRANDS` içinde jenerik bir kelime bulunursa hata fırlatır.
+ * Bu, "sticker → SA Printpro" benzeri bir regresyonu erken yakalar.
+ *
+ * @param {string[]} brands
+ */
+function assertNoGenericBrands(brands) {
+  for (const brand of brands) {
+    const normalized = String(brand)
+      .replace(/[İIıi]/g, 'i')
+      .replace(/Ş/g, 's')
+      .replace(/ş/g, 's')
+      .replace(/Ğ/g, 'g')
+      .replace(/ğ/g, 'g')
+      .replace(/Ü/g, 'u')
+      .replace(/ü/g, 'u')
+      .replace(/Ö/g, 'o')
+      .replace(/ö/g, 'o')
+      .replace(/Ç/g, 'c')
+      .replace(/ç/g, 'c')
+      .toLowerCase()
+      .trim();
+    if (GENERIC_TITLE_WORDS.has(normalized)) {
+      throw new Error(
+        `[COMPETITOR_BRANDS] Jenerik kelime marka listesine eklenemez: "${brand}". ` +
+          'Bu, ürün başlıklarındaki meşru kelimeleri bozar (bkz. GENERIC_TITLE_WORDS).'
+      );
+    }
+  }
+}
 
 /** Kurumsal / ajans referansları — satıcı kimliğini sızdırır. */
 const COMPETITOR_ENTITIES = [
@@ -715,6 +836,9 @@ function readExistingCatalog() {
 // ---------------------------------------------------------------------------
 
 async function main() {
+  // Regresyonu kaynağında yakala: listeye jenerik kelime eklenirse dur.
+  assertNoGenericBrands(COMPETITOR_BRANDS);
+
   log.step('Trendyol senkronizasyonu başlatılıyor...');
 
   // 1) Ortam değişkenleri

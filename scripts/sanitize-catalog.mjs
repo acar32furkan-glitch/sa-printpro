@@ -74,6 +74,67 @@ const COMPETITOR_BRANDS = [
   'unifol'
 ];
 
+/**
+ * Jenerik ürün türü / malzeme kelimeleri. Bunlar ASLA `COMPETITOR_BRANDS`
+ * içine girmemelidir; aksi halde ürün başlıklarındaki meşru kelimeler
+ * yanlışlıkla "SA Printpro" ile değiştirilir (ör. "Granaj Sticker Etiket"
+ * → "Granaj SA Printpro Etiket") ve hem başlıklar bozulur hem de SEO'da
+ * aranan kelimeler kaybolur.
+ *
+ * Bu liste, geçmişte yaşanan "sticker → SA Printpro" regresyonunun bir daha
+ * oluşmaması için bir güvenlik ağıdır: aşağıdaki `assertNoGenericBrands`
+ * fonksiyonu, listeye jenerik bir kelime eklenirse senkronizasyon anında
+ * hata fırlatır.
+ */
+const GENERIC_TITLE_WORDS = new Set([
+  'sticker',
+  'stickers',
+  'etiket',
+  'çıkartma',
+  'cikartma',
+  'folyo',
+  'jant',
+  'şerit',
+  'serit',
+  'granaj',
+  'grenaj',
+  'kaplama',
+  'reflektif',
+  'reflektor',
+  'reflektör',
+  'hologram',
+  'kupon',
+  'arma',
+  'logo',
+  'motor',
+  'motosiklet',
+  'araba',
+  'oto',
+  'kask',
+  'aksesuar',
+  'rez',
+  '3m',
+  'favori'
+]);
+
+/**
+ * `COMPETITOR_BRANDS` içinde jenerik bir kelime bulunursa hata fırlatır.
+ * Bu, "sticker → SA Printpro" benzeri bir regresyonu erken yakalar.
+ *
+ * @param {string[]} brands
+ */
+function assertNoGenericBrands(brands) {
+  for (const brand of brands) {
+    const normalized = normalizeTr(brand).trim();
+    if (GENERIC_TITLE_WORDS.has(normalized)) {
+      throw new Error(
+        `[COMPETITOR_BRANDS] Jenerik kelime marka listesine eklenemez: "${brand}". ` +
+          'Bu, ürün başlıklarındaki meşru kelimeleri bozar (bkz. GENERIC_TITLE_WORDS).'
+      );
+    }
+  }
+}
+
 const COMPETITOR_ENTITIES = [
   'meca ajans kurumsal reklam ve baskı hizmetleri',
   'meca ajans'
@@ -257,6 +318,9 @@ function cleanField(value, counter) {
 }
 
 function main() {
+  // Regresyonu kaynağında yakala: listeye jenerik kelime eklenirse dur.
+  assertNoGenericBrands(COMPETITOR_BRANDS);
+
   if (!fs.existsSync(CATALOG_FILE)) {
     console.error(`[hata] Katalog bulunamadı: ${CATALOG_FILE}`);
     process.exit(1);
