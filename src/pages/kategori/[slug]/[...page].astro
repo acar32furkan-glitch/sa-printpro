@@ -9,6 +9,7 @@ import {
   getAllCategories,
   getProductsByCategory,
   getSortedProducts,
+  toClientProduct,
 } from '../../../lib/products.js'
 import { PAGE_SIZE, getTotalPages, pageUrl, paginate } from '../../../lib/pagination.js'
 
@@ -46,6 +47,9 @@ export function getStaticPaths() {
 }
 
 const { category, page, totalPages, products } = Astro.props
+
+// İstemci adasına CDN URL'i sızmasın: yalnızca yerel görselleri gönder.
+const clientProducts = products.map(toClientProduct)
 
 const brands = getAllBrandsWithCounts()
 
@@ -133,7 +137,7 @@ const breadcrumbJsonLd = {
         </p>
       ) : (
         <div class="mt-8">
-          <ProductGridStatic client:idle products={products} brands={brands} />
+          <ProductGridStatic client:idle products={clientProducts} brands={brands} />
         </div>
       )
     }

@@ -1,6 +1,10 @@
 ---
 import { siteConfig } from '../config/site.js'
-import { calculateDirectPrice, getProductPrimaryImage } from '../lib/products.js'
+import {
+  calculateDirectPrice,
+  getProductPrimaryImage,
+  normalizeProductTitle,
+} from '../lib/products.js'
 
 // `priority` — ilk ekranda (above-the-fold) görünen kartlar için LCP
 // optimizasyonu. true olduğunda görsel eager + fetchpriority="high" yüklenir;
@@ -68,6 +72,9 @@ const inStock = totalStock > 0
 // FAZ 11: yerel (logo filigranlı) görsel varsa onu, yoksa CDN görselini kullan.
 const image = getProductPrimaryImage(product)
 
+// Tümü büyük harfle yazılmış başlıkları okunabilir başlık düzenine çevir.
+const displayName = normalizeProductTitle(product.name)
+
 function formatPrice(value) {
   const numeric = Number(value)
   if (!Number.isFinite(numeric)) {
@@ -89,7 +96,7 @@ function formatPrice(value) {
       image ? (
         <img
           src={image}
-          alt={product.name}
+          alt={displayName}
           loading={priority ? 'eager' : 'lazy'}
           fetchpriority={priority ? 'high' : 'auto'}
           decoding="async"
@@ -145,9 +152,9 @@ function formatPrice(value) {
   <div class="flex flex-1 flex-col gap-2 p-3.5">
     <h3
       class="line-clamp-2 text-sm font-medium leading-snug text-zinc-900 dark:text-zinc-100"
-      title={product.name}
+      title={displayName}
     >
-      {product.name}
+      {displayName}
     </h3>
 
     <div class="mt-auto flex flex-col gap-1.5 pt-1">

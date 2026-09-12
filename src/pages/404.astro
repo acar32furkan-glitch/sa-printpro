@@ -1,8 +1,19 @@
 ---
+import { existsSync } from 'node:fs'
 import Layout from '../layouts/Layout.astro'
 import SearchBar from '../components/islands/SearchBar.jsx'
 import { siteConfig } from '../config/site.js'
-import { getAllCategories, getSortedProducts } from '../lib/products.js'
+import {
+  getAllCategories,
+  getProductPrimaryImage,
+  getSortedProducts,
+  normalizeProductTitle,
+} from '../lib/products.js'
+
+// `getProductPrimaryImage` yerel dosya kontrolü için `node:fs`'e ihtiyaç duyar.
+// Bu bağımlılığı tarayıcı paketinden uzak tutmak için yalnızca SSG (Node)
+// bağlamında global bir köprü üzerinden enjekte ederiz.
+globalThis.__SA_PRINTPRO_FS__ = { existsSync }
 
 // SEVİYE 3 — UX: Kullanıcıyı kaybetmemek için 404 sayfasında arama kutusu,
 // popüler kategoriler ve öne çıkan ürünler sunulur.
@@ -109,33 +120,38 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
         </div>
 
         <ul class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {popularProducts.map((product) => (
-            <li>
-              <a
-                href={`/urun/${product.slug}`}
-                class="group flex h-full flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white transition-all duration-200 ease-smooth hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-lift dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
-              >
-                <span class="flex aspect-[4/5] w-full items-center justify-center overflow-hidden border-b border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-800">
-                  {product.images?.[0] ? (
-                    <img
-                      src={product.images[0]}
-                      alt={product.name}
-                      loading="lazy"
-                      decoding="async"
-                      class="h-full w-full object-cover transition-transform duration-500 ease-smooth group-hover:scale-105"
-                    />
-                  ) : (
-                    <span class="text-xs text-zinc-400 dark:text-zinc-600">
-                      Görsel yok
-                    </span>
-                  )}
-                </span>
-                <span class="line-clamp-2 p-3.5 text-sm font-medium leading-snug text-zinc-900 dark:text-zinc-100">
-                  {product.name}
-                </span>
-              </a>
-            </li>
-          ))}
+          {popularProducts.map((product) => {
+            // Yerel (logo filigranlı) görseli tercih et; CDN'e düşme yok.
+            const image = getProductPrimaryImage(product)
+            const displayName = normalizeProductTitle(product.name)
+            return (
+              <li>
+                <a
+                  href={`/urun/${product.slug}`}
+                  class="group flex h-full flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white transition-all duration-200 ease-smooth hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-lift dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
+                >
+                  <span class="flex aspect-[4/5] w-full items-center justify-center overflow-hidden border-b border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-800">
+                    {image ? (
+                      <img
+                        src={image}
+                        alt={displayName}
+                        loading="lazy"
+                        decoding="async"
+                        class="h-full w-full object-cover transition-transform duration-500 ease-smooth group-hover:scale-105"
+                      />
+                    ) : (
+                      <span class="text-xs text-zinc-400 dark:text-zinc-600">
+                        Görsel yok
+                      </span>
+                    )}
+                  </span>
+                  <span class="line-clamp-2 p-3.5 text-sm font-medium leading-snug text-zinc-900 dark:text-zinc-100">
+                    {displayName}
+                  </span>
+                </a>
+              </li>
+            )
+          })}
         </ul>
       </section>
     )

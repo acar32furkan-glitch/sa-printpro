@@ -214,7 +214,58 @@ export function sanitizeProductContent(text) {
     deduped.push(word)
   }
 
-  return deduped.join(' ').replace(/\s{2,}/g, ' ').trim()
+  return normalizeProductTitle(deduped.join(' ').replace(/\s{2,}/g, ' ').trim())
+}
+
+/**
+ * Tümü büyük harfle yazılmış ürün başlıklarını okunabilir başlık düzenine
+ * çevirir (ör. "KUPON HOLOGRAM STİCKER 2 ADET" → "Kupon Hologram Sticker 2 Adet").
+ *
+ * Yalnızca başlığın TAMAMI büyük harfse uygulanır; karışık yazım (ör. "Honda
+ * PCX Jant Şeridi") olduğu gibi korunur. Kısa bağlaçlar (ve, ile, için) ve
+ * bilinen kısaltmalar (PCX, KTM, BMW, LED, 3M, TR) küçültülmez.
+ *
+ * @param {string} text
+ * @returns {string}
+ */
+export function normalizeProductTitle(text) {
+  const value = String(text || '').trim()
+  if (value === '') {
+    return value
+  }
+
+  // Harf içeren karakterleri topla; rakam/noktalama tek başına karar vermez.
+  const letters = value.replace(/[^A-Za-zÇĞİÖŞÜçğıöşü]/g, '')
+  if (letters.length < 8 || letters !== letters.toLocaleUpperCase('tr-TR')) {
+    return value
+  }
+
+  // Küçültülmeyecek kısaltmalar (marka/model/teknoloji).
+  const KEEP_UPPER = new Set([
+    'PCX', 'KTM', 'BMW', 'TVS', 'RKS', 'CFMOTO', 'LED', 'UV', 'TR', 'SA',
+    'MG100', 'MT', 'R25', 'NMAX', 'XMAX', 'JDM', 'ABS', 'ECE', '3M',
+  ])
+  // Cümle başında da küçük kalması gereken bağlaçlar.
+  const LOWERCASE_WORDS = new Set(['ve', 'ile', 'için', 'veya', 'de', 'da'])
+
+  const words = value.split(/\s+/)
+  return words
+    .map((word, index) => {
+      const bare = word.replace(/[^\p{L}\p{N}]/gu, '')
+      if (bare === '') {
+        return word
+      }
+      if (KEEP_UPPER.has(bare.toLocaleUpperCase('tr-TR'))) {
+        return word
+      }
+      const lower = word.toLocaleLowerCase('tr-TR')
+      if (index > 0 && LOWERCASE_WORDS.has(bare.toLocaleLowerCase('tr-TR'))) {
+        return lower
+      }
+      // İlk harfi büyüt, kalanı küçült (Türkçe yerel ayarıyla).
+      return lower.charAt(0).toLocaleUpperCase('tr-TR') + lower.slice(1)
+    })
+    .join(' ')
 }
 
 /**
@@ -315,6 +366,34 @@ export function getProductImages(product) {
       return cdnImage
     }
   })
+}
+
+/**
+ * İstemci adalarına (React grid/kart bileşenleri) gönderilecek ürün nesnesini
+ * hazırlar.
+ *
+ * Astro, ada prop'larını HTML'e serileştirdiği için `product.images` içindeki
+ * ham Trendyol CDN URL'leri sayfa kaynağına sızıyordu. Bu fonksiyon, görselleri
+ * yerelleştirilmiş (`/uploads/products/...`) yollarla değiştirir; böylece
+ * sayfa kaynağında hiçbir harici görsel URL'i kalmaz ve Trendyol hotlink
+ * bağımlılığı tamamen ortadan kalkar.
+ *
+ * @param {object} product
+ * @returns {object} Sadeleştirilmiş ürün kopyası.
+ */
+export function toClientProduct(product) {
+  if (!product) {
+    return product
+  }
+
+  const localImages = getProductImages(product).filter(
+    (url) => typeof url === 'string' && url.startsWith('/uploads/')
+  )
+
+  return {
+    ...product,
+    images: localImages.length > 0 ? localImages : [],
+  }
 }
 
 /**
@@ -568,6 +647,68 @@ export function getTrendyolProductUrl(product, variant) {
   return `https://www.trendyol.com/sr?mid=${sellerId}&q=${encodeURIComponent(
     query
   )}${utmSuffix}`
+}
+
+/**
+ * Calculates the web-exclusive direct-sale price for a given list price.
+ *
+ * Applies the configured `directDiscountRate` and then rounds to a value whose
+ * last digit is always 5 (e.g. 199 -> 155, 120 -> 95). A floor of 5 TL keeps
+ * the result sane for very cheap items.
+ *
+ * @param {number} price
+ * @returns {number}
+ */
+/**
+ * Hammadde / malzeme markaları. Bunlar ürünün ÜRETİCİ markası değildir; vinil,
+ * folyo gibi girdilerin tedarikçi markalarıdır. Vitrinde "MARKA: Oracal" olarak
+ * gösterildiğinde "%100 Orijinal SA Printpro Üretimi" mesajıyla çelişiyor ve
+ * müşteri "bu SA Printpro ürünü mü yoksa Oracal markalı bir ürün mü?" diye
+ * tereddüt ediyordu. Bu liste, bu tür alanları "Malzeme Markası" olarak
+ * sınıflandırmak için kullanılır.
+ *
+ * @type {string[]}
+ */
+const MATERIAL_BRANDS = [
+  'oracal',
+  'oracall',
+  'orafol',
+  '3m',
+  'avery',
+  'avery dennison',
+  'hexis',
+  'kpmf',
+  'metamark',
+  'teckwrap',
+]
+
+/**
+ * Bir ürünün `brand` alanını yorumlar.
+ *
+ * - `brand` bir hammadde/malzeme markasıysa (ör. "Oracal"), ürünün gerçek
+ *   markası SA Printpro'dur; malzeme markası ayrıca döndürülür.
+ * - Aksi halde `brand` ürün markası olarak kabul edilir.
+ *
+ * @param {object} product
+ * @returns {{name: string, materialBrand: string|null}}
+ */
+export function resolveProductBrand(product) {
+  const raw = String(product?.brand || '').trim()
+  const normalized = normalizeTr(raw)
+
+  // Tam eşleşme ya da bilinen malzeme markası köküyle başlama (ör. "oracall"
+  // → "oracal" kökü) durumunda hammadde markası kabul edilir.
+  const isMaterialBrand =
+    raw !== '' &&
+    MATERIAL_BRANDS.some(
+      (brand) => normalized === brand || normalized.startsWith(brand)
+    )
+
+  if (isMaterialBrand) {
+    return { name: siteConfig.name, materialBrand: raw }
+  }
+
+  return { name: raw || siteConfig.name, materialBrand: null }
 }
 
 /**

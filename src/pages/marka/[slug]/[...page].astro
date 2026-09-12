@@ -9,6 +9,7 @@ import {
   getBrandBySlug,
   getProductsByBrand,
   getSortedProducts,
+  toClientProduct,
 } from '../../../lib/products.js'
 import { PAGE_SIZE, getTotalPages, pageUrl, paginate } from '../../../lib/pagination.js'
 
@@ -46,6 +47,9 @@ export function getStaticPaths() {
 }
 
 const { brand, page, totalPages, products } = Astro.props
+
+// İstemci adasına CDN URL'i sızmasın: yalnızca yerel görselleri gönder.
+const clientProducts = products.map(toClientProduct)
 
 const brandConfig = getBrandBySlug(brand.slug)
 const brandName = brandConfig?.name || brand.name
@@ -135,7 +139,7 @@ const breadcrumbJsonLd = {
     </p>
 
     <div class="mt-8">
-      <ProductGridStatic client:idle products={products} />
+      <ProductGridStatic client:idle products={clientProducts} />
     </div>
 
     <Pagination

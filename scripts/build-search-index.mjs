@@ -80,7 +80,11 @@ async function main() {
 
   const index = products.map((product) => {
     const { price, salePrice } = resolvePrices(product)
-    const images = Array.isArray(product?.images) ? product.images : []
+
+    // Yerelleştirilmiş görsel yolu: `process-images.mjs` her ürünün ilk
+    // görselini `/uploads/products/{id}.webp` olarak üretir. Ham Trendyol CDN
+    // URL'i arama indeksine sızmasın diye yerel yol tercih edilir.
+    const localImage = product?.id ? `/uploads/products/${product.id}.webp` : null
 
     return {
       id: product.id,
@@ -88,7 +92,7 @@ async function main() {
       slug: product.slug,
       category: product?.category?.name || '',
       barcode: resolveBarcode(product),
-      image: images[0] || null,
+      image: localImage,
       price,
       salePrice,
     }

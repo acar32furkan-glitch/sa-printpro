@@ -120,8 +120,11 @@ const featuredProducts = products.slice(0, FEATURED_LIMIT)
       <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
         Öne Çıkan Ürünler
       </h2>
+      {/* NOT: "En çok tercih edilen" ifadesi gerçek satış/sipariş verisine
+          dayanmadığı için (WhatsApp siparişleri sistematik toplanmıyor)
+          yanıltıcı sosyal kanıt oluşturuyordu. Nötr bir ifadeye çevrildi. */}
       <p class="text-sm text-zinc-500 dark:text-zinc-400">
-        En çok tercih edilen {featuredProducts.length} ürün
+        Seçili {featuredProducts.length} ürün
       </p>
     </div>
 

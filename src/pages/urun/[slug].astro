@@ -13,6 +13,8 @@ import {
   getAllProducts,
   getProductsByCategory,
   resolveCategory,
+  resolveProductBrand,
+  normalizeProductTitle,
   sanitizeCatalogText,
   detectCompatibleModels,
   getProductPrimaryImage,
@@ -45,6 +47,18 @@ const primaryImage = getProductPrimaryImage(product)
 const galleryImages = getProductImages(product)
 
 const variants = Array.isArray(product.variants) ? product.variants : []
+
+// İstemci adasına (VariantSelector) gönderilen ürün nesnesi. `product.images`
+// ham Trendyol CDN URL'lerini içerdiği için, bu nesne HTML'e serileştirildiğinde
+// CDN adresleri sayfa kaynağına sızıyordu. Ada yalnızca yerelleştirilmiş
+// görselleri görecek şekilde sadeleştirilir; böylece sayfa kaynağında hiçbir
+// harici görsel URL'i kalmaz.
+const islandProduct = {
+  ...product,
+  images: galleryImages.filter(
+    (url) => typeof url === 'string' && url.startsWith('/uploads/')
+  ),
+}
 
 const pricedVariants = variants.filter((variant) =>
   Number.isFinite(Number(variant.salePrice ?? variant.price))
@@ -184,7 +198,10 @@ const metaDescription = clampMetaDescription(
 )
 
 // FAZ 11: AI zenginleştirmesi varsa sadeleştirilmiş başlık önceliklendirilir.
-const displayTitle = aiData?.cleanTitle || sanitizeCatalogText(product.name)
+// Tümü büyük harfle yazılmış başlıklar okunabilir başlık düzenine çevrilir.
+const displayTitle = normalizeProductTitle(
+  aiData?.cleanTitle || sanitizeCatalogText(product.name)
+)
 
 /**
  * Bir ürünün nihai görünen başlığını (AI cleanTitle varsa onu) döndürür.
@@ -228,11 +245,20 @@ const attributeRows = Object.entries(firstVariant.attributes || {}).map(([key, v
 // "Teknik Özellikler ve Üretim Bilgileri" bölümleri aynı `attributeRows`
 // satırlarını iki kez render ediyordu. Artık tek bir tablo üretiliyor;
 // aynı anahtar (key) yalnızca bir kez görünür.
+// Marka alanı: "Oracal" gibi hammadde/malzeme markaları ürünün üretici markası
+// DEĞİLDİR. Bu durumda ürün markası SA Printpro olarak gösterilir ve malzeme
+// markası ayrı bir satırda ("MALZEME MARKASI") belirtilir; böylece
+// "%100 Orijinal SA Printpro Üretimi" mesajıyla çelişki ortadan kalkar.
+const brandInfo = resolveProductBrand(product)
+
 const specRows = [
   { key: 'ÜRÜN KODU', value: firstVariant.sku || String(product.id) },
   { key: 'BARKOD', value: firstVariant.barcode || '—' },
   { key: 'KATEGORİ', value: category.name },
-  { key: 'MARKA', value: product.brand || siteConfig.name },
+  { key: 'MARKA', value: brandInfo.name },
+  ...(brandInfo.materialBrand
+    ? [{ key: 'MALZEME MARKASI', value: brandInfo.materialBrand }]
+    : []),
   { key: 'KARGO', value: siteConfig.badges.shipping },
 ]
 
@@ -249,7 +275,7 @@ const aiFaqs = Array.isArray(aiData?.faqs)
 const staticFaqs = [
   {
     question: 'Bu ürün reflektif mi?',
-    answer: `${product.name}, gece ve düşük ışık koşullarında yüksek görünürlük sağlayan reflektif bir üründür.`,
+    answer: `${displayTitle}, gece ve düşük ışık koşullarında yüksek görünürlük sağlayan reflektif bir üründür.`,
   },
   {
     question: 'Kargo süresi ne kadar?',
@@ -329,11 +355,22 @@ const shippingDetails = {
 
 // Google Görsel SEO: `image` alanı zengin `ImageObject` formatında sunulur.
 // FAZ 11: yerel (logo filigranlı) görsel varsa ilk sıraya alınır.
+//
+// ÖNEMLİ: `product.images` ham Trendyol CDN URL'lerini içerir. Bu URL'ler
+// JSON-LD'ye sızarsa hem marka bağımsızlığı iddiasıyla çelişir hem de Trendyol
+// hotlink'i kestiğinde zengin sonuçlardaki görseller kırılır. Bu yüzden
+// yapısal veride YALNIZCA yerelleştirilmiş (`/uploads/products/...`) görseller
+// kullanılır; hiç yerel görsel yoksa CDN'e güvenli biçimde düşülür.
+const localImages = galleryImages.filter(
+  (url) => typeof url === 'string' && url.startsWith('/uploads/')
+)
 const productImages = Array.isArray(product.images) ? product.images : []
 const orderedImages =
-  primaryImage && !productImages.includes(primaryImage)
-    ? [primaryImage, ...productImages]
-    : productImages
+  localImages.length > 0
+    ? localImages
+    : primaryImage && !productImages.includes(primaryImage)
+      ? [primaryImage, ...productImages]
+      : productImages
 
 /**
  * Structured data (`Product.image`) için görsel URL'ini mutlak hale getirir.
@@ -380,7 +417,7 @@ const productJsonLd = {
   ...(productMpn ? { mpn: productMpn } : {}),
   brand: {
     '@type': 'Brand',
-    name: product.brand || siteConfig.name,
+    name: brandInfo.name,
   },
   ...(hasValidPrice
     ? {
@@ -557,9 +594,9 @@ const faqJsonLd = {
           </div>
         </div>
 
-        <VariantSelector client:visible product={product} />
+        <VariantSelector client:visible product={islandProduct} />
 
-        <ProductShare client:idle slug={product.slug} title={product.name} />
+        <ProductShare client:idle slug={product.slug} title={displayTitle} />
 
         <ProductTrustBadges />
       </div>

@@ -230,3 +230,84 @@ Görsel işleme adımınıza (muhtemelen process-images.mjs) gerçek gösterim b
 Lighthouse'un ham HTML çıktısında hâlâ "Suzuki Gsx1300r Hayabusa Granaj SA Printpro Etiket Siyah" gibi bozuk başlıklar görünüyor — yani önceki turda bulduğum "sticker → SA Printpro" hatası bu anlık görüntüde de hâlâ düzeltilmemiş.
 
 Öncelik sırası: (1) Cloudflare'de Always Use HTTPS'i açın — 2 dakikalık iş, hem güvenlik hem hız kazandırır; (2) fiyat/rozet/gri metin renklerini kontrast standardına göre koyulaştırın; (3) LCP görselini lazy-load'dan çıkarıp öncelik verin; (4) görsel boyutlarını gerçek gösterim ölçüsüne göre küçültün.
+
+
+
+# SA PRINTPRO — FAZ 3 MASTER PROMPT (Veri Kalitesi, Görsel Bağımlılığı, Checkout Netliği)
+
+Canlı site (saprintpro.com) detaylı incelendi. Faz 1 ve Faz 2'deki yasal sayfalar, çerez banner'ı, WhatsApp butonu, kurumsal bilgi alanı başarıyla uygulanmış. Ama inceleme sırasında yeni, daha derin sorunlar ortaya çıktı. Bunları önem sırasına göre işle.
+
+---
+
+## 🔴 ÖNCELİK 1 — Checkout Akışını Netleştir ve Tek Bir Yola Bağla
+
+**Sorun:** Ürün sayfasında (`/urun/...`) görünen satın alma CTA'ları **"İndirimli Sipariş Ver (WhatsApp)"** ve **"Sepete Ekle"** — Shopier'e giden bir buton yok. Ama önceki deploy raporunda "SHOPIER_CLIENT_ID/SECRET Worker'a eklendi, `/shopier/oauth/callback` çalışıyor" denmişti. Bu ikisi tutarsız görünüyor.
+
+**Yapılacak:**
+
+1. Şu anki gerçek durumu raporla: `/sepet` sayfasına gidildiğinde (bu sayfa robots.txt ile crawl'a kapalı, dışarıdan göremedik) checkout adımında gerçekten Shopier ödeme ekranına mı düşülüyor, yoksa oradan da WhatsApp'a mı yönleniyor?
+2. **Tek bir nihai satış akışına karar ver ve HER YERDE tutarlı uygula:**
+   - Seçenek A: Shopier tam entegre → ürün sayfasındaki "İndirimli Sipariş Ver (WhatsApp)" butonu kaldırılır veya ikincil/alternatif seçenek olarak küçük tutulur, ana CTA "Satın Al (Shopier)" olur.
+   - Seçenek B: WhatsApp manuel sipariş ana model olacaksa, Shopier altyapısını (OAuth secret'ları, callback endpoint'i) kaldır veya en azından "kullanılmıyor" olarak işaretle — boşta duran, yanlış izlenim veren bir entegrasyon bırakma.
+3. Fiyat gösterimindeki "225 TL — Doğrudan Siparişte: 225 TL (%20 İndirimli) — Liste Fiyatı: 277 TL" ifadesini sadeleştir; "doğrudan sipariş" ile normal sipariş arasındaki fark neyse (varsa) net açıkla, yoksa kaldır.
+
+---
+
+## 🔴 ÖNCELİK 2 — Tüm Ürün Görsellerini Kendi Sunucunda Barındır
+
+**Sorun:** Sadece Motosiklet Jant Şerit kategorisindeki (~68 ürün) görseller `/uploads/products/` altında yerel olarak barınıyor. Geri kalan ~167 ürün (Arma Sticker & Fosfor Şerit, Duvar & Dekorasyon, Ofis, Reflektör, Tankpad & Sticker kategorileri) görselleri hâlâ doğrudan `cdn.dsmcdn.com` (Trendyol'un CDN'i) üzerinden hotlink ediliyor.
+
+**Risk:** Trendyol istediği an hotlinking'i engelleyebilir (referrer kontrolü ile) — o an 167 ürünün görseli aynı anda, senin haberin olmadan kırılır. Ayrıca sayfa hızı da başka bir platformun sunucusuna bağımlı kalıyor.
+
+**Yapılacak:**
+
+1. Kalan tüm ürünlerin görsellerini indirip `/uploads/products/` altına taşı (aynı jant şeridi kategorisinde yapılan işlemin aynısı).
+2. Hiçbir sayfa/şablonda `cdn.dsmcdn.com` veya başka bir harici görsel URL'i kalmadığını doğrula (site genelinde grep ile kontrol et).
+3. Görsel boyutlarını/formatını (webp, uygun çözünürlük) standartlaştır, mevcut jant şeridi görselleriyle tutarlı olsun.
+
+---
+
+## 🟡 ÖNCELİK 3 — Yinelenen (Duplicate) Ürünleri Birleştir
+
+**Sorun:** Aynı ürün, farklı ürün ID'leriyle birden fazla kez listelenmiş — muhtemelen Trendyol'daki renk/beden varyantları ayrı ürün olarak import edilmiş. Örnekler:
+
+- "Limited Edıtıon sticker otomobil araba etiket..." → 2 farklı ID
+- "Araba Makyaj Ayna Etiket Sticker, Bugünde Çok Güzelsin" → 2 farklı ID
+- "Ktm Motosikletiniz İçin Yüksek Kaliteli Sticker Seti..." → 3 farklı ID
+
+**Yapılacak:**
+
+1. Tüm katalogda isim benzerliği + görsel benzerliğine göre olası duplicate/varyant gruplarını tespit et (script ile: benzer başlık, aynı fiyat aralığı, farklı ID).
+2. Gerçekten aynı ürünün varyantlarıysa (örn. sadece renk farkı), bunları **tek ürün sayfası + varyant seçici** (orijinal master promptta planlanan renk/beden seçim mekanizması) altında birleştir.
+3. Gerçekten farklı ürünlerse (görünüşe rağmen), her birinin başlığını/açıklamasını netleştir ki müşteri farkı anlasın.
+4. Birleştirme sonrası eski URL'lerden yeni birleşik ürün sayfasına 301 yönlendirme koy (SEO kaybı olmasın).
+
+---
+
+## 🟡 ÖNCELİK 4 — Kategori Taksonomisini Düzelt
+
+**Sorun:** "Arma Sticker & Fosfor Şerit" kategorisi (141 ürün) içinde duvar dekoru, araba çıkartması, motosiklet sticker'ı, dini hat yazısı, ayna sticker'ı gibi birbiriyle alakasız ürünler karışık halde duruyor — muhtemelen Trendyol'un "diğer/genel" kategorisi olduğu gibi buraya aktarılmış.
+
+**Yapılacak:**
+
+1. Bu kategorideki 141 ürünü gerçek içeriklerine göre yeniden sınıflandır (gerekirse yeni alt kategoriler aç: Duvar Sticker, Araba Aksesuar, Dini/Kaligrafi Sticker, Motosiklet Sticker vb.).
+2. Kategori adlarının, içindeki ürünlerle örtüştüğünden emin ol.
+3. "Motosiklet Markanı Seç" filtresini sadece motosiklet ürünü içeren kategorilerde göster — alakasız kategorilerde (Duvar & Dekorasyon gibi) bu filtre kaldırılmalı.
+
+---
+
+## 🟢 ÖNCELİK 5 — Ürün Açıklaması & FAQ Kalitesi
+
+**Sorun:** Ürün açıklamaları şablonik görünüyor ("Diğer kategorisinde yer alan bu ürün, motosikletiniz için özel bir aksesuar olarak tasarlanmıştır" gibi genel cümleler, noktalı virgülle bölünmüş). FAQ bölümü de muhtemelen tüm ürünlerde birebir aynı.
+
+**Yapılacak:**
+
+1. Örnek olarak 5-10 farklı üründe açıklama ve FAQ metinlerini karşılaştır — gerçekten birebir aynıysa bu bir duplicate content sorunu.
+2. Mümkünse her ürün için en az ürüne özgü 1-2 cümle (ürün adı, uyumlu model, kategoriye özel detay) otomatik şablona enjekte edilsin ki sayfalar birbirinden ayrışsın.
+3. "MARKA: Oracal" gibi yanlış eşlenmiş alanları kontrol et (Oracal bir motosiklet markası değil, vinil malzeme markası) — marka filtresi bu tür hatalı verilerle güvenilirliğini kaybetmesin.
+
+---
+
+## AGENT İÇİN TALİMAT
+
+Önceliklere göre sırayla ilerle (1 → 5). Her madde tamamlandığında canlıda doğrula ve önceki raporlardaki gibi bir doğrulama tablosu üret. Özellikle Öncelik 1'de (checkout netliği) agent'ın kendi başına "hangisini seçeceğine" karar vermemesi, kullanıcıya (siteni işleten kişiye) hangi modelin (Shopier otomatik ödeme mi, WhatsApp manuel sipariş mi) tercih edildiğini SORMASI gerekiyor — bu ticari bir karar, teknik bir detay değil.a

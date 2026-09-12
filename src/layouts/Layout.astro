@@ -70,8 +70,12 @@ const organizationJsonLd = {
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)" />
 
-    <link rel="preconnect" href="https://cdn.dsmcdn.com" crossorigin />
-    <link rel="dns-prefetch" href="https://cdn.dsmcdn.com" />
+    <!--
+      NOT: Tüm ürün görselleri artık yerel olarak (`/uploads/products/...`)
+      sunulduğu için Trendyol CDN'ine preconnect/dns-prefetch gerekmez.
+      Bu bağlantılar kaldırıldı; hem gereksiz DNS/TLS el sıkışması önlenir
+      hem de harici bir platforma bağımlılık izi kalmaz.
+    -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

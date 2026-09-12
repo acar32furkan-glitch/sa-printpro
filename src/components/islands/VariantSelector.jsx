@@ -43,6 +43,49 @@ function formatAttributes(attributes) {
 }
 
 /**
+ * Gerçek bir varyant seçimi sunan özellik anahtarları. "Menşei", "Kullanım
+ * Talimatı" gibi ürün-seviyesi bilgi alanları varyant DEĞİLDİR; bunlar tek
+ * seçenekli bir buton olarak render edildiğinde kullanıcıya anlamsız bir
+ * "Varyant Seçimi" bölümü gösteriyordu.
+ */
+const VARIANT_ATTRIBUTE_KEYS = [
+  'renk',
+  'color',
+  'beden',
+  'size',
+  'ölçü',
+  'olcu',
+  'boyut',
+  'model',
+  'desen',
+  'adet',
+  'paket',
+  'uzunluk',
+  'genişlik',
+  'genislik',
+  'kalınlık',
+  'kalinlik',
+  'tip',
+  'type',
+]
+
+/**
+ * Bir varyantın gerçek bir seçim sunduğunu (renk/beden/ölçü vb.) belirler.
+ * @param {object} variant
+ * @returns {boolean}
+ */
+function hasChoiceAttribute(variant) {
+  const attributes = variant?.attributes
+  if (!attributes || typeof attributes !== 'object') {
+    return false
+  }
+  return Object.keys(attributes).some((key) => {
+    const normalized = String(key).toLocaleLowerCase('tr-TR').trim()
+    return VARIANT_ATTRIBUTE_KEYS.some((candidate) => normalized.includes(candidate))
+  })
+}
+
+/**
  * Resolves the Shopier product URL for a given variant barcode.
  * @param {object} map
  * @param {string} barcode
@@ -148,6 +191,14 @@ export default function VariantSelector({ product, shopier }) {
   const attributeSummary = formatAttributes(selectedVariant?.attributes)
   const variantLabel = attributeSummary || 'Varsayılan'
 
+  // "Varyant Seçimi" bölümü YALNIZCA gerçek bir seçim sunulduğunda gösterilir:
+  //  - birden fazla varyant varsa, VEYA
+  //  - tek varyant olsa bile renk/beden/ölçü gibi gerçek bir seçim özelliği varsa.
+  // Aksi halde (ör. yalnızca "Menşei: TR" içeren tek varyant) bölüm gizlenir;
+  // kullanıcıya anlamsız, tek seçenekli bir buton gösterilmez.
+  const showVariantSelector =
+    variants.length > 1 || (variants.length === 1 && hasChoiceAttribute(variants[0]))
+
   // Sepete eklenecek öğe — seçili varyant ve doğrudan indirimli fiyat.
   const cartItem = {
     id: String(product?.id ?? ''),
@@ -234,7 +285,7 @@ export default function VariantSelector({ product, shopier }) {
         </span>
       </div>
 
-      {variants.length > 0 && (
+      {showVariantSelector && (
         <div className="flex flex-col gap-3">
           <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
             Varyant Seçimi

@@ -130,10 +130,15 @@ function cheapestPrice(product) {
 function buildItem(product) {
   const slug = product?.slug
   const price = cheapestPrice(product)
-  const images = Array.isArray(product?.images) ? product.images : []
+
+  // Google Merchant Center, herkese açık MUTLAK görsel URL'i ister. Ürün
+  // görselleri yerelleştirildiği için (`/uploads/products/{id}.webp`) feed'de
+  // site alan adıyla birleştirilmiş yerel URL kullanılır; Trendyol CDN'ine
+  // bağımlılık kalmaz.
+  const image = product?.id ? `${SITE_URL}/uploads/products/${product.id}.webp` : null
 
   // Google requires a link, an image and a price — skip incomplete records.
-  if (!slug || price === null || images.length === 0) {
+  if (!slug || price === null || !image) {
     return null
   }
 
@@ -153,7 +158,7 @@ function buildItem(product) {
     `      <g:title>${escapeXml(title)}</g:title>`,
     `      <g:description>${escapeXml(description)}</g:description>`,
     `      <g:link>${escapeXml(link)}</g:link>`,
-    `      <g:image_link>${escapeXml(images[0])}</g:image_link>`,
+    `      <g:image_link>${escapeXml(image)}</g:image_link>`,
     `      <g:availability>${availability}</g:availability>`,
     `      <g:price>${price} ${CURRENCY}</g:price>`,
     `      <g:brand>${escapeXml(BRAND)}</g:brand>`,

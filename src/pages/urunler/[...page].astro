@@ -7,6 +7,7 @@ import {
   getAllBrandsWithCounts,
   getAllCategories,
   getSortedProducts,
+  toClientProduct,
 } from '../../lib/products.js'
 import { PAGE_SIZE, getTotalPages, pageUrl, paginate } from '../../lib/pagination.js'
 
@@ -37,6 +38,9 @@ export function getStaticPaths() {
 }
 
 const { page, totalPages, products } = Astro.props
+
+// İstemci adasına CDN URL'i sızmasın: yalnızca yerel görselleri gönder.
+const clientProducts = products.map(toClientProduct)
 
 const allProducts = getSortedProducts()
 const totalProducts = allProducts.length
@@ -104,7 +108,7 @@ const description = (
   </section>
 
   <section class="mx-auto max-w-6xl px-4 py-8" aria-label="Ürünler">
-    <ProductGridStatic client:idle products={products} brands={brands} />
+    <ProductGridStatic client:idle products={clientProducts} brands={brands} />
     <Pagination
       basePath={basePath}
       currentPage={page}

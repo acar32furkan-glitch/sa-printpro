@@ -1,5 +1,9 @@
 import { siteConfig } from '../../config/site.js'
-import { calculateDirectPrice, getProductPrimaryImage } from '../../lib/products.js'
+import {
+  calculateDirectPrice,
+  getProductPrimaryImage,
+  normalizeProductTitle,
+} from '../../lib/products.js'
 import AddToCartButton from './AddToCartButton.jsx'
 
 /**
@@ -87,6 +91,9 @@ export default function ProductCard({ product }) {
   // FAZ 11: yerel (logo filigranlı) görsel varsa onu, yoksa CDN görselini kullan.
   const image = getProductPrimaryImage(product)
 
+  // Tümü büyük harfle yazılmış başlıkları okunabilir başlık düzenine çevir.
+  const displayName = normalizeProductTitle(product.name)
+
   // Sepete eklenecek varsayılan varyant: stokta olan ilk varyant.
   const defaultVariant =
     pricedVariants.find((variant) => Number(variant.stock) > 0) ||
@@ -107,7 +114,7 @@ export default function ProductCard({ product }) {
 
   const cartItem = {
     id: String(product.id ?? ''),
-    name: product.name,
+    name: displayName,
     slug: product.slug,
     variant: defaultVariant?.attributes
       ? Object.entries(defaultVariant.attributes)
@@ -129,7 +136,7 @@ export default function ProductCard({ product }) {
         {image ? (
           <img
             src={image}
-            alt={product.name}
+            alt={displayName}
             loading="lazy"
             decoding="async"
             className="h-full w-full object-cover transition-transform duration-500 ease-smooth group-hover:scale-105"
@@ -176,9 +183,9 @@ export default function ProductCard({ product }) {
         <a
           href={`/urun/${product.slug}`}
           className="line-clamp-2 text-sm font-medium leading-snug text-zinc-900 hover:underline dark:text-zinc-100"
-          title={product.name}
+          title={displayName}
         >
-          {product.name}
+          {displayName}
         </a>
 
         <div className="mt-auto flex flex-col gap-1.5 pt-1">
