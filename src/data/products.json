@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-09-11T19:25:21.305Z",
+  "generatedAt": "2026-09-12T08:59:35.248Z",
   "products": [
     {
       "id": "1160687379",
       "name": "Kırmızı Universal Reflektif Jant Şeridi",
       "slug": "kirmizi-universal-reflektif-jant-seridi-1160687379",
-      "brand": "SA Printpro",
+      "brand": "hediyelikevi",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -54,7 +54,7 @@
           },
           "price": 281,
           "salePrice": 281,
-          "stock": 8
+          "stock": 19999
         }
       ]
     },
@@ -62,7 +62,7 @@
       "id": "1153426130",
       "name": "Blessed Kask Sticker – Motor Kaskı İçin Premium Yazı Kaligrafik",
       "slug": "blessed-kask-sticker-motor-kaski-icin-premium-yazi-kaligrafik-1153426130",
-      "brand": "SA Printpro",
+      "brand": "STCKRCO",
       "category": {
         "id": "1999",
         "name": "Tankpad & Sticker",
@@ -92,7 +92,7 @@
       "id": "1141695837",
       "name": "yeni özel motosiklet Jant Şeridi Mondial Drift Uyumlu L Reklektif Kırmızı Beyaz Sağ-Sol/Ön-Arka",
       "slug": "yeni-ozel-motosiklet-jant-seridi-mondial-drift-uyumlu-l-reklektif-kirmizi-beyaz-sag-sol-on-arka-1141695837",
-      "brand": "SA Printpro",
+      "brand": "MUASL",
       "category": {
         "id": "1999",
         "name": "Tankpad & Sticker",
@@ -121,7 +121,7 @@
       "id": "1123263432",
       "name": "mondial drift l yarım jant beyaz sticker takım",
       "slug": "mondial-drift-l-yarim-jant-beyaz-sticker-takim-1123263432",
-      "brand": "SA Printpro",
+      "brand": "KAPLAMA MERKEZİ",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -139,8 +139,8 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez."
           },
-          "price": 227,
-          "salePrice": 227,
+          "price": 252,
+          "salePrice": 252,
           "stock": 20000
         }
       ]
@@ -149,7 +149,7 @@
       "id": "1116128662",
       "name": "Greddy Oto Sticker Beyaz",
       "slug": "greddy-oto-sticker-beyaz-1116128662",
-      "brand": "SA Printpro",
+      "brand": "Beta Moda Hub",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -243,7 +243,7 @@
       "id": "1083894139",
       "name": "Berber Kafası Duvar Dekor Sticker 40 X 68 Cm",
       "slug": "berber-kafasi-duvar-dekor-sticker-40-x-68-cm-1083894139",
-      "brand": "SA Printpro",
+      "brand": "Allivo",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -275,7 +275,7 @@
       "id": "1047463123",
       "name": "DRİFT L KAPLAMA STİCKER YARIM JANT ŞERİDİ",
       "slug": "drift-l-kaplama-sticker-yarim-jant-seridi-1047463123",
-      "brand": "SA Printpro",
+      "brand": "unifol",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -296,9 +296,9 @@
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
             "Menşei": "TR"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "price": 227,
+          "salePrice": 227,
+          "stock": 19995
         },
         {
           "barcode": "TYBB3TF1EK3LGSW429",
@@ -309,9 +309,9 @@
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
             "Menşei": "TR"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "price": 227,
+          "salePrice": 227,
+          "stock": 19995
         }
       ]
     },
@@ -350,7 +350,7 @@
       "id": "1046100299",
       "name": "Motosiklet Jant Şeridi Sticker Yarım Kaplama Daire 17-18 inch Motor Uyumlu",
       "slug": "motosiklet-jant-seridi-sticker-yarim-kaplama-daire-17-18-inch-motor-uyumlu-1046100299",
-      "brand": "SA Printpro",
+      "brand": "ARONA",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -381,7 +381,7 @@
       "id": "1030899339",
       "name": "Roll Beyaz Sticker 8x1cm Motor-Kask-Araba İçin",
       "slug": "roll-beyaz-sticker-8x1cm-motor-kask-araba-icin-1030899339",
-      "brand": "SA Printpro",
+      "brand": "Mavera Stickers",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -413,7 +413,7 @@
       "id": "996052807",
       "name": "Tofaşahin Ön Kaput Oto Sticker",
       "slug": "tofasahin-on-kaput-oto-sticker-996052807",
-      "brand": "SA Printpro",
+      "brand": "Comtura",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -443,7 +443,7 @@
       "id": "985950365",
       "name": "MONDİAL DRİFT JANT ŞERİDİ, STİCKER,DRİFT L STİCKER,MG100 ŞERİDİ",
       "slug": "mondial-drift-jant-seridi-sticker-drift-l-sticker-mg100-seridi-985950365",
-      "brand": "SA Printpro",
+      "brand": "adasya reklam",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -472,7 +472,7 @@
       "id": "958411172",
       "name": "TK MOTO MONDİAL DRİFT L YAZILI BEYAZ JANT ŞERİDİ",
       "slug": "tk-moto-mondial-drift-l-yazili-beyaz-jant-seridi-958411172",
-      "brand": "SA Printpro",
+      "brand": "UÇGUNMOTO",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -502,7 +502,7 @@
       "id": "946142593",
       "name": "KUPON HOLOGRAM STİCKER 2 ADET OTO MOTO AKSESUAR",
       "slug": "kupon-hologram-sticker-2-adet-oto-moto-aksesuar-946142593",
-      "brand": "SA Printpro",
+      "brand": "CEBECİOTO",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -566,7 +566,7 @@
       "id": "900573603",
       "name": "PLAKA ÖPÜCÜK STİCKER",
       "slug": "plaka-opucuk-sticker-900573603",
-      "brand": "SA Printpro",
+      "brand": "MTL PLEKSİ",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -612,9 +612,9 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "price": 350,
+          "salePrice": 350,
+          "stock": 19999
         }
       ]
     },
@@ -622,7 +622,7 @@
       "id": "871395516",
       "name": "YB yeni özel motosikletAkropovic Motorsiklet Sticker Kırmızı 2 Adet 20*4 Cm",
       "slug": "yb-yeni-ozel-motosikletakropovic-motorsiklet-sticker-kirmizi-2-adet-20-4-cm-871395516",
-      "brand": "SA Printpro",
+      "brand": "Yarımada Bahçe",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -759,7 +759,7 @@
       "id": "829412067",
       "name": "You Look Fabulous Ayna özel yeni stickeri Siyah 37X12 cm",
       "slug": "you-look-fabulous-ayna-ozel-yeni-stickeri-siyah-37x12-cm-829412067",
-      "brand": "SA Printpro",
+      "brand": "ASİL TİCARET",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -789,7 +789,7 @@
       "id": "826019325",
       "name": "MT 07 Uyumlu SİYAH JANT İÇİ YAZILI ŞERİTLİ STİCKEr",
       "slug": "mt-07-uyumlu-siyah-jant-ici-yazili-seritli-sticker-826019325",
-      "brand": "SA Printpro",
+      "brand": "Run Grafik Shop",
       "category": {
         "id": "1999",
         "name": "Tankpad & Sticker",
@@ -876,7 +876,7 @@
       "id": "808344083",
       "name": "RİDE OR DİE STİCKER,ride or die sticker,motosiklet sticker,r25,mt25,pulsar koltuk altı sticker",
       "slug": "ride-or-die-sticker-ride-or-die-sticker-motosiklet-sticker-r25-mt25-pulsar-koltuk-alti-sticker-808344083",
-      "brand": "SA Printpro",
+      "brand": "Wouw Store",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -985,7 +985,7 @@
       "id": "804098188",
       "name": "Duster oto sticker parlak siyah 2 şer adet",
       "slug": "duster-oto-sticker-parlak-siyah-2-ser-adet-804098188",
-      "brand": "SA Printpro",
+      "brand": "Kurt Reklam Dünyası",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -1043,7 +1043,7 @@
       "id": "801844093",
       "name": "MOTOSİKLET MOR REFLEKTÖRLÜ JANT 17 INC İÇİNDİR",
       "slug": "motosiklet-mor-reflektorlu-jant-17-inc-icindir-801844093",
-      "brand": "SA Printpro",
+      "brand": "Run Grafik Shop",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -3822,7 +3822,7 @@
       "id": "783729838",
       "name": "Çok Güzelsin Güneşlik Ayna Yazısı Araba-Motosiklet Cam Etiket Sticker 7,2x1,8cm",
       "slug": "cok-guzelsin-guneslik-ayna-yazisi-araba-motosiklet-cam-etiket-sticker-7-2x1-8cm-783729838",
-      "brand": "SA Printpro",
+      "brand": "Bricave",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -3970,7 +3970,7 @@
       "id": "772889028",
       "name": "Hat Yazısı Kelime i Tevhid Oto Motor Laptop Duvar Folyo Sticker (Tip 1) 60x30 Cm",
       "slug": "hat-yazisi-kelime-i-tevhid-oto-motor-laptop-duvar-folyo-sticker-tip-1-60x30-cm-772889028",
-      "brand": "SA Printpro",
+      "brand": "Kumraldede",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -4089,7 +4089,7 @@
       "id": "768694717",
       "name": "Hard Core Rider Sticker Araba Motosiklet 14cm*18cm",
       "slug": "hard-core-rider-sticker-araba-motosiklet-14cm-18cm-768694717",
-      "brand": "SA Printpro",
+      "brand": "BENİMSER REKLAM",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -4117,7 +4117,7 @@
       "id": "768694575",
       "name": "Hard Core Rider Sticker Araba Motosiklet 14cm*18cm",
       "slug": "hard-core-rider-sticker-araba-motosiklet-14cm-18cm-768694575",
-      "brand": "SA Printpro",
+      "brand": "BENİMSER REKLAM",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -4147,7 +4147,7 @@
       "id": "768694343",
       "name": "Hard Core Rider Sticker Araba Motosiklet 14cm*18cm",
       "slug": "hard-core-rider-sticker-araba-motosiklet-14cm-18cm-768694343",
-      "brand": "SA Printpro",
+      "brand": "BENİMSER REKLAM",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -4175,7 +4175,7 @@
       "id": "767621158",
       "name": "Oto Ritim Sticker Siyah 18*8 Cm",
       "slug": "oto-ritim-sticker-siyah-18-8-cm-767621158",
-      "brand": "SA Printpro",
+      "brand": "Yılmaz Auto",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -4470,7 +4470,7 @@
       "id": "757791366",
       "name": "Wanted Motorsiklet, Laptop, Cam, Kask, Araba Sticker 18x7 Cm",
       "slug": "wanted-motorsiklet-laptop-cam-kask-araba-sticker-18x7-cm-757791366",
-      "brand": "SA Printpro",
+      "brand": "BENİMSER REKLAM",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -4499,7 +4499,7 @@
       "id": "757791365",
       "name": "Wanted Motorsiklet, Laptop, Cam, Kask, Araba Sticker 18x7 Cm",
       "slug": "wanted-motorsiklet-laptop-cam-kask-araba-sticker-18x7-cm-757791365",
-      "brand": "SA Printpro",
+      "brand": "BENİMSER REKLAM",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -4528,7 +4528,7 @@
       "id": "755615209",
       "name": "Graphtec Bıçak Plotter Cb09u Universal",
       "slug": "graphtec-bicak-plotter-cb09u-universal-755615209",
-      "brand": "SA Printpro",
+      "brand": "Stıckman",
       "category": {
         "id": "2013",
         "name": "Ofis Sarf Tüketim Malzemesi",
@@ -4642,7 +4642,7 @@
       "id": "754010909",
       "name": "Plotter folyo kesim bıçağı (30 derece)",
       "slug": "plotter-folyo-kesim-bicagi-30-derece-754010909",
-      "brand": "SA Printpro",
+      "brand": "Stıckman",
       "category": {
         "id": "2013",
         "name": "Ofis Sarf Tüketim Malzemesi",
@@ -4669,7 +4669,7 @@
       "id": "754010901",
       "name": "Plotter folyo kesim bıçağı (45 derece)",
       "slug": "plotter-folyo-kesim-bicagi-45-derece-754010901",
-      "brand": "SA Printpro",
+      "brand": "Stıckman",
       "category": {
         "id": "2013",
         "name": "Ofis Sarf Tüketim Malzemesi",
@@ -4696,7 +4696,7 @@
       "id": "754010886",
       "name": "Plotter folyo kesim bıçağı (60 derece)",
       "slug": "plotter-folyo-kesim-bicagi-60-derece-754010886",
-      "brand": "SA Printpro",
+      "brand": "Stıckman",
       "category": {
         "id": "2013",
         "name": "Ofis Sarf Tüketim Malzemesi",
@@ -4798,7 +4798,7 @@
       "id": "747341160",
       "name": "Jant Şeridi Kesik Neon",
       "slug": "jant-seridi-kesik-neon-747341160",
-      "brand": "SA Printpro",
+      "brand": "HSC store",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -4824,7 +4824,7 @@
       "id": "746616852",
       "name": "Yamaha Motorsiklet Kırmızı Reflektörlü Jant Şeridi 17 Inç Takım Halinde",
       "slug": "yamaha-motorsiklet-kirmizi-reflektorlu-jant-seridi-17-inc-takim-halinde-746616852",
-      "brand": "SA Printpro",
+      "brand": "Run Grafik Shop",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -4852,7 +4852,7 @@
       "id": "744776044",
       "name": "Rks Motor Lastik Şeriti Kırmızı Şerit Beyaz Rks Sticker",
       "slug": "rks-motor-lastik-seriti-kirmizi-serit-beyaz-rks-sticker-744776044",
-      "brand": "SA Printpro",
+      "brand": "habole",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -4877,7 +4877,7 @@
       "id": "742310708",
       "name": "Mondial Drift L 125 Motorsiklet Venom Far Sticker Etiket",
       "slug": "mondial-drift-l-125-motorsiklet-venom-far-sticker-etiket-742310708",
-      "brand": "SA Printpro",
+      "brand": "Bilge Sea",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -5020,7 +5020,7 @@
       "id": "682159687",
       "name": "Ssangyong Musso Uyumlu Kapı Kolu Jant Sticker 10 Adet",
       "slug": "ssangyong-musso-uyumlu-kapi-kolu-jant-sticker-10-adet-682159687",
-      "brand": "SA Printpro",
+      "brand": "Erzline",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -5047,7 +5047,7 @@
       "id": "680972322",
       "name": "Saab 9-3 Kapı Kolu Uyumlu Jant Sticker 10 Adet",
       "slug": "saab-9-3-kapi-kolu-uyumlu-jant-sticker-10-adet-680972322",
-      "brand": "SA Printpro",
+      "brand": "Erzline",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -5375,7 +5375,7 @@
       "id": "467434685",
       "name": "Monster Pençe Oto Sticker Araba Far",
       "slug": "monster-pence-oto-sticker-araba-far-467434685",
-      "brand": "SA Printpro",
+      "brand": "CARSESUAR",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -5523,10 +5523,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5551,23 +5551,6 @@
       ],
       "variants": [
         {
-          "barcode": "Tasarımhediyenmotosticker00032",
-          "sku": "svenm",
-          "attributes": {
-            "Renk": "Siyah",
-            "Özellik": "Diğer",
-            "Menşei": "TR",
-            "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        },
-        {
           "barcode": "90290529852895",
           "sku": "",
           "attributes": {
@@ -5575,10 +5558,27 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (ön)": ""
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
+          "barcode": "Tasarımhediyenmotosticker00032",
+          "sku": "svenm",
+          "attributes": {
+            "Renk": "Siyah",
+            "Özellik": "Diğer",
+            "Menşei": "TR",
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Paket Görseli (arka)": "",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5617,7 +5617,7 @@
       "id": "364856300",
       "name": "5 Parça Araba Spor Sticker - Kaput Marşpiyel - 15x2,5 - 21x90 -10x190 Cm",
       "slug": "5-parca-araba-spor-sticker-kaput-marspiyel-15x2-5-21x90-10x190-cm-364856300",
-      "brand": "SA Printpro",
+      "brand": "Bay S PLUS",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -5648,7 +5648,7 @@
       "id": "363732944",
       "name": "Findit 40 Cm Beyaz Royal Stance Oto Sticker, Araba Sticker",
       "slug": "findit-40-cm-beyaz-royal-stance-oto-sticker-araba-sticker-363732944",
-      "brand": "SA Printpro",
+      "brand": "Bay S PLUS",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -5666,10 +5666,10 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (arka)": "",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
           },
           "price": 0,
           "salePrice": 0,
@@ -5706,7 +5706,7 @@
       "id": "356771162",
       "name": "Beyaz Yamaha Yzf R25 Takım Jant Sticker Etiket",
       "slug": "beyaz-yamaha-yzf-r25-takim-jant-sticker-etiket-356771162",
-      "brand": "SA Printpro",
+      "brand": "Motiker",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -5733,7 +5733,7 @@
       "id": "355099627",
       "name": "Kemal Atatürk Imzası Araba Sticker Motor Laptop Bilgisayar Etiket Çıkartma Siyah 20 Cm",
       "slug": "kemal-ataturk-imzasi-araba-sticker-motor-laptop-bilgisayar-etiket-cikartma-siyah-20-cm-355099627",
-      "brand": "SA Printpro",
+      "brand": "Bay S PLUS",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -5765,7 +5765,7 @@
       "id": "318247853",
       "name": "14'lü Sıralı Yıldız Oto Sticker 40x15 Cm Beyaz",
       "slug": "14-lu-sirali-yildiz-oto-sticker-40x15-cm-beyaz-318247853",
-      "brand": "SA Printpro",
+      "brand": "Teknotik",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -5883,7 +5883,7 @@
       "id": "265880806",
       "name": "Arabada Bebek Var Ayıcık Araba Sticker",
       "slug": "arabada-bebek-var-ayicik-araba-sticker-265880806",
-      "brand": "SA Printpro",
+      "brand": "ModernSanatDükkanı",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -5904,10 +5904,10 @@
             "Özellik": "Kendinden Yapışkanlı",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
           },
           "price": 199,
           "salePrice": 199,
@@ -6082,7 +6082,7 @@
       "id": "218146602",
       "name": "Reflektör Sticker Telefon Bildirim Paneli",
       "slug": "reflektor-sticker-telefon-bildirim-paneli-218146602",
-      "brand": "SA Printpro",
+      "brand": "CARSESUAR",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -6169,7 +6169,7 @@
       "id": "159177609",
       "name": "Inek Deseni Sticker",
       "slug": "inek-deseni-sticker-159177609",
-      "brand": "SA Printpro",
+      "brand": "TASARIM MARKET",
       "category": {
         "id": "3014",
         "name": "Duvar Dekorasyon Ürünü",
@@ -6199,7 +6199,7 @@
       "id": "156389049",
       "name": "Gayyış Gibi Oto Sticker Araba Cam Siyah 20 X 4 Cm",
       "slug": "gayyis-gibi-oto-sticker-araba-cam-siyah-20-x-4-cm-156389049",
-      "brand": "SA Printpro",
+      "brand": "Maral Grup",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -6312,7 +6312,7 @@
       "id": "113807207",
       "name": "Royal Stance Oto Sticker 30x10 Cm Siyah",
       "slug": "royal-stance-oto-sticker-30x10-cm-siyah-113807207",
-      "brand": "SA Printpro",
+      "brand": "Teknotik",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -6343,7 +6343,7 @@
       "id": "113800892",
       "name": "Royal Stance Oto Sticker 30x10 Cm Kırmızı",
       "slug": "royal-stance-oto-sticker-30x10-cm-kirmizi-113800892",
-      "brand": "SA Printpro",
+      "brand": "Teknotik",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -6361,8 +6361,8 @@
             "Renk": "Kırmızı",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -6806,7 +6806,7 @@
           },
           "price": 401,
           "salePrice": 401,
-          "stock": 89
+          "stock": 88
         }
       ]
     },
@@ -6952,7 +6952,7 @@
       "id": "38866229",
       "name": "Gazi M.kemal Imza Sticker, Atatürk Ikili Imza, 15x6 Cm, Oto Arma,",
       "slug": "gazi-m-kemal-imza-sticker-ataturk-ikili-imza-15x6-cm-oto-arma-38866229",
-      "brand": "SA Printpro",
+      "brand": "Ersa Sticker",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -7006,7 +7006,7 @@
       "id": "32967715",
       "name": "Monster Canavar Pençe Izi Uzun Siyah Far Sticker - Araba Etiket, Çıkartma - Aksesuar -modifiye -arma",
       "slug": "monster-canavar-pence-izi-uzun-siyah-far-sticker-araba-etiket-cikartma-aksesuar-modifiye-arma-32967715",
-      "brand": "SA Printpro",
+      "brand": "Asilmeydan",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
