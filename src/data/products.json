@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12T08:59:35.248Z",
+  "generatedAt": "2026-09-12T18:50:30.089Z",
   "products": [
     {
       "id": "1160687379",
@@ -121,7 +121,7 @@
       "id": "1123263432",
       "name": "mondial drift l yarım jant beyaz sticker takım",
       "slug": "mondial-drift-l-yarim-jant-beyaz-sticker-takim-1123263432",
-      "brand": "SA Printpro",
+      "brand": "KAPLAMA MERKEZİ",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -180,7 +180,7 @@
       "id": "1096754361",
       "name": "yeni özel motosiklet Jant Şeridi Nmax Mavi Sağ-Sol/Ön-Arka",
       "slug": "yeni-ozel-motosiklet-jant-seridi-nmax-mavi-sag-sol-on-arka-1096754361",
-      "brand": "SA Printpro",
+      "brand": "rez",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -235,7 +235,7 @@
           },
           "price": 179,
           "salePrice": 179,
-          "stock": 19830
+          "stock": 19829
         }
       ]
     },
@@ -288,8 +288,8 @@
       ],
       "variants": [
         {
-          "barcode": "TYBXGCJPFDPPDV3J40",
-          "sku": "yrm kp",
+          "barcode": "TYBB3TF1EK3LGSW429",
+          "sku": "yrm",
           "attributes": {
             "Renk": "Beyaz",
             "Özellik": "Katı",
@@ -301,8 +301,8 @@
           "stock": 19995
         },
         {
-          "barcode": "TYBB3TF1EK3LGSW429",
-          "sku": "yrm",
+          "barcode": "TYBXGCJPFDPPDV3J40",
+          "sku": "yrm kp",
           "attributes": {
             "Renk": "Beyaz",
             "Özellik": "Katı",
@@ -502,7 +502,7 @@
       "id": "946142593",
       "name": "KUPON HOLOGRAM STİCKER 2 ADET OTO MOTO AKSESUAR",
       "slug": "kupon-hologram-sticker-2-adet-oto-moto-aksesuar-946142593",
-      "brand": "SA Printpro",
+      "brand": "CEBECİOTO",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -566,7 +566,7 @@
       "id": "900573603",
       "name": "PLAKA ÖPÜCÜK STİCKER",
       "slug": "plaka-opucuk-sticker-900573603",
-      "brand": "SA Printpro",
+      "brand": "MTL PLEKSİ",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -601,7 +601,7 @@
         "name": "Motosiklet Jant Şerit",
         "slug": "motosiklet-jant-serit"
       },
-      "descriptionHtml": "KTM Duke ve KTM RC modellerine özel tasarlanmış, jant şeritleriyle uyumlu ve estetik bir görünüm sunar. Reflektif malzeme kullanımı sayesinde düşük ışık koşullarında bile görünürlüğü artırır, güvenli sürüş sağlar. Türkiye'de üretilmiş olup yerel üretim avantajlarından faydalanmanızı - Kolay montaj imkanı sunarak. Dayanıklı yapısı ile uzun süreli kullanım için idealdir. sık değiştirme gerektirmez.",
+      "descriptionHtml": "KTM Duke ve KTM RC modellerine özel tasarlanmış, jant şeritleriyle uyumlu ve estetik bir görünüm sunar. Reflektif malzeme kullanımı sayesinde düşük ışık koşullarında bile görünürlüğü artırır, güvenli sürüş sağlar. Türkiye'de üretilmiş olup yerel üretim avantajlarından faydalanmanızı Kolay montaj imkanı sunarak. Dayanıklı yapısı ile uzun süreli kullanım için idealdir. sık değiştirme gerektirmez.",
       "images": [
         "https://cdn.dsmcdn.com/ty1635/prod/QC/20250211/23/590acc64-df96-315c-9d75-9e9914428073/1_org_zoom.jpg"
       ],
@@ -674,13 +674,13 @@
       "id": "849781715",
       "name": "Hologram Renk Gazi Mustafa Kemal Atatürk Imza Oto Araba",
       "slug": "hologram-renk-gazi-mustafa-kemal-ataturk-imza-oto-araba-849781715",
-      "brand": "SA Printpro",
+      "brand": "sticker",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
         "slug": "arma-sticker-fosfor-serit"
       },
-      "descriptionHtml": "Ürün Rüzgardan Veya Sudan Etkilenmez Folyodan Üretilmiştir. Ölçüler : 20x5cm. Dayanıklılık: Kullanım alanlarınıza bağlı olarak uzun süreli dayanaklılık sunar. Alanı : Araç motor vb. kısacası aklınıza gelebilecek çoğu yüzeyde sunar (Metal cam gibi yüzeyler). 1 ADET Gönderilir . Ürüne bakıldığı yöne göre renk değiştirir. Yanında Uygulama Hakkında Bir Bilgi Kağıdı Gönderilir. Güzel Günlerde Kullanın :).",
+      "descriptionHtml": "Ürün Rüzgardan Veya Sudan Etkilenmez Folyodan Üretilmiştir. Ölçüler : 20x5cm. Dayanıklılık: Kullanım alanlarınıza bağlı olarak uzun süreli dayanaklılık sunar. . Alanı : Araç motor vb. kısacası aklınıza gelebilecek çoğu yüzeyde sunar (Metal cam gibi yüzeyler). 1 ADET Gönderilir . . Ürüne bakıldığı yöne göre renk değiştirir. . Yanında Uygulama Hakkında Bir Bilgi Kağıdı Gönderilir. . Güzel Günlerde Kullanın :).",
       "images": [
         "https://cdn.dsmcdn.com/ty1768/prod/QC_ENRICHMENT/20251008/23/823273f7-015d-3ae2-860f-3136ea5898d0/1_org_zoom.jpg"
       ],
@@ -711,7 +711,7 @@
         "name": "Motosiklet Jant Şerit",
         "slug": "motosiklet-jant-serit"
       },
-      "descriptionHtml": "Yüksek kaliteli materyalden üretilmektedir. Solma yapmaz, ıslanınca kalkmaz. Sıcağa, suya, benzine, güneş ışığına dayanıklıdır. Nasıl Uygulanır? Öncelikle uygulanacak yüzey tozdan, kirden ya da varsa önceden kullandığınız sticker kalıntılarından arındırınız. Yapıştırılacak olan alanda cila, parlatıcı boya, kimyasal kalıntı olmamasına özen gösteriniz. Aksi takdirde ürün alana yapışmayacaktır. Daha sonra stickerı taşıyıcı kağıttan ayırıp, transfer bandıyla birlikte temiz ve kuru yüzeye yapıştırınız. Düzgün bir şekilde yapıştığından emin olduktan stickerın üzerindeki bandını kaldırınız.",
+      "descriptionHtml": "Yüksek kaliteli materyalden üretilmektedir. . Solma yapmaz, ıslanınca kalkmaz. Sıcağa, suya, benzine, güneş ışığına dayanıklıdır. Nasıl Uygulanır? Öncelikle uygulanacak yüzey tozdan, kirden ya da varsa önceden kullandığınız sticker kalıntılarından arındırınız. Yapıştırılacak olan alanda cila, parlatıcı boya, kimyasal kalıntı olmamasına özen gösteriniz. Aksi takdirde ürün alana yapışmayacaktır. Daha sonra stickerı taşıyıcı kağıttan ayırıp, transfer bandıyla birlikte temiz ve kuru yüzeye yapıştırınız. Düzgün bir şekilde yapıştığından emin olduktan stickerın üzerindeki bandını kaldırınız.",
       "images": [
         "https://cdn.dsmcdn.com/ty1448/product/media/images/prod/QC/20240728/01/095f8dca-8fa7-3684-9b2f-c936aab6dc36/1_org_zoom.jpg"
       ],
@@ -732,7 +732,7 @@
       "id": "841210845",
       "name": "Vespa sticker,jack sticker,sccoter sticker,motosiklet sticker,skuter sticker",
       "slug": "vespa-sticker-jack-sticker-sccoter-sticker-motosiklet-sticker-skuter-sticker-841210845",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -753,14 +753,13 @@
           "salePrice": 350,
           "stock": 9087
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "829412067",
       "name": "You Look Fabulous Ayna özel yeni stickeri Siyah 37X12 cm",
       "slug": "you-look-fabulous-ayna-ozel-yeni-stickeri-siyah-37x12-cm-829412067",
-      "brand": "SA Printpro",
+      "brand": "ASİL TİCARET",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -820,7 +819,7 @@
       "id": "814760165",
       "name": "Honda Pcx Jant Şeridi Kesim Kalın Sticker Beyaz",
       "slug": "honda-pcx-jant-seridi-kesim-kalin-sticker-beyaz-814760165",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -844,14 +843,13 @@
           "salePrice": 299,
           "stock": 967
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "810888587",
       "name": "Mondial drift l sticker,drift sticker, L sticker,jant şeridi,drift jant şeridi",
       "slug": "mondial-drift-l-sticker-drift-sticker-l-sticker-jant-seridi-drift-jant-seridi-810888587",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -872,8 +870,7 @@
           "salePrice": 0,
           "stock": 0
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "808344083",
@@ -904,7 +901,7 @@
       "id": "806065050",
       "name": "NEON SARI,Yamaha mt25 sticker,mt 25 sticker,depo sticker,neon sarı,MT25 SET",
       "slug": "neon-sari-yamaha-mt25-sticker-mt-25-sticker-depo-sticker-neon-sari-mt25-set-806065050",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -925,14 +922,13 @@
           "salePrice": 999,
           "stock": 0
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "806062842",
       "name": "Almany Sticker,Yamaha mt09 depo yanı sticker sağ sol,neon sarı",
       "slug": "almany-sticker-yamaha-mt09-depo-yani-sticker-sag-sol-neon-sari-806062842",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -955,14 +951,13 @@
           "salePrice": 551,
           "stock": 0
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "806062135",
       "name": "Almany sticker,neon sarı,Mt09 sticker, set,mt 09 sticker,yamaha mt,motosiklet sticker",
       "slug": "almany-sticker-neon-sari-mt09-sticker-set-mt-09-sticker-yamaha-mt-motosiklet-sticker-806062135",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -984,8 +979,7 @@
           "salePrice": 1400,
           "stock": 0
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "804098188",
@@ -1384,7 +1378,7 @@
         "name": "Arma Sticker & Fosfor Şerit",
         "slug": "arma-sticker-fosfor-serit"
       },
-      "descriptionHtml": "BMW F800GS 2008. 2018 Granaj sticker etiket. Sipariş sonrası soru sor kısmından renk belirtiniz. Belirtmeyen ler için siyah gönderilir. BMW 2008-2018 model araçlarınıza şık bir görünüm kazandırmak tasarlanmış etiket. Kolay uygulama imkanı sunan kendinden yapışkanlı yapısı ile hızlı ve pratik bir şekilde aracınıza monte edilebilir. Canlı ve dayanıklı seçeneği, aracınızın estetiğini korurken aynı zamanda dikkat çekici bir detay ekler. dış tasarımına modern bir dokunuş katmak isteyenler ideal bir aksesuar olan bu etiket, sürüş deneyiminizi zenginleştirir.",
+      "descriptionHtml": "BMW F800GS 2008. 2018 Granaj sticker etiket. Sipariş sonrası soru sor kısmından renk belirtiniz. Belirtmeyen ler için siyah gönderilir. BMW 2008-2018 model araçlarınıza şık bir görünüm kazandırmak tasarlanmış Kolay uygulama imkanı sunan kendinden yapışkanlı yapısı ile hızlı ve pratik bir şekilde aracınıza monte edilebilir. Canlı ve dayanıklı seçeneği, aracınızın estetiğini korurken aynı zamanda dikkat çekici bir detay ekler. dış tasarımına modern bir dokunuş katmak isteyenler ideal bir aksesuar olan bu etiket, sürüş deneyiminizi zenginleştirir.",
       "images": [
         "https://cdn.dsmcdn.com/ty1152/product/media/images/prod/SPM/PIM/20240201/03/009d801d-aa0a-33b0-84cb-c95866ae6306/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1153/product/media/images/prod/SPM/PIM/20240201/03/a36d4035-ada3-3667-8db9-09894195ec5b/1_org_zoom.jpg",
@@ -3458,7 +3452,7 @@
         "name": "Motosiklet Jant Şerit",
         "slug": "motosiklet-jant-serit"
       },
-      "descriptionHtml": "ürün gündüz açık gri gece ışıkta ise beyaz parlar. Açıklama: Yamaha R7'nizin performansını ve estetiğini zirveye taşıyın! Özel tasarım renkli motorsiklet jant şeridi, sürüş güvenliğinizi artırırken aynı zamanda motosikletinizin görsel çekiciliğini en üst düzeye çıkarmanın harika bir yoludur. Ana Özellikler: Mükemmel Uyumluluk ve Montaj Kolaylığı:Yamaha R7 modeli için tasarlanan bu sadece uyum sağlamakla kalmaz, kolay tasarlanmıştır. Çeşitli Renk Seçenekleri ile Stilinizi Yaratın. Yüksek Kalite Malzeme ve Dayanıklılık:Güçlü yapısı sayesinde dayanıklılığı garanti eden bu her türlü hava koşuluna karşı direnç gösterir ve uzun ömürlü kullanım sağlar. ve Güvenlik Avantajı:Hem görünüm hem de kombinasyon! şeritleri, ve görünürlüğünüzü artırarak optimize eder.",
+      "descriptionHtml": "ürün gündüz açık gri gece ışıkta ise beyaz parlar. Açıklama: Yamaha R7'nizin performansını ve estetiğini zirveye taşıyın! Özel tasarım renkli motorsiklet jant şeridi, sürüş güvenliğinizi artırırken aynı zamanda motosikletinizin görsel çekiciliğini en üst düzeye çıkarmanın harika bir yoludur. Ana Özellikler: Mükemmel Uyumluluk ve Montaj Kolaylığı:Yamaha R7 modeli için tasarlanan bu sadece uyum sağlamakla kalmaz, kolay tasarlanmıştır. . Çeşitli Renk Seçenekleri ile Stilinizi Yaratın. Yüksek Kalite Malzeme ve Dayanıklılık:Güçlü yapısı sayesinde dayanıklılığı garanti eden bu her türlü hava koşuluna karşı direnç gösterir ve uzun ömürlü kullanım sağlar. . ve Güvenlik Avantajı:Hem görünüm hem de kombinasyon! şeritleri, ve görünürlüğünüzü artırarak optimize eder. .",
       "images": [
         "https://cdn.dsmcdn.com/ty1514/product/media/images/prod/QC/20240830/14/c1451994-40ae-39dc-8e44-c9d559f655f2/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1512/product/media/images/prod/QC/20240830/14/bf23fba6-f006-3f75-bc55-fd368ad2c115/1_org_zoom.jpg"
@@ -3552,9 +3546,9 @@
             "Renk": "Siyah",
             "Özellik": "Hava"
           },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 1977
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         },
         {
           "barcode": "2134567235668",
@@ -3563,9 +3557,9 @@
             "Renk": "Siyah",
             "Özellik": "Hava"
           },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 1977
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -3861,7 +3855,7 @@
       "id": "777317076",
       "name": "Honda Pcx Uyumlu Beyaz Kesimli Jant Şerit Sticker",
       "slug": "honda-pcx-uyumlu-beyaz-kesimli-jant-serit-sticker-777317076",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -3886,20 +3880,19 @@
           "salePrice": 323,
           "stock": 9910
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "777197570",
       "name": "2 Adet Kanat Sticker, Oto Sticker Araba 15 Cm Beyaz",
       "slug": "2-adet-kanat-sticker-oto-sticker-araba-15-cm-beyaz-777197570",
-      "brand": "SA Printpro",
+      "brand": "sticker",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
         "slug": "arma-sticker-fosfor-serit"
       },
-      "descriptionHtml": "Duvarlarınızda, mobilyalarda, kapılarda, araçlarda, cam, fayans vb. Pürüzsüz zemin yüzeylerinde güvenle kullanabilirsiniz. Neme suya karşı dayanıklıdır. Uzun ömürlüdür. Kendinden yapışkanlıdır. Söküldüğünde kalıcı iz bırakmaz. Solma yada kalkma yapmaz. Yapıştırmak istediğiniz yüzeyin temiz ve kuru olmasına özen gösteriniz. Belirtilen kullanım talimatlarına uyulduğu takdirde ömürlü olacaktır. iade koşulları : Ürünlerinizin tarafınıza ulaştığı şekilde patpata sarılı, kutulu ve ambalajı bozulmamış olarak iade edilmesi gerekmektedir. Aksi halde gönderilen iadeler kabul edilemeyecektir.",
+      "descriptionHtml": "Duvarlarınızda, mobilyalarda, kapılarda, araçlarda, cam, fayans vb. Pürüzsüz zemin yüzeylerinde güvenle kullanabilirsiniz. Neme suya karşı dayanıklıdır. Uzun ömürlüdür. Kendinden yapışkanlıdır. Söküldüğünde kalıcı iz bırakmaz. Solma yada kalkma yapmaz. Yapıştırmak istediğiniz yüzeyin temiz ve kuru olmasına özen gösteriniz. Belirtilen kullanım talimatlarına uyulduğu takdirde ömürlü olacaktır. iade koşulları : Ürünlerinizin tarafınıza ulaştığı şekilde patpata sarılı, kutulu ve ambalajı bozulmamış olarak edilmesi gerekmektedir. Aksi halde gönderilen iadeler kabul edilemeyecektir.",
       "images": [
         "https://cdn.dsmcdn.com/ty1031/product/media/images/prod/SPM/PIM/20231104/23/dc8ca30e-61b1-3d6a-b699-df205209dd51/1_org_zoom.jpg"
       ],
@@ -3921,7 +3914,7 @@
       "id": "775088365",
       "name": "Tvs Jubiter Beyaz Jant Şerit Sticker",
       "slug": "tvs-jubiter-beyaz-jant-serit-sticker-775088365",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -3946,8 +3939,7 @@
           "salePrice": 350,
           "stock": 959
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "774463617",
@@ -4073,7 +4065,7 @@
         "name": "Arma Sticker & Fosfor Şerit",
         "slug": "arma-sticker-fosfor-serit"
       },
-      "descriptionHtml": "\"Araba Makyaj Ayna Etiket Sticker - Stilinizi Yansıtan Zarif Tasarım ve Kolay Yapıştırma\" Aracınızın aynasına benzersiz bir hava katın! Bu özel seti, pratik yapıştırma özelliği ile dikkat çeker. Sticker, etiket, ve anahtar kelimeleriyle zenginleştirilmiş bu ürün, aracınıza özgün bir stil eklemenin yanı sıra kullanım kolaylığı da sunar. **Anahtar Özellikler:** 1. **Yüksek Kaliteli Malzeme:** malzemesi, uzun ömürlü ve dayanıklılık sağlar. 2. **Şık Tasarım:** ve çekici tasarım, estetik bir dokunuş kazandırır. 3. **Kolay Yapıştırma:** Talimatlarla birlikte gelen ile herkes tarafından rahatça uygulanabilir. 4. **Hava Koşullarına Dayanıklı:** Etiketler, çeşitli karşı dayanıklıdır, süre. Bu araba farklı terimleri içererek şıklık katmanın. Şimdi sipariş verin ve aracınızı kişiselleştirmenin keyfini çıkarın!. aynası \" Bugünde çok güzelsin \" boyutu (8cm - 1.2 cm)dir. Yapıştırması basittir. Yapıştırmadan önce zemini alkol veya kolanya ile temizleyiniz aksi halde zor yapışır. \" çok \" - 1.2. ile zor yapışır.",
+      "descriptionHtml": "\"Araba Makyaj Ayna Etiket Sticker - Stilinizi Yansıtan Zarif Tasarım ve Kolay Yapıştırma\" Aracınızın aynasına benzersiz bir hava katın! Bu özel seti, pratik yapıştırma özelliği ile dikkat çeker. Sticker, etiket, ve anahtar kelimeleriyle zenginleştirilmiş bu ürün, aracınıza özgün bir stil eklemenin yanı sıra kullanım kolaylığı da sunar. **Anahtar Özellikler:** 1. **Yüksek Kaliteli Malzeme:** malzemesi, uzun ömürlü ve dayanıklılık sağlar. 2. **Şık Tasarım:** ve çekici tasarım, estetik bir dokunuş kazandırır. 3. **Kolay Yapıştırma:** Talimatlarla birlikte gelen ile herkes tarafından rahatça uygulanabilir. 4. **Hava Koşullarına Dayanıklı:** Etiketler, çeşitli karşı dayanıklıdır, süre Bu araba farklı terimleri içererek şıklık katmanın Şimdi sipariş verin ve aracınızı kişiselleştirmenin keyfini çıkarın!. aynası \" Bugünde çok güzelsin \" boyutu (8cm - 1.2 cm)dir. Yapıştırması basittir. Yapıştırmadan önce zemini alkol veya kolanya ile temizleyiniz aksi halde zor yapışır. \" çok \" - 1.2 ile zor",
       "images": [
         "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/d1570801-af56-339e-acd4-e267668c5487/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/5beb27b5-3455-37ec-9692-fa6beab3eb01/1_org_zoom.jpg",
@@ -4097,7 +4089,7 @@
       "id": "768694717",
       "name": "Hard Core Rider Sticker Araba Motosiklet 14cm*18cm",
       "slug": "hard-core-rider-sticker-araba-motosiklet-14cm-18cm-768694717",
-      "brand": "SA Printpro",
+      "brand": "BENİMSER REKLAM",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -4125,7 +4117,7 @@
       "id": "768694575",
       "name": "Hard Core Rider Sticker Araba Motosiklet 14cm*18cm",
       "slug": "hard-core-rider-sticker-araba-motosiklet-14cm-18cm-768694575",
-      "brand": "SA Printpro",
+      "brand": "BENİMSER REKLAM",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -4155,7 +4147,7 @@
       "id": "768694343",
       "name": "Hard Core Rider Sticker Araba Motosiklet 14cm*18cm",
       "slug": "hard-core-rider-sticker-araba-motosiklet-14cm-18cm-768694343",
-      "brand": "SA Printpro",
+      "brand": "BENİMSER REKLAM",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -4285,7 +4277,7 @@
       "id": "759274830",
       "name": "MY Honda Activa",
       "slug": "my-honda-activa-759274830",
-      "brand": "SA Printpro",
+      "brand": "sticker",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -4312,7 +4304,7 @@
       "id": "758777953",
       "name": "MY EGEA CROSS YAN KAPI ALTI STICKER",
       "slug": "my-egea-cross-yan-kapi-alti-sticker-758777953",
-      "brand": "SA Printpro",
+      "brand": "sticker",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -4347,7 +4339,7 @@
         "name": "Motosiklet Jant Şerit",
         "slug": "motosiklet-jant-serit"
       },
-      "descriptionHtml": "Cf moto uyumlu cf moto,nun logo rengiyle birebir aynıdır. Jantları mavi olan motor lar için siyah sticker gönderilir. Sipariş sonrası belirtirseniz janta gönderilir.",
+      "descriptionHtml": "Cf moto uyumlu cf moto,nun logo rengiyle birebir aynıdır. Jantları mavi olan motor lar için siyah sticker gönderilir. Sipariş sonrası belirtirseniz janta",
       "images": [
         "https://cdn.dsmcdn.com/ty994/product/media/images/prod/SPM/PIM/20230830/16/de36bc87-3938-3836-a906-5f99fdbedc91/1_org_zoom.jpg"
       ],
@@ -4478,13 +4470,13 @@
       "id": "757791366",
       "name": "Wanted Motorsiklet, Laptop, Cam, Kask, Araba Sticker 18x7 Cm",
       "slug": "wanted-motorsiklet-laptop-cam-kask-araba-sticker-18x7-cm-757791366",
-      "brand": "SA Printpro",
+      "brand": "BENİMSER REKLAM",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
         "slug": "arma-sticker-fosfor-serit"
       },
-      "descriptionHtml": "Ölçü 18x7 cm. Uzun ömürlüdür. Kendinden yapışkanlıdır. Söküldüğünde iz bırakmaz. Yapıştırmak istediğiniz yüzeyin temiz ve kuru olmasına özen gösteriniz.",
+      "descriptionHtml": "Ölçü 18x7 cm. Uzun ömürlüdür. . Kendinden yapışkanlıdır. . Söküldüğünde iz bırakmaz. . Yapıştırmak istediğiniz yüzeyin temiz ve kuru olmasına özen gösteriniz. .",
       "images": [
         "https://cdn.dsmcdn.com/ty1479/product/media/images/prod/QC/20240814/12/1d59dde3-e0bf-31d9-bcf0-64dd0a583fc3/1_org_zoom.jpg"
       ],
@@ -4507,13 +4499,13 @@
       "id": "757791365",
       "name": "Wanted Motorsiklet, Laptop, Cam, Kask, Araba Sticker 18x7 Cm",
       "slug": "wanted-motorsiklet-laptop-cam-kask-araba-sticker-18x7-cm-757791365",
-      "brand": "SA Printpro",
+      "brand": "BENİMSER REKLAM",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
         "slug": "arma-sticker-fosfor-serit"
       },
-      "descriptionHtml": "Ölçü 18x7 cm. Uzun ömürlüdür. Kendinden yapışkanlıdır. Söküldüğünde iz bırakmaz. Yapıştırmak istediğiniz yüzeyin temiz ve kuru olmasına özen gösteriniz.",
+      "descriptionHtml": "Ölçü 18x7 cm. Uzun ömürlüdür. . Kendinden yapışkanlıdır. . Söküldüğünde iz bırakmaz. . Yapıştırmak istediğiniz yüzeyin temiz ve kuru olmasına özen gösteriniz. .",
       "images": [
         "https://cdn.dsmcdn.com/ty1545/product/media/images/ty1547/prod/QC/20240915/20/be5f472d-3410-37f7-ac58-9c7162aef230/1_org_zoom.jpg"
       ],
@@ -4565,7 +4557,7 @@
       "id": "755367187",
       "name": "YILDIZ STİCKER, sticker 50 cm 2 adet siyah",
       "slug": "yildiz-sticker-sticker-50-cm-2-adet-siyah-755367187",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "1979",
         "name": "Reflektör",
@@ -4587,14 +4579,13 @@
           "salePrice": 149,
           "stock": 1000
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "755366511",
       "name": "HARD DİO STİCKER,Honda dio sticker,dio aksesuar,siyah renk",
       "slug": "hard-dio-sticker-honda-dio-sticker-dio-aksesuar-siyah-renk-755366511",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "1979",
         "name": "Reflektör",
@@ -4617,14 +4608,13 @@
           "salePrice": 149,
           "stock": 965
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "755065544",
       "name": "Sticker my Yamaha revs your heart",
       "slug": "sticker-my-yamaha-revs-your-heart-755065544",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -4646,8 +4636,7 @@
           "salePrice": 221,
           "stock": 998
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "754010909",
@@ -4686,7 +4675,7 @@
         "name": "Ofis Sarf Tüketim Malzemesi",
         "slug": "ofis-sarf-tuketim-malzemesi"
       },
-      "descriptionHtml": "Paket İçeriği: 1 adet Ürün %100 Üründür. Detay: Kalın Ölçekli, Genel Kapsamlı ve İnce Yazılar İçin ve Kesimler İdealdir. Derece: 45 Derece Kullanım Alanları: Folyo Kesim, Reflektif Araç Etiket Kesim İşlerinizde ve Diğer Alanlarından Bu Bıçakları Kullanabilirsiniz.",
+      "descriptionHtml": "Paket İçeriği: 1 adet Ürün %100 Üründür. . Detay: Kalın Ölçekli, Genel Kapsamlı ve İnce Yazılar İçin ve Kesimler İdealdir. . Derece: 45 Derece Kullanım Alanları: Folyo Kesim, Reflektif Araç Etiket Kesim İşlerinizde ve Diğer Alanlarından Bu Bıçakları Kullanabilirsiniz.",
       "images": [
         "https://cdn.dsmcdn.com/ty1347/product/media/images/prod/QC/20240605/19/d6a011f5-e9d2-3b5e-b633-03a2298c070f/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1348/product/media/images/prod/QC/20240605/19/22f8cfc6-d8d8-32f8-9a83-696d05f6ffd2/1_org_zoom.jpg",
@@ -4734,7 +4723,7 @@
       "id": "753254650",
       "name": "Yamaha r25 sticker,füme sticker,yamaha yazısı,yamaha sticker",
       "slug": "yamaha-r25-sticker-fume-sticker-yamaha-yazisi-yamaha-sticker-753254650",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "1979",
         "name": "Reflektör",
@@ -4753,14 +4742,13 @@
           "salePrice": 261,
           "stock": 975
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "753253020",
       "name": "Yamaha r25 alt sakal sticker,R25 STİCKER,GÜMÜŞ GRİ STİCKER",
       "slug": "yamaha-r25-alt-sakal-sticker-r25-sticker-gumus-gri-sticker-753253020",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "1979",
         "name": "Reflektör",
@@ -4779,8 +4767,7 @@
           "salePrice": 261,
           "stock": 34
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "750481936",
@@ -4915,7 +4902,7 @@
       "id": "727878018",
       "name": "Honda Nc 750x Jant Şeridi,nc Şeridi,nc750x Şerit",
       "slug": "honda-nc-750x-jant-seridi-nc-seridi-nc750x-serit-727878018",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "1979",
         "name": "Reflektör",
@@ -4940,14 +4927,13 @@
           "salePrice": 441,
           "stock": 196
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "701347372",
       "name": "Low Life Yazılı Oto Sticker,araba Sticker Genişlik 15 Cm 2 Adet",
       "slug": "low-life-yazili-oto-sticker-araba-sticker-genislik-15-cm-2-adet-701347372",
-      "brand": "SA Printpro",
+      "brand": "AVERY",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -4970,14 +4956,13 @@
           "salePrice": 100,
           "stock": 1000
         }
-      ],
-      "materialBrand": "AVERY"
+      ]
     },
     {
       "id": "701347090",
       "name": "Low Life Yazılı Oto Sticker,araba Sticker Genişlik 15 Cm 2 Adet",
       "slug": "low-life-yazili-oto-sticker-araba-sticker-genislik-15-cm-2-adet-701347090",
-      "brand": "SA Printpro",
+      "brand": "AVERY",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -5000,14 +4985,13 @@
           "salePrice": 100,
           "stock": 1000
         }
-      ],
-      "materialBrand": "AVERY"
+      ]
     },
     {
       "id": "701331830",
       "name": "Low Life Yazılı Oto Sticker,araba Sticker Genişlik 15 Cm 2 Adet",
       "slug": "low-life-yazili-oto-sticker-araba-sticker-genislik-15-cm-2-adet-701331830",
-      "brand": "SA Printpro",
+      "brand": "AVERY",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -5030,8 +5014,7 @@
           "salePrice": 100,
           "stock": 1000
         }
-      ],
-      "materialBrand": "AVERY"
+      ]
     },
     {
       "id": "682159687",
@@ -5091,7 +5074,7 @@
       "id": "672536626",
       "name": "YAMAHA XMAX ,TİCKER SET,XMAX STİCKER ,xmax sticker,sağ sol",
       "slug": "yamaha-xmax-ticker-set-xmax-sticker-xmax-sticker-sag-sol-672536626",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -5114,14 +5097,13 @@
           "salePrice": 0,
           "stock": 0
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "664859034",
       "name": "25 X 3 Cm Batarya Pil Wifi Icon Oto Sticker Araba Cam",
       "slug": "25-x-3-cm-batarya-pil-wifi-icon-oto-sticker-araba-cam-664859034",
-      "brand": "SA Printpro",
+      "brand": "AVERY",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -5143,14 +5125,13 @@
           "salePrice": 149,
           "stock": 1000
         }
-      ],
-      "materialBrand": "AVERY"
+      ]
     },
     {
       "id": "664225412",
       "name": "25 X 3 Cm Batarya Pil Wifi Icon Oto Sticker Araba Cam",
       "slug": "25-x-3-cm-batarya-pil-wifi-icon-oto-sticker-araba-cam-664225412",
-      "brand": "SA Printpro",
+      "brand": "AVERY",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -5172,14 +5153,13 @@
           "salePrice": 99,
           "stock": 998
         }
-      ],
-      "materialBrand": "AVERY"
+      ]
     },
     {
       "id": "664225329",
       "name": "25 X 3 Cm Batarya Pil Wifi Icon Oto Sticker Araba Cam",
       "slug": "25-x-3-cm-batarya-pil-wifi-icon-oto-sticker-araba-cam-664225329",
-      "brand": "SA Printpro",
+      "brand": "AVERY",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -5201,14 +5181,13 @@
           "salePrice": 99,
           "stock": 1000
         }
-      ],
-      "materialBrand": "AVERY"
+      ]
     },
     {
       "id": "656212742",
       "name": "Siyah Sticker , Honda Dio Sticker,honda Sticker,dio Aksesuar",
       "slug": "siyah-sticker-honda-dio-sticker-honda-sticker-dio-aksesuar-656212742",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -5229,8 +5208,7 @@
           "salePrice": 74,
           "stock": 19956
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "650159927",
@@ -5263,7 +5241,7 @@
       "id": "474534517",
       "name": "Motosiklet Jant Şerit",
       "slug": "motosiklet-jant-serit-474534517",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -5284,14 +5262,13 @@
           "salePrice": 211,
           "stock": 930
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "474530168",
       "name": "Harley Davidson Depo Sticker Etiket Çıkartma",
       "slug": "harley-davidson-depo-sticker-etiket-cikartma-474530168",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -5311,14 +5288,13 @@
           "salePrice": 0,
           "stock": 0
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "473001170",
       "name": "Pcx Jant Şeridi,kalın Şeridi,ön Arka ,floresan Sarı Şeridi",
       "slug": "pcx-jant-seridi-kalin-seridi-on-arka-floresan-sari-seridi-473001170",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -5339,14 +5315,13 @@
           "salePrice": 441,
           "stock": 0
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "470498023",
       "name": "Almany Sticker,mt07 Jant Şeridi,iç Dış Siyah Renk,ön Arka Sağ Sol Içindir",
       "slug": "almany-sticker-mt07-jant-seridi-ic-dis-siyah-renk-on-arka-sag-sol-icindir-470498023",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -5367,14 +5342,13 @@
           "salePrice": 449,
           "stock": 193
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "469969468",
       "name": "Pulsar Ön Çamurluk Sticker,pulsar,ns200,almany Sticker",
       "slug": "pulsar-on-camurluk-sticker-pulsar-ns200-almany-sticker-469969468",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -5395,8 +5369,7 @@
           "salePrice": 199,
           "stock": 824
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "467434685",
@@ -5429,7 +5402,7 @@
       "id": "463667312",
       "name": "Mondial Drift L Reklektif Jant Şerit Sticker Beyaz Kırmızı Uyumlu",
       "slug": "mondial-drift-l-reklektif-jant-serit-sticker-beyaz-kirmizi-uyumlu-463667312",
-      "brand": "SA Printpro",
+      "brand": "Favori",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -5455,7 +5428,7 @@
       "id": "461957335",
       "name": "Mondial Drift Uyumlu L Reklektif Jant Şerit Sticker Kırmızı Beyaz",
       "slug": "mondial-drift-uyumlu-l-reklektif-jant-serit-sticker-kirmizi-beyaz-461957335",
-      "brand": "SA Printpro",
+      "brand": "Favori",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -5481,7 +5454,7 @@
       "id": "456766057",
       "name": "ÖN ARKA ,RKS NEW LİGHT JANT ŞERİDİ,RKS ŞERİDİ,NEWLİGHT ŞERİDİ,KALIN ŞERİDİ",
       "slug": "on-arka-rks-new-light-jant-seridi-rks-seridi-newlight-seridi-kalin-seridi-456766057",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -5500,14 +5473,13 @@
           "salePrice": 0,
           "stock": 0
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "403291702",
       "name": "Pulsar Kuyruk Sticker,pulsar Sticker,pulsar,bajaj",
       "slug": "pulsar-kuyruk-sticker-pulsar-sticker-pulsar-bajaj-403291702",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -5526,8 +5498,7 @@
           "salePrice": 199,
           "stock": 1000
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "379247293",
@@ -5587,10 +5558,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5604,10 +5575,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5619,13 +5590,13 @@
       "id": "366662381",
       "name": "Rks Jant Şeridi",
       "slug": "rks-jant-seridi-366662381",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
         "slug": "motosiklet-jant-serit"
       },
-      "descriptionHtml": "2 JANT İÇİN SAĞ SOL 4 TARAF İÇİNDİR.FAZLASI DA VARDIR.ŞERİTLER REFLEKTÖRLÜDÜR GECE PARLAR",
+      "descriptionHtml": "2 JANT İÇİN SAĞ SOL 4 TARAF İÇİNDİR.FAZLASI DA VARDIR..ŞERİTLER REFLEKTÖRLÜDÜR GECE PARLAR",
       "images": [
         "https://cdn.dsmcdn.com/ty1314/product/media/images/prod/QC/20240516/05/3781520c-9821-349b-914d-c783b3e2fc82/1_org_zoom.jpg"
       ],
@@ -5640,8 +5611,7 @@
           "salePrice": 185,
           "stock": 986
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "364856300",
@@ -5653,7 +5623,7 @@
         "name": "Arma Sticker & Fosfor Şerit",
         "slug": "arma-sticker-fosfor-serit"
       },
-      "descriptionHtml": "Paket İçeriği Ürününüz kargoda zarar görmemesi için rulo veya karton içerisinde gönderilmektedir. Ürün faturası E-Fatura Olarak E-Posta Adresinize İletilmekte ve kargo ile. uygulama kılavuzu ile gelmektedir. Özellikleri Ürünümüz su geçirmez, rüzgâra ve neme dayanıklıdır. Herhangi bir temiz, pürüzsüz, düz yüzeye (duvarlar, pencere, arabalar, bilgisayar, ayna buzdolabı) uygulanabilir. Ürünlerimiz sipariş üzere üretilmektedir. Her renkte ve ölçüde özel tasarım sticker üretimi mevcuttur. Soru sor kısmından istediğiniz modeli ve rengi söylemeniz yeterlidir. Müşteri memnuniyeti esaslı çalışmaktayız, siparişinden uygulanması aşamasına kadar destek sağlanmaktadır. Nasıl Uygulanır? Stickerı uygulamak çok kolay, sadece birkaç dakikanızı alacak. Stickerın uygulanacağı zemini temizleyin. Kâğıt desteğini yavaşça çıkardıktan sonra transfer kâğıdında kaldığından emin olun. kâğıdından soyulduktan sonra, karşı hizalayın ve yerleştirin. Bir kredi kartı çıkartmanızı yumuşatmak benzer bir şey kullanın, tamamen kilitlendiğinden. Dikkatli ve yavaş bir şekilde, bandını stickerdan çıkarın,. Eğer etiketin bir parçası olduğunu görürseniz, kâğıdını çıkartmadan tekrar basın ve işlemi tekrarlayın. Bu üründen en fazla 10 adet verilebilir. 10 adetin üzerindeki siparişleri Trendyol iptal etme hakkını saklı tutar. Kampanya fiyatından satılmak 100 adetten stok sunulmuştur. İncelemiş olduğunuz ürünün satış fiyatını satıcı belirlemektedir. Bir ürün, birden tarafından satılabilir. satışa sunulan ürünlerin satıcıları belirledikleri fiyata, puanlarına, teslimat statülerine, ürünlerdeki promosyonlara, kargonun bedava olup olmamasına ve teslim edilip edilememesine, ve kategorileri bilgilerine göre sıralanmaktadır.",
+      "descriptionHtml": "Paket İçeriği Ürününüz kargoda zarar görmemesi için rulo veya karton içerisinde gönderilmektedir. Ürün faturası E-Fatura Olarak E-Posta Adresinize İletilmekte ve kargo ile uygulama kılavuzu ile gelmektedir. Özellikleri Ürünümüz su geçirmez, rüzgâra ve neme dayanıklıdır. Herhangi bir temiz, pürüzsüz, düz yüzeye (duvarlar, pencere, arabalar, bilgisayar, ayna buzdolabı) uygulanabilir. Ürünlerimiz sipariş üzere üretilmektedir. Her renkte ve ölçüde özel tasarım sticker üretimi mevcuttur. Soru sor kısmından istediğiniz modeli ve rengi söylemeniz yeterlidir. Müşteri memnuniyeti esaslı çalışmaktayız, siparişinden uygulanması aşamasına kadar destek sağlanmaktadır. Nasıl Uygulanır? Stickerı uygulamak çok kolay, sadece birkaç dakikanızı alacak. Stickerın uygulanacağı zemini temizleyin. Kâğıt desteğini yavaşça çıkardıktan sonra transfer kâğıdında kaldığından emin olun. kâğıdından soyulduktan sonra, karşı hizalayın ve yerleştirin. Bir kredi kartı çıkartmanızı yumuşatmak benzer bir şey kullanın, tamamen kilitlendiğinden Dikkatli ve yavaş bir şekilde, bandını stickerdan çıkarın, Eğer etiketin bir parçası olduğunu görürseniz, kâğıdını çıkartmadan tekrar basın ve işlemi tekrarlayın. Bu üründen en fazla 10 adet verilebilir. 10 adetin üzerindeki siparişleri Trendyol iptal etme hakkını saklı tutar. Kampanya fiyatından satılmak 100 adetten stok sunulmuştur. İncelemiş olduğunuz ürünün satış fiyatını satıcı belirlemektedir. Bir ürün, birden tarafından satılabilir. satışa sunulan ürünlerin satıcıları belirledikleri fiyata, puanlarına, teslimat statülerine, ürünlerdeki promosyonlara, kargonun bedava olup olmamasına ve teslim edilip edilememesine, ve kategorileri bilgilerine göre sıralanmaktadır.",
       "images": [
         "https://cdn.dsmcdn.com/ty1357/product/media/images/prod/QC/20240611/01/64c005e9-9050-3f79-bc58-645caf92559b/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1358/product/media/images/prod/QC/20240611/01/bccf7aa7-2e99-324a-8b93-0c8075fc7ae7/1_org_zoom.jpg",
@@ -5711,7 +5681,7 @@
       "id": "357033974",
       "name": "Honda Dio Jant Şeridi,dio,honda,jant Şeridi,dio Etiket,dio Yapışkan",
       "slug": "honda-dio-jant-seridi-dio-honda-jant-seridi-dio-etiket-dio-yapiskan-357033974",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -5730,8 +5700,7 @@
           "salePrice": 149,
           "stock": 0
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "356771162",
@@ -5783,8 +5752,8 @@
             "Özellik": "Uzun",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilebilir, Satıcı ile İletişime Geçiniz.",
-            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)",
-            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr"
+            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr",
+            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)"
           },
           "price": 99,
           "salePrice": 99,
@@ -5827,7 +5796,7 @@
       "id": "313986168",
       "name": "Dio Jant Şeridi,dio Kalın Şeridi",
       "slug": "dio-jant-seridi-dio-kalin-seridi-313986168",
-      "brand": "SA Printpro",
+      "brand": "oracall",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -5848,14 +5817,13 @@
           "salePrice": 350,
           "stock": 941
         }
-      ],
-      "materialBrand": "oracall"
+      ]
     },
     {
       "id": "313562402",
       "name": "You Look Good Ayna Stickeri",
       "slug": "you-look-good-ayna-stickeri-313562402",
-      "brand": "SA Printpro",
+      "brand": "Home &",
       "category": {
         "id": "460",
         "name": "Ayna",
@@ -5887,7 +5855,7 @@
       "id": "283361066",
       "name": "Inan Hiç Farketmez Sticker Folyo",
       "slug": "inan-hic-farketmez-sticker-folyo-283361066",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -5909,8 +5877,7 @@
           "salePrice": 0,
           "stock": 0
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "265880806",
@@ -5977,7 +5944,7 @@
       "id": "240370640",
       "name": "Honda Cbf Jant Şeridi,cbf150,cbf 150 Şerit,2 İÇİN SAĞ SOL,CBF ŞERİDİ",
       "slug": "honda-cbf-jant-seridi-cbf150-cbf-150-serit-2-icin-sag-sol-cbf-seridi-240370640",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -6002,14 +5969,13 @@
           "salePrice": 248,
           "stock": 19996
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "237075052",
       "name": "Dainese Jant Şeridi,jant Şeriti,jant,şerit,motorcu ,r25,20 Parça",
       "slug": "dainese-jant-seridi-jant-seriti-jant-serit-motorcu-r25-20-parca-237075052",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -6028,8 +5994,7 @@
           "salePrice": 0,
           "stock": 0
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "229407633",
@@ -6041,7 +6006,7 @@
         "name": "Motosiklet Jant Şerit",
         "slug": "motosiklet-jant-serit"
       },
-      "descriptionHtml": "Modern ve şık bir görünüm sunan jant şeridi kesik neon, aracınızın estetiğini yükseltir. Yüksek kaliteli florasan teknolojisi sayesinde uzun ömürlü ve parlak bir aydınlatma sağlar. Kolay montaj imkanı bu ürün, jantlarına mükemmel uyum - Farklı renk seçenekleriyle kişisel tarzınızı yansıtan bir deneyimi yaşatır. ürün her a 2 adet olacak şekilde toplamda 8 transfer bandı ile birlikte gönderilir.",
+      "descriptionHtml": "Modern ve şık bir görünüm sunan jant şeridi kesik neon, aracınızın estetiğini yükseltir. Yüksek kaliteli florasan teknolojisi sayesinde uzun ömürlü ve parlak bir aydınlatma sağlar. Kolay montaj imkanı bu ürün, jantlarına mükemmel uyum Farklı renk seçenekleriyle kişisel tarzınızı yansıtan bir deneyimi yaşatır. ürün her a 2 adet olacak şekilde toplamda 8 transfer bandı ile birlikte gönderilir.",
       "images": [
         "https://cdn.dsmcdn.com/ty1551/product/media/images/ty1553/prod/QC/20240917/19/312b19d3-d87d-39cf-99a1-8ee2db9dfa7e/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1551/product/media/images/ty1552/prod/QC/20240917/19/64dc449c-9297-37cc-8b09-a98daca098cb/1_org_zoom.jpg"
@@ -6063,7 +6028,7 @@
       "id": "222421272",
       "name": "Thy Sticker, Araç Yazıları Yapıştırma",
       "slug": "thy-sticker-arac-yazilari-yapistirma-222421272",
-      "brand": "SA Printpro",
+      "brand": "AVERY",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -6086,14 +6051,13 @@
           "salePrice": 99,
           "stock": 997
         }
-      ],
-      "materialBrand": "AVERY"
+      ]
     },
     {
       "id": "218488439",
       "name": "Almany Sticker,Yamaha mt09 depo sticker,neon sarı,mt 09 sticker,floresan sarı",
       "slug": "almany-sticker-yamaha-mt09-depo-sticker-neon-sari-mt-09-sticker-floresan-sari-218488439",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -6112,8 +6076,7 @@
           "salePrice": 812,
           "stock": 0
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "218146602",
@@ -6150,7 +6113,7 @@
       "id": "215427636",
       "name": "Mondial Drift Jant Şeridi",
       "slug": "mondial-drift-jant-seridi-215427636",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -6171,14 +6134,13 @@
           "salePrice": 0,
           "stock": 0
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "205480635",
       "name": "Dainese Sticker, Motorcu Sağ Ve Sol",
       "slug": "dainese-sticker-motorcu-sag-ve-sol-205480635",
-      "brand": "SA Printpro",
+      "brand": "AVERY",
       "category": {
         "id": "1999",
         "name": "Tankpad & Sticker",
@@ -6201,14 +6163,13 @@
           "salePrice": 199,
           "stock": 19949
         }
-      ],
-      "materialBrand": "AVERY"
+      ]
     },
     {
       "id": "159177609",
       "name": "Inek Deseni Sticker",
       "slug": "inek-deseni-sticker-159177609",
-      "brand": "SA Printpro",
+      "brand": "TASARIM MARKET",
       "category": {
         "id": "3014",
         "name": "Duvar Dekorasyon Ürünü",
@@ -6266,7 +6227,7 @@
       "id": "142151214",
       "name": "Arora Jant Şeridi,arora Sticker",
       "slug": "arora-jant-seridi-arora-sticker-142151214",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -6287,14 +6248,13 @@
           "salePrice": 0,
           "stock": 0
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "131792077",
       "name": "Honda 1000rr Jant Içi Sticker",
       "slug": "honda-1000rr-jant-ici-sticker-131792077",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -6317,14 +6277,13 @@
           "salePrice": 250,
           "stock": 9997
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "114798599",
       "name": "Renegade Sticker Set",
       "slug": "renegade-sticker-set-114798599",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -6347,8 +6306,7 @@
           "salePrice": 662,
           "stock": 999
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "113807207",
@@ -6372,8 +6330,8 @@
             "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -6403,8 +6361,8 @@
             "Renk": "Kırmızı",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -6445,7 +6403,7 @@
       "id": "88599038",
       "name": "Sticker My Yamaha Xmax Abs Sticker,abs Yazıları,nmax Abs",
       "slug": "sticker-my-yamaha-xmax-abs-sticker-abs-yazilari-nmax-abs-88599038",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -6464,14 +6422,13 @@
           "salePrice": 167,
           "stock": 1988
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "85677654",
       "name": "Pisuar Dart Sticker",
       "slug": "pisuar-dart-sticker-85677654",
-      "brand": "SA Printpro",
+      "brand": "3M",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -6494,20 +6451,19 @@
           "salePrice": 0,
           "stock": 0
         }
-      ],
-      "materialBrand": "3M"
+      ]
     },
     {
       "id": "79908073",
       "name": "Honda Pcx Jant Şeridi",
       "slug": "honda-pcx-jant-seridi-79908073",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
         "slug": "motosiklet-jant-serit"
       },
-      "descriptionHtml": "Honda Pcx Jant Şeridi, yerli üretim olup Türkiye'de üretilmiştir. Temiz zemine uygulanarak kolayca monte edilebilir ve uzun süreli kullanım idealdir.",
+      "descriptionHtml": "Honda Pcx Jant Şeridi, yerli üretim olup Türkiye'de üretilmiştir. Temiz zemine uygulanarak kolayca monte edilebilir ve uzun süreli kullanım için idealdir.",
       "images": [
         "https://cdn.dsmcdn.com/ty1766/prod/QC_ENRICHMENT/20251003/01/71a07c87-8104-38c6-8887-94c85bb14997/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1765/prod/QC_ENRICHMENT/20251003/01/bf66eee5-3237-3ae9-94ad-1e10d691fbfe/1_org_zoom.jpg",
@@ -6530,14 +6486,13 @@
           "salePrice": 277,
           "stock": 20000
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "79193394",
       "name": "Nmax Yıldız Sticker",
       "slug": "nmax-yildiz-sticker-79193394",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "2181",
         "name": "Motosiklet Jant Şerit",
@@ -6556,20 +6511,19 @@
           "salePrice": 199,
           "stock": 1985
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "75624274",
       "name": "Türk Bayrağı Stıckers Ay Yıldız Kırmızı 22x16",
       "slug": "turk-bayragi-stickers-ay-yildiz-kirmizi-22x16-75624274",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
         "slug": "arma-sticker-fosfor-serit"
       },
-      "descriptionHtml": "Ebat 60x44 cm. Ürün folyo kesim makinasında kesilerek, transfer folyosuna alınmış, Alman veya Amerikan menşeili (Avery, Oracal, 3M marka) 0,075 mm kalınlıkta kendinden renkli ve yapışkanlı folyodan üretilmiştir. Montaj için alet profesyonellik gerektirmez. düz bir yüzey (Tercihen cam masa) üzerine serilerek, plastik kart yardımıyla üzerinden geçtikten sonra, arka koruyucu kağıdı çıkarılarak, istenilen yüzeye yine bir kenarından başlanarak yapıştırılır. Son olarak üzerindeki folyosu sökülür. yapıştırıldıktan sonra tek parça sökülemeyeceğiçin, yapıştırırken hizalamaya dikkat ddilmelidir. Suya, neme, -40°C ile +80°C arası sıcaklıklara dayanıklıdır. İdeal uygulama sıcaklığı 18°C - 25°C arasındadır. Kuru ve yağsız, temiz.",
+      "descriptionHtml": "Ebat 60x44 cm. Ürün folyo kesim makinasında kesilerek, transfer folyosuna alınmış, Alman veya Amerikan menşeili (Avery, Oracal, 3M marka) 0,075 mm kalınlıkta kendinden renkli ve yapışkanlı folyodan üretilmiştir. Montaj için alet profesyonellik gerektirmez. düz bir yüzey (Tercihen cam masa) üzerine serilerek, plastik kart yardımıyla üzerinden geçtikten sonra, arka koruyucu kağıdı çıkarılarak, istenilen yüzeye yine bir kenarından başlanarak yapıştırılır. Son olarak üzerindeki folyosu sökülür. yapıştırıldıktan sonra tek parça sökülemeyeceğiçin, yapıştırırken hizalamaya dikkat ddilmelidir. Suya, neme, -40°C ile +80°C arası sıcaklıklara dayanıklıdır. İdeal uygulama sıcaklığı 18°C - 25°C arasındadır. Kuru ve yağsız, temiz",
       "images": [
         "https://cdn.dsmcdn.com/ty1538/product/media/images/ty1537/prod/QC/20240912/11/a3e8b0e7-b674-3091-ab37-722f3f9d645d/1_org_zoom.jpg"
       ],
@@ -6586,8 +6540,7 @@
           "salePrice": 89,
           "stock": 1993
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "72218367",
@@ -6940,7 +6893,7 @@
       "id": "52706834",
       "name": "Motor Sticker, Motorsiklet Sticker",
       "slug": "motor-sticker-motorsiklet-sticker-52706834",
-      "brand": "SA Printpro",
+      "brand": "AVERY",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -6962,14 +6915,13 @@
           "salePrice": 0,
           "stock": 0
         }
-      ],
-      "materialBrand": "AVERY"
+      ]
     },
     {
       "id": "50885652",
       "name": "Hyundai Accent Era Uyumlu Kapı Kolu Ve Jant Sticker 10 Adet",
       "slug": "hyundai-accent-era-uyumlu-kapi-kolu-ve-jant-sticker-10-adet-50885652",
-      "brand": "SA Printpro",
+      "brand": "bys",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -7029,7 +6981,7 @@
       "id": "34200620",
       "name": "The Dark Side Of Japan Sticker",
       "slug": "the-dark-side-of-japan-sticker-34200620",
-      "brand": "SA Printpro",
+      "brand": "Oracal",
       "category": {
         "id": "2184",
         "name": "Motosiklet Lüzumlu Ürün",
@@ -7048,8 +7000,7 @@
           "salePrice": 199,
           "stock": 122
         }
-      ],
-      "materialBrand": "Oracal"
+      ]
     },
     {
       "id": "32967715",
