@@ -170,6 +170,19 @@ const COMPLIANCE_SENTENCE_PATTERNS = [
 ];
 
 /**
+ * Trendyol ürün açıklamalarına otomatik eklenen, kendi vitrinimizde anlamsız
+ * kalan şablon kalıntıları. Cümle bazında silinir; aksi halde açıklamada
+ * "... üretilmiştir.; - Diğer kategorisinde yer alan bu ürün ..." gibi ham
+ * madde işareti/ayraç artıkları görünür.
+ */
+const TEMPLATE_LEFTOVER_PATTERNS = [
+  // "Diğer kategorisinde yer alan bu ürün ..." gibi kategori şablon cümleleri.
+  /[^.!?\n]*\bDiğer kategorisinde yer alan\b[^.!?\n]*[.!?]?/giu,
+  // "Bu ürün ... kategorisinde yer alan ..." varyantları.
+  /[^.!?\n]*\bkategorisinde yer alan\b[^.!?\n]*[.!?]?/giu
+];
+
+/**
  * Katalog metinlerinden (ürün adı, açıklama, varyant özellikleri) rakip
  * satıcı unvanlarını, ajans referanslarını, telefon numaralarını, harici
  * linkleri ve pazaryeri zorunlu uyum/uyarı cümlelerini temizler.
@@ -213,7 +226,21 @@ function sanitizeCatalogText(text) {
     output = output.replace(pattern, ' ');
   }
 
-  // 6) Silme sonrası kalan fazla boşlukları toparla
+  // 6) Trendyol şablon kalıntıları ("Diğer kategorisinde yer alan ...") → sil
+  for (const pattern of TEMPLATE_LEFTOVER_PATTERNS) {
+    output = output.replace(pattern, ' ');
+  }
+
+  // 7) Madde işareti / ayraç kalıntılarını temizle ("; - " → ". ")
+  output = output
+    .replace(/\s*;\s*[-–—•·]\s*/g, '. ')
+    .replace(/(^|\n)\s*[-–—•·]\s+/g, '$1')
+    .replace(/\s*;\s*/g, '. ')
+    .replace(/\.\s*\./g, '.')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
+  // 8) Silme sonrası kalan fazla boşlukları toparla
   return output.replace(/\s{2,}/g, ' ').trim();
 }
 

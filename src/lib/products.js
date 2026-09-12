@@ -83,6 +83,70 @@ const COMPETITOR_BRANDS = [
 ]
 
 /**
+ * Jenerik ürün türü / malzeme kelimeleri. Bunlar ASLA `COMPETITOR_BRANDS`
+ * içine girmemelidir; aksi halde ürün başlıklarındaki meşru kelimeler
+ * yanlışlıkla "SA Printpro" ile değiştirilir (ör. "Granaj Sticker Etiket"
+ * → "Granaj SA Printpro Etiket") ve hem başlıklar bozulur hem de SEO'da
+ * aranan kelimeler kaybolur.
+ *
+ * Bu liste, geçmişte yaşanan "sticker → SA Printpro" regresyonunun bir daha
+ * oluşmaması için bir güvenlik ağıdır: aşağıdaki `assertNoGenericBrands`
+ * fonksiyonu, listeye jenerik bir kelime eklenirse derleme/senkronizasyon
+ * anında hata fırlatır.
+ */
+const GENERIC_TITLE_WORDS = new Set([
+  'sticker',
+  'stickers',
+  'etiket',
+  'çıkartma',
+  'cikartma',
+  'folyo',
+  'jant',
+  'şerit',
+  'serit',
+  'granaj',
+  'grenaj',
+  'kaplama',
+  'reflektif',
+  'reflektor',
+  'reflektör',
+  'hologram',
+  'kupon',
+  'arma',
+  'logo',
+  'motor',
+  'motosiklet',
+  'araba',
+  'oto',
+  'kask',
+  'aksesuar',
+  'rez',
+  '3m',
+  'favori',
+])
+
+/**
+ * `COMPETITOR_BRANDS` içinde jenerik bir kelime bulunursa hata fırlatır.
+ * Bu, "sticker → SA Printpro" benzeri bir regresyonu erken yakalar.
+ *
+ * @param {string[]} brands
+ */
+function assertNoGenericBrands(brands) {
+  for (const brand of brands) {
+    const normalized = normalizeTr(brand).trim()
+    if (GENERIC_TITLE_WORDS.has(normalized)) {
+      throw new Error(
+        `[COMPETITOR_BRANDS] Jenerik kelime marka listesine eklenemez: "${brand}". ` +
+          'Bu, ürün başlıklarındaki meşru kelimeleri bozar (bkz. GENERIC_TITLE_WORDS).'
+      )
+    }
+  }
+}
+
+// Modül yüklenirken listeyi doğrula — regresyonu derleme anında yakala.
+assertNoGenericBrands(COMPETITOR_BRANDS)
+
+/**
  * Corporate / agency references that leak the upstream seller identity.
  */
 const COMPETITOR_ENTITIES = [
@@ -106,6 +170,22 @@ const COMPLIANCE_SENTENCE_PATTERNS = [
   /[^.!?\n]*\bithal edilmiştir\b[^.!?\n]*[.!?]?/giu,
   // Pazaryeri zorunlu uyum şablonları: "Bu ürün ... yönetmeliğine uygundur".
   /[^.!?\n]*\bBu ürün\b[^.!?\n]*\b(?:yönetmeliğine|yönetmelik|mevzuatına|standardına|uygundur|uygun olduğu)\b[^.!?\n]*[.!?]?/giu,
+]
+
+/**
+ * Trendyol ürün açıklamalarına otomatik eklenen, kendi vitrinimizde anlamsız
+ * kalan şablon kalıntıları. Bunlar cümle bazında silinir; aksi halde ürün
+ * açıklamasında "... üretilmiştir.; - Diğer kategorisinde yer alan bu ürün ..."
+ * gibi ham madde işareti/ayraç artıkları görünür.
+ *
+ * Kalıplar bilinçli olarak dardır: yalnızca pazaryeri şablonuna özgü ifadeleri
+ * hedefler, normal ürün metnine dokunmaz.
+ */
+const TEMPLATE_LEFTOVER_PATTERNS = [
+  // "Diğer kategorisinde yer alan bu ürün ..." gibi kategori şablon cümleleri.
+  /[^.!?\n]*\bDiğer kategorisinde yer alan\b[^.!?\n]*[.!?]?/giu,
+  // "Bu ürün ... kategorisinde yer alan ..." varyantları.
+  /[^.!?\n]*\bkategorisinde yer alan\b[^.!?\n]*[.!?]?/giu,
 ]
 
 /**
@@ -169,7 +249,27 @@ export function sanitizeCatalogText(text) {
     output = output.replace(pattern, ' ')
   }
 
-  // 6) Collapse the whitespace left behind by removals.
+  // 6) Trendyol şablon kalıntıları ("Diğer kategorisinde yer alan ...") → sil.
+  for (const pattern of TEMPLATE_LEFTOVER_PATTERNS) {
+    output = output.replace(pattern, ' ')
+  }
+
+  // 7) Madde işareti / ayraç kalıntılarını temizle.
+  //    Trendyol açıklamaları bullet'ları "; - " ile birleştirir; bu ayraç
+  //    düz metne dönüşünce "... üretilmiştir.; - Diğer ..." gibi ham görünür.
+  output = output
+    // "; - " / "; – " / "; • " gibi ayraçları cümle sonuna indirge.
+    .replace(/\s*;\s*[-–—•·]\s*/g, '. ')
+    // Satır başındaki yalnız "- " / "• " madde işaretlerini kaldır.
+    .replace(/(^|\n)\s*[-–—•·]\s+/g, '$1')
+    // Kalan yalnız noktalı virgülleri cümle sonuna çevir.
+    .replace(/\s*;\s*/g, '. ')
+    // Ardışık noktalama ve boşlukları toparla.
+    .replace(/\.\s*\./g, '.')
+    .replace(/\s{2,}/g, ' ')
+    .trim()
+
+  // 8) Collapse the whitespace left behind by removals.
   return output.replace(/\s{2,}/g, ' ').trim()
 }
 
