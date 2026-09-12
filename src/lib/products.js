@@ -254,6 +254,27 @@ export function sanitizeCatalogText(text) {
     output = output.replace(pattern, ' ')
   }
 
+  // 6b) "sticker → SA Printpro" regresyon onarımı (güvenlik ağı).
+  //     Geçmişte `COMPETITOR_BRANDS` içindeki çıplak "sticker" kelimesi, ürün
+  //     metinlerindeki meşru "sticker" kelimesini "SA Printpro" ile
+  //     değiştirmişti (ör. "diş SA Printpro setidir" ← "diş sticker setidir").
+  //     Bu adım, markanın jenerik bir ürün kelimesinin YERİNE geçtiği dar
+  //     kalıpları tespit edip doğru kelimeyi geri koyar. Meşru marka
+  //     kullanımlarına ("SA Printpro Tasarımıdır", "Tüm SA Printpro Güvencesi")
+  //     dokunmaz; yalnızca jenerik kelime bağlamını hedefler.
+  output = output.replace(
+    /\bSA Printpro\b(?=\s*(?:setidir|seti|setleri|set)\b)/giu,
+    'sticker'
+  )
+  output = output.replace(
+    /\bSA Printpro\b(?=['’](?:ı|i|u|ü)\b)/giu,
+    'sticker'
+  )
+  output = output.replace(
+    /\b(?:diş|far|granaj|grenaj|jant|depo|kask|kaput|kapı|kapi)\s+SA Printpro\b/giu,
+    (match) => match.replace(/SA Printpro$/i, 'sticker')
+  )
+
   // 7) Madde işareti / ayraç kalıntılarını temizle.
   //    Trendyol açıklamaları bullet'ları "; - " ile birleştirir; bu ayraç
   //    düz metne dönüşünce "... üretilmiştir.; - Diğer ..." gibi ham görünür.

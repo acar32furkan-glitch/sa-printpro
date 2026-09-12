@@ -204,6 +204,21 @@ function sanitizeCatalogText(text) {
     output = output.replace(pattern, ' ');
   }
 
+  // "sticker → SA Printpro" regresyon onarımı (güvenlik ağı).
+  // Geçmişte çıplak "sticker" kuralı meşru kelimeyi markayla değiştirmişti
+  // (ör. "diş SA Printpro setidir" ← "diş sticker setidir"). Markanın jenerik
+  // bir ürün kelimesinin YERİNE geçtiği dar kalıpları onarır; meşru marka
+  // kullanımlarına dokunmaz.
+  output = output.replace(
+    /\bSA Printpro\b(?=\s*(?:setidir|seti|setleri|set)\b)/giu,
+    'sticker'
+  );
+  output = output.replace(/\bSA Printpro\b(?=['’](?:ı|i|u|ü)\b)/giu, 'sticker');
+  output = output.replace(
+    /\b(?:diş|far|granaj|grenaj|jant|depo|kask|kaput|kapı|kapi)\s+SA Printpro\b/giu,
+    (match) => match.replace(/SA Printpro$/i, 'sticker')
+  );
+
   // Madde işareti / ayraç kalıntılarını temizle ("; - " → ". ").
   output = output
     .replace(/\s*;\s*[-–—•·]\s*/g, '. ')
