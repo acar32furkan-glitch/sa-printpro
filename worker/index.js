@@ -277,14 +277,100 @@ async function handleShopierWebhook(request) {
   return jsonResponse({ received: true, event: body?.event ?? null });
 }
 
+/**
+ * Kanonik ana alan adi. `www` alt alan adi (DNS eklendiginde) buraya kalici
+ * (301) olarak yonlendirilir; boylece tek kanonik origin kullanilir.
+ */
+const CANONICAL_HOST = 'saprintpro.com';
+
+/**
+ * `.html` ile biten istekleri, Cloudflare static assets katmaninin uzanti
+ * soyuma/yonlendirme davranisina takilmadan DOGRUDAN servis eder.
+ *
+ * Google Search Console site dogrulamasi tam `.html` yolunu bekledigi icin
+ * (or. /google419bc019c17c40b5.html) bu isteklerin 307 ile uzantisiz yola
+ * yonlendirilmesi dogrulamayi bozar.
+ *
+ * ONEMLI: `env.ASSETS.fetch(request)` cagrisi, varsayilan `html_handling`
+ * davranisi nedeniyle `.html` istegini yine 307 ile uzantisiz yola
+ * yonlendirebilir. Bu nedenle once dogrudan ASSETS'e iletilir; 3xx donerse
+ * yonlendirme TAKIP EDILMEZ, bunun yerine hedef dosya (uzantisiz yol) icerigi
+ * alinip 200 olarak, orijinal `.html` URL'si altinda sunulur.
+ *
+ * @param {Request} request
+ * @param {object} env
+ * @returns {Promise<Response|null>} Yanit ya da ASSETS yoksa null.
+ */
+async function serveHtmlFileDirectly(request, env) {
+  if (!env.ASSETS) {
+    return null;
+  }
+
+  const response = await env.ASSETS.fetch(request);
+
+  // 2xx ise dogrudan dondur (html_handling zaten dosyayi servis etti).
+  if (response.status < 300 || response.status >= 400) {
+    return response;
+  }
+
+  // 3xx: uzanti soyuma yonlendirmesi. Yonlendirmeyi takip etmek yerine
+  // hedef icerigi alip orijinal `.html` URL'si altinda 200 olarak sun.
+  const location = response.headers.get('location');
+  if (!location) {
+    return response;
+  }
+
+  const target = new URL(location, request.url);
+  const followed = await env.ASSETS.fetch(
+    new Request(target.toString(), { method: 'GET', headers: request.headers })
+  );
+
+  if (!followed.ok) {
+    return response;
+  }
+
+  // Govdeyi ve ilgili basliklari koruyarak 200 yaniti uret.
+  const headers = new Headers(followed.headers);
+  headers.delete('location');
+  headers.set('content-type', 'text/html; charset=utf-8');
+  headers.set('cache-control', 'public, max-age=0, must-revalidate');
+
+  return new Response(followed.body, { status: 200, headers });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const { pathname } = url;
 
+    // SORUN 3: `www.saprintpro.com` (DNS eklendiginde) → `saprintpro.com`
+    // kalici (301) yonlendirme. Yol ve query string korunur.
+    if (url.hostname === `www.${CANONICAL_HOST}`) {
+      const location = new URL(request.url);
+      location.hostname = CANONICAL_HOST;
+      location.protocol = 'https:';
+      return Response.redirect(location.toString(), 301);
+    }
+
+    // SORUN 1: `.html` dosyalarini yonlendirmeden dogrudan servis et.
+    // (Google Search Console dogrulama dosyasi dahil.)
+    if (
+      (request.method === 'GET' || request.method === 'HEAD') &&
+      pathname.endsWith('.html')
+    ) {
+      const direct = await serveHtmlFileDirectly(request, env);
+      if (direct) {
+        return direct;
+      }
+    }
+
     // FAZ B — B3: Eski kategori URL'lerini yeni birlesik kategoriye 301 ile
     // yonlendir. Yalnizca GET/HEAD istekleri yonlendirilir; diger metotlar
     // statik akisa birakilir.
+    //
+    // ONEMLI: Bu blok trailing-slash (308) kuralindan ONCE calismalidir; aksi
+    // halde `/kategori/ayna` gibi eski URL'ler once 308 ile `/kategori/ayna/`
+    // adresine gider ve 301 semantigi kaybolur.
     if (request.method === 'GET' || request.method === 'HEAD') {
       const redirectTarget = resolveCategoryRedirect(pathname);
       if (redirectTarget) {
@@ -302,6 +388,29 @@ export default {
         location.search = url.search;
         return Response.redirect(location.toString(), 301);
       }
+    }
+
+    // SORUN 2: Trailing-slash yonlendirmesi (KALICI 308).
+    //
+    // Cloudflare static assets varsayilan davranisi trailing-slash
+    // yonlendirmesini 307 (gecici) ile yapar. SEO acisindan 308 (kalici) daha
+    // uygundur. Burada ayni davranis KALICI (308) olarak acikca uygulanir:
+    // uzantisiz ve sonu `/` ile bitmeyen yollar sonuna `/` eklenerek 308 ile
+    // yonlendirilir.
+    //
+    // - Yalnizca GET/HEAD.
+    // - Sonunda dosya uzantisi olan yollar (or. .html, .xml, .txt, .png)
+    //   HARIC tutulur; bunlar dogrudan servis edilir.
+    // - Kok yol (`/`) zaten `/` ile bittigi icin etkilenmez.
+    if (
+      (request.method === 'GET' || request.method === 'HEAD') &&
+      pathname !== '/' &&
+      !pathname.endsWith('/') &&
+      !/\.[a-z0-9]+$/i.test(pathname)
+    ) {
+      const location = new URL(request.url);
+      location.pathname = `${pathname}/`;
+      return Response.redirect(location.toString(), 308);
     }
 
     if (pathname === '/shopier/oauth/callback' && request.method === 'GET') {

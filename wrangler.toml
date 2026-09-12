@@ -14,9 +14,25 @@ compatibility_date = "2025-01-01"
 
 # Statik Astro çıktısı. `not_found_handling = "none"` → SPA fallback yok,
 # yalnızca gerçek dosyalar servis edilir (404 doğru şekilde döner).
+#
+# `run_worker_first = true` → Worker `fetch` handler'i statik asset katmanindan
+# ONCE calisir. Bu olmadan Cloudflare, eslesen statik dosyalari Worker'a
+# ugramadan dogrudan servis eder ve `.html` uzanti soyuma (307) ile
+# trailing-slash (307) yonlendirmeleri Worker tarafindan degistirilemez.
+# Bu ayar sayesinde:
+#   - `.html` istekleri yonlendirilmeden 200 ile servis edilir (SORUN 1),
+#   - trailing-slash yonlendirmesi 308 (kalici) olur (SORUN 2),
+#   - `www` → kok alan adi 301 yonlendirmesi calisir (SORUN 3).
+#
+# NOT: `html_handling = "none"` DENENDİ ve GERİ ALINDI. Bu ayar Cloudflare'in
+# dizin indeksi çözümlemesini de kapatıyor; `/` ve `/urunler/` gibi yollar
+# 404 dönüyordu. Bunun yerine `.html` uzantılı istekler Worker içinde
+# (bkz. worker/index.js → serveHtmlFileDirectly) yönlendirilmeden doğrudan
+# servis edilir; dizin indeksi davranışı varsayılan olarak korunur.
 [assets]
 directory = "./dist"
 binding = "ASSETS"
+run_worker_first = true
 not_found_handling = "none"
 
 # Yerel geliştirme için (opsiyonel). Gerçek değerler `.dev.vars` dosyasından
