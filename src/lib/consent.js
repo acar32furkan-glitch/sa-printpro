@@ -35,35 +35,35 @@ function hasValidGa4Id() {
 }
 
 /**
- * Injects the GA4 gtag config + external script tags into <head>.
- * Idempotent: does nothing if already injected.
+ * Google Consent Mode v2 — onay verildiğinde çağrılan güncelleme.
+ * `gtag` henüz yüklenmemişse (script async olduğu için) sessizce atlanır;
+ * `initConsent()` sayfa yüklenirken tekrar dener.
  */
-function injectGa4() {
-  if (typeof document === 'undefined') {
+function grantConsent() {
+  if (typeof window === 'undefined' || !hasValidGa4Id()) {
     return
   }
 
-  if (document.getElementById('sa-ga4-config')) {
+  if (typeof window.gtag !== 'function') {
     return
   }
 
-  const ga4Id = siteConfig.ga4Id
-
-  const configScript = document.createElement('script')
-  configScript.id = 'sa-ga4-config'
-  configScript.textContent = `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${ga4Id}');`
-
-  const externalScript = document.createElement('script')
-  externalScript.id = 'sa-ga4-src'
-  externalScript.async = true
-  externalScript.src = `https://www.googletagmanager.com/gtag/js?id=${ga4Id}`
-
-  document.head.appendChild(configScript)
-  document.head.appendChild(externalScript)
+  window.gtag('consent', 'update', {
+    ad_storage: 'granted',
+    ad_user_data: 'granted',
+    ad_personalization: 'granted',
+    analytics_storage: 'granted',
+  })
 }
 
 /**
- * Persists the consent decision and, when accepted, activates GA4.
+ * Persists the consent decision and updates Google Consent Mode accordingly.
+ *
+ * Not: GA4 etiketi artık [`Layout.astro`](../layouts/Layout.astro) içinde
+ * STATİK olarak basılır (Google doğrulama robotu çerez kabul etmeyen statik
+ * HTML taramasında etiketi görebilsin diye). Bu yüzden burada script
+ * enjekte edilmez; yalnızca consent durumu güncellenir.
+ *
  * @param {boolean} accepted
  */
 export function setConsent(accepted) {
@@ -77,16 +77,45 @@ export function setConsent(accepted) {
     // Ignore storage failures (private mode, quota, etc.)
   }
 
-  if (accepted === true && hasValidGa4Id()) {
-    injectGa4()
+  if (accepted === true) {
+    grantConsent()
   }
+  // accepted === false: consent zaten varsayılan olarak "denied" bırakılır,
+  // ek bir `update` çağrısına gerek yoktur.
 }
 
 /**
- * Called on initial page load. Re-activates GA4 if consent was previously granted.
+ * Called on initial page load. Re-applies granted consent when a previous
+ * visit already accepted, so returning visitors are tracked correctly.
+ *
+ * `gtag` async yüklendiği için hemen hazır olmayabilir; bu yüzden kısa bir
+ * retry döngüsüyle (idempotent) tekrar denenir.
  */
 export function initConsent() {
-  if (getConsent() === true) {
-    setConsent(true)
+  if (getConsent() !== true) {
+    return
   }
+
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  if (typeof window.gtag === 'function') {
+    grantConsent()
+    return
+  }
+
+  let attempts = 0
+  const maxAttempts = 20
+  const retry = window.setInterval(() => {
+    attempts += 1
+    if (typeof window.gtag === 'function') {
+      window.clearInterval(retry)
+      grantConsent()
+      return
+    }
+    if (attempts >= maxAttempts) {
+      window.clearInterval(retry)
+    }
+  }, 250)
 }

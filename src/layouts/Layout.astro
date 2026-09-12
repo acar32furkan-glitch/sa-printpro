@@ -20,6 +20,15 @@ const {
 
 const faviconHref = `/${siteConfig.faviconFile}`
 
+// Google Consent Mode v2 — GA4 etiketi STATİK olarak <head>'e basılır ki
+// Google'ın doğrulama robotu (çerez kabul etmeyen statik HTML taraması)
+// etiketi görebilsin. Veri toplama varsayılan olarak "denied" başlar;
+// kullanıcı çerez banner'ından onay verince `consent update granted` çağrılır.
+// Placeholder (`G-XXXXXXXXXX`) ise hiç basılmaz.
+const ga4Id = siteConfig.ga4Id
+const hasGa4Id =
+  typeof ga4Id === 'string' && ga4Id.trim() !== '' && ga4Id !== 'G-XXXXXXXXXX'
+
 // SEVİYE 3 — UX: Site geneli sabit (floating) WhatsApp destek butonu.
 // Çerez banner'ı sağ altta `bottom-4 right-4` konumunda durduğu için buton
 // onun ÜSTÜNE yerleştirilir; böylece iki öğe asla çakışmaz.
@@ -69,6 +78,34 @@ const organizationJsonLd = {
     <meta name="theme-color" content="#f27a1a" />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)" />
+
+    {
+      hasGa4Id && (
+        <>
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}
+          />
+          <script
+            is:inline
+            set:html={`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  analytics_storage: 'denied',
+  functionality_storage: 'denied',
+  personalization_storage: 'denied',
+  security_storage: 'granted',
+  wait_for_update: 500
+});
+gtag('js', new Date());
+gtag('config', '${ga4Id}');`}
+          />
+        </>
+      )
+    }
 
     <!--
       NOT: Tüm ürün görselleri artık yerel olarak (`/uploads/products/...`)
