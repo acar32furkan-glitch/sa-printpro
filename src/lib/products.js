@@ -783,6 +783,34 @@ const MATERIAL_BRANDS = [
 ]
 
 /**
+ * Ürün markası OLMAYAN, Trendyol'dan gelen jenerik/çöp `brand` değerleri.
+ * Bunlar satıcıların marka alanına ürün türünü veya anlamsız bir etiket
+ * yazmasından kaynaklanır (ör. "sticker", "rez", "Favori", "Home &").
+ * Vitrinde "MARKA: sticker" gibi absürt bir satır görünmemesi için bu
+ * değerler de ürün markası sayılmaz ve SA Printpro'ya düşülür.
+ *
+ * @type {string[]}
+ */
+const INVALID_BRAND_VALUES = [
+  'sticker',
+  'stickers',
+  'etiket',
+  'rez',
+  'favori',
+  'favorite',
+  'home &',
+  'home',
+  'bys',
+  'diğer',
+  'diger',
+  'yok',
+  'belirsiz',
+  'unknown',
+  'n/a',
+  '-',
+]
+
+/**
  * Bir ürünün `brand` alanını yorumlar.
  *
  * - `brand` bir hammadde/malzeme markasıysa (ör. "Oracal"), ürünün gerçek
@@ -808,7 +836,17 @@ export function resolveProductBrand(product) {
     return { name: siteConfig.name, materialBrand: raw }
   }
 
-  return { name: raw || siteConfig.name, materialBrand: null }
+  // Jenerik/çöp marka değerleri (ör. "sticker", "rez", "Favori") ürün markası
+  // DEĞİLDİR; vitrinde "MARKA: sticker" gibi absürt bir satır görünmemesi için
+  // SA Printpro'ya düşülür ve malzeme markası olarak da gösterilmez.
+  const isInvalidBrand =
+    raw === '' || INVALID_BRAND_VALUES.includes(normalized)
+
+  if (isInvalidBrand) {
+    return { name: siteConfig.name, materialBrand: null }
+  }
+
+  return { name: raw, materialBrand: null }
 }
 
 /**
