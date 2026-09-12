@@ -4,7 +4,8 @@ import { siteConfig } from '../../config/site.js'
 import shopierMap from '../../config/shopier.json'
 import {
   subscribe,
-  getItems,
+  getSnapshot,
+  getServerSnapshot,
   updateQty,
   removeItem,
   clear,
@@ -14,15 +15,15 @@ import {
 
 /**
  * Sunucuda boş dizi, istemcide localStorage içeriğini döndürür.
- * `useSyncExternalStore` sayesinde hidrasyon uyuşmazlığı oluşmaz.
+ *
+ * KRİTİK: `getSnapshot` ve `getServerSnapshot` modül seviyesinde KARARLI
+ * referanslar döndürür (bkz. `src/lib/cart.js`). Inline `() => getItems()`
+ * kullanımı her render'da yeni dizi üretip React'in sonsuz döngüye girmesine
+ * ("The result of getSnapshot should be cached") yol açıyordu.
  * @returns {Array<object>}
  */
 function useCartItems() {
-  return useSyncExternalStore(
-    subscribe,
-    () => getItems(),
-    () => []
-  )
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 }
 
 /**

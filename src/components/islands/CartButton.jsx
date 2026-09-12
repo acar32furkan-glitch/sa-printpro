@@ -6,14 +6,21 @@ import { subscribe, getCount } from '../../lib/cart.js'
  * Sunucu render'ında `0`, istemcide gerçek değeri döndürür. Bu sayede
  * hidrasyon uyuşmazlığı (hydration mismatch) yaşanmaz; rozet yalnızca
  * istemcide localStorage'dan okunur.
+ *
+ * `getCount` primitive (number) döndürdüğü için referans kararlılığı
+ * sorunu yoktur; yine de fonksiyonlar modül seviyesinde tanımlanır.
  * @returns {number}
  */
+function getCountSnapshot() {
+  return getCount()
+}
+
+function getServerCountSnapshot() {
+  return 0
+}
+
 function useCartCount() {
-  return useSyncExternalStore(
-    subscribe,
-    () => getCount(),
-    () => 0
-  )
+  return useSyncExternalStore(subscribe, getCountSnapshot, getServerCountSnapshot)
 }
 
 /**

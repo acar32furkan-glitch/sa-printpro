@@ -27,6 +27,34 @@ const STORAGE_KEY = 'saprintpro_cart_v1'
 const listeners = new Set()
 
 /**
+ * `useSyncExternalStore` için KARARLI (referansı sabit) snapshot cache'i.
+ *
+ * React, `getSnapshot`'ın döndürdüğü değeri `Object.is` ile karşılaştırır.
+ * Eğer her çağrıda yeni bir dizi dönerse React "store her render'da değişti"
+ * sanıp sonsuz render döngüsüne girer ("The result of getSnapshot should be
+ * cached"). Bu yüzden snapshot YALNIZCA sepet gerçekten değiştiğinde yeniden
+ * üretilir; aksi halde aynı referans döndürülür.
+ *
+ * @type {Array<object>|null}
+ */
+let cachedSnapshot = null
+
+/**
+ * Sepetin serileştirilmiş halinin son bilinen değeri. localStorage'daki ham
+ * string ile karşılaştırılarak gereksiz snapshot üretimini engeller.
+ * @type {string|null}
+ */
+let cachedRaw = null
+
+/**
+ * Sepet değiştiğinde çağrılır: cache'i geçersiz kılar ve abonelere haber verir.
+ */
+function invalidateSnapshot() {
+  cachedSnapshot = null
+  cachedRaw = null
+}
+
+/**
  * Tarayıcı ortamında mıyız? SSR sırasında `false` döner.
  * @returns {boolean}
  */
@@ -135,6 +163,53 @@ function readRaw() {
 }
 
 /**
+ * `useSyncExternalStore` için KARARLI snapshot döndürür.
+ *
+ * Aynı localStorage içeriği için HER ZAMAN aynı dizi referansı döner; böylece
+ * React sonsuz render döngüsüne girmez. İçerik değiştiğinde (veya cache
+ * geçersiz kılındığında) yeni bir dizi üretilir ve referans güncellenir.
+ *
+ * @returns {Array<object>}
+ */
+export function getSnapshot() {
+  if (!isBrowser()) {
+    // SSR: referansı sabit boş dizi döndür (her çağrıda yeni dizi üretme).
+    if (cachedSnapshot === null) {
+      cachedSnapshot = []
+    }
+    return cachedSnapshot
+  }
+
+  let raw = null
+  try {
+    raw = window.localStorage.getItem(STORAGE_KEY)
+  } catch {
+    raw = null
+  }
+
+  // Ham içerik değişmediyse mevcut referansı koru.
+  if (cachedSnapshot !== null && raw === cachedRaw) {
+    return cachedSnapshot
+  }
+
+  cachedRaw = raw
+  cachedSnapshot = readRaw()
+  return cachedSnapshot
+}
+
+/**
+ * Sunucu render'ı için sabit boş snapshot. Referansı modül ömrü boyunca
+ * aynıdır; hidrasyon uyuşmazlığı ve gereksiz render oluşmaz.
+ * @returns {Array<object>}
+ */
+export function getServerSnapshot() {
+  if (cachedSnapshot === null) {
+    cachedSnapshot = []
+  }
+  return cachedSnapshot
+}
+
+/**
  * Sepeti localStorage'a yazar ve abonelere haber verir.
  * @param {Array<object>} items
  */
@@ -149,14 +224,20 @@ function writeRaw(items) {
     // Kota dolu / private mode — sessizce yut, sepet bellekte kalır.
   }
 
+  // İçerik değişti: snapshot cache'ini geçersiz kıl ki bir sonraki okuma
+  // taze ve YENİ bir referans üretsin.
+  invalidateSnapshot()
   emit()
 }
 
 /**
  * Tüm abonelere güncel sepeti bildirir.
+ *
+ * Abonelere HER ZAMAN aynı (cache'li) referans verilir; böylece
+ * `useSyncExternalStore` gereksiz render tetiklemez.
  */
 function emit() {
-  const snapshot = readRaw()
+  const snapshot = getSnapshot()
   for (const listener of listeners) {
     try {
       listener(snapshot)
@@ -203,6 +284,8 @@ function ensureStorageSync() {
     if (event.key !== null && event.key !== STORAGE_KEY) {
       return
     }
+    // Başka sekmede içerik değişti: cache'i geçersiz kıl, sonra bildir.
+    invalidateSnapshot()
     emit()
   })
 }
@@ -212,7 +295,8 @@ function ensureStorageSync() {
  * @returns {Array<object>}
  */
 export function getItems() {
-  return readRaw()
+  // Cache'li snapshot döndür: aynı içerik için aynı referans (React uyumlu).
+  return getSnapshot()
 }
 
 /**

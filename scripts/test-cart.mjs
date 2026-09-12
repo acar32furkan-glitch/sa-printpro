@@ -56,6 +56,8 @@ const {
   getTotal,
   getItemKey,
   subscribe,
+  getSnapshot,
+  getServerSnapshot,
 } = await import('../src/lib/cart.js')
 
 let passed = 0
@@ -270,6 +272,42 @@ simulateOtherTabWrite('baska_anahtar', 'deger')
 assert('İlgisiz anahtar aboneyi tetiklemedi', notified === null)
 
 unsubscribe()
+
+console.log('\n--- Regresyon: useSyncExternalStore snapshot referans kararlılığı ---')
+
+// 22) getSnapshot aynı içerik için AYNI referansı döndürmeli (sonsuz döngü fix).
+clear()
+addItem({ id: '1', name: 'A', slug: 'a', variant: 'v1', barcode: 'S1', price: 10, qty: 1 })
+const snapA = getSnapshot()
+const snapB = getSnapshot()
+assert('getSnapshot aynı referansı döndürdü (Object.is)', Object.is(snapA, snapB))
+
+// 23) İçerik değişince YENİ referans üretilmeli.
+addItem({ id: '2', name: 'B', slug: 'b', variant: 'v2', barcode: 'S2', price: 20, qty: 1 })
+const snapC = getSnapshot()
+assert('İçerik değişince yeni referans üretildi', !Object.is(snapB, snapC))
+assert('Yeni snapshot 2 satır içeriyor', snapC.length === 2)
+
+// 24) getServerSnapshot her çağrıda aynı referansı döndürmeli.
+const serverA = getServerSnapshot()
+const serverB = getServerSnapshot()
+assert('getServerSnapshot aynı referansı döndürdü', Object.is(serverA, serverB))
+
+// 25) getItems da kararlı referans döndürmeli (aynı içerik).
+const itemsA = getItems()
+const itemsB = getItems()
+assert('getItems aynı referansı döndürdü', Object.is(itemsA, itemsB))
+
+// 26) Aboneye iletilen snapshot, getSnapshot ile aynı referans olmalı.
+clear()
+let emitted = null
+const unsub2 = subscribe((items) => {
+  emitted = items
+})
+addItem({ id: '3', name: 'C', slug: 'c', variant: 'v3', barcode: 'S3', price: 30, qty: 1 })
+assert('Aboneye iletilen snapshot güncel', emitted !== null && emitted.length === 1)
+assert('Aboneye iletilen referans getSnapshot ile aynı', Object.is(emitted, getSnapshot()))
+unsub2()
 
 console.log(`\nSonuç: ${passed} geçti, ${failed} başarısız\n`)
 process.exit(failed > 0 ? 1 : 0)
