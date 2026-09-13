@@ -22,8 +22,15 @@ const productCount = products.length
 const featuredProducts = products.slice(0, FEATURED_LIMIT)
 ---
 
+<!--
+  SEO: Ana sayfa başlığı yalnızca marka adıydı (11 karakter) ve SERP'te
+  tıklanabilir bir vaat içermiyordu. Başlık, sitenin ne sattığını belirten
+  bir ifadeyle genişletilir. `Seo.astro` marka adını zaten sonek olarak
+  eklediği için burada tekrarlanmaz; ürün sayısı ise başlığı 60 karakterin
+  üzerine taşıdığı için başlığa eklenmez (açıklamada yer alır).
+-->
 <Layout
-  title={siteConfig.name}
+  title="Reflektif Sticker ve Güvenlik Etiketi"
   description={`${siteConfig.name} — ${productCount} reflektif sticker ve güvenlik etiketi ürünü. Kategorilere göz atın, fiyata göre sıralayın.`}
   canonicalUrl={buildCanonical('/')}
 >

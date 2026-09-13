@@ -99,3 +99,99 @@ export function staticUrl(path) {
   // Sondaki slash'i garanti et.
   return `${p.replace(/\/$/, '')}/${suffix}`
 }
+
+/**
+ * Google SERP'te başlıklar ~580 pikselde (yaklaşık 60 karakter) kesilir.
+ * Bu sabit, kesme eşiği olarak kullanılan karakter sınırıdır.
+ */
+export const TITLE_MAX_LENGTH = 60
+
+/**
+ * Bir başlığı, kelime ortasında kesmeden `maxLength` karaktere indirir.
+ *
+ * Kırpma yapıldığında sona `…` (tek karakter) eklenir; böylece nihai uzunluk
+ * `maxLength` değerini AŞMAZ. Kırpma noktası son boşlukta aranır; eğer son
+ * boşluk çok geride kalıyorsa (tek uzun kelime) sert kesim uygulanır.
+ *
+ * @param {string} text
+ * @param {number} [maxLength]
+ * @returns {string}
+ */
+export function truncateTitle(text, maxLength = TITLE_MAX_LENGTH) {
+  const value = String(text || '').trim()
+  if (value.length <= maxLength) {
+    return value
+  }
+
+  // `…` için bir karakter ayır.
+  const budget = Math.max(1, maxLength - 1)
+  const sliced = value.slice(0, budget)
+  const lastSpace = sliced.lastIndexOf(' ')
+
+  // Son boşluk, bütçenin en az %60'ından sonra ise oradan kırp; aksi halde
+  // (tek uzun kelime) sert kesim yap.
+  const cut = lastSpace > budget * 0.6 ? sliced.slice(0, lastSpace) : sliced
+
+  return `${cut.trimEnd()}…`
+}
+
+/**
+ * Bir başlık parçasını, verilen sonekleri de hesaba katarak kısaltır.
+ *
+ * Ürün sayfalarında başlık `<Ürün Adı> Modelleri ve Fiyatı | SA Printpro`
+ * biçimindedir. `Seo.astro` soneki otomatik eklediği için, kırpma kararı
+ * verilirken sonek uzunluğu da bütçeden düşülür; böylece nihai `<title>`
+ * SERP sınırını aşmaz.
+ *
+ * @param {string} text Kısaltılacak ana başlık (sonek hariç)
+ * @param {string[]} [suffixes] Eklenecek sonekler (ör. ['| SA Printpro'])
+ * @param {number} [maxLength]
+ * @returns {string}
+ */
+export function truncateTitleWithSuffixes(
+  text,
+  suffixes = [],
+  maxLength = TITLE_MAX_LENGTH
+) {
+  const suffixLength = suffixes.reduce((sum, s) => sum + String(s || '').length, 0)
+  const budget = Math.max(20, maxLength - suffixLength)
+  return truncateTitle(text, budget)
+}
+
+/**
+ * Kısaltma sonrası başlıkların BENZERSİZ kalmasını sağlayan yardımcı.
+ *
+ * KÖK SORUN: Uzun ürün adları 60 karaktere kırpıldığında, aynı önekle
+ * başlayan farklı ürünler (ör. renk varyantları) AYNI `<title>` değerini
+ * üretiyordu. Bu, arama motorlarında yinelenen başlık sinyali yaratır.
+ *
+ * ÇÖZÜM: Kırpma yapıldıysa ve başlık başka bir sayfayla çakışıyorsa,
+ * ayırt edici bir son ek (`(Ürün Kodu)`) başlığa eklenir. Böylece hem SERP
+ * sınırı korunur hem de her sayfa benzersiz kalır.
+ *
+ * @param {string} text Kısaltılacak ana başlık (sonek hariç)
+ * @param {string} discriminator Benzersizleştirici değer (ör. ürün kodu)
+ * @param {string[]} [suffixes] Eklenecek sonekler (ör. ['| SA Printpro'])
+ * @param {number} [maxLength]
+ * @returns {string}
+ */
+export function truncateTitleUnique(
+  text,
+  discriminator,
+  suffixes = [],
+  maxLength = TITLE_MAX_LENGTH
+) {
+  const suffixLength = suffixes.reduce((sum, s) => sum + String(s || '').length, 0)
+  const budget = Math.max(20, maxLength - suffixLength)
+  const value = String(text || '').trim()
+
+  // Kırpma gerekmiyorsa başlık zaten benzersizdir (ürün adları farklı).
+  if (value.length <= budget) {
+    return value
+  }
+
+  // Ayırt edici son eki (` (123456)`) bütçeye sığdırarak kırp.
+  const tag = discriminator ? ` (${discriminator})` : ''
+  const baseBudget = Math.max(10, budget - tag.length)
+  return `${truncateTitle(value, baseBudget)}${tag}`
+}

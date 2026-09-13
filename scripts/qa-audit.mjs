@@ -50,13 +50,24 @@ const htmlFiles = allFiles.filter(
 )
 const distRel = new Set(allFiles.map((f) => '/' + relative(DIST, f).replace(/\\/g, '/')))
 
-/** Bir URL yolunun dist/ içinde karşılığı var mı? */
+/**
+ * Bir URL yolunun dist/ içinde karşılığı var mı?
+ *
+ * NOT: `trailingSlash: 'always'` ile üretilen iç linkler `/urunler/` gibi
+ * sondaki slash'i içerir. Bu durumda `clean + '/index.html'` ifadesi
+ * `/urunler//index.html` (çift slash) üretir ve hiçbir zaman eşleşmez —
+ * yani tüm slash'li linkler yanlışlıkla "kırık" raporlanır. Bu yüzden
+ * karşılaştırmadan önce sondaki slash'ler normalize edilir.
+ */
 function distHas(urlPath) {
   const clean = urlPath.split('#')[0].split('?')[0]
   if (clean === '' || clean === '/') return distRel.has('/index.html')
+  // Sondaki slash'leri kaldır (kök hariç) → `/urunler/` → `/urunler`.
+  const normalized = clean.replace(/\/+$/, '')
   if (distRel.has(clean)) return true
-  if (distRel.has(clean + '/index.html')) return true
-  if (distRel.has(clean + '.html')) return true
+  if (distRel.has(normalized)) return true
+  if (distRel.has(`${normalized}/index.html`)) return true
+  if (distRel.has(`${normalized}.html`)) return true
   return false
 }
 

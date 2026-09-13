@@ -19,3 +19,5 @@ qa-audit-report.json
 # Lighthouse / PageSpeed rapor çıktıları (yerel analiz artefaktları)
 saprintpro.com-*.json
 lighthouse-report*.json
+# Screaming Frog / site tarama CSV çıktıları (yerel analiz artefaktları)
+*.csv

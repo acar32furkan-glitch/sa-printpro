@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro'
 import Pagination from '../../components/Pagination.astro'
 import ProductGridStatic from '../../components/islands/ProductGridStatic.jsx'
 import { siteConfig } from '../../config/site.js'
-import { buildCanonical } from '../../lib/seo.js'
+import { buildCanonical, truncateTitleUnique } from '../../lib/seo.js'
 import {
   getAllBrandsWithCounts,
   getAllCategories,
@@ -56,7 +56,17 @@ const nextUrl =
   page < totalPages ? buildCanonical(pageUrl(basePath, page + 1)) : null
 
 const pageSuffix = page > 1 ? ` — Sayfa ${page}` : ''
-const title = `Ürünler${pageSuffix}`
+// SEO: "Ürünler" tek başına (21 karakter) çok kısa ve ayırt edici değildi.
+// Başlık, sayfanın ne içerdiğini belirten bir ifadeyle genişletilir.
+// SERP SINIRI: Sayfa numarası eklendiğinde 60 karakter aşılabildiği için
+// başlık, sonekler de hesaba katılarak kısaltılır.
+// BENZERSİZLİK: Kırpma sonrası sayfalanan URL'ler aynı başlığı üretebiliyordu;
+// sayfa numarası ayırt edici olarak kullanılır.
+const title = truncateTitleUnique(
+  `Tüm Reflektif Sticker ve Etiket Ürünleri${pageSuffix}`,
+  page > 1 ? `Sayfa ${page}` : '',
+  [` | ${siteConfig.name}`]
+)
 // Sayfa numarası açıklamaya eklenir; böylece sayfalanan URL'lerin meta
 // açıklamaları birbirinden farklı olur (yinelenen içerik sinyalini önler).
 const description = (
@@ -83,6 +93,18 @@ const description = (
         {totalPages > 1 && ` · Sayfa ${page}/${totalPages}`}
       </p>
     </div>
+
+    <!--
+      SEO: Ürün listeleme sayfaları yalnızca ürün kartlarından oluşuyordu;
+      metin oranı %2,5 civarındaydı (Screaming Frog "Low Text Ratio").
+      Aşağıdaki kısa açıklama, sayfaya bağlamsal metin ekler.
+    -->
+    <p class="mt-3 max-w-3xl text-sm text-zinc-600 dark:text-zinc-400">
+      SA Printpro kataloğundaki {totalProducts} reflektif sticker, jant şeridi
+      ve güvenlik etiketini tek sayfada inceleyin. Tüm ürünler yüksek yansımalı
+      döküm folyo ile Türkiye'de üretilir. Fiyata göre sıralayabilir,
+      stoktakileri filtreleyebilirsiniz.
+    </p>
 
     {
       categories.length > 0 && (

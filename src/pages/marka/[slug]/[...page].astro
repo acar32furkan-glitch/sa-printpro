@@ -4,7 +4,7 @@ import Breadcrumb from '../../../components/Breadcrumb.astro'
 import Pagination from '../../../components/Pagination.astro'
 import ProductGridStatic from '../../../components/islands/ProductGridStatic.jsx'
 import { siteConfig } from '../../../config/site.js'
-import { buildCanonical } from '../../../lib/seo.js'
+import { buildCanonical, truncateTitleUnique } from '../../../lib/seo.js'
 import {
   getAllBrandsWithCounts,
   getBrandBySlug,
@@ -64,8 +64,18 @@ const nextUrl =
 
 // `Seo.astro` başlığa otomatik olarak "| SA Printpro" ekler; bu yüzden burada
 // marka adı tekrar edilmez (aksi halde çift sonek oluşur).
+//
+// SERP SINIRI: Uzun marka adlarında (ör. "Universal / Genel") başlık 60
+// karakteri aşıyordu. Başlık, sonekler de hesaba katılarak kısaltılır.
+//
+// BENZERSİZLİK: Kırpma sonrası sayfalanan URL'ler (2, 3, 4...) aynı başlığı
+// üretebiliyordu; sayfa numarası ayırt edici olarak kullanılır.
 const pageSuffix = page > 1 ? ` — Sayfa ${page}` : ''
-const seoTitle = `${brandName} Uyumlu Motosiklet Sticker ve Şeritleri${pageSuffix}`
+const seoTitle = truncateTitleUnique(
+  `${brandName} Uyumlu Motosiklet Sticker ve Şeritleri${pageSuffix}`,
+  page > 1 ? `Sayfa ${page}` : '',
+  [` | ${siteConfig.name}`]
+)
 // Meta açıklama 160 karakter sınırını aşmamalı (Google kesme riski).
 // Sayfa numarası eklenir; böylece sayfalanan URL'lerin açıklamaları farklı olur.
 const seoDescription = (
@@ -137,6 +147,17 @@ const breadcrumbJsonLd = {
       {brandName} motosiklet modelleriniz için özel olarak hazırlanan reflektif
       jant şeritleri, depo kaplama ve güvenlik etiketleri. Tüm ürünler yüksek
       yansımalı döküm folyo ile Türkiye'de üretilir.
+    </p>
+
+    <!--
+      SEO: Marka sayfaları yalnızca ürün kartlarından oluşuyordu; metin oranı
+      %2,7–3,1 aralığında kalıyordu (Screaming Frog "Low Text Ratio").
+      Aşağıdaki kısa açıklama, sayfaya bağlamsal metin ekler.
+    -->
+    <p class="mt-2 max-w-3xl text-sm text-zinc-600 dark:text-zinc-400">
+      {brandName} uyumlu {brand.count} ürünü inceleyin. Jant şeridi, granaj
+      sticker, tankpad ve güvenlik etiketi seçenekleri; fiyata göre sıralama ve
+      stok filtresiyle listelenir.
     </p>
 
     <div class="mt-8">

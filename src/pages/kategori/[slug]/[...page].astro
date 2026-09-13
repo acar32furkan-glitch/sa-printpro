@@ -4,7 +4,7 @@ import Breadcrumb from '../../../components/Breadcrumb.astro'
 import Pagination from '../../../components/Pagination.astro'
 import ProductGridStatic from '../../../components/islands/ProductGridStatic.jsx'
 import { siteConfig } from '../../../config/site.js'
-import { buildCanonical } from '../../../lib/seo.js'
+import { buildCanonical, truncateTitleUnique } from '../../../lib/seo.js'
 import {
   getAllBrandsWithCounts,
   getAllCategories,
@@ -62,7 +62,22 @@ const nextUrl =
   page < totalPages ? buildCanonical(pageUrl(basePath, page + 1)) : null
 
 const pageSuffix = page > 1 ? ` — Sayfa ${page}` : ''
-const title = `${category.name}${pageSuffix}`
+// SEO: Bazı kategori adları tek kelime ve çok kısa (ör. "Reflektör" → 23
+// karakter). Başlık, kategori adı + ne satıldığını belirten bir ifadeyle
+// genişletilir; böylece SERP'te ayırt edici ve yeterince uzun olur.
+//
+// SERP SINIRI: Uzun kategori adlarında (ör. "Arma Sticker & Fosfor Şerit")
+// başlık 60 karakteri aşıyordu. Başlık, sonekler de hesaba katılarak
+// kelime ortasında kesilmeden kısaltılır.
+//
+// BENZERSİZLİK: Kırpma sonrası sayfalanan URL'ler (2, 3, 4...) aynı başlığı
+// üretebiliyordu. `truncateTitleUnique`, kırpma yapıldığında sayfa numarasını
+// başlığa ekleyerek her sayfayı benzersiz kılar.
+const title = truncateTitleUnique(
+  `${category.name} — Reflektif Sticker ve Etiket Modelleri${pageSuffix}`,
+  page > 1 ? `Sayfa ${page}` : '',
+  [` | ${siteConfig.name}`]
+)
 // Sayfa numarası açıklamaya eklenir; böylece sayfalanan URL'lerin meta
 // açıklamaları birbirinden farklı olur (yinelenen içerik sinyalini önler).
 const description = (
@@ -130,6 +145,19 @@ const breadcrumbJsonLd = {
         {totalPages > 1 && ` · Sayfa ${page}/${totalPages}`}
       </p>
     </header>
+
+    <!--
+      SEO: Kategori sayfaları yalnızca ürün kartlarından oluşuyordu; metin
+      oranı %2,4–2,9 aralığında kalıyordu (Screaming Frog "Low Text Ratio").
+      Aşağıdaki kısa açıklama, sayfaya bağlamsal metin ekler ve kategori
+      sayfasının ne hakkında olduğunu arama motorlarına netleştirir.
+    -->
+    <p class="mt-3 max-w-3xl text-sm text-zinc-600 dark:text-zinc-400">
+      {category.name} kategorisindeki {category.count} ürünü inceleyin. Tüm
+      ürünler yüksek yansımalı döküm folyo ile Türkiye'de üretilir; gece
+      görünürlüğü ve uzun ömürlü yapışma sağlar. Fiyata göre sıralayabilir,
+      stoktakileri filtreleyebilirsiniz.
+    </p>
 
     {
       category.count === 0 ? (

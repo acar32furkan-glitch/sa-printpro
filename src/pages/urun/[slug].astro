@@ -9,7 +9,7 @@ import Gallery from '../../components/islands/Gallery.jsx'
 import VariantSelector from '../../components/islands/VariantSelector.jsx'
 import ProductShare from '../../components/islands/ProductShare.jsx'
 import { siteConfig } from '../../config/site.js'
-import { buildCanonical } from '../../lib/seo.js'
+import { buildCanonical, truncateTitleUnique } from '../../lib/seo.js'
 import {
   getAllProducts,
   getProductsByCategory,
@@ -242,9 +242,21 @@ const hasDuplicateTitle = getAllProducts().some(
 
 // SEO başlık formatı: "<Ürün Adı> Modelleri ve Fiyatı" — `Seo.astro` sonuna
 // otomatik olarak "| SA Printpro" ekler, bu yüzden burada tekrarlanmaz.
-const metaTitle = hasDuplicateTitle
-  ? `${displayTitle} (${product.id}) Modelleri ve Fiyatı`
-  : `${displayTitle} Modelleri ve Fiyatı`
+//
+// SERP SINIRI: Google başlıkları ~580 pikselde (≈60 karakter) keser. Ürün
+// adları uzun olduğunda (ör. 108 karakter) başlığın sonundaki ayırt edici
+// bilgi ("Modelleri ve Fiyatı") ve marka soneki kesiliyordu. Bu yüzden ürün
+// adı, sonekler de hesaba katılarak kelime ortasında kesilmeden kısaltılır.
+//
+// BENZERSİZLİK: Kırpma sonrası aynı öneki paylaşan ürünler (ör. renk
+// varyantları) aynı başlığı üretebiliyordu. `truncateTitleUnique`, kırpma
+// yapıldığında ürün kodunu başlığa ekleyerek her sayfayı benzersiz kılar.
+const TITLE_SUFFIXES = [' Modelleri ve Fiyatı', ` | ${siteConfig.name}`]
+const metaTitle = truncateTitleUnique(
+  `${displayTitle} Modelleri ve Fiyatı`,
+  product.id,
+  TITLE_SUFFIXES
+)
 
 // Technical spec sheet rows derived from the first variant + site config.
 const firstVariant = variants[0] || {}

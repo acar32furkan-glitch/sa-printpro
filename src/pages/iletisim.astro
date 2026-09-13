@@ -42,8 +42,13 @@ const companyInfo = [
 ].filter((entry) => Boolean(entry.value))
 ---
 
+<!--
+  SEO: "İletişim" tek başına (22 karakter) çok kısaydı. Başlık, iletişim
+  kanallarını belirten bir ifadeyle genişletilir; `Seo.astro` marka adını
+  sonek olarak ekler.
+-->
 <Layout
-  title="İletişim"
+  title="İletişim — WhatsApp, Instagram ve E-posta"
   description={`${siteConfig.name} ile iletişime geçin: WhatsApp, Instagram ve e-posta kanalları.`}
   canonicalUrl={buildCanonical('/iletisim')}
 >

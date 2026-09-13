@@ -9,8 +9,12 @@ import { buildCanonical } from '../lib/seo.js'
 const canonicalUrl = buildCanonical('/sepet')
 ---
 
+<!--
+  SEO: Sepet sayfası `noindex` olduğu için başlık uzunluğu kritik değildir;
+  ancak sekme/SERP görünümünde ayırt edici olması için genişletilir.
+-->
 <Layout
-  title="Sepetim"
+  title="Sepetim — Reflektif Sticker Siparişi"
   description="Sepetinizdeki reflektif sticker ve güvenlik etiketi ürünlerini inceleyin, adetleri güncelleyin ve siparişinizi tamamlayın."
   canonicalUrl={canonicalUrl}
   noindex={true}
