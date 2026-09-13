@@ -829,6 +829,16 @@ const INVALID_BRAND_VALUES = [
   'unknown',
   'n/a',
   '-',
+  // Satıcı/mağaza adları — ürün markası DEĞİLDİR. Trendyol satıcıları marka
+  // alanına kendi mağaza adlarını yazıyor; vitrinde "MARKA: CEBECİOTO" gibi
+  // alakasız bir satır görünmemesi için SA Printpro'ya düşülür.
+  'cebecioto',
+  'benimser reklam',
+  'kaplama merkezi',
+  'asil ticaret',
+  'tasarim market',
+  'mtl pleksi',
+  'triders',
 ]
 
 /**

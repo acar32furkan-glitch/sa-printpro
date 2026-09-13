@@ -48,13 +48,27 @@ const galleryImages = getProductImages(product)
 
 const variants = Array.isArray(product.variants) ? product.variants : []
 
+// Marka alanı: "Oracal" gibi hammadde/malzeme markaları ürünün üretici markası
+// DEĞİLDİR. Bu durumda ürün markası SA Printpro olarak gösterilir ve malzeme
+// markası ayrı bir satırda ("MALZEME MARKASI") belirtilir; böylece
+// "%100 Orijinal SA Printpro Üretimi" mesajıyla çelişki ortadan kalkar.
+// Satıcı/mağaza adları (ör. "CEBECİOTO") da ürün markası sayılmaz.
+// `islandProduct` bu çözümlenmiş değeri kullandığı için tanım burada yapılır.
+const brandInfo = resolveProductBrand(product)
+
 // İstemci adasına (VariantSelector) gönderilen ürün nesnesi. `product.images`
 // ham Trendyol CDN URL'lerini içerdiği için, bu nesne HTML'e serileştirildiğinde
 // CDN adresleri sayfa kaynağına sızıyordu. Ada yalnızca yerelleştirilmiş
 // görselleri görecek şekilde sadeleştirilir; böylece sayfa kaynağında hiçbir
 // harici görsel URL'i kalmaz.
+//
+// `brand` alanı da ham haliyle serileştirildiğinde satıcı/mağaza adları
+// (ör. "CEBECİOTO") sayfa kaynağına sızıyordu. Ada, çözümlenmiş marka adını
+// (satıcı adları ve jenerik değerler SA Printpro'ya düşer) görecek şekilde
+// sadeleştirilir.
 const islandProduct = {
   ...product,
+  brand: brandInfo.name,
   images: galleryImages.filter(
     (url) => typeof url === 'string' && url.startsWith('/uploads/')
   ),
@@ -245,12 +259,7 @@ const attributeRows = Object.entries(firstVariant.attributes || {}).map(([key, v
 // "Teknik Özellikler ve Üretim Bilgileri" bölümleri aynı `attributeRows`
 // satırlarını iki kez render ediyordu. Artık tek bir tablo üretiliyor;
 // aynı anahtar (key) yalnızca bir kez görünür.
-// Marka alanı: "Oracal" gibi hammadde/malzeme markaları ürünün üretici markası
-// DEĞİLDİR. Bu durumda ürün markası SA Printpro olarak gösterilir ve malzeme
-// markası ayrı bir satırda ("MALZEME MARKASI") belirtilir; böylece
-// "%100 Orijinal SA Printpro Üretimi" mesajıyla çelişki ortadan kalkar.
-const brandInfo = resolveProductBrand(product)
-
+// NOT: `brandInfo` yukarıda (islandProduct'tan önce) tanımlanır.
 const specRows = [
   { key: 'ÜRÜN KODU', value: firstVariant.sku || String(product.id) },
   { key: 'BARKOD', value: firstVariant.barcode || '—' },

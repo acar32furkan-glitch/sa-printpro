@@ -106,6 +106,60 @@ function resolveShopierUrl(map, barcode) {
 }
 
 /**
+ * Bir varyantın görünen seçim kimliğini üretir. Trendyol verisi bazen aynı
+ * attribute/fiyat/stok kombinasyonuna sahip, yalnızca barkod/SKU'su farklı
+ * iki varyant döndürüyor (ör. "yrm" ve "yrm kp"). Bu durumda seçici aynı
+ * etiketli iki buton basıp kullanıcıya "duplike" görünüyordu. İmza; attribute,
+ * fiyat, indirimli fiyat ve stoğu kapsar; böylece gerçekten farklı varyantlar
+ * (ör. farklı renk/beden/ölçü) korunur, yalnızca görsel olarak özdeş olanlar
+ * tekilleştirilir.
+ * @param {object} variant
+ * @returns {string}
+ */
+function variantSignature(variant) {
+  const attributes = variant?.attributes
+  const normalizedAttributes =
+    attributes && typeof attributes === 'object'
+      ? Object.entries(attributes)
+          .map(([key, value]) => [
+            String(key).toLocaleLowerCase('tr-TR').trim(),
+            String(value ?? '').trim(),
+          ])
+          .sort((a, b) => a[0].localeCompare(b[0], 'tr-TR'))
+      : []
+  return JSON.stringify({
+    attributes: normalizedAttributes,
+    price: Number(variant?.price) || 0,
+    salePrice: Number(variant?.salePrice) || 0,
+    stock: Number(variant?.stock) || 0,
+  })
+}
+
+/**
+ * Görsel olarak özdeş varyantları (aynı attribute/fiyat/stok) tekilleştirir.
+ * İlk görülen varyant korunur; böylece barkod/SKU gibi teknik alanlar sabit
+ * kalır ve fiyat/barkod güncelleme mantığı bozulmaz.
+ * @param {Array<object>} variants
+ * @returns {Array<object>}
+ */
+function dedupeVariants(variants) {
+  if (!Array.isArray(variants) || variants.length <= 1) {
+    return Array.isArray(variants) ? variants : []
+  }
+  const seen = new Set()
+  const unique = []
+  for (const variant of variants) {
+    const signature = variantSignature(variant)
+    if (seen.has(signature)) {
+      continue
+    }
+    seen.add(signature)
+    unique.push(variant)
+  }
+  return unique
+}
+
+/**
  * Interactive variant selector: variant buttons, reactive pricing/stock and a
  * dual-channel purchase CTA (Shopier primary, WhatsApp fallback).
  *
@@ -115,7 +169,7 @@ function resolveShopierUrl(map, barcode) {
  */
 export default function VariantSelector({ product, shopier }) {
   const variants = useMemo(
-    () => (Array.isArray(product?.variants) ? product.variants : []),
+    () => dedupeVariants(Array.isArray(product?.variants) ? product.variants : []),
     [product]
   )
 
