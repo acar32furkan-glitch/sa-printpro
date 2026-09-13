@@ -2,8 +2,9 @@
 import Layout from '../layouts/Layout.astro'
 import Breadcrumb from '../components/Breadcrumb.astro'
 import { siteConfig } from '../config/site.js'
+import { buildCanonical } from '../lib/seo.js'
 
-const canonicalUrl = `${siteConfig.domain}/gizlilik-politikasi`
+const canonicalUrl = buildCanonical('/gizlilik-politikasi')
 
 const breadcrumbItems = [
   { label: 'Ana Sayfa', href: '/' },

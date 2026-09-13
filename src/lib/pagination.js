@@ -55,7 +55,12 @@ export function pageSegment(page) {
 
 /**
  * Bir sayfa numarası için tam URL üretir.
- * Sayfa 1 → `${basePath}`, sayfa N → `${basePath}/N`.
+ * Sayfa 1 → `${basePath}/`, sayfa N → `${basePath}/N/`.
+ *
+ * SEO: Cloudflare statik sunucu uzantısız yolları sonuna `/` ekleyerek 308
+ * ile yönlendirir. Bu yüzden üretilen tüm sayfalama URL'leri sondaki slash
+ * ile döner; böylece iç linkler ve canonical'lar gerçek (yönlendirilmeyen)
+ * adresle birebir eşleşir.
  *
  * @param {string} basePath Örn. '/urunler' veya '/kategori/jant-serit'
  * @param {number} page
@@ -63,7 +68,8 @@ export function pageSegment(page) {
  */
 export function pageUrl(basePath, page) {
   const segment = pageSegment(page)
-  return segment === '' ? basePath : `${basePath}/${segment}`
+  const path = segment === '' ? basePath : `${basePath}/${segment}`
+  return path.endsWith('/') ? path : `${path}/`
 }
 
 /**

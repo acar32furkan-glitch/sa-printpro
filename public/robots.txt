@@ -1,9 +1,10 @@
 User-agent: *
 Allow: /
-# Kişiye özel / dinamik sayfalar: indekslenmemeli (noindex ile tutarlı).
-Disallow: /sepet
-Disallow: /siparis-basarili
-Disallow: /siparis-basarisiz
+# NOT: /sepet, /siparis-basarili ve /siparis-basarisiz sayfaları artık
+# robots.txt ile ENGELLENMEZ. Bu sayfalar zaten `noindex, follow` meta
+# etiketi taşır; Google'ın noindex direktifini okuyabilmesi için sayfaların
+# TARANABİLİR olması gerekir. Disallow + noindex birlikte kullanıldığında
+# Google noindex'i göremez ve URL indekste kalabilir.
 
 # 2026 GEO: AI arama motorları ve asistanları için açık erişim.
 User-agent: GPTBot

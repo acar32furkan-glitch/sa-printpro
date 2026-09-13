@@ -4,6 +4,7 @@ import Breadcrumb from '../../../components/Breadcrumb.astro'
 import Pagination from '../../../components/Pagination.astro'
 import ProductGridStatic from '../../../components/islands/ProductGridStatic.jsx'
 import { siteConfig } from '../../../config/site.js'
+import { buildCanonical } from '../../../lib/seo.js'
 import {
   getAllBrandsWithCounts,
   getBrandBySlug,
@@ -55,12 +56,11 @@ const brandConfig = getBrandBySlug(brand.slug)
 const brandName = brandConfig?.name || brand.name
 
 const basePath = `/marka/${brand.slug}`
-const canonicalUrl = `${siteConfig.domain}${pageUrl(basePath, page)}`
+const canonicalUrl = buildCanonical(pageUrl(basePath, page))
 
-const prevUrl =
-  page > 1 ? `${siteConfig.domain}${pageUrl(basePath, page - 1)}` : null
+const prevUrl = page > 1 ? buildCanonical(pageUrl(basePath, page - 1)) : null
 const nextUrl =
-  page < totalPages ? `${siteConfig.domain}${pageUrl(basePath, page + 1)}` : null
+  page < totalPages ? buildCanonical(pageUrl(basePath, page + 1)) : null
 
 // `Seo.astro` başlığa otomatik olarak "| SA Printpro" ekler; bu yüzden burada
 // marka adı tekrar edilmez (aksi halde çift sonek oluşur).

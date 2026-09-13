@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { siteConfig } from '../config/site.js'
+import { buildCanonical } from '../lib/seo.js'
 
 // Ödeme hata dönüş sayfası: kişiye özel ve dinamik içerik barındırır,
 // arama motorlarına kapalıdır (noindex, follow).
-const canonicalUrl = `${siteConfig.domain}/siparis-basarisiz`
+const canonicalUrl = buildCanonical('/siparis-basarisiz')
 
 const whatsappNumber = String(siteConfig.contact.whatsapp || '').replace(/\D/g, '')
 const whatsappUrl = `https://wa.me/${whatsappNumber}`

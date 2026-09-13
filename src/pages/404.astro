@@ -3,6 +3,7 @@ import { existsSync } from 'node:fs'
 import Layout from '../layouts/Layout.astro'
 import SearchBar from '../components/islands/SearchBar.jsx'
 import { siteConfig } from '../config/site.js'
+import { buildCanonical } from '../lib/seo.js'
 import {
   getAllCategories,
   getProductPrimaryImage,
@@ -29,7 +30,7 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
 <Layout
   title="Sayfa Bulunamadı"
   description="Aradığınız sayfa bulunamadı. Arama yaparak, popüler kategorilere göz atarak veya öne çıkan ürünlere bakarak aradığınızı bulabilirsiniz."
-  canonicalUrl={`${siteConfig.domain}/404`}
+  canonicalUrl={buildCanonical('/404')}
   noindex={true}
 >
   <section class="mx-auto flex max-w-6xl flex-col items-center px-4 py-16 text-center sm:py-24">

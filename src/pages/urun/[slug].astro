@@ -9,6 +9,7 @@ import Gallery from '../../components/islands/Gallery.jsx'
 import VariantSelector from '../../components/islands/VariantSelector.jsx'
 import ProductShare from '../../components/islands/ProductShare.jsx'
 import { siteConfig } from '../../config/site.js'
+import { buildCanonical } from '../../lib/seo.js'
 import {
   getAllProducts,
   getProductsByCategory,
@@ -104,8 +105,8 @@ const inStock = totalStock > 0
 // kategori linkleri ve ilgili ürünler yeni birleşik kategoriyle tutarlı olsun.
 const category = resolveCategory(product.category) || product.category
 
-const canonicalUrl = `${siteConfig.domain}/urun/${product.slug}`
-const categoryUrl = `${siteConfig.domain}/kategori/${category.slug}`
+const canonicalUrl = buildCanonical(`/urun/${product.slug}`)
+const categoryUrl = buildCanonical(`/kategori/${category.slug}`)
 
 const breadcrumbItems = [
   { label: 'Ana Sayfa', href: '/' },

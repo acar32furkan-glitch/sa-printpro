@@ -2,10 +2,11 @@
 import Layout from '../layouts/Layout.astro'
 import CartView from '../components/islands/CartView.jsx'
 import { siteConfig } from '../config/site.js'
+import { buildCanonical } from '../lib/seo.js'
 
 // Sepet sayfası kişiye özel ve dinamik içerik barındırır; arama motorlarına
 // kapalıdır (noindex, follow).
-const canonicalUrl = `${siteConfig.domain}/sepet`
+const canonicalUrl = buildCanonical('/sepet')
 ---
 
 <Layout

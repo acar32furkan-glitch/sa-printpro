@@ -11,6 +11,13 @@ const SITEMAP_EXCLUDED_PATHS = ['/sepet', '/siparis-basarili', '/siparis-basaris
 export default defineConfig({
   site: siteConfig.domain,
   output: 'static',
+  // SEO: Cloudflare statik sunucu, uzantisiz URL'leri sonuna `/` ekleyerek
+  // 308 ile yonlendirir. Astro'nun urettigi ic linkler ve `Astro.url`
+  // davranisi bu yonlendirmeyle uyusmuyordu (canonical `/urun/x` iken
+  // gercek URL `/urun/x/`). `trailingSlash: 'always'` ile Astro tum ic
+  // linkleri ve canonical'lari slash'li uretir; boylece 298 URL'yi
+  // etkileyen "Redirected" (162) + "Canonicalised" (136) sorunu cozulur.
+  trailingSlash: 'always',
   integrations: [
     react(),
     tailwind(),

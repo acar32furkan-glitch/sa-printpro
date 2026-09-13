@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { siteConfig } from '../config/site.js'
+import { buildCanonical } from '../lib/seo.js'
 
 const whatsappNumber = String(siteConfig.contact.whatsapp || '').replace(/\D/g, '')
 
@@ -44,7 +45,7 @@ const companyInfo = [
 <Layout
   title="İletişim"
   description={`${siteConfig.name} ile iletişime geçin: WhatsApp, Instagram ve e-posta kanalları.`}
-  canonicalUrl={`${siteConfig.domain}/iletisim`}
+  canonicalUrl={buildCanonical('/iletisim')}
 >
   <section class="mx-auto max-w-6xl px-4 pt-8">
     <h1 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">

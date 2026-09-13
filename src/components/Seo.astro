@@ -1,11 +1,15 @@
 ---
 import { siteConfig } from '../config/site.js'
+import { buildCanonical } from '../lib/seo.js'
 
 const {
   title = siteConfig.name,
   description = `${siteConfig.name} — reflektif sticker ve güvenlik etiketi ürünleri.`,
   image = `${siteConfig.domain}/${siteConfig.logoFile}`,
-  canonicalUrl = Astro.url.href,
+  // Varsayılan canonical: `Astro.url.pathname` üzerinden slash'li üretilir.
+  // Böylece canonical, Cloudflare'in 308 ile yönlendirdiği gerçek URL ile
+  // birebir eşleşir (slash'siz canonical → "Canonicalised" sorunu önlenir).
+  canonicalUrl = buildCanonical(Astro.url.pathname),
   type = 'website',
   noindex = false,
   // FAZ B — B4: Statik sayfalama için rel="prev"/rel="next" hedefleri.
