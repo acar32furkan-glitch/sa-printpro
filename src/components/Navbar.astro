@@ -6,10 +6,12 @@ import MobileNav from './islands/MobileNav.jsx'
 import CartButton from './islands/CartButton.jsx'
 import { siteConfig } from '../config/site.js'
 
+// SEO: Cloudflare statik sunucu, sondaki slash'siz iç linkleri 308 ile
+// yönlendirir. Tüm nav linkleri doğrudan slash'li üretilir.
 const links = [
-  { label: 'Ürünler', href: '/urunler' },
-  { label: 'Hakkımızda', href: '/hakkimizda' },
-  { label: 'İletişim', href: '/iletisim' },
+  { label: 'Ürünler', href: '/urunler/' },
+  { label: 'Hakkımızda', href: '/hakkimizda/' },
+  { label: 'İletişim', href: '/iletisim/' },
 ]
 
 const currentPath = Astro.url.pathname

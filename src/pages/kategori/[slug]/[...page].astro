@@ -73,7 +73,8 @@ const description = (
 
 const breadcrumbItems = [
   { label: 'Ana Sayfa', href: '/' },
-  { label: category.name, href: page > 1 ? basePath : undefined },
+  // SEO: breadcrumb linkleri sondaki slash ile üretilir (308 önlenir).
+  { label: category.name, href: page > 1 ? `${basePath}/` : undefined },
   ...(page > 1 ? [{ label: `Sayfa ${page}` }] : []),
 ]
 

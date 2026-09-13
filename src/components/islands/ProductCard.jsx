@@ -130,7 +130,7 @@ export default function ProductCard({ product }) {
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white transition-all duration-200 ease-smooth hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-lift dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700">
       <a
-        href={`/urun/${product.slug}`}
+        href={`/urun/${product.slug}/`}
         className="relative block aspect-[4/5] w-full overflow-hidden border-b border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-800"
       >
         {image ? (
@@ -181,7 +181,7 @@ export default function ProductCard({ product }) {
 
       <div className="flex flex-1 flex-col gap-2 p-3.5">
         <a
-          href={`/urun/${product.slug}`}
+          href={`/urun/${product.slug}/`}
           className="line-clamp-2 text-sm font-medium leading-snug text-zinc-900 hover:underline dark:text-zinc-100"
           title={displayName}
         >

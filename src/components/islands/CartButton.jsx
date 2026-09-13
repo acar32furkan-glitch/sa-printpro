@@ -32,7 +32,7 @@ export default function CartButton() {
 
   return (
     <a
-      href="/sepet"
+      href="/sepet/"
       aria-label={
         count > 0 ? `Sepetim, ${count} ürün` : 'Sepetim, sepet boş'
       }

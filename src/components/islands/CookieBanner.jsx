@@ -90,7 +90,7 @@ export default function CookieBanner() {
           Deneyiminizi iyileştirmek ve site trafiğini analiz etmek için çerezler
           kullanıyoruz. Detaylar için{' '}
           <a
-            href="/cerez-politikasi"
+            href="/cerez-politikasi/"
             className="font-medium text-zinc-900 underline underline-offset-2 hover:text-zinc-600 dark:text-zinc-100 dark:hover:text-zinc-300"
           >
             çerez politikamızı

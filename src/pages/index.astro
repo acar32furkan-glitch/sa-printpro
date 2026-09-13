@@ -66,7 +66,7 @@ const featuredProducts = products.slice(0, FEATURED_LIMIT)
           <ul class="flex flex-wrap items-center gap-2">
             <li>
               <a
-                href="/urunler"
+                href="/urunler/"
                 class="inline-flex items-center rounded-full border border-zinc-900 bg-zinc-900 px-3.5 py-1.5 text-xs font-medium text-white transition-colors hover:bg-zinc-700 dark:border-zinc-100 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
               >
                 Tümü
@@ -75,7 +75,7 @@ const featuredProducts = products.slice(0, FEATURED_LIMIT)
             {categories.map((category) => (
               <li>
                 <a
-                  href={`/kategori/${category.slug}`}
+                  href={`/kategori/${category.slug}/`}
                   class="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3.5 py-1.5 text-xs font-medium text-zinc-700 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-600"
                 >
                   {category.name}
@@ -100,7 +100,7 @@ const featuredProducts = products.slice(0, FEATURED_LIMIT)
             {brands.map((brand) => (
               <li>
                 <a
-                  href={`/marka/${brand.slug}`}
+                  href={`/marka/${brand.slug}/`}
                   class="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3.5 py-1.5 text-xs font-medium text-zinc-700 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-600"
                 >
                   {brand.name}
@@ -143,7 +143,7 @@ const featuredProducts = products.slice(0, FEATURED_LIMIT)
 
     <div class="mt-8 flex justify-center">
       <a
-        href="/urunler"
+        href="/urunler/"
         class="inline-flex items-center gap-2 rounded-lg bg-zinc-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300 dark:focus-visible:ring-zinc-100 dark:focus-visible:ring-offset-zinc-900"
       >
         Tüm Ürünleri Gör ({productCount})

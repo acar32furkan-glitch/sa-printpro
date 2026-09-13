@@ -185,7 +185,7 @@ export default function CartView() {
         }
         // Shopier linki çözülemedi: kullanıcıyı hata sayfasına yönlendir.
         if (typeof window !== 'undefined') {
-          window.location.href = '/siparis-basarisiz?reason=shopier-link'
+          window.location.href = '/siparis-basarisiz/?reason=shopier-link'
         }
       } catch {
         setCheckoutNotice(
@@ -222,7 +222,7 @@ export default function CartView() {
           ekleyerek tek seferde sipariş verebilirsiniz.
         </p>
         <a
-          href="/urunler"
+          href="/urunler/"
           className="mt-2 inline-flex items-center gap-2 rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-300"
         >
           Ürünleri Keşfet
@@ -243,7 +243,7 @@ export default function CartView() {
               className="flex gap-4 rounded-lg border border-zinc-200 bg-white p-3.5 dark:border-zinc-800 dark:bg-zinc-900"
             >
               <a
-                href={`/urun/${item.slug}`}
+                href={`/urun/${item.slug}/`}
                 className="h-20 w-20 shrink-0 overflow-hidden rounded-md border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-800"
               >
                 {item.image ? (
@@ -263,7 +263,7 @@ export default function CartView() {
 
               <div className="flex min-w-0 flex-1 flex-col gap-1.5">
                 <a
-                  href={`/urun/${item.slug}`}
+                  href={`/urun/${item.slug}/`}
                   className="line-clamp-2 text-sm font-medium text-zinc-900 hover:underline dark:text-zinc-100"
                 >
                   {item.name}
@@ -363,7 +363,7 @@ export default function CartView() {
           />
           <span>
             <a
-              href="/mesafeli-satis-sozlesmesi"
+              href="/mesafeli-satis-sozlesmesi/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-zinc-900 underline underline-offset-2 hover:text-emerald-700 dark:text-zinc-100 dark:hover:text-emerald-400"

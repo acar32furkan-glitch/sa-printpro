@@ -103,11 +103,11 @@ export default function MobileNav({ links = [], currentPath = '/' }) {
           <ul className="flex flex-col gap-1">
             <li>
               <a
-                href="/sepet"
+                href="/sepet/"
                 onClick={closeAll}
-                aria-current={currentPath === '/sepet' ? 'page' : undefined}
+                aria-current={currentPath === '/sepet/' ? 'page' : undefined}
                 className={`flex items-center justify-between rounded-lg border px-4 py-3 text-sm font-medium transition-colors ${
-                  currentPath === '/sepet'
+                  currentPath === '/sepet/'
                     ? 'border-zinc-900 bg-zinc-900 text-white dark:border-zinc-50 dark:bg-zinc-50 dark:text-zinc-900'
                     : 'border-transparent text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800'
                 }`}

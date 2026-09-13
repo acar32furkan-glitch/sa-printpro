@@ -331,7 +331,7 @@ export default function SearchBar({
               {results.map((product) => (
                 <li key={product.id || product.slug}>
                   <a
-                    href={`/urun/${product.slug}`}
+                    href={`/urun/${product.slug}/`}
                     onClick={() => {
                       setIsOpen(false)
                       if (typeof onNavigate === 'function') {

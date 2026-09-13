@@ -43,3 +43,59 @@ export function buildCanonical(path) {
   // Sondaki slash'i garanti et.
   return `${base}${p.replace(/\/$/, '')}/`
 }
+
+/**
+ * Ürün detay sayfası için site-içi (relative) URL üretir.
+ * @param {string} slug Ürün slug'ı
+ * @returns {string} Örn. `/urun/pcx-jant-seridi/`
+ */
+export function productUrl(slug) {
+  return `/urun/${slug}/`
+}
+
+/**
+ * Kategori sayfası için site-içi URL üretir.
+ * @param {string} slug Kategori slug'ı
+ * @param {number} [page=1] Sayfa numarası (1 ise eklenmez)
+ * @returns {string} Örn. `/kategori/jant/` veya `/kategori/jant/2/`
+ */
+export function categoryUrl(slug, page = 1) {
+  return page > 1 ? `/kategori/${slug}/${page}/` : `/kategori/${slug}/`
+}
+
+/**
+ * Marka sayfası için site-içi URL üretir.
+ * @param {string} slug Marka slug'ı
+ * @param {number} [page=1] Sayfa numarası (1 ise eklenmez)
+ * @returns {string} Örn. `/marka/pcx/` veya `/marka/pcx/2/`
+ */
+export function brandUrl(slug, page = 1) {
+  return page > 1 ? `/marka/${slug}/${page}/` : `/marka/${slug}/`
+}
+
+/**
+ * Statik sayfa yolları için sondaki slash'i garanti eden yardımcı.
+ * Dosya uzantılı yollar (ör. `.html`, `.xml`, `.txt`, `.png`) olduğu gibi
+ * bırakılır; hash (`#...`) ve query (`?...`) kısımları korunur.
+ * @param {string} path Örn. `sepet`, `/hakkimizda`, `/robots.txt`, `/urunler#liste`
+ * @returns {string} Örn. `/sepet/`, `/hakkimizda/`, `/robots.txt`, `/urunler/#liste`
+ */
+export function staticUrl(path) {
+  const raw = typeof path === 'string' && path.length > 0 ? path : '/'
+
+  // Hash ve query kısımlarını ayır; yalnızca yol kısmına slash eklenir.
+  const match = raw.match(/^([^?#]*)([?#].*)?$/)
+  const pathname = match && match[1] ? match[1] : raw
+  const suffix = match && match[2] ? match[2] : ''
+
+  const p = pathname.startsWith('/') ? pathname : `/${pathname}`
+
+  // Dosya uzantılı yollar (ör. .html, .xml, .txt, .png) slash almaz.
+  if (/\.[a-z0-9]+$/i.test(p)) return `${p}${suffix}`
+
+  // Kök yol.
+  if (p === '/') return `/${suffix}`
+
+  // Sondaki slash'i garanti et.
+  return `${p.replace(/\/$/, '')}/${suffix}`
+}

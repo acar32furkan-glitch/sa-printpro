@@ -110,7 +110,7 @@ const categoryUrl = buildCanonical(`/kategori/${category.slug}`)
 
 const breadcrumbItems = [
   { label: 'Ana Sayfa', href: '/' },
-  { label: category.name, href: `/kategori/${category.slug}` },
+  { label: category.name, href: `/kategori/${category.slug}/` },
   { label: product.name },
 ]
 
@@ -551,7 +551,7 @@ const faqJsonLd = {
         <div class="flex flex-col gap-3">
           <div class="flex flex-wrap items-center gap-2">
             <a
-              href={`/kategori/${category.slug}`}
+              href={`/kategori/${category.slug}/`}
               class="inline-flex w-fit items-center rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-medium text-zinc-600 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600"
             >
               {category.name}

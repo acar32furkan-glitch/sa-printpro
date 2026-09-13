@@ -61,7 +61,7 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
 
     <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
       <a href="/" class="btn-primary">Ana Sayfaya Dön</a>
-      <a href="/urunler" class="btn-secondary">Tüm Ürünler</a>
+      <a href="/urunler/" class="btn-secondary">Tüm Ürünler</a>
       {
         whatsappNumber !== '' && (
           <a
@@ -94,7 +94,7 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
           {categories.map((category) => (
             <li>
               <a
-                href={`/kategori/${category.slug}`}
+                href={`/kategori/${category.slug}/`}
                 class="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3.5 py-1.5 text-xs font-medium text-zinc-700 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-600"
               >
                 {category.name}
@@ -128,7 +128,7 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
             return (
               <li>
                 <a
-                  href={`/urun/${product.slug}`}
+                  href={`/urun/${product.slug}/`}
                   class="group flex h-full flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white transition-all duration-200 ease-smooth hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-lift dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
                 >
                   <span class="flex aspect-[4/5] w-full items-center justify-center overflow-hidden border-b border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-800">

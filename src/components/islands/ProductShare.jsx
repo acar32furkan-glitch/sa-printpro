@@ -9,9 +9,9 @@ import { Share2, MessageCircle, Check } from 'lucide-react'
  */
 function resolveUrl(slug) {
   if (typeof window !== 'undefined' && window.location?.origin) {
-    return `${window.location.origin}/urun/${slug}`
+    return `${window.location.origin}/urun/${slug}/`
   }
-  return `https://saprintpro.com/urun/${slug}`
+  return `https://saprintpro.com/urun/${slug}/`
 }
 
 /**
