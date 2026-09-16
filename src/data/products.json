@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T09:39:23.259Z",
+  "generatedAt": "2026-09-16T19:49:48.783Z",
   "products": [
     {
       "id": "1160687379",
@@ -54,7 +54,7 @@
           },
           "price": 281,
           "salePrice": 281,
-          "stock": 19997
+          "stock": 19994
         }
       ]
     },
@@ -237,7 +237,7 @@
           },
           "price": 179,
           "salePrice": 179,
-          "stock": 19827
+          "stock": 19826
         }
       ]
     },
@@ -298,9 +298,9 @@
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
             "Menşei": "TR"
           },
-          "price": 227,
-          "salePrice": 227,
-          "stock": 19995
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         },
         {
           "barcode": "TYBB3TF1EK3LGSW429",
@@ -311,9 +311,9 @@
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
             "Menşei": "TR"
           },
-          "price": 227,
-          "salePrice": 227,
-          "stock": 19995
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -3545,26 +3545,26 @@
       ],
       "variants": [
         {
-          "barcode": "2134567235668",
-          "sku": "13ktm",
-          "attributes": {
-            "Renk": "Siyah",
-            "Özellik": "Hava"
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        },
-        {
           "barcode": "1325467898254",
           "sku": "13ktm",
           "attributes": {
             "Renk": "Siyah",
             "Özellik": "Hava"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "price": 199,
+          "salePrice": 199,
+          "stock": 1977
+        },
+        {
+          "barcode": "2134567235668",
+          "sku": "13ktm",
+          "attributes": {
+            "Renk": "Siyah",
+            "Özellik": "Hava"
+          },
+          "price": 199,
+          "salePrice": 199,
+          "stock": 1977
         }
       ]
     },
@@ -5564,23 +5564,6 @@
       ],
       "variants": [
         {
-          "barcode": "Tasarımhediyenmotosticker00032",
-          "sku": "svenm",
-          "attributes": {
-            "Renk": "Siyah",
-            "Özellik": "Diğer",
-            "Menşei": "TR",
-            "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        },
-        {
           "barcode": "90290529852895",
           "sku": "",
           "attributes": {
@@ -5588,10 +5571,27 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Paket Görseli (arka)": ""
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
+          "barcode": "Tasarımhediyenmotosticker00032",
+          "sku": "svenm",
+          "attributes": {
+            "Renk": "Siyah",
+            "Özellik": "Diğer",
+            "Menşei": "TR",
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5796,8 +5796,8 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -6343,8 +6343,8 @@
             "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -6374,8 +6374,8 @@
             "Renk": "Kırmızı",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
