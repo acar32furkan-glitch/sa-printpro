@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T19:25:39.330Z",
+  "generatedAt": "2026-09-19T09:02:45.080Z",
   "products": [
     {
       "id": "1160687379",
@@ -267,8 +267,8 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez."
           },
-          "price": 300,
-          "salePrice": 300,
+          "price": 350,
+          "salePrice": 350,
           "stock": 20000
         }
       ]
@@ -298,9 +298,9 @@
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
             "Menşei": "TR"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "price": 227,
+          "salePrice": 227,
+          "stock": 19995
         },
         {
           "barcode": "TYBXGCJPFDPPDV3J40",
@@ -311,9 +311,9 @@
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
             "Menşei": "TR"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "price": 227,
+          "salePrice": 227,
+          "stock": 19995
         }
       ]
     },
@@ -751,8 +751,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 350,
-          "salePrice": 350,
+          "price": 335,
+          "salePrice": 335,
           "stock": 9087
         }
       ]
@@ -3466,8 +3466,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 571,
-          "salePrice": 571,
+          "price": 524,
+          "salePrice": 524,
           "stock": 964
         }
       ]
@@ -3521,8 +3521,8 @@
             "Menşei": "TR",
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
           },
-          "price": 282,
-          "salePrice": 282,
+          "price": 280,
+          "salePrice": 280,
           "stock": 19904
         }
       ]
@@ -3881,8 +3881,8 @@
             "Özellik": "Kendinden Yapışkanlı",
             "Menşei": "TR"
           },
-          "price": 323,
-          "salePrice": 323,
+          "price": 284,
+          "salePrice": 284,
           "stock": 9908
         }
       ]
@@ -4175,6 +4175,35 @@
           "price": 0,
           "salePrice": 0,
           "stock": 0
+        }
+      ]
+    },
+    {
+      "id": "768317532",
+      "name": "YARIM JANT ŞERİDİ BEYAZ",
+      "slug": "yarim-jant-seridi-beyaz-768317532",
+      "brand": "Oracal",
+      "category": {
+        "id": "1999",
+        "name": "Tankpad & Sticker",
+        "slug": "tankpad-sticker"
+      },
+      "descriptionHtml": "4 ADET DÜZ RENK BEYAZ",
+      "images": [
+        "https://cdn.dsmcdn.com/ty1008/product/media/images/prod/SPM/PIM/20231006/23/eda90e9d-7002-339b-b9c9-5742d30f14f7/1_org_zoom.jpg"
+      ],
+      "variants": [
+        {
+          "barcode": "YARIMJANTBEYAZ",
+          "sku": "trm12",
+          "attributes": {
+            "Renk": "beyaz",
+            "Menşei": "TR",
+            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
+          },
+          "price": 335,
+          "salePrice": 335,
+          "stock": 20000
         }
       ]
     },
@@ -4646,7 +4675,7 @@
           },
           "price": 221,
           "salePrice": 221,
-          "stock": 998
+          "stock": 997
         }
       ]
     },
@@ -4777,7 +4806,7 @@
           "attributes": {},
           "price": 261,
           "salePrice": 261,
-          "stock": 34
+          "stock": 33
         }
       ]
     },
@@ -4857,6 +4886,34 @@
           "price": 467,
           "salePrice": 467,
           "stock": 999
+        }
+      ]
+    },
+    {
+      "id": "746616686",
+      "name": "Yamaha Motorsiklet Beyaz Reflektörlü Jant Şeridi 17 Inç Takım Halinde",
+      "slug": "yamaha-motorsiklet-beyaz-reflektorlu-jant-seridi-17-inc-takim-halinde-746616686",
+      "brand": "SA Printpro",
+      "category": {
+        "id": "2181",
+        "name": "Motosiklet Jant Şerit",
+        "slug": "motosiklet-jant-serit"
+      },
+      "descriptionHtml": "Tüm motorsiklet modellerine uyar için uygundur. Ürün görselde olduğu renktedir. özellikleri. REFLEKTÖRLÜ Suya , güneşe ve neme dayanıklıdır. nasıl uygulanır? Sticker'ı uygulayacağınız yeri temizleyiniz. Kağıt desteğini yavaşça çıkardıktan sonra sticker'ın transfer kağıdında kaldığından emin olunuz. Sticker destek kağıdından soyulduktan uygulanacağı yüzeye karşı hizalayınız ve yerleştiriniz. Ragle veya kredi kartı kullanarak kilitlendiğinden Dikkatli ve yavaş bir şekilde , bandından stickerdan çıkarınız . Eğer etiketin bir parçası olduğunu görürseniz , kağıdını çıkartmadan tekrar basınız ve işlemi tekrarlayınız. SA Printprot tarafından özel olarak tasarlanmıştır. tasarım ve boyut değişikliği yapılabilir. Mağazaya sor kısmından ulaşabilirsiniz.",
+      "images": [
+        "https://cdn.dsmcdn.com/ty1383/product/media/images/prod/QC/20240626/18/8897ed5c-760d-3904-b2af-f01defe5987b/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1385/product/media/images/prod/QC/20240626/18/8553c56b-b4a9-332b-aad3-685f1ef48032/1_org_zoom.jpg"
+      ],
+      "variants": [
+        {
+          "barcode": "3698521261",
+          "sku": "byz",
+          "attributes": {
+            "Menşei": "TR"
+          },
+          "price": 170,
+          "salePrice": 170,
+          "stock": 20000
         }
       ]
     },
@@ -5216,8 +5273,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 74,
-          "salePrice": 74,
+          "price": 50,
+          "salePrice": 50,
           "stock": 19956
         }
       ]
@@ -5351,8 +5408,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 449,
-          "salePrice": 449,
+          "price": 344,
+          "salePrice": 344,
           "stock": 193
         }
       ]
@@ -5378,8 +5435,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 199,
-          "salePrice": 199,
+          "price": 198,
+          "salePrice": 198,
           "stock": 824
         }
       ]
@@ -5536,10 +5593,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5571,10 +5628,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5588,10 +5645,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5796,8 +5853,8 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -5917,10 +5974,10 @@
             "Özellik": "Kendinden Yapışkanlı",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 199,
           "salePrice": 199,
@@ -6603,8 +6660,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 666,
-          "salePrice": 499,
+          "price": 479,
+          "salePrice": 479,
           "stock": 1545
         }
       ]
@@ -6790,8 +6847,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 421,
-          "salePrice": 421,
+          "price": 345,
+          "salePrice": 345,
           "stock": 183
         }
       ]
