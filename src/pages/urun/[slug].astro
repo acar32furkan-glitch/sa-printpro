@@ -765,4 +765,30 @@ const faqJsonLd = {
     set:html={JSON.stringify(breadcrumbJsonLd)}
   />
   <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
+  <!--
+    GA4 e-ticaret: `view_item` olayı. Ürün detay sayfası görüntülendiğinde
+    bir kez fırlatılır. `gtag` yüklü değilse (GA4 id tanımsız veya consent
+    reddedilmiş) sessizce atlanır.
+  -->
+  <script
+    is:inline
+    set:html={`(function(){
+  try {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', 'view_item', {
+      currency: 'TRY',
+      value: ${Number(product.price) || 0},
+      items: [{
+        item_id: ${JSON.stringify(String(product.id || ''))},
+        item_name: ${JSON.stringify(String(product.name || ''))},
+        item_brand: ${JSON.stringify(String(product.brand || ''))},
+        item_category: ${JSON.stringify(String(product.category?.name || ''))},
+        price: ${Number(product.price) || 0},
+        quantity: 1
+      }]
+    });
+  } catch (e) {}
+})();`}
+  />
 </Layout>

@@ -101,5 +101,68 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}`
         // Query okunamazsa sessizce geç.
       }
     })()
+
+    // GA4 e-ticaret: `purchase` olayı. Sepet, ödeme öncesi
+    // `saprintpro_cart_v1` anahtarıyla localStorage'a yazılır
+    // (bkz. src/lib/cart.js → STORAGE_KEY). Sipariş tamamlandığında bu olay
+    // BİR KEZ fırlatılır; aynı sipariş numarasıyla sayfa yenilenirse tekrar
+    // gönderilmez (duplicate purchase önlenir).
+    (function () {
+      try {
+        if (typeof window.gtag !== 'function') {
+          return
+        }
+
+        var params = new URLSearchParams(window.location.search)
+        var orderId =
+          params.get('order') || params.get('orderId') || params.get('siparis') || ''
+
+        // Aynı sipariş için tekrar gönderimi engelle.
+        var guardKey = 'sa-purchase-tracked'
+        if (orderId && window.localStorage.getItem(guardKey) === orderId) {
+          return
+        }
+
+        var raw = window.localStorage.getItem('saprintpro_cart_v1')
+        var cart = []
+        try {
+          cart = raw ? JSON.parse(raw) : []
+        } catch (parseError) {
+          cart = []
+        }
+        if (!Array.isArray(cart) || cart.length === 0) {
+          return
+        }
+
+        var items = cart.map(function (entry) {
+          return {
+            item_id: entry.barcode || entry.id || '',
+            item_name: entry.name || '',
+            item_variant: entry.variant || '',
+            price: Number(entry.price) || 0,
+            quantity: Number(entry.qty) || 1,
+          }
+        })
+        var value = items.reduce(function (sum, item) {
+          return sum + item.price * item.quantity
+        }, 0)
+
+        window.gtag('event', 'purchase', {
+          transaction_id: orderId || String(Date.now()),
+          currency: 'TRY',
+          value: value,
+          shipping: 0,
+          items: items,
+        })
+
+        if (orderId) {
+          window.localStorage.setItem(guardKey, orderId)
+        }
+        // Sipariş tamamlandı; sepeti temizle.
+        window.localStorage.removeItem('saprintpro_cart_v1')
+      } catch (error) {
+        // GA4 yüklü değilse veya storage erişilemezse sessizce geç.
+      }
+    })()
   </script>
 </Layout>

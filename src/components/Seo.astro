@@ -46,19 +46,20 @@ const absoluteImage = image.startsWith('http')
 <meta name="twitter:image" content={absoluteImage} />
 
 {
-  siteConfig.searchConsoleVerification && (
-    <meta
-      name="google-site-verification"
-      content={siteConfig.searchConsoleVerification}
-    />
-  )
-}
+  /*
+    Google doğrulama meta etiketi.
+    ÖNEMLİ: Google, aynı sayfada `name="google-site-verification"` ile birden
+    fazla etiket görürse YALNIZCA İLKİNİ dikkate alır. Bu yüzden tek bir etiket
+    basılır ve öncelik sırası: Search Console → Merchant Center.
 
-{
-  siteConfig.merchantCenterVerification && (
+    Search Console doğrulaması ayrıca `public/google419bc019c17c40b5.html`
+    dosyasıyla da yapılır (HTML dosya yöntemi); meta etiketi yedek/kolaylık
+    içindir. Merchant Center doğrulaması ise yalnızca bu meta etiketiyle yapılır.
+  */
+  (siteConfig.searchConsoleVerification || siteConfig.merchantCenterVerification) && (
     <meta
       name="google-site-verification"
-      content={siteConfig.merchantCenterVerification}
+      content={siteConfig.searchConsoleVerification || siteConfig.merchantCenterVerification}
     />
   )
 }
