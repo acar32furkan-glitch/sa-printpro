@@ -44,8 +44,9 @@ const sections = [
     title: 'İade Adresi',
     body: `İade gönderimleri aşağıdaki adrese yapılmalıdır:
 
-${company.returnAddress}
-Alıcı: ${company.returnRecipient}
+${[company.returnAddress, company.returnRecipient ? `Alıcı: ${company.returnRecipient}` : '']
+      .filter(Boolean)
+      .join('\n')}
 
 Lütfen iade paketinizin içine sipariş numaranızı ve iletişim bilgilerinizi ekleyin.`,
   },

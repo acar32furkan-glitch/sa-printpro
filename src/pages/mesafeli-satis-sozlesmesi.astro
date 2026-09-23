@@ -16,18 +16,26 @@ const whatsappDisplay = `+${siteConfig.contact.whatsapp}`
 // Kurumsal bilgiler tek merkezi kaynaktan (src/config/site.js → company) gelir.
 const company = siteConfig.company || {}
 
+// Boş kurumsal alanlar yasal metinde gösterilmez (koşullu satır üretimi).
+const taxLine = [company.taxOffice, company.taxNumber].filter(Boolean).join(' / ')
+const companyLines = [
+  company.legalName ? `Ticari Unvan: ${company.legalName}` : '',
+  company.address ? `Adres: ${company.address}` : '',
+  taxLine ? `Vergi Dairesi / VKN: ${taxLine}` : '',
+  `Telefon: ${company.phone || whatsappDisplay}`,
+  `E-posta: ${company.email || siteConfig.contact.email}`,
+  company.mersis ? `MERSİS No: ${company.mersis}` : '',
+]
+  .filter(Boolean)
+  .join('\n')
+
 const sections = [
   {
     title: '1. Taraflar',
     body: `İşbu Mesafeli Satış Sözleşmesi ("Sözleşme"), 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği hükümleri uyarınca aşağıdaki taraflar arasında elektronik ortamda akdedilmiştir.
 
 SATICI:
-Ticari Unvan: ${company.legalName}
-Adres: ${company.address}
-Vergi Dairesi / VKN: ${company.taxOffice} / ${company.taxNumber}
-Telefon: ${company.phone || whatsappDisplay}
-E-posta: ${company.email || siteConfig.contact.email}
-MERSİS No: ${company.mersis}
+${companyLines}
 
 ALICI:
 Sipariş sırasında WhatsApp yazışması ve/veya ödeme sayfası üzerinden ad, soyad, teslimat adresi, telefon ve e-posta bilgilerini bildiren tüketici.`,

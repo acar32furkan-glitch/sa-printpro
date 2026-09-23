@@ -9,6 +9,25 @@ const canonicalUrl = buildCanonical('/kvkk-aydinlatma-metni')
 // Kurumsal bilgiler tek merkezi kaynaktan (src/config/site.js → company) gelir.
 const company = siteConfig.company || {}
 
+// Boş kurumsal alanlar yasal metinde gösterilmez (koşullu satır üretimi).
+const taxLine = [company.taxOffice, company.taxNumber].filter(Boolean).join(' / ')
+const phoneLine = company.phone || '+' + siteConfig.contact.whatsapp
+// Adres girilmişse yazılı başvuru seçeneği de metne eklenir.
+const addressClause = company.address
+  ? ', veya\n• Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ\'e uygun yazılı başvuru ile ' +
+    company.address +
+    ' adresine ileterek'
+  : ''
+const companyLines = [
+  company.legalName ? 'Ticari Unvan: ' + company.legalName : '',
+  company.address ? 'Adres: ' + company.address : '',
+  taxLine ? 'Vergi Dairesi / VKN: ' + taxLine : '',
+  'E-posta: ' + (company.email || siteConfig.contact.email),
+  'Telefon: ' + phoneLine,
+]
+  .filter(Boolean)
+  .join('\n')
+
 const breadcrumbItems = [
   { label: 'Ana Sayfa', href: '/' },
   { label: 'KVKK Aydınlatma Metni' },
@@ -20,11 +39,7 @@ const sections = [
     body: `6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") m.10 uyarınca, kişisel verilerinizin işlenmesine ilişkin olarak aydınlatılmanız amacıyla bu metin hazırlanmıştır.
 
 Veri Sorumlusu: ${siteConfig.name}
-Ticari Unvan: ${company.legalName}
-Adres: ${company.address}
-Vergi Dairesi / VKN: ${company.taxOffice} / ${company.taxNumber}
-E-posta: ${company.email || siteConfig.contact.email}
-Telefon: ${company.phone || `+${siteConfig.contact.whatsapp}`}`,
+${companyLines}`,
   },
   {
     title: '2. İşlenen Kişisel Veriler ve Toplama Yöntemi',
@@ -77,8 +92,7 @@ g) Münhasıran otomatik sistemler ile analiz edilmesi nedeniyle aleyhine bir so
     title: '8. Başvuru Yöntemi',
     body: `Yukarıda belirtilen haklarınıza ilişkin taleplerinizi;
 
-• ${siteConfig.contact.email} adresine e-posta göndererek, veya
-• Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ'e uygun yazılı başvuru ile ${company.address} adresine ileterek
+• ${siteConfig.contact.email} adresine e-posta göndererek${addressClause}
 
 veri sorumlusuna iletebilirsiniz. Başvurunuzda ad-soyad, imza, T.C. kimlik numarası, tebligata esas adres ve talep konusu bilgilerinin yer alması gerekmektedir. Başvurularınız, niteliğine göre en geç 30 (otuz) gün içinde ücretsiz olarak sonuçlandırılır.`,
   },

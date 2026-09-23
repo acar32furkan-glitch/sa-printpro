@@ -26,8 +26,8 @@ const channels = [
   },
 ]
 
-// Kurumsal/şeffaflık bilgileri. Yasal sayfalardaki [DOLDURULACAK: ...]
-// alanlarıyla tutarlıdır; eksik alanlar işaretli bırakılır.
+// Kurumsal/şeffaflık bilgileri tek merkezi kaynaktan (src/config/site.js →
+// company) gelir; boş alanlar aşağıdaki filter ile otomatik gizlenir.
 const company = siteConfig.company || {}
 const companyInfo = [
   { label: 'Ticari Unvan', value: company.legalName },

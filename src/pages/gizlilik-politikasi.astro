@@ -9,6 +9,17 @@ const canonicalUrl = buildCanonical('/gizlilik-politikasi')
 // Kurumsal bilgiler tek merkezi kaynaktan (src/config/site.js → company) gelir.
 const company = siteConfig.company || {}
 
+// Boş kurumsal alanlar yasal metinde gösterilmez (koşullu satır üretimi).
+const phoneLine = company.phone || '+' + siteConfig.contact.whatsapp
+const companyLines = [
+  company.legalName ? 'Ticari Unvan: ' + company.legalName : '',
+  company.address ? 'Adres: ' + company.address : '',
+  'E-posta: ' + (company.email || siteConfig.contact.email),
+  'Telefon: ' + phoneLine,
+]
+  .filter(Boolean)
+  .join('\n')
+
 const breadcrumbItems = [
   { label: 'Ana Sayfa', href: '/' },
   { label: 'Gizlilik Politikası' },
@@ -19,10 +30,7 @@ const sections = [
     title: '1. Veri Sorumlusu',
     body: `Bu web sitesi ${siteConfig.name} tarafından işletilmektedir. 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamında veri sorumlusu ${siteConfig.name}'dir.
 
-Ticari Unvan: ${company.legalName}
-Adres: ${company.address}
-E-posta: ${company.email || siteConfig.contact.email}
-Telefon: ${company.phone || `+${siteConfig.contact.whatsapp}`}`,
+${companyLines}`,
   },
   {
     title: '2. İşlenen Kişisel Veriler',

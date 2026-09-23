@@ -17,23 +17,23 @@ export const siteConfig = {
   },
   // Kurumsal/şeffaflık bilgileri. TEK MERKEZİ KAYNAK: yasal sayfalar (mesafeli
   // satış, KVKK, iade) ve footer bu bloğu referans alır; elle placeholder
-  // yazılmaz. Boş/placeholder alanlar `scripts/check-company-info.mjs` ile
-  // build öncesi uyarı olarak raporlanır (build'i kırmaz).
+  // yazılmaz. Boş alanlar `scripts/check-company-info.mjs` ile build öncesi
+  // uyarı olarak raporlanır (build'i kırmaz).
   //
   // ⚠️ Bu alanlar doldurulmadan gerçek fatura kesilemez; ilk gerçek satıştan
-  // önce tamamlanmalıdır. Değerler bilinmiyorsa placeholder bırakılır —
-  // varsayım/örnek veri üretilmez.
+  // önce tamamlanmalıdır. Boş bırakılan alanlar yasal sayfalarda ve footer'da
+  // otomatik olarak gizlenir (koşullu gösterim).
   company: {
-    legalName: '[[TICARI_UNVAN]]',
-    address: '[[ACIK_ADRES]]',
+    legalName: '',
+    address: '',
     phone: '+90 554 299 30 58',
     email: 'info@saprintpro.com',
-    taxOffice: '[[VERGI_DAIRESI]]',
-    taxNumber: '[[VKN]]',
-    mersis: '[[MERSIS_NO]]',
+    taxOffice: '',
+    taxNumber: '',
+    mersis: '',
     // İade gönderim adresi ve alıcı (iade sayfası bu alanları kullanır).
-    returnAddress: '[[IADE_ADRESI]]',
-    returnRecipient: '[[IADE_ALICI]]',
+    returnAddress: '',
+    returnRecipient: '',
   },
   ga4Id: 'G-HK6Q53CMG1',
   searchConsoleVerification: 'google419bc019c17c40b5',
