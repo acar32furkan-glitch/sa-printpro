@@ -6,6 +6,9 @@ import { buildCanonical } from '../lib/seo.js'
 
 const canonicalUrl = buildCanonical('/gizlilik-politikasi')
 
+// Kurumsal bilgiler tek merkezi kaynaktan (src/config/site.js → company) gelir.
+const company = siteConfig.company || {}
+
 const breadcrumbItems = [
   { label: 'Ana Sayfa', href: '/' },
   { label: 'Gizlilik Politikası' },
@@ -16,10 +19,10 @@ const sections = [
     title: '1. Veri Sorumlusu',
     body: `Bu web sitesi ${siteConfig.name} tarafından işletilmektedir. 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamında veri sorumlusu ${siteConfig.name}'dir.
 
-Ticari Unvan: [DOLDURULACAK: ticari unvan]
-Adres: [DOLDURULACAK: açık adres]
-E-posta: ${siteConfig.contact.email}
-Telefon: +${siteConfig.contact.whatsapp}`,
+Ticari Unvan: ${company.legalName}
+Adres: ${company.address}
+E-posta: ${company.email || siteConfig.contact.email}
+Telefon: ${company.phone || `+${siteConfig.contact.whatsapp}`}`,
   },
   {
     title: '2. İşlenen Kişisel Veriler',

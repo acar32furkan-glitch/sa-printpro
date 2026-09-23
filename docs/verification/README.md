@@ -17,3 +17,9 @@ Date of pass: **2026-09-11**
 | 6 | Trendyol V1 shutdown | V1 product services deactivated **15 Sep 2026** per current official docs (an earlier "10 Aug 2026" date was superseded) | developers.trendyol.com (2026-07-20) |
 
 From Phase 1 onward, pull verified facts from these files instead of re-deriving from memory.
+
+## Phase Reports
+
+| Phase | Report | Scope |
+|-------|--------|-------|
+| Phase 4 | [`faz4.md`](./faz4.md) | Kurumsal bilgi merkezileştirme (G1.x), duplicate ürün birleştirme (G2.x), kategori taksonomisi bölme (G3.x), kategori bazlı filtre sayaçları (G4.x), canlı/yerel doğrulama (G5.x) |

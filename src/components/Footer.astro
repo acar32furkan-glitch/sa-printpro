@@ -26,15 +26,17 @@ const badges = [
   siteConfig.badges?.freeShipping,
 ].filter(Boolean)
 
-// Kurumsal/şeffaflık bilgileri. Yasal sayfalardaki [DOLDURULACAK: ...]
-// alanlarıyla tutarlıdır; eksik alanlar işaretli bırakılır.
+// Kurumsal/şeffaflık bilgileri tek merkezi kaynaktan (src/config/site.js →
+// company) gelir; yasal sayfalarla aynı kaynağı paylaşır.
 const company = siteConfig.company || {}
+const taxInfo = [company.taxOffice, company.taxNumber].filter(Boolean).join(' / ')
 const companyInfo = [
   { label: 'Ticari Unvan', value: company.legalName },
   { label: 'Adres', value: company.address },
   { label: 'Telefon', value: company.phone, href: `tel:${String(company.phone || '').replace(/\s/g, '')}` },
   { label: 'E-posta', value: company.email, href: `mailto:${company.email}` },
-  { label: 'Vergi Dairesi / VKN', value: company.taxOffice },
+  { label: 'Vergi Dairesi / VKN', value: taxInfo },
+  { label: 'MERSİS No', value: company.mersis },
 ].filter((entry) => Boolean(entry.value))
 
 // SEO: iç linkler sondaki slash ile üretilir (308 yönlendirmesini önler).

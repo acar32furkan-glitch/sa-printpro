@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-23T09:42:50.818Z",
+  "generatedAt": "2026-09-13T16:20:38.400Z",
   "products": [
     {
       "id": "1160687379",
@@ -52,9 +52,9 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 312,
-          "salePrice": 312,
-          "stock": 19988
+          "price": 281,
+          "salePrice": 281,
+          "stock": 19999
         }
       ]
     },
@@ -80,11 +80,10 @@
           "sku": "blll",
           "attributes": {
             "Renk": "Beyaz",
-            "Menşei": "TR",
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
+            "Menşei": "TR"
           },
-          "price": 350,
-          "salePrice": 350,
+          "price": 261,
+          "salePrice": 261,
           "stock": 10000
         }
       ]
@@ -110,8 +109,7 @@
           "sku": "DRFT",
           "attributes": {
             "Kullanım Talimatı/Uyarıları": "kuru ve temiz bölgeye uygulayınız",
-            "Menşei": "TR",
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
+            "Menşei": "TR"
           },
           "price": 299,
           "salePrice": 299,
@@ -141,8 +139,8 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez."
           },
-          "price": 350,
-          "salePrice": 350,
+          "price": 252,
+          "salePrice": 252,
           "stock": 20000
         }
       ]
@@ -176,7 +174,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9002",
+        "name": "Araba Sticker & Aksesuar",
+        "slug": "araba-sticker-aksesuar"
+      }
     },
     {
       "id": "1096754361",
@@ -207,7 +210,12 @@
           "salePrice": 300,
           "stock": 19999
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "1088748172",
@@ -235,11 +243,16 @@
             "Menşei": "TR",
             "Paket Görseli (ön)": ""
           },
-          "price": 174,
-          "salePrice": 174,
-          "stock": 19825
+          "price": 179,
+          "salePrice": 179,
+          "stock": 19828
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "1083894139",
@@ -267,11 +280,16 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez."
           },
-          "price": 350,
-          "salePrice": 350,
+          "price": 300,
+          "salePrice": 300,
           "stock": 20000
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9004",
+        "name": "Duvar & Dekor Sticker",
+        "slug": "duvar-dekor-sticker"
+      }
     },
     {
       "id": "1047463123",
@@ -315,7 +333,12 @@
           "salePrice": 227,
           "stock": 19995
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "1046321369",
@@ -346,7 +369,12 @@
           "salePrice": 50,
           "stock": 19977
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "1046100299",
@@ -377,7 +405,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "1030899339",
@@ -401,15 +434,20 @@
           "sku": "roll",
           "attributes": {
             "Renk": "Beyaz",
-            "Menşei": "TR",
             "Özellik": "Suya Dayanıklı",
-            "Kullanım Talimatı/Uyarıları": "İyice Yapıştığına Emin Olunuz"
+            "Kullanım Talimatı/Uyarıları": "İyice Yapıştığına Emin Olunuz",
+            "Menşei": "TR"
           },
           "price": 0,
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "996052807",
@@ -439,7 +477,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9002",
+        "name": "Araba Sticker & Aksesuar",
+        "slug": "araba-sticker-aksesuar"
+      }
     },
     {
       "id": "985950365",
@@ -532,7 +575,12 @@
           "salePrice": 50,
           "stock": 19949
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "905611513",
@@ -562,7 +610,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "900573603",
@@ -591,7 +644,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9002",
+        "name": "Araba Sticker & Aksesuar",
+        "slug": "araba-sticker-aksesuar"
+      }
     },
     {
       "id": "899048656",
@@ -701,7 +759,12 @@
           "salePrice": 25,
           "stock": 19994
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9003",
+        "name": "Dini & Kaligrafi Sticker",
+        "slug": "dini-kaligrafi-sticker"
+      }
     },
     {
       "id": "846044017",
@@ -751,8 +814,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 335,
-          "salePrice": 335,
+          "price": 350,
+          "salePrice": 350,
           "stock": 9087
         }
       ]
@@ -785,7 +848,12 @@
           "salePrice": 146,
           "stock": 19990
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9005",
+        "name": "Ayna & Cam Sticker",
+        "slug": "ayna-cam-sticker"
+      }
     },
     {
       "id": "826019325",
@@ -808,8 +876,8 @@
           "barcode": "242225811",
           "sku": "jm",
           "attributes": {
-            "Menşei": "TR",
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
+            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz.",
+            "Menşei": "TR"
           },
           "price": 0,
           "salePrice": 0,
@@ -845,7 +913,12 @@
           "salePrice": 299,
           "stock": 967
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "810888587",
@@ -1011,7 +1084,12 @@
           "salePrice": 621,
           "stock": 9986
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "803825710",
@@ -1066,7 +1144,12 @@
           "salePrice": 431,
           "stock": 386
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797815120",
@@ -1098,9 +1181,14 @@
           },
           "price": 299,
           "salePrice": 299,
-          "stock": 988
+          "stock": 989
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797752859",
@@ -1134,7 +1222,12 @@
           "salePrice": 291,
           "stock": 998
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797752732",
@@ -1167,7 +1260,12 @@
           "salePrice": 291,
           "stock": 998
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797752644",
@@ -1200,7 +1298,12 @@
           "salePrice": 291,
           "stock": 998
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797752555",
@@ -1233,7 +1336,12 @@
           "salePrice": 291,
           "stock": 991
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797752554",
@@ -1266,7 +1374,12 @@
           "salePrice": 291,
           "stock": 990
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797752475",
@@ -1300,7 +1413,12 @@
           "salePrice": 291,
           "stock": 951
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797752462",
@@ -1334,7 +1452,12 @@
           "salePrice": 291,
           "stock": 1000
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797752293",
@@ -1368,7 +1491,12 @@
           "salePrice": 291,
           "stock": 997
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797752149",
@@ -1403,7 +1531,12 @@
           "salePrice": 291,
           "stock": 997
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797752147",
@@ -1436,7 +1569,12 @@
           "salePrice": 291,
           "stock": 998
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797752116",
@@ -1471,7 +1609,12 @@
           "salePrice": 291,
           "stock": 999
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797752045",
@@ -1505,7 +1648,12 @@
           "salePrice": 258,
           "stock": 999
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797752035",
@@ -1539,7 +1687,12 @@
           "salePrice": 291,
           "stock": 998
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797752032",
@@ -1573,7 +1726,12 @@
           "salePrice": 258,
           "stock": 1000
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797752001",
@@ -1607,7 +1765,12 @@
           "salePrice": 291,
           "stock": 998
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751993",
@@ -1640,7 +1803,12 @@
           "salePrice": 281,
           "stock": 94
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751929",
@@ -1674,7 +1842,12 @@
           "salePrice": 224,
           "stock": 19991
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751885",
@@ -1708,7 +1881,12 @@
           "salePrice": 291,
           "stock": 993
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751854",
@@ -1741,7 +1919,12 @@
           "salePrice": 291,
           "stock": 10003
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751791",
@@ -1775,7 +1958,12 @@
           "salePrice": 261,
           "stock": 199
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751780",
@@ -1806,9 +1994,14 @@
           },
           "price": 261,
           "salePrice": 261,
-          "stock": 192
+          "stock": 193
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751751",
@@ -1842,7 +2035,12 @@
           "salePrice": 291,
           "stock": 197
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751705",
@@ -1876,7 +2074,12 @@
           "salePrice": 261,
           "stock": 195
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751694",
@@ -1910,7 +2113,12 @@
           "salePrice": 261,
           "stock": 998
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751685",
@@ -1943,7 +2151,12 @@
           "salePrice": 281,
           "stock": 983
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751683",
@@ -1975,9 +2188,14 @@
           },
           "price": 320,
           "salePrice": 320,
-          "stock": 981
+          "stock": 982
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751591",
@@ -2009,9 +2227,14 @@
           },
           "price": 261,
           "salePrice": 261,
-          "stock": 997
+          "stock": 999
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751585",
@@ -2044,7 +2267,12 @@
           "salePrice": 261,
           "stock": 999
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751554",
@@ -2078,7 +2306,12 @@
           "salePrice": 261,
           "stock": 999
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751464",
@@ -2112,7 +2345,12 @@
           "salePrice": 261,
           "stock": 992
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751440",
@@ -2146,7 +2384,12 @@
           "salePrice": 261,
           "stock": 998
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751437",
@@ -2180,7 +2423,12 @@
           "salePrice": 291,
           "stock": 11108
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751429",
@@ -2213,7 +2461,12 @@
           "salePrice": 261,
           "stock": 993
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751389",
@@ -2247,7 +2500,12 @@
           "salePrice": 261,
           "stock": 986
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751373",
@@ -2281,7 +2539,12 @@
           "salePrice": 261,
           "stock": 997
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751370",
@@ -2315,7 +2578,12 @@
           "salePrice": 239,
           "stock": 999
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751358",
@@ -2349,7 +2617,12 @@
           "salePrice": 276,
           "stock": 993
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751348",
@@ -2383,7 +2656,12 @@
           "salePrice": 273,
           "stock": 996
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751261",
@@ -2416,7 +2694,12 @@
           "salePrice": 273.15,
           "stock": 991
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751255",
@@ -2450,7 +2733,12 @@
           "salePrice": 261,
           "stock": 999
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751251",
@@ -2484,7 +2772,12 @@
           "salePrice": 261,
           "stock": 999
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751244",
@@ -2517,7 +2810,12 @@
           "salePrice": 261,
           "stock": 999
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "797751237",
@@ -2551,129 +2849,12 @@
           "salePrice": 261,
           "stock": 997
         }
-      ]
-    },
-    {
-      "id": "795117733",
-      "name": "Kask Kedi Pati Sticker Etiket Motosiklet Araba Reflektif Beyaz",
-      "slug": "kask-kedi-pati-sticker-etiket-motosiklet-araba-reflektif-beyaz-795117733",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Reflektif dir gece ışık vurunca parlar. Siyah parlamaz. Sudan etkilenmez. Yapışkanı kuvvetli sticker dir.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1126/product/media/images/prod/SPM/PIM/20240107/05/275f54cb-6143-3fc3-a2a4-6c68ca0b599f/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1125/product/media/images/prod/SPM/PIM/20240107/05/8f652816-1d0b-341c-97fc-d1538d3b4278/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1125/product/media/images/prod/SPM/PIM/20240107/05/95842fb0-f368-33ec-89f9-02bb2887ddf7/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1127/product/media/images/prod/SPM/PIM/20240107/05/8262fa02-99a7-341f-831d-a07274f35024/1_org_zoom.jpg"
       ],
-      "variants": [
-        {
-          "barcode": "0286372993747828",
-          "sku": "",
-          "attributes": {
-            "Renk": "Çok Renkli",
-            "Özellik": "Gece"
-          },
-          "price": 261,
-          "salePrice": 261,
-          "stock": 998
-        }
-      ]
-    },
-    {
-      "id": "795117712",
-      "name": "Kask Kedi Pati Sticker Etiket Motosiklet Araba Reflektif Kırmızı",
-      "slug": "kask-kedi-pati-sticker-etiket-motosiklet-araba-reflektif-kirmizi-795117712",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Reflektif dir gece ışık vurunca parlar. Siyah parlamaz. Sudan etkilenmez. Yapışkanı kuvvetli sticker dir.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1126/product/media/images/prod/SPM/PIM/20240107/05/8f652816-1d0b-341c-97fc-d1538d3b4278/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1127/product/media/images/prod/SPM/PIM/20240107/05/95842fb0-f368-33ec-89f9-02bb2887ddf7/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1125/product/media/images/prod/SPM/PIM/20240107/05/275f54cb-6143-3fc3-a2a4-6c68ca0b599f/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1127/product/media/images/prod/SPM/PIM/20240107/05/8262fa02-99a7-341f-831d-a07274f35024/1_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "02847648297374884",
-          "sku": "",
-          "attributes": {
-            "Renk": "Kırmızı",
-            "Özellik": "Gece"
-          },
-          "price": 261,
-          "salePrice": 261,
-          "stock": 996
-        }
-      ]
-    },
-    {
-      "id": "795117410",
-      "name": "Kask Kedi Pati Sticker Etiket Motosiklet Araba Reflektif Mavi",
-      "slug": "kask-kedi-pati-sticker-etiket-motosiklet-araba-reflektif-mavi-795117410",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Reflektif dir gece ışık vurunca parlar. Siyah parlamaz. Sudan etkilenmez. Yapışkanı kuvvetli sticker dir.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1126/product/media/images/prod/SPM/PIM/20240107/05/275f54cb-6143-3fc3-a2a4-6c68ca0b599f/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1127/product/media/images/prod/SPM/PIM/20240107/05/8f652816-1d0b-341c-97fc-d1538d3b4278/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1126/product/media/images/prod/SPM/PIM/20240107/05/95842fb0-f368-33ec-89f9-02bb2887ddf7/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1126/product/media/images/prod/SPM/PIM/20240107/05/8262fa02-99a7-341f-831d-a07274f35024/1_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "02874737927477473",
-          "sku": "",
-          "attributes": {
-            "Renk": "Mavi",
-            "Özellik": "Gece"
-          },
-          "price": 261,
-          "salePrice": 261,
-          "stock": 999
-        }
-      ]
-    },
-    {
-      "id": "795117404",
-      "name": "Kask göz reflektif sticker motosiklet araba",
-      "slug": "kask-goz-reflektif-sticker-motosiklet-araba-795117404",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Reflektif dir. Gece ışık vurunca parlar. Sudan etkilenmez.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1125/product/media/images/prod/SPM/PIM/20240107/05/b25555b7-558c-30fa-b379-c8aa68403d37/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1126/product/media/images/prod/SPM/PIM/20240107/05/0db4e1f1-6ea1-36a3-947d-e69bf41e4b39/1_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "738287467837738",
-          "sku": "",
-          "attributes": {
-            "Renk": "Reflektif beyaz",
-            "Özellik": "Gece"
-          },
-          "price": 261,
-          "salePrice": 261,
-          "stock": 1997
-        }
-      ]
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "794969127",
@@ -2690,7 +2871,17 @@
         "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/275f54cb-6143-3fc3-a2a4-6c68ca0b599f/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/8f652816-1d0b-341c-97fc-d1538d3b4278/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/95842fb0-f368-33ec-89f9-02bb2887ddf7/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/8262fa02-99a7-341f-831d-a07274f35024/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/8262fa02-99a7-341f-831d-a07274f35024/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1126/product/media/images/prod/SPM/PIM/20240107/05/275f54cb-6143-3fc3-a2a4-6c68ca0b599f/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1125/product/media/images/prod/SPM/PIM/20240107/05/8f652816-1d0b-341c-97fc-d1538d3b4278/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1125/product/media/images/prod/SPM/PIM/20240107/05/95842fb0-f368-33ec-89f9-02bb2887ddf7/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1127/product/media/images/prod/SPM/PIM/20240107/05/8262fa02-99a7-341f-831d-a07274f35024/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1126/product/media/images/prod/SPM/PIM/20240107/05/8f652816-1d0b-341c-97fc-d1538d3b4278/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1127/product/media/images/prod/SPM/PIM/20240107/05/95842fb0-f368-33ec-89f9-02bb2887ddf7/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1125/product/media/images/prod/SPM/PIM/20240107/05/275f54cb-6143-3fc3-a2a4-6c68ca0b599f/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1127/product/media/images/prod/SPM/PIM/20240107/05/8f652816-1d0b-341c-97fc-d1538d3b4278/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1126/product/media/images/prod/SPM/PIM/20240107/05/95842fb0-f368-33ec-89f9-02bb2887ddf7/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1126/product/media/images/prod/SPM/PIM/20240107/05/8262fa02-99a7-341f-831d-a07274f35024/1_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -2703,8 +2894,46 @@
           "price": 261,
           "salePrice": 261,
           "stock": 96
+        },
+        {
+          "barcode": "0286372993747828",
+          "sku": "",
+          "attributes": {
+            "Renk": "Çok Renkli",
+            "Özellik": "Gece"
+          },
+          "price": 261,
+          "salePrice": 261,
+          "stock": 998
+        },
+        {
+          "barcode": "02847648297374884",
+          "sku": "",
+          "attributes": {
+            "Renk": "Kırmızı",
+            "Özellik": "Gece"
+          },
+          "price": 261,
+          "salePrice": 261,
+          "stock": 996
+        },
+        {
+          "barcode": "02874737927477473",
+          "sku": "",
+          "attributes": {
+            "Renk": "Mavi",
+            "Özellik": "Gece"
+          },
+          "price": 261,
+          "salePrice": 261,
+          "stock": 999
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "794968642",
@@ -2719,7 +2948,11 @@
       "descriptionHtml": "Reflektif dir. Gece ışık vurunca parlar. Sudan etkilenmez.",
       "images": [
         "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/22/7f6f2579-cc53-3499-a120-9fa138ca6611/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/22/08bc3c15-9df3-37af-887d-a623e3d6d0b4/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/22/08bc3c15-9df3-37af-887d-a623e3d6d0b4/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1125/product/media/images/prod/SPM/PIM/20240107/05/b25555b7-558c-30fa-b379-c8aa68403d37/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1126/product/media/images/prod/SPM/PIM/20240107/05/0db4e1f1-6ea1-36a3-947d-e69bf41e4b39/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/22/1e367852-7fff-3ff1-b5f8-0fd26fde235f/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1139/product/media/images/prod/SPM/PIM/20240117/22/78d3174b-9a6e-34ed-bd45-f4c97494cb98/1_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -2732,25 +2965,18 @@
           "price": 261,
           "salePrice": 261,
           "stock": 199
-        }
-      ]
-    },
-    {
-      "id": "794968582",
-      "name": "Kask göz reflektif sticker motosiklet araba",
-      "slug": "kask-goz-reflektif-sticker-motosiklet-araba-794968582",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Reflektif dir. Gece ışık vurunca parlar. Sudan etkilenmez.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/22/1e367852-7fff-3ff1-b5f8-0fd26fde235f/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1139/product/media/images/prod/SPM/PIM/20240117/22/78d3174b-9a6e-34ed-bd45-f4c97494cb98/1_org_zoom.jpg"
-      ],
-      "variants": [
+        },
+        {
+          "barcode": "738287467837738",
+          "sku": "",
+          "attributes": {
+            "Renk": "Reflektif beyaz",
+            "Özellik": "Gece"
+          },
+          "price": 261,
+          "salePrice": 261,
+          "stock": 1997
+        },
         {
           "barcode": "1099930776556666",
           "sku": "",
@@ -2762,106 +2988,12 @@
           "salePrice": 261,
           "stock": 0
         }
-      ]
-    },
-    {
-      "id": "794967407",
-      "name": "Kask Sticker Etiket Yapıştırma Araba Motosiklet Kırmızı",
-      "slug": "kask-sticker-etiket-yapistirma-araba-motosiklet-kirmizi-794967407",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Ürün boyutları görsellerde mevcuttur. Mevcut renkler renk seçeneklerinde Yüksek Kaliteli malzeme sudan etkilenmez.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/0401cbc8-cfca-37a7-b5e1-e3d7ef9d82e6/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/6ea3d725-994c-3424-852d-a71f8345255e/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/2b050ccc-b8dd-36bc-b191-0d05743092f3/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/c46e3733-4035-3e7d-b216-8094c1dd16b6/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/109742c3-efe7-3cd3-9c34-bb6ffd1bff88/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/7af9881a-8fc6-330e-b14c-63f52b55a99f/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/59beb3bc-676d-3559-8405-4583f638447f/1_org_zoom.jpg"
       ],
-      "variants": [
-        {
-          "barcode": "8376382652683990",
-          "sku": "kskkır",
-          "attributes": {
-            "Renk": "Kırmızı"
-          },
-          "price": 261,
-          "salePrice": 261,
-          "stock": 999
-        }
-      ]
-    },
-    {
-      "id": "794967405",
-      "name": "Kask Sticker Etiket Yapıştırma Araba Motosiklet Mavi",
-      "slug": "kask-sticker-etiket-yapistirma-araba-motosiklet-mavi-794967405",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Ürün boyutları görsellerde mevcuttur. Mevcut renkler renk seçeneklerinde Yüksek Kaliteli malzeme sudan etkilenmez.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/0401cbc8-cfca-37a7-b5e1-e3d7ef9d82e6/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/6ea3d725-994c-3424-852d-a71f8345255e/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/2b050ccc-b8dd-36bc-b191-0d05743092f3/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/c46e3733-4035-3e7d-b216-8094c1dd16b6/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/109742c3-efe7-3cd3-9c34-bb6ffd1bff88/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/7af9881a-8fc6-330e-b14c-63f52b55a99f/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/59beb3bc-676d-3559-8405-4583f638447f/1_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "83829018737486372",
-          "sku": "",
-          "attributes": {
-            "Renk": "Mavi"
-          },
-          "price": 261,
-          "salePrice": 261,
-          "stock": 199
-        }
-      ]
-    },
-    {
-      "id": "794967404",
-      "name": "Kask Sticker Etiket Yapıştırma Araba Motosiklet Beyaz",
-      "slug": "kask-sticker-etiket-yapistirma-araba-motosiklet-beyaz-794967404",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Ürün boyutları görsellerde mevcuttur. Mevcut renkler renk seçeneklerinde Yüksek Kaliteli malzeme sudan etkilenmez.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/0401cbc8-cfca-37a7-b5e1-e3d7ef9d82e6/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/6ea3d725-994c-3424-852d-a71f8345255e/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/2b050ccc-b8dd-36bc-b191-0d05743092f3/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/c46e3733-4035-3e7d-b216-8094c1dd16b6/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/109742c3-efe7-3cd3-9c34-bb6ffd1bff88/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/7af9881a-8fc6-330e-b14c-63f52b55a99f/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/59beb3bc-676d-3559-8405-4583f638447f/1_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "346874356788543",
-          "sku": "kskbyz",
-          "attributes": {
-            "Renk": "Beyaz"
-          },
-          "price": 261,
-          "salePrice": 261,
-          "stock": 199
-        }
-      ]
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "794967388",
@@ -2881,7 +3013,20 @@
         "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/c46e3733-4035-3e7d-b216-8094c1dd16b6/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/109742c3-efe7-3cd3-9c34-bb6ffd1bff88/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/7af9881a-8fc6-330e-b14c-63f52b55a99f/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/59beb3bc-676d-3559-8405-4583f638447f/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/59beb3bc-676d-3559-8405-4583f638447f/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/0401cbc8-cfca-37a7-b5e1-e3d7ef9d82e6/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/6ea3d725-994c-3424-852d-a71f8345255e/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/2b050ccc-b8dd-36bc-b191-0d05743092f3/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/c46e3733-4035-3e7d-b216-8094c1dd16b6/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/7af9881a-8fc6-330e-b14c-63f52b55a99f/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/59beb3bc-676d-3559-8405-4583f638447f/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/0401cbc8-cfca-37a7-b5e1-e3d7ef9d82e6/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/6ea3d725-994c-3424-852d-a71f8345255e/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/c46e3733-4035-3e7d-b216-8094c1dd16b6/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/109742c3-efe7-3cd3-9c34-bb6ffd1bff88/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/109742c3-efe7-3cd3-9c34-bb6ffd1bff88/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/7af9881a-8fc6-330e-b14c-63f52b55a99f/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/2b050ccc-b8dd-36bc-b191-0d05743092f3/1_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -2893,30 +3038,37 @@
           "price": 261,
           "salePrice": 261,
           "stock": 199
-        }
-      ]
-    },
-    {
-      "id": "794967382",
-      "name": "Kask Sticker Etiket Yapıştırma Araba Motosiklet Florasan Sarı",
-      "slug": "kask-sticker-etiket-yapistirma-araba-motosiklet-florasan-sari-794967382",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Ürün boyutları görsellerde mevcuttur. Mevcut renkler renk seçeneklerinde Yüksek Kaliteli malzeme sudan etkilenmez.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/0401cbc8-cfca-37a7-b5e1-e3d7ef9d82e6/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/6ea3d725-994c-3424-852d-a71f8345255e/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/2b050ccc-b8dd-36bc-b191-0d05743092f3/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/c46e3733-4035-3e7d-b216-8094c1dd16b6/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/109742c3-efe7-3cd3-9c34-bb6ffd1bff88/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/7af9881a-8fc6-330e-b14c-63f52b55a99f/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/59beb3bc-676d-3559-8405-4583f638447f/1_org_zoom.jpg"
-      ],
-      "variants": [
+        },
+        {
+          "barcode": "8376382652683990",
+          "sku": "kskkır",
+          "attributes": {
+            "Renk": "Kırmızı"
+          },
+          "price": 261,
+          "salePrice": 261,
+          "stock": 999
+        },
+        {
+          "barcode": "83829018737486372",
+          "sku": "",
+          "attributes": {
+            "Renk": "Mavi"
+          },
+          "price": 261,
+          "salePrice": 261,
+          "stock": 199
+        },
+        {
+          "barcode": "346874356788543",
+          "sku": "kskbyz",
+          "attributes": {
+            "Renk": "Beyaz"
+          },
+          "price": 261,
+          "salePrice": 261,
+          "stock": 199
+        },
         {
           "barcode": "0197366301093774",
           "sku": "",
@@ -2927,111 +3079,12 @@
           "salePrice": 261,
           "stock": 0
         }
-      ]
-    },
-    {
-      "id": "794966464",
-      "name": "Motosiklet Jant Şeridi Reflektif Mavi Sticker Etiket Araba Şerit Lacivert",
-      "slug": "motosiklet-jant-seridi-reflektif-mavi-sticker-etiket-araba-serit-lacivert-794966464",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Universal 16,17,18 inç uyumlu jant şeridi. 9,5 mm genişliğinde. Yüksek kaliteli suya kire dayanıklıdır. Temiz yağsız zemine yapıştırınız. Zemini özenle temizleyiniz.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/d5be9054-513e-3daf-803f-0ff8524de966/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/e189df3b-fc8d-3ba4-87e3-eacf36887ea4/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/36e83bd9-4818-32fb-bfdd-230688423b4f/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/c007e460-2d22-37cb-a5a8-a08a875b73b9/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/ea733052-c38d-37b7-a6fa-507b3f6ae52b/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/9554e574-e797-357d-b2aa-f352d550d56b/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/8f16eec3-a26d-37fc-b6a2-4fdc3372cd7e/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/eb8d26fc-ad02-30c4-9a20-bb8b8cebaed9/1_org_zoom.jpg"
       ],
-      "variants": [
-        {
-          "barcode": "736848374782873",
-          "sku": "glomavi",
-          "attributes": {
-            "Renk": "Mavi",
-            "Özellik": "Su Geçirmez"
-          },
-          "price": 261,
-          "salePrice": 261,
-          "stock": 92
-        }
-      ]
-    },
-    {
-      "id": "794966449",
-      "name": "Motosiklet Jant Şeridi Reflektif Kırmızı Sticker Etiket Araba",
-      "slug": "motosiklet-jant-seridi-reflektif-kirmizi-sticker-etiket-araba-794966449",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Universal 16,17,18 inç uyumlu jant şeridi. 9,5 mm genişliğinde. Yüksek kaliteli suya kire dayanıklıdır. Temiz yağsız zemine yapıştırınız. Zemini özenle temizleyiniz.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/d5be9054-513e-3daf-803f-0ff8524de966/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/e189df3b-fc8d-3ba4-87e3-eacf36887ea4/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/36e83bd9-4818-32fb-bfdd-230688423b4f/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/c007e460-2d22-37cb-a5a8-a08a875b73b9/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/ea733052-c38d-37b7-a6fa-507b3f6ae52b/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/9554e574-e797-357d-b2aa-f352d550d56b/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/8f16eec3-a26d-37fc-b6a2-4fdc3372cd7e/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/eb8d26fc-ad02-30c4-9a20-bb8b8cebaed9/1_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "737838488373663",
-          "sku": "glokırmızı",
-          "attributes": {
-            "Renk": "Kırmızı",
-            "Özellik": "Su Geçirmez"
-          },
-          "price": 261,
-          "salePrice": 261,
-          "stock": 91
-        }
-      ]
-    },
-    {
-      "id": "794966442",
-      "name": "Motosiklet Jant Şeridi Reflektif Florasan Sarı Sticker Etiket Araba Şerit",
-      "slug": "motosiklet-jant-seridi-reflektif-florasan-sari-sticker-etiket-araba-serit-794966442",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Universal 16,17,18 inç uyumlu jant şeridi. 9,5 mm genişliğinde. Yüksek kaliteli suya kire dayanıklıdır. Temiz yağsız zemine yapıştırınız. Zemini özenle temizleyiniz.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/c1067b1a-b764-3151-8e29-5ffeb2f772b5/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/c755fa4f-2184-3577-8680-6ea663ba42e5/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/7bf70296-47ec-312b-b305-8af54a70791c/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/d8b33074-77df-3e90-a015-ea42a0a5c640/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1139/product/media/images/prod/SPM/PIM/20240117/23/4b75bdbf-324c-370a-8e62-0241e62346e4/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/5340d3be-0a70-36b0-a3cd-51413b6b93c6/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/314998eb-d277-3377-a23a-33bd82c71bfb/1_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "948847477372783636",
-          "sku": "glosarıflorasan",
-          "attributes": {
-            "Renk": "Sarı",
-            "Özellik": "Su Geçirmez"
-          },
-          "price": 261,
-          "salePrice": 261,
-          "stock": 0
-        }
-      ]
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "794966419",
@@ -3052,7 +3105,27 @@
         "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/ea733052-c38d-37b7-a6fa-507b3f6ae52b/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/9554e574-e797-357d-b2aa-f352d550d56b/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/8f16eec3-a26d-37fc-b6a2-4fdc3372cd7e/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/eb8d26fc-ad02-30c4-9a20-bb8b8cebaed9/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/eb8d26fc-ad02-30c4-9a20-bb8b8cebaed9/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/d5be9054-513e-3daf-803f-0ff8524de966/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/e189df3b-fc8d-3ba4-87e3-eacf36887ea4/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/36e83bd9-4818-32fb-bfdd-230688423b4f/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/ea733052-c38d-37b7-a6fa-507b3f6ae52b/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/9554e574-e797-357d-b2aa-f352d550d56b/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/8f16eec3-a26d-37fc-b6a2-4fdc3372cd7e/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1123/product/media/images/prod/SPM/PIM/20240107/05/eb8d26fc-ad02-30c4-9a20-bb8b8cebaed9/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1124/product/media/images/prod/SPM/PIM/20240107/05/ea733052-c38d-37b7-a6fa-507b3f6ae52b/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1122/product/media/images/prod/SPM/PIM/20240107/05/9554e574-e797-357d-b2aa-f352d550d56b/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/c1067b1a-b764-3151-8e29-5ffeb2f772b5/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/c755fa4f-2184-3577-8680-6ea663ba42e5/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/7bf70296-47ec-312b-b305-8af54a70791c/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/d8b33074-77df-3e90-a015-ea42a0a5c640/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1139/product/media/images/prod/SPM/PIM/20240117/23/4b75bdbf-324c-370a-8e62-0241e62346e4/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/5340d3be-0a70-36b0-a3cd-51413b6b93c6/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/314998eb-d277-3377-a23a-33bd82c71bfb/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1139/product/media/images/prod/SPM/PIM/20240117/23/b957f1ef-1e18-33a4-a357-ccccbc3033df/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/fc54c6ba-8303-32d5-bbae-36895e515f2e/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/a870585e-2b35-3313-aa97-0aba1d57484c/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/30f172eb-f951-3ca1-a0c3-c18725ee1de2/1_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -3065,27 +3138,40 @@
           "price": 261,
           "salePrice": 261,
           "stock": 197
-        }
-      ]
-    },
-    {
-      "id": "794966416",
-      "name": "Motosiklet Jant Şeridi Reflektif Sticker Etiket Araba Şerit Siyah",
-      "slug": "motosiklet-jant-seridi-reflektif-sticker-etiket-araba-serit-siyah-794966416",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Universal 16,17,18 inç uyumlu jant şeridi. 9,5 mm genişliğinde. Yüksek kaliteli suya kire dayanıklıdır. Temiz yağsız zemine yapıştırınız. Zemini özenle temizleyiniz.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1139/product/media/images/prod/SPM/PIM/20240117/23/b957f1ef-1e18-33a4-a357-ccccbc3033df/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/fc54c6ba-8303-32d5-bbae-36895e515f2e/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/a870585e-2b35-3313-aa97-0aba1d57484c/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/30f172eb-f951-3ca1-a0c3-c18725ee1de2/1_org_zoom.jpg"
-      ],
-      "variants": [
+        },
+        {
+          "barcode": "736848374782873",
+          "sku": "glomavi",
+          "attributes": {
+            "Renk": "Mavi",
+            "Özellik": "Su Geçirmez"
+          },
+          "price": 261,
+          "salePrice": 261,
+          "stock": 92
+        },
+        {
+          "barcode": "737838488373663",
+          "sku": "glokırmızı",
+          "attributes": {
+            "Renk": "Kırmızı",
+            "Özellik": "Su Geçirmez"
+          },
+          "price": 261,
+          "salePrice": 261,
+          "stock": 91
+        },
+        {
+          "barcode": "948847477372783636",
+          "sku": "glosarıflorasan",
+          "attributes": {
+            "Renk": "Sarı",
+            "Özellik": "Su Geçirmez"
+          },
+          "price": 261,
+          "salePrice": 261,
+          "stock": 0
+        },
         {
           "barcode": "7378484772837747",
           "sku": "glosiyah",
@@ -3097,7 +3183,12 @@
           "salePrice": 291,
           "stock": 999
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "792957806",
@@ -3114,7 +3205,13 @@
         "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/b08c339f-ba8b-337d-80eb-3aa31164c7e9/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/80ea2e62-691f-35ea-80ca-cef9086b93d9/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1113/product/media/images/prod/SPM/PIM/20231230/00/806a4608-482c-3024-aea4-e9e65ee4d722/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1113/product/media/images/prod/SPM/PIM/20231230/00/5ec0429f-e04b-30db-b0f2-3d59184f7ddc/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1113/product/media/images/prod/SPM/PIM/20231230/00/5ec0429f-e04b-30db-b0f2-3d59184f7ddc/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1113/product/media/images/prod/SPM/PIM/20231230/00/a214fc49-cbb6-346e-a0ef-7707950ad6a3/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/551805b1-b414-38b3-9510-a028cd4ca596/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1113/product/media/images/prod/SPM/PIM/20231230/00/e0bf38ca-aaf2-345e-be97-64238b556991/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1115/product/media/images/prod/SPM/PIM/20231230/00/5403480a-35fa-3991-a124-62015c848022/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1113/product/media/images/prod/SPM/PIM/20231230/00/b426e20b-f778-35b1-9c6b-f7797d21dabf/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1115/product/media/images/prod/SPM/PIM/20231230/00/6a3351d6-58b1-3152-a1aa-a59a38305fe5/1_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -3126,26 +3223,7 @@
           "price": 152,
           "salePrice": 152,
           "stock": 19991
-        }
-      ]
-    },
-    {
-      "id": "792957803",
-      "name": "Limited Edıtıon sticker otomobil araba etiket yapıştırma honda jdm japon",
-      "slug": "limited-edition-sticker-otomobil-araba-etiket-yapistirma-honda-jdm-japon-792957803",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "16 x 4 cm boyutunda sticker. yapışması ve sökmesi oldukça basittir. Limited Edıtıon sticker otomobil araba etiket yapıştırma.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1113/product/media/images/prod/SPM/PIM/20231230/00/a214fc49-cbb6-346e-a0ef-7707950ad6a3/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/551805b1-b414-38b3-9510-a028cd4ca596/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1113/product/media/images/prod/SPM/PIM/20231230/00/e0bf38ca-aaf2-345e-be97-64238b556991/1_org_zoom.jpg"
-      ],
-      "variants": [
+        },
         {
           "barcode": "25436576875464",
           "sku": "led",
@@ -3155,26 +3233,7 @@
           "price": 152,
           "salePrice": 152,
           "stock": 1983
-        }
-      ]
-    },
-    {
-      "id": "792957793",
-      "name": "Limited Edıtıon sticker otomobil araba etiket yapıştırma honda jdm japon",
-      "slug": "limited-edition-sticker-otomobil-araba-etiket-yapistirma-honda-jdm-japon-792957793",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "16 x 4 cm boyutunda sticker. yapışması ve sökmesi oldukça basittir. Limited Edıtıon sticker otomobil araba etiket yapıştırma.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1115/product/media/images/prod/SPM/PIM/20231230/00/5403480a-35fa-3991-a124-62015c848022/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1113/product/media/images/prod/SPM/PIM/20231230/00/b426e20b-f778-35b1-9c6b-f7797d21dabf/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1115/product/media/images/prod/SPM/PIM/20231230/00/6a3351d6-58b1-3152-a1aa-a59a38305fe5/1_org_zoom.jpg"
-      ],
-      "variants": [
+        },
         {
           "barcode": "243576857564534",
           "sku": "led",
@@ -3185,69 +3244,12 @@
           "salePrice": 211,
           "stock": 989
         }
-      ]
-    },
-    {
-      "id": "792955983",
-      "name": "made in japan araba sticker etiket yapıştırma honda jdm japon",
-      "slug": "made-in-japan-araba-sticker-etiket-yapistirma-honda-jdm-japon-792955983",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "20x10 Cm taşıyıcı ile birlikte gönderilir. yapıştırması ve sökmesi basittir. made in japan araba sticker etiket yapıştırma honda jdm japon. çıkartmaları H20 japonya'da yapılan JDM komik yansıtıcı dekorasyon için gövde cam tampon motosiklet kask dizüstü Tablet telefon a yapışan folyodur. jdm sticker.Made in japon,made in japan.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1113/product/media/images/prod/SPM/PIM/20231230/00/8635f885-b86e-37ad-b830-8e5220725a58/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/795e4b5a-b301-3d09-aa85-317bae957527/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1113/product/media/images/prod/SPM/PIM/20231230/00/face20da-ef87-371a-9409-d07028bd895e/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/d098419b-7af9-3c3b-b1a4-85c65c1459de/1_org_zoom.jpg"
       ],
-      "variants": [
-        {
-          "barcode": "2854848494285",
-          "sku": "jdm",
-          "attributes": {
-            "Renk": "Kırmızı",
-            "Özellik": "Kendinden Yapışkanlı"
-          },
-          "price": 191,
-          "salePrice": 191,
-          "stock": 981
-        }
-      ]
-    },
-    {
-      "id": "792955964",
-      "name": "made in japan araba sticker etiket yapıştırma honda jdm japon",
-      "slug": "made-in-japan-araba-sticker-etiket-yapistirma-honda-jdm-japon-792955964",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "20x10 Cm taşıyıcı ile birlikte gönderilir. yapıştırması ve sökmesi basittir. made in japan araba sticker etiket yapıştırma honda jdm japon. çıkartmaları H20 japonya'da yapılan JDM komik yansıtıcı dekorasyon için gövde cam tampon motosiklet kask dizüstü Tablet telefon a yapışan folyodur. jdm sticker.Made in japon,made in japan.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/8f2e662c-4ba2-3448-9256-71f2512ee0ba/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/1a60a81a-0209-3db5-b797-f6f8b02e3a76/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/ba735848-e451-38f2-9fe9-27578e7208af/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/487bee75-b1ab-3209-ac1d-204d0e916eb1/1_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "38582582855853",
-          "sku": "jdm",
-          "attributes": {
-            "Renk": "Beyaz",
-            "Özellik": "Kendinden Yapışkanlı"
-          },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 984
-        }
-      ]
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "792955940",
@@ -3264,7 +3266,15 @@
         "https://cdn.dsmcdn.com/ty1113/product/media/images/prod/SPM/PIM/20231230/00/3b6ad6c9-38d4-3b08-990e-aa5493aed3f0/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/871ac45b-115a-3b5c-987a-71dcbdf411c1/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1113/product/media/images/prod/SPM/PIM/20231230/00/b1d9a37d-6eee-3231-8ba8-ab0d3bb3da6c/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/b938f23c-9f36-3f20-bd23-e303d8d1aa9f/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/b938f23c-9f36-3f20-bd23-e303d8d1aa9f/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/8f2e662c-4ba2-3448-9256-71f2512ee0ba/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/1a60a81a-0209-3db5-b797-f6f8b02e3a76/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/ba735848-e451-38f2-9fe9-27578e7208af/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/487bee75-b1ab-3209-ac1d-204d0e916eb1/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1113/product/media/images/prod/SPM/PIM/20231230/00/8635f885-b86e-37ad-b830-8e5220725a58/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/795e4b5a-b301-3d09-aa85-317bae957527/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1113/product/media/images/prod/SPM/PIM/20231230/00/face20da-ef87-371a-9409-d07028bd895e/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20231230/00/d098419b-7af9-3c3b-b1a4-85c65c1459de/1_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -3277,64 +3287,35 @@
           "price": 199,
           "salePrice": 199,
           "stock": 995
-        }
-      ]
-    },
-    {
-      "id": "792365733",
-      "name": "Mondial Drift Kafa Granaj Sticker Yapıştırma Etiket",
-      "slug": "mondial-drift-kafa-granaj-sticker-yapistirma-etiket-792365733",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Mondial drift l 125için özel hazırlanmıştır. Ön kafa granejın 2 adet boşluk kısmına yapıştırılır. Reflektiffolyodur gece ışık vurunca parlar. Içerik: 2 folyo sticker etiket. Tek hamlede yapıştırınız. Tekrar soküp takmaya uygun değildir. Yapıştırmada zorluk yaşarsanız işin ehli kişisinden yardım isteyiniz.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1110/product/media/images/prod/SPM/PIM/20231227/15/16186732-8b47-34d7-b082-7c3683e16317/1_org_zoom.jpg"
-      ],
-      "variants": [
+        },
         {
-          "barcode": "123243587461346",
-          "sku": "kfk12",
+          "barcode": "38582582855853",
+          "sku": "jdm",
+          "attributes": {
+            "Renk": "Beyaz",
+            "Özellik": "Kendinden Yapışkanlı"
+          },
+          "price": 199,
+          "salePrice": 199,
+          "stock": 984
+        },
+        {
+          "barcode": "2854848494285",
+          "sku": "jdm",
           "attributes": {
             "Renk": "Kırmızı",
             "Özellik": "Kendinden Yapışkanlı"
           },
-          "price": 211,
-          "salePrice": 211,
-          "stock": 989
-        }
-      ]
-    },
-    {
-      "id": "792365703",
-      "name": "Mondial drift kafa granaj sticker yapıştırma etiket",
-      "slug": "mondial-drift-kafa-granaj-sticker-yapistirma-etiket-792365703",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Mondial drift L 125için özel hazırlanmıştır. Ön kafa granejın 2 adet boşluk kısmına yapıştırılır. ReflektifFolyodur gece Işık vurunca parlar. İçerik: 2 folyo sticker etiket. Tek hamlede yapıştırınız. Tekrar soküp takmaya uygun değildir. Yapıştırmada zorluk yaşarsanız işin ehli kişisinden yardım isteyiniz.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1111/product/media/images/prod/SPM/PIM/20231227/15/ad19dad2-c5d7-39a0-bf4d-6a9ec67d86e2/1_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "342543898756445",
-          "sku": "kfk12",
-          "attributes": {
-            "Renk": "Mavi",
-            "Özellik": "Kendinden Yapışkanlı"
-          },
           "price": 191,
           "salePrice": 191,
-          "stock": 1996
+          "stock": 981
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "792365679",
@@ -3362,7 +3343,12 @@
           "salePrice": 177,
           "stock": 996
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "792322343",
@@ -3376,7 +3362,9 @@
       },
       "descriptionHtml": "Mondial drift L 125için özel hazırlanmıştır. Ön kafa granejın 2 adet boşluk kısmına yapıştırılır. ReflektifFolyodur gece Işık vurunca parlar. İçerik: 2 folyo sticker etiket. Tek hamlede yapıştırınız. Tekrar soküp takmaya uygun değildir. Yapıştırmada zorluk yaşarsanız işin ehli kişisinden yardım isteyiniz.",
       "images": [
-        "https://cdn.dsmcdn.com/ty1108/product/media/images/prod/SPM/PIM/20231227/15/1cfbed82-3aa3-3bc3-a9dd-eadd82059ddd/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1108/product/media/images/prod/SPM/PIM/20231227/15/1cfbed82-3aa3-3bc3-a9dd-eadd82059ddd/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1110/product/media/images/prod/SPM/PIM/20231227/15/16186732-8b47-34d7-b082-7c3683e16317/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1111/product/media/images/prod/SPM/PIM/20231227/15/ad19dad2-c5d7-39a0-bf4d-6a9ec67d86e2/1_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -3389,34 +3377,35 @@
           "price": 222,
           "salePrice": 124,
           "stock": 1997
-        }
-      ]
-    },
-    {
-      "id": "792066881",
-      "name": "Yamaha R7 Jant Şeridi Kırmızı Reflektif Sticker Etiket",
-      "slug": "yamaha-r7-jant-seridi-kirmizi-reflektif-sticker-etiket-792066881",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "2181",
-        "name": "Motosiklet Jant Şerit",
-        "slug": "motosiklet-jant-serit"
-      },
-      "descriptionHtml": "Açıklama: Yamaha R7'nizin performansını ve estetiğini zirveye taşıyın! Özel tasarım renkli motorsiklet jant şeridi, sürüş güvenliğinizi artırırken aynı zamanda motosikletinizin görsel çekiciliğini en üst düzeye çıkarmanın harika bir yoludur. Ana Özellikler: Mükemmel Uyumluluk ve Montaj Kolaylığı:Yamaha R7 modeli için tasarlanan bu sadece uyum sağlamakla kalmaz, kolay tasarlanmıştır. Çeşitli Renk Seçenekleri ile Stilinizi Yaratın:Mat, parlak, neon ve daha fazlası! Geniş yelpazesi ile motosikletinizi kişiselleştirin ve kendinizi yolda öne çıkarın. Yüksek Kalite Malzeme ve Dayanıklılık:Güçlü yapısı sayesinde dayanıklılığı garanti eden bu her türlü hava koşuluna karşı direnç gösterir ve uzun ömürlü kullanım sağlar. ve Güvenlik Avantajı:Hem görünüm hem de kombinasyon! şeritleri, gece ve gündüz görünürlüğünüzü artırarak optimize eder.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1377/product/media/images/prod/QC/20240624/14/ab0ac7c3-53ac-3596-aabf-f4047ecaf9c6/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1379/product/media/images/prod/QC/20240624/14/ff8f2b1d-ce6d-3e39-8e35-9d72249363b9/1_org_zoom.jpg"
-      ],
-      "variants": [
+        },
         {
-          "barcode": "1453367865756455",
-          "sku": "r711",
-          "attributes": {},
-          "price": 464,
-          "salePrice": 464,
-          "stock": 20000
+          "barcode": "123243587461346",
+          "sku": "kfk12",
+          "attributes": {
+            "Renk": "Kırmızı",
+            "Özellik": "Kendinden Yapışkanlı"
+          },
+          "price": 211,
+          "salePrice": 211,
+          "stock": 989
+        },
+        {
+          "barcode": "342543898756445",
+          "sku": "kfk12",
+          "attributes": {
+            "Renk": "Mavi",
+            "Özellik": "Kendinden Yapışkanlı"
+          },
+          "price": 191,
+          "salePrice": 191,
+          "stock": 1996
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "792066506",
@@ -3431,7 +3420,9 @@
       "descriptionHtml": "Açıklama: Yamaha R7'nizin performansını ve estetiğini zirveye taşıyın! Özel tasarım renkli motorsiklet jant şeridi, sürüş güvenliğinizi artırırken aynı zamanda motosikletinizin görsel çekiciliğini en üst düzeye çıkarmanın harika bir yoludur. Ana Özellikler: Mükemmel Uyumluluk ve Montaj Kolaylığı:Yamaha R7 modeli için tasarlanan bu sadece uyum sağlamakla kalmaz, kolay tasarlanmıştır. Çeşitli Renk Seçenekleri ile Stilinizi Yaratın:Mat, parlak, neon ve daha fazlası! Geniş yelpazesi ile motosikletinizi kişiselleştirin ve kendinizi yolda öne çıkarın. Yüksek Kalite Malzeme ve Dayanıklılık:Güçlü yapısı sayesinde dayanıklılığı garanti eden bu her türlü hava koşuluna karşı direnç gösterir ve uzun ömürlü kullanım sağlar. ve Güvenlik Avantajı:Hem görünüm hem de kombinasyon! şeritleri, gece ve gündüz görünürlüğünüzü artırarak optimize eder.",
       "images": [
         "https://cdn.dsmcdn.com/ty1377/product/media/images/prod/QC/20240624/13/77760916-1836-312e-9802-e3c2909f2b73/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1378/product/media/images/prod/QC/20240624/13/dcf3400d-591e-3f85-8d9c-47d32ab18304/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1378/product/media/images/prod/QC/20240624/13/dcf3400d-591e-3f85-8d9c-47d32ab18304/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1377/product/media/images/prod/QC/20240624/14/ab0ac7c3-53ac-3596-aabf-f4047ecaf9c6/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1379/product/media/images/prod/QC/20240624/14/ff8f2b1d-ce6d-3e39-8e35-9d72249363b9/1_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -3440,7 +3431,15 @@
           "attributes": {},
           "price": 472,
           "salePrice": 472,
-          "stock": 20000
+          "stock": 85
+        },
+        {
+          "barcode": "1453367865756455",
+          "sku": "r711",
+          "attributes": {},
+          "price": 464,
+          "salePrice": 464,
+          "stock": 83
         }
       ]
     },
@@ -3466,8 +3465,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 522,
-          "salePrice": 522,
+          "price": 571,
+          "salePrice": 571,
           "stock": 964
         }
       ]
@@ -3484,45 +3483,26 @@
       },
       "descriptionHtml": "4 parça ktm jant içi sticker etiket. siyah 17 inç uyumlu. Özel KTM Tasarımı:Motosikletinize olarak tasarlanmış, KTM markasına özgü estetik ve dinamik bir görünüm sunar. Renkli Vinil Şerit Seti:Farklı renk seçenekleri ile motosikletinizin jantlarına özgün bir tarz katın. Dayanıklı ve Hava Koşullarına Dayanıklı:Yüksek kaliteli malzeme, uzun ömürlü kullanım ve çeşitli karşı direnç sağlar. Hızlı ve Kolay Kurulum:Talimatlarla birlikte gelen bu şeridi seti, herkesin kolayca kurabilmesi için tasarlanmıştır. KTM Motosiklet ile tarzınızı yolda sergileyin, motosikletinizi kişiselleştirin! Hemen sipariş verin ve sürüş deneyiminizi renklendirin!ktm duke 125 set ktm 390 set ktm 990 ktm 125 ktm 890 r ktm 1190 decal ktm 890 r ktm 390 original stickers ktm ktm 990 super ktm 690 ktm 200 ktm 990 ktm 1290 rim motorcycle monster ktm 200 exc 2008",
       "images": [
-        "https://cdn.dsmcdn.com/ty1105/product/media/images/prod/SPM/PIM/20231225/21/bae1c8b0-3976-3dd7-a7cc-5ed8a071abf0/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1105/product/media/images/prod/SPM/PIM/20231225/21/bae1c8b0-3976-3dd7-a7cc-5ed8a071abf0/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1104/product/media/images/prod/SPM/PIM/20231225/21/91f1cb32-c521-38f2-bc71-b9d4cccd42c7/1_org_zoom.jpg"
       ],
       "variants": [
         {
           "barcode": "3243564786543247",
           "sku": "ktmjiçi",
-          "attributes": {
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
-          },
+          "attributes": {},
           "price": 371,
           "salePrice": 371,
-          "stock": 1906
-        }
-      ]
-    },
-    {
-      "id": "791786204",
-      "name": "Ktm Motosiklet Jant Şeridi, Ready To Race, Ktm Duke Içi Sticker Etiket",
-      "slug": "ktm-motosiklet-jant-seridi-ready-to-race-ktm-duke-ici-sticker-etiket-791786204",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1999",
-        "name": "Tankpad & Sticker",
-        "slug": "tankpad-sticker"
-      },
-      "descriptionHtml": "4 parça ktm jant içi sticker etiket. turuncu uyumlu. Özel KTM Tasarımı:Motosikletinize olarak tasarlanmış, KTM markasına özgü estetik ve dinamik bir görünüm sunar. Renkli Vinil Şerit Seti:Farklı renk seçenekleri ile motosikletinizin jantlarına özgün bir tarz katın. Dayanıklı ve Hava Koşullarına Dayanıklı:Yüksek kaliteli malzeme, uzun ömürlü kullanım ve çeşitli karşı direnç sağlar. Hızlı ve Kolay Kurulum:Talimatlarla birlikte gelen bu şeridi seti, herkesin kolayca kurabilmesi için tasarlanmıştır. KTM Motosiklet ile tarzınızı yolda sergileyin, motosikletinizi kişiselleştirin! Hemen sipariş verin ve sürüş deneyiminizi renklendirin! ktm duke 125 set ktm 390 set ktm 990 ktm 125 ktm 890 r ktm 1190 decal ktm 890 r ktm 390 original stickers ktm ktm 990 super ktm 690 ktm 200 ktm 990 ktm 1290 rim motorcycle monster ktm 200 exc 2008",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1104/product/media/images/prod/SPM/PIM/20231225/21/91f1cb32-c521-38f2-bc71-b9d4cccd42c7/1_org_zoom.jpg"
-      ],
-      "variants": [
+          "stock": 1907
+        },
         {
           "barcode": "254365746877645425",
           "sku": "ktmjiç",
           "attributes": {
-            "Menşei": "TR",
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
+            "Menşei": "TR"
           },
-          "price": 280,
-          "salePrice": 280,
+          "price": 282,
+          "salePrice": 282,
           "stock": 19904
         }
       ]
@@ -3541,20 +3521,19 @@
       "images": [
         "https://cdn.dsmcdn.com/ty1105/product/media/images/prod/SPM/PIM/20231225/20/410a718c-215e-39b5-9264-a4eb674e379f/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1105/product/media/images/prod/SPM/PIM/20231225/20/75bc52df-c12e-35e3-9f5a-26c98fea0bad/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1104/product/media/images/prod/SPM/PIM/20231225/20/0f520955-7c1b-3665-9918-81bf8594d000/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1104/product/media/images/prod/SPM/PIM/20231225/20/0f520955-7c1b-3665-9918-81bf8594d000/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1153/product/media/images/prod/SPM/PIM/20240131/16/4b5a0a3d-c653-3e20-bc1e-26e4ee4af692/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1152/product/media/images/prod/SPM/PIM/20240131/16/d87e3416-4531-3ac9-9206-2054cf4c12c8/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1154/product/media/images/prod/SPM/PIM/20240131/16/34c694f2-2034-3985-91bd-317468268a29/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/c701496e-addb-312e-bb78-847ee4b8bcdd/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/36a0d6a1-83dc-31c8-98ab-6c7727005088/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/499ab8dc-12ca-37a6-be85-28dd8dc8d92b/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/2dafaeea-5b3f-3780-ae77-69d192b556cd/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1106/product/media/images/prod/SPM/PIM/20231225/20/526c70f4-a467-39ca-8225-0ff21f31f478/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1105/product/media/images/prod/SPM/PIM/20231225/20/a2064247-fe49-38eb-8b99-c9c711d1f511/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1106/product/media/images/prod/SPM/PIM/20231225/20/af47b454-3900-38cb-8519-8d0791d440b2/1_org_zoom.jpg"
       ],
       "variants": [
-        {
-          "barcode": "2134567235668",
-          "sku": "13ktm",
-          "attributes": {
-            "Renk": "Siyah",
-            "Özellik": "Hava"
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        },
         {
           "barcode": "1325467898254",
           "sku": "13ktm",
@@ -3562,60 +3541,21 @@
             "Renk": "Siyah",
             "Özellik": "Hava"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        }
-      ]
-    },
-    {
-      "id": "791779711",
-      "name": "Ktm Motosikletiniz Için Yüksek Kaliteli Sticker Seti, Ktm Etiket Yapıştırma, Ready To Race",
-      "slug": "ktm-motosikletiniz-icin-yuksek-kaliteli-sticker-seti-ktm-etiket-yapistirma-ready-to-race-791779711",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Yüksek Kalite Vinil:Dayanıklı vinil malzeme, uzun ömürlü kullanım için tasarlanmıştır. Çeşitli hava koşullarına karşı direnç gösterir. Özelleştirilebilir Tasarımlar:Farklı desenler, grafikler ve renk seçenekleri arasından seçim yaparak motosikletinize özgün bir görünüm kazandırın. Kolay Uygulama:Talimatlarla birlikte gelen bu sticker seti, herkesin kolayca uygulayabilmesi Ekstra ekipman veya uzmanlık gerektirmez. Dinamik Görünüm:Motosikletinize bir katın! Stickerler, hareketli ve enerjik bir elde etmenize yardımcı olur. Kişiselleştirilmiş Tarz:Kendi tarzınızı yansıtın! Motosikletinizi diğerlerinden ayıran tasarımlarla sokaklarda fark yaratın. öne çıkaran, güçlü bir ifadeyle sergileyin. Bu kaliteli setiyle KTM daha da özelleştirin ve her sürüşünüzü unutulmaz kılın! Sipariş verin ve sürüş deneyiminizi bir üst seviyeye taşıyın!\"",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/c701496e-addb-312e-bb78-847ee4b8bcdd/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/36a0d6a1-83dc-31c8-98ab-6c7727005088/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/499ab8dc-12ca-37a6-be85-28dd8dc8d92b/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/2dafaeea-5b3f-3780-ae77-69d192b556cd/1_org_zoom.jpg"
-      ],
-      "variants": [
+          "price": 199,
+          "salePrice": 199,
+          "stock": 1977
+        },
         {
-          "barcode": "12524676253325",
+          "barcode": "2134567235668",
           "sku": "13ktm",
           "attributes": {
-            "Renk": "Beyaz",
+            "Renk": "Siyah",
             "Özellik": "Hava"
           },
-          "price": 180,
-          "salePrice": 180,
-          "stock": 1940
-        }
-      ]
-    },
-    {
-      "id": "791778351",
-      "name": "Ktm Motosikletiniz Için Yüksek Kaliteli Sticker Seti, Ktm Etiket Yapıştırma, Ready To Race",
-      "slug": "ktm-motosikletiniz-icin-yuksek-kaliteli-sticker-seti-ktm-etiket-yapistirma-ready-to-race-791778351",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Yüksek Kalite Vinil:Dayanıklı vinil malzeme, uzun ömürlü kullanım için tasarlanmıştır. Çeşitli hava koşullarına karşı direnç gösterir. Özelleştirilebilir Tasarımlar:Farklı desenler, grafikler ve renk seçenekleri arasından seçim yaparak motosikletinize özgün bir görünüm kazandırın. Kolay Uygulama:Talimatlarla birlikte gelen bu sticker seti, herkesin kolayca uygulayabilmesi Ekstra ekipman veya uzmanlık gerektirmez. Dinamik Görünüm:Motosikletinize bir katın! Stickerler, hareketli ve enerjik bir elde etmenize yardımcı olur. Kişiselleştirilmiş Tarz:Kendi tarzınızı yansıtın! Motosikletinizi diğerlerinden ayıran tasarımlarla sokaklarda fark yaratın. öne çıkaran, güçlü bir ifadeyle sergileyin. Bu kaliteli setiyle KTM daha da özelleştirin ve her sürüşünüzü unutulmaz kılın! Sipariş verin ve sürüş deneyiminizi bir üst seviyeye taşıyın!\"",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1153/product/media/images/prod/SPM/PIM/20240131/16/4b5a0a3d-c653-3e20-bc1e-26e4ee4af692/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1152/product/media/images/prod/SPM/PIM/20240131/16/d87e3416-4531-3ac9-9206-2054cf4c12c8/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1154/product/media/images/prod/SPM/PIM/20240131/16/34c694f2-2034-3985-91bd-317468268a29/1_org_zoom.jpg"
-      ],
-      "variants": [
+          "price": 199,
+          "salePrice": 199,
+          "stock": 1977
+        },
         {
           "barcode": "12456789876544",
           "sku": "13ktm",
@@ -3625,26 +3565,18 @@
           "price": 199,
           "salePrice": 199,
           "stock": 1999
-        }
-      ]
-    },
-    {
-      "id": "791775743",
-      "name": "Ktm Motosikletiniz Için Yüksek Kaliteli Sticker Seti, Ktm Etiket Yapıştırma, Ready To Race",
-      "slug": "ktm-motosikletiniz-icin-yuksek-kaliteli-sticker-seti-ktm-etiket-yapistirma-ready-to-race-791775743",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Yüksek Kalite Vinil:Dayanıklı vinil malzeme, uzun ömürlü kullanım için tasarlanmıştır. Çeşitli hava koşullarına karşı direnç gösterir. Özelleştirilebilir Tasarımlar:Farklı desenler, grafikler ve renk seçenekleri arasından seçim yaparak motosikletinize özgün bir görünüm kazandırın. Kolay Uygulama:Talimatlarla birlikte gelen bu sticker seti, herkesin kolayca uygulayabilmesi Ekstra ekipman veya uzmanlık gerektirmez. Dinamik Görünüm:Motosikletinize bir katın! Stickerler, hareketli ve enerjik bir elde etmenize yardımcı olur. Kişiselleştirilmiş Tarz:Kendi tarzınızı yansıtın! Motosikletinizi diğerlerinden ayıran tasarımlarla sokaklarda fark yaratın. öne çıkaran, güçlü bir ifadeyle sergileyin. Bu kaliteli setiyle KTM daha da özelleştirin ve her sürüşünüzü unutulmaz kılın! Sipariş verin ve sürüş deneyiminizi bir üst seviyeye taşıyın!\"",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1106/product/media/images/prod/SPM/PIM/20231225/20/526c70f4-a467-39ca-8225-0ff21f31f478/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1105/product/media/images/prod/SPM/PIM/20231225/20/a2064247-fe49-38eb-8b99-c9c711d1f511/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1106/product/media/images/prod/SPM/PIM/20231225/20/af47b454-3900-38cb-8519-8d0791d440b2/1_org_zoom.jpg"
-      ],
-      "variants": [
+        },
+        {
+          "barcode": "12524676253325",
+          "sku": "13ktm",
+          "attributes": {
+            "Renk": "Beyaz",
+            "Özellik": "Hava"
+          },
+          "price": 180,
+          "salePrice": 180,
+          "stock": 1941
+        },
         {
           "barcode": "24765434534676",
           "sku": "13ktm",
@@ -3656,7 +3588,12 @@
           "salePrice": 249,
           "stock": 970
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "791771193",
@@ -3685,65 +3622,12 @@
           "salePrice": 199,
           "stock": 1999
         }
-      ]
-    },
-    {
-      "id": "787370179",
-      "name": "Cumhuriyet'in 100. Yıl Yaşında sticker etiket türk bayrağı 2 Adet",
-      "slug": "cumhuriyet-in-100-yil-yasinda-sticker-etiket-turk-bayragi-2-adet-787370179",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Cumhuriyet'in 100. Yıl Yaşında sticker etiket türk bayrağı 2 Adet Seçeceğiniz renk 2 15 cm boyutunda alman malı folyodan gönderilmektedir. Yapıştırması kolaydır. Taşıyıcısı ile birlikte gönderilir.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1085/product/media/images/prod/SPM/PIM/20231209/22/30fa1bb2-2df0-35f1-8048-ffe3a53361dd/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1083/product/media/images/prod/SPM/PIM/20231209/22/37edf9a6-1d3f-30c0-94b6-b45b25c6f263/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1085/product/media/images/prod/SPM/PIM/20231209/22/dbbf4517-dd7d-3d22-802d-ae8f178b71a7/1_org_zoom.jpg"
       ],
-      "variants": [
-        {
-          "barcode": "2434867564534",
-          "sku": "\"00k",
-          "attributes": {
-            "Renk": "Kırmızı"
-          },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 195
-        }
-      ]
-    },
-    {
-      "id": "787370155",
-      "name": "Cumhuriyet'in 100. Yıl Yaşında sticker etiket türk bayrağı 2 Adet",
-      "slug": "cumhuriyet-in-100-yil-yasinda-sticker-etiket-turk-bayragi-2-adet-787370155",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Cumhuriyet'in 100. Yıl Yaşında sticker etiket türk bayrağı 2 Adet Seçeceğiniz renk 2 15 cm boyutunda alman malı folyodan gönderilmektedir. Yapıştırması kolaydır. Taşıyıcısı ile birlikte gönderilir.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1084/product/media/images/prod/SPM/PIM/20231209/22/9a773807-158c-3709-b3ef-aef308356a57/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1084/product/media/images/prod/SPM/PIM/20231209/22/dfab3392-2ce3-36fc-872d-218c5bf2499f/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1084/product/media/images/prod/SPM/PIM/20231209/22/60988f73-b1c8-3178-855f-d2f35050c7f0/1_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "67857564523423",
-          "sku": "100s",
-          "attributes": {
-            "Renk": "Siyah"
-          },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 199
-        }
-      ]
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "787369867",
@@ -3759,7 +3643,13 @@
       "images": [
         "https://cdn.dsmcdn.com/ty1084/product/media/images/prod/SPM/PIM/20231209/22/9a295ed8-b9b4-327f-85a9-73bef2670580/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1084/product/media/images/prod/SPM/PIM/20231209/22/68f57195-4f66-36cf-85f7-5221384a302d/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1083/product/media/images/prod/SPM/PIM/20231209/22/374f4988-f7a8-3d29-bafa-28e33f896c2f/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1083/product/media/images/prod/SPM/PIM/20231209/22/374f4988-f7a8-3d29-bafa-28e33f896c2f/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1085/product/media/images/prod/SPM/PIM/20231209/22/30fa1bb2-2df0-35f1-8048-ffe3a53361dd/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1083/product/media/images/prod/SPM/PIM/20231209/22/37edf9a6-1d3f-30c0-94b6-b45b25c6f263/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1085/product/media/images/prod/SPM/PIM/20231209/22/dbbf4517-dd7d-3d22-802d-ae8f178b71a7/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1084/product/media/images/prod/SPM/PIM/20231209/22/9a773807-158c-3709-b3ef-aef308356a57/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1084/product/media/images/prod/SPM/PIM/20231209/22/dfab3392-2ce3-36fc-872d-218c5bf2499f/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1084/product/media/images/prod/SPM/PIM/20231209/22/60988f73-b1c8-3178-855f-d2f35050c7f0/1_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -3771,8 +3661,33 @@
           "price": 199,
           "salePrice": 199,
           "stock": 199
+        },
+        {
+          "barcode": "2434867564534",
+          "sku": "\"00k",
+          "attributes": {
+            "Renk": "Kırmızı"
+          },
+          "price": 199,
+          "salePrice": 199,
+          "stock": 195
+        },
+        {
+          "barcode": "67857564523423",
+          "sku": "100s",
+          "attributes": {
+            "Renk": "Siyah"
+          },
+          "price": 199,
+          "salePrice": 199,
+          "stock": 199
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9003",
+        "name": "Dini & Kaligrafi Sticker",
+        "slug": "dini-kaligrafi-sticker"
+      }
     },
     {
       "id": "785880018",
@@ -3846,15 +3761,20 @@
           "sku": "",
           "attributes": {
             "Renk": "Beyaz",
-            "Menşei": "TR",
             "Özellik": "Hava",
+            "Menşei": "TR",
             "Üretici Adı": "MUHAMMED YUSUF GÜVEN / guvenmuhammedyusuf@gmail.com"
           },
           "price": 0,
           "salePrice": 0,
           "stock": 1
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9005",
+        "name": "Ayna & Cam Sticker",
+        "slug": "ayna-cam-sticker"
+      }
     },
     {
       "id": "777317076",
@@ -3881,11 +3801,16 @@
             "Özellik": "Kendinden Yapışkanlı",
             "Menşei": "TR"
           },
-          "price": 284,
-          "salePrice": 284,
-          "stock": 9908
+          "price": 323,
+          "salePrice": 323,
+          "stock": 9910
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "777197570",
@@ -3913,7 +3838,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "775088365",
@@ -3944,7 +3874,12 @@
           "salePrice": 350,
           "stock": 959
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "774463617",
@@ -3964,9 +3899,7 @@
         {
           "barcode": "6718975873892568268964",
           "sku": "fzr",
-          "attributes": {
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
-          },
+          "attributes": {},
           "price": 222,
           "salePrice": 197,
           "stock": 1999
@@ -4000,67 +3933,12 @@
           "salePrice": 515,
           "stock": 20000
         }
-      ]
-    },
-    {
-      "id": "771996004",
-      "name": "Araba Makyaj Ayna Etiket Sticker, Bugünde Çok Güzelsin",
-      "slug": "araba-makyaj-ayna-etiket-sticker-bugunde-cok-guzelsin-771996004",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "araba otomobil ayna makyaj aynası sticker, \" Bugünde çok güzelsin \" Sticker boyutu (8cm - 1.2 cm)dir. Yapıştırması basittir. Yapıştırmadan önce zemini alkol veya kolanya ile temizleyiniz aksi halde zor yapışır.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/ab4394c0-481a-3402-b086-22e18d7cf815/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/22015ebe-5f2f-3279-b931-ae475d9d5ba4/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1139/product/media/images/prod/SPM/PIM/20240117/23/2dafaeea-5b3f-3780-ae77-69d192b556cd/1_org_zoom.jpg"
       ],
-      "variants": [
-        {
-          "barcode": "19087784874289",
-          "sku": "krmz",
-          "attributes": {
-            "Renk": "Kırmızı",
-            "Özellik": "Hava"
-          },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 1990
-        }
-      ]
-    },
-    {
-      "id": "771995552",
-      "name": "Araba Makyaj Ayna Etiket Sticker, Bugünde Çok Güzelsin",
-      "slug": "araba-makyaj-ayna-etiket-sticker-bugunde-cok-guzelsin-771995552",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Otomobil araba makyaj aynası sticker, \" Bugünde çok güzelsin \" Sticker boyutu (8cm - 1.2 cm)dir. Yapıştırması basittir. Yapıştırmadan önce zemini alkol veya kolanya ile temizleyiniz aksi halde zor yapışır.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/70fef13c-4c3a-3f22-9a2a-93669ce493ee/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1139/product/media/images/prod/SPM/PIM/20240117/23/7a9b92d6-354a-32ba-99c3-5300d5450f92/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/2dafaeea-5b3f-3780-ae77-69d192b556cd/1_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "2747242498944",
-          "sku": "byz",
-          "attributes": {
-            "Renk": "Beyaz",
-            "Özellik": "Hava"
-          },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 1964
-        }
-      ]
+      "categoryOverride": {
+        "id": "9003",
+        "name": "Dini & Kaligrafi Sticker",
+        "slug": "dini-kaligrafi-sticker"
+      }
     },
     {
       "id": "771992890",
@@ -4076,7 +3954,12 @@
       "images": [
         "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/d1570801-af56-339e-acd4-e267668c5487/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/5beb27b5-3455-37ec-9692-fa6beab3eb01/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1139/product/media/images/prod/SPM/PIM/20240117/23/2dafaeea-5b3f-3780-ae77-69d192b556cd/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1139/product/media/images/prod/SPM/PIM/20240117/23/2dafaeea-5b3f-3780-ae77-69d192b556cd/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/ab4394c0-481a-3402-b086-22e18d7cf815/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1138/product/media/images/prod/SPM/PIM/20240117/23/22015ebe-5f2f-3279-b931-ae475d9d5ba4/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/70fef13c-4c3a-3f22-9a2a-93669ce493ee/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1139/product/media/images/prod/SPM/PIM/20240117/23/7a9b92d6-354a-32ba-99c3-5300d5450f92/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/2dafaeea-5b3f-3780-ae77-69d192b556cd/1_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -4089,36 +3972,35 @@
           "price": 199,
           "salePrice": 199,
           "stock": 1986
-        }
-      ]
-    },
-    {
-      "id": "768694717",
-      "name": "Hard Core Rider Sticker Araba Motosiklet 14cm*18cm",
-      "slug": "hard-core-rider-sticker-araba-motosiklet-14cm-18cm-768694717",
-      "brand": "BENİMSER REKLAM",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Ürün ölçüsü : 14cm*18cm. Yüksek kaliteli materyalden üretilmektedir. Solma yapmaz, ıslanınca kalkmaz. Sıcağa, suya, benzine, güneş ışığına dayanıklıdır. Uzun ömürlüdür. Çıkarılınca iz bırakmaz. Nasıl Uygulanır?. Öncelikle uygulanacak yüzey tozdan, kirden ya da varsa önceden kullandığınız sticker kalıntılarından arındırınız. Yapıştırılacak olan alanda cila, parlatıcı boya, kimyasal kalıntı olmamasına özen gösteriniz. Aksi takdirde alana yapışmayacaktır. Daha sonra stickerı taşıyıcı kağıttan ayırıp, transfer bandıyla birlikte temiz ve kuru yüzeye yapıştırınız. Düzgün bir şekilde yapıştığından emin olduktan stickerın üzerindeki bandını kaldırınız.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1548/product/media/images/ty1549/prod/QC/20240916/20/c03d128a-b9a0-395b-8cae-87323a5fbc87/1_org_zoom.jpg"
-      ],
-      "variants": [
+        },
         {
-          "barcode": "054585323",
-          "sku": "hcrkırmızı",
+          "barcode": "19087784874289",
+          "sku": "krmz",
           "attributes": {
             "Renk": "Kırmızı",
-            "Özellik": "Uzun"
+            "Özellik": "Hava"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "price": 199,
+          "salePrice": 199,
+          "stock": 1991
+        },
+        {
+          "barcode": "2747242498944",
+          "sku": "byz",
+          "attributes": {
+            "Renk": "Beyaz",
+            "Özellik": "Hava"
+          },
+          "price": 199,
+          "salePrice": 199,
+          "stock": 1964
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9005",
+        "name": "Ayna & Cam Sticker",
+        "slug": "ayna-cam-sticker"
+      }
     },
     {
       "id": "768694575",
@@ -4134,7 +4016,9 @@
       "images": [
         "https://cdn.dsmcdn.com/ty1022/product/media/images/prod/SPM/PIM/20231023/01/630adf5e-eff6-3561-b24b-6f00f29bb5f4/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1021/product/media/images/prod/SPM/PIM/20231023/01/c9b0d3ee-fa99-3c70-b005-483faf9d05ef/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1020/product/media/images/prod/SPM/PIM/20231023/01/18477425-e1d0-34a3-9cc2-9c66d7e86bc2/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1020/product/media/images/prod/SPM/PIM/20231023/01/18477425-e1d0-34a3-9cc2-9c66d7e86bc2/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1548/product/media/images/ty1549/prod/QC/20240916/20/c03d128a-b9a0-395b-8cae-87323a5fbc87/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1481/product/media/images/prod/QC/20240814/12/e64bd5b1-16f6-3ac1-a32b-49f5fb42d2f4/1_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -4147,24 +4031,18 @@
           "price": 0,
           "salePrice": 0,
           "stock": 0
-        }
-      ]
-    },
-    {
-      "id": "768694343",
-      "name": "Hard Core Rider Sticker Araba Motosiklet 14cm*18cm",
-      "slug": "hard-core-rider-sticker-araba-motosiklet-14cm-18cm-768694343",
-      "brand": "BENİMSER REKLAM",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Ürün ölçüsü : 14cm*18cm. Yüksek kaliteli materyalden üretilmektedir. Solma yapmaz, ıslanınca kalkmaz. Sıcağa, suya, benzine, güneş ışığına dayanıklıdır. Uzun ömürlüdür. Çıkarılınca iz bırakmaz. Nasıl Uygulanır?. Öncelikle uygulanacak yüzey tozdan, kirden ya da varsa önceden kullandığınız sticker kalıntılarından arındırınız. Yapıştırılacak olan alanda cila, parlatıcı boya, kimyasal kalıntı olmamasına özen gösteriniz. Aksi takdirde alana yapışmayacaktır. Daha sonra stickerı taşıyıcı kağıttan ayırıp, transfer bandıyla birlikte temiz ve kuru yüzeye yapıştırınız. Düzgün bir şekilde yapıştığından emin olduktan stickerın üzerindeki bandını kaldırınız.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1481/product/media/images/prod/QC/20240814/12/e64bd5b1-16f6-3ac1-a32b-49f5fb42d2f4/1_org_zoom.jpg"
-      ],
-      "variants": [
+        },
+        {
+          "barcode": "054585323",
+          "sku": "hcrkırmızı",
+          "attributes": {
+            "Renk": "Kırmızı",
+            "Özellik": "Uzun"
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
         {
           "barcode": "054585324",
           "sku": "hcr",
@@ -4176,36 +4054,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
-    },
-    {
-      "id": "768317532",
-      "name": "YARIM JANT ŞERİDİ BEYAZ",
-      "slug": "yarim-jant-seridi-beyaz-768317532",
-      "brand": "Oracal",
-      "category": {
-        "id": "1999",
-        "name": "Tankpad & Sticker",
-        "slug": "tankpad-sticker"
-      },
-      "descriptionHtml": "4 ADET DÜZ RENK BEYAZ",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1008/product/media/images/prod/SPM/PIM/20231006/23/eda90e9d-7002-339b-b9c9-5742d30f14f7/1_org_zoom.jpg"
       ],
-      "variants": [
-        {
-          "barcode": "YARIMJANTBEYAZ",
-          "sku": "trm12",
-          "attributes": {
-            "Renk": "beyaz",
-            "Menşei": "TR",
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
-          },
-          "price": 335,
-          "salePrice": 335,
-          "stock": 20000
-        }
-      ]
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "767621158",
@@ -4251,8 +4105,7 @@
           "barcode": "892375897252759072865",
           "sku": "10by",
           "attributes": {
-            "Menşei": "TR",
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
+            "Menşei": "TR"
           },
           "price": 199,
           "salePrice": 199,
@@ -4278,9 +4131,7 @@
         {
           "barcode": "31872978978298758927",
           "sku": "10kır",
-          "attributes": {
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
-          },
+          "attributes": {},
           "price": 199,
           "salePrice": 199,
           "stock": 1902
@@ -4305,9 +4156,7 @@
         {
           "barcode": "28968297428758927859",
           "sku": "1ofos",
-          "attributes": {
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
-          },
+          "attributes": {},
           "price": 442,
           "salePrice": 442,
           "stock": 1992
@@ -4339,7 +4188,12 @@
           "salePrice": 199,
           "stock": 983
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "758777953",
@@ -4364,11 +4218,16 @@
             "Renk": "Siyah",
             "Menşei": "TR"
           },
-          "price": 411,
-          "salePrice": 411,
+          "price": 412,
+          "salePrice": 412,
           "stock": 19999
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9002",
+        "name": "Araba Sticker & Aksesuar",
+        "slug": "araba-sticker-aksesuar"
+      }
     },
     {
       "id": "758334798",
@@ -4508,35 +4367,6 @@
       ]
     },
     {
-      "id": "757791366",
-      "name": "Wanted Motorsiklet, Laptop, Cam, Kask, Araba Sticker 18x7 Cm",
-      "slug": "wanted-motorsiklet-laptop-cam-kask-araba-sticker-18x7-cm-757791366",
-      "brand": "BENİMSER REKLAM",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Ölçü 18x7 cm. Uzun ömürlüdür. . Kendinden yapışkanlıdır. . Söküldüğünde iz bırakmaz. . Yapıştırmak istediğiniz yüzeyin temiz ve kuru olmasına özen gösteriniz. .",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1479/product/media/images/prod/QC/20240814/12/1d59dde3-e0bf-31d9-bcf0-64dd0a583fc3/1_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "054583463",
-          "sku": "wntedd",
-          "attributes": {
-            "Renk": "Siyah",
-            "Özellik": "Uzun",
-            "Menşei": "TR"
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        }
-      ]
-    },
-    {
       "id": "757791365",
       "name": "Wanted Motorsiklet, Laptop, Cam, Kask, Araba Sticker 18x7 Cm",
       "slug": "wanted-motorsiklet-laptop-cam-kask-araba-sticker-18x7-cm-757791365",
@@ -4548,7 +4378,8 @@
       },
       "descriptionHtml": "Ölçü 18x7 cm. Uzun ömürlüdür. . Kendinden yapışkanlıdır. . Söküldüğünde iz bırakmaz. . Yapıştırmak istediğiniz yüzeyin temiz ve kuru olmasına özen gösteriniz. .",
       "images": [
-        "https://cdn.dsmcdn.com/ty1545/product/media/images/ty1547/prod/QC/20240915/20/be5f472d-3410-37f7-ac58-9c7162aef230/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1545/product/media/images/ty1547/prod/QC/20240915/20/be5f472d-3410-37f7-ac58-9c7162aef230/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1479/product/media/images/prod/QC/20240814/12/1d59dde3-e0bf-31d9-bcf0-64dd0a583fc3/1_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -4562,8 +4393,25 @@
           "price": 0,
           "salePrice": 0,
           "stock": 0
+        },
+        {
+          "barcode": "054583463",
+          "sku": "wntedd",
+          "attributes": {
+            "Renk": "Siyah",
+            "Özellik": "Uzun",
+            "Menşei": "TR"
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "755615209",
@@ -4588,8 +4436,8 @@
           "attributes": {
             "Menşei": "CK"
           },
-          "price": 6050,
-          "salePrice": 6050,
+          "price": 1111,
+          "salePrice": 1111,
           "stock": 0
         }
       ]
@@ -4675,9 +4523,14 @@
           },
           "price": 221,
           "salePrice": 221,
-          "stock": 997
+          "stock": 998
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "754010909",
@@ -4700,8 +4553,8 @@
           "barcode": "789789987878987",
           "sku": "ksc30",
           "attributes": {},
-          "price": 900,
-          "salePrice": 900,
+          "price": 566,
+          "salePrice": 566,
           "stock": 2
         }
       ]
@@ -4727,8 +4580,8 @@
           "barcode": "89786542978247645",
           "sku": "ksc45",
           "attributes": {},
-          "price": 690,
-          "salePrice": 690,
+          "price": 421,
+          "salePrice": 421,
           "stock": 3
         }
       ]
@@ -4754,8 +4607,8 @@
           "barcode": "83769376489368",
           "sku": "ksc60",
           "attributes": {},
-          "price": 730,
-          "salePrice": 730,
+          "price": 421,
+          "salePrice": 421,
           "stock": 0
         }
       ]
@@ -4804,9 +4657,9 @@
           "barcode": "TGHTHUJHUJTYUJY",
           "sku": "r25",
           "attributes": {},
-          "price": 281,
-          "salePrice": 281,
-          "stock": 33
+          "price": 261,
+          "salePrice": 261,
+          "stock": 34
         }
       ]
     },
@@ -4890,34 +4743,6 @@
       ]
     },
     {
-      "id": "746616686",
-      "name": "Yamaha Motorsiklet Beyaz Reflektörlü Jant Şeridi 17 Inç Takım Halinde",
-      "slug": "yamaha-motorsiklet-beyaz-reflektorlu-jant-seridi-17-inc-takim-halinde-746616686",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "2181",
-        "name": "Motosiklet Jant Şerit",
-        "slug": "motosiklet-jant-serit"
-      },
-      "descriptionHtml": "Tüm motorsiklet modellerine uyar için uygundur. Ürün görselde olduğu renktedir. özellikleri. REFLEKTÖRLÜ Suya , güneşe ve neme dayanıklıdır. nasıl uygulanır? Sticker'ı uygulayacağınız yeri temizleyiniz. Kağıt desteğini yavaşça çıkardıktan sonra sticker'ın transfer kağıdında kaldığından emin olunuz. Sticker destek kağıdından soyulduktan uygulanacağı yüzeye karşı hizalayınız ve yerleştiriniz. Ragle veya kredi kartı kullanarak kilitlendiğinden Dikkatli ve yavaş bir şekilde , bandından stickerdan çıkarınız . Eğer etiketin bir parçası olduğunu görürseniz , kağıdını çıkartmadan tekrar basınız ve işlemi tekrarlayınız. SA Printprot tarafından özel olarak tasarlanmıştır. tasarım ve boyut değişikliği yapılabilir. Mağazaya sor kısmından ulaşabilirsiniz.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1383/product/media/images/prod/QC/20240626/18/8897ed5c-760d-3904-b2af-f01defe5987b/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1385/product/media/images/prod/QC/20240626/18/8553c56b-b4a9-332b-aad3-685f1ef48032/1_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "3698521261",
-          "sku": "byz",
-          "attributes": {
-            "Menşei": "TR"
-          },
-          "price": 170,
-          "salePrice": 170,
-          "stock": 19997
-        }
-      ]
-    },
-    {
       "id": "744776044",
       "name": "Rks Motor Lastik Şeriti Kırmızı Şerit Beyaz Rks Sticker",
       "slug": "rks-motor-lastik-seriti-kirmizi-serit-beyaz-rks-sticker-744776044",
@@ -4935,31 +4760,6 @@
         {
           "barcode": "877be09745227",
           "sku": "rks",
-          "attributes": {},
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        }
-      ]
-    },
-    {
-      "id": "742310708",
-      "name": "Mondial Drift L 125 Motorsiklet Venom Far Sticker Etiket",
-      "slug": "mondial-drift-l-125-motorsiklet-venom-far-sticker-etiket-742310708",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "2181",
-        "name": "Motosiklet Jant Şerit",
-        "slug": "motosiklet-jant-serit"
-      },
-      "descriptionHtml": "Mondial drift l Motosiklet'için tasarlanmış far sticker'i. Diğer modellere sıtıcker uyum sağlayabilir. l far ölçüsü ortalama (4.5)dir. Venom stcker Dişler siyah gözler 1 çift ve 1 beyaz gönderilir. İstediğinizi yapıştırabilirsiniz. renk reflektör olarak güncellenmiştir. Gece ışığı yansıtmaktadır.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty963/product/media/images/20230708/20/392240546/976579769/1/1_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "444gr01897500",
-          "sku": "fvnm",
           "attributes": {},
           "price": 0,
           "salePrice": 0,
@@ -4999,64 +4799,6 @@
       ]
     },
     {
-      "id": "701347372",
-      "name": "Low Life Yazılı Oto Sticker,araba Sticker Genişlik 15 Cm 2 Adet",
-      "slug": "low-life-yazili-oto-sticker-araba-sticker-genislik-15-cm-2-adet-701347372",
-      "brand": "AVERY",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Genişlik 15 cm Yükseklik 6 cm Paket İçeriği 2 Adet",
-      "images": [
-        "https://cdn.dsmcdn.com/ty986/product/media/images/20230812/16/402661866/927201039/1/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty985/product/media/images/20230812/16/402661866/927201039/2/2_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "lowliferensiyah",
-          "sku": "lowsi",
-          "attributes": {
-            "Renk": "Siyah",
-            "Özellik": "Kendinden Yapışkanlı"
-          },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 1000
-        }
-      ]
-    },
-    {
-      "id": "701347090",
-      "name": "Low Life Yazılı Oto Sticker,araba Sticker Genişlik 15 Cm 2 Adet",
-      "slug": "low-life-yazili-oto-sticker-araba-sticker-genislik-15-cm-2-adet-701347090",
-      "brand": "AVERY",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Genişlik 15 cm Yükseklik 6 cm Paket İçeriği 2 Adet",
-      "images": [
-        "https://cdn.dsmcdn.com/ty986/product/media/images/20230812/16/402661938/927200293/1/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty984/product/media/images/20230812/16/402661938/927200293/2/2_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "lowliferenbeyaz",
-          "sku": "lowbe",
-          "attributes": {
-            "Renk": "Beyaz",
-            "Özellik": "Kendinden Yapışkanlı"
-          },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 1000
-        }
-      ]
-    },
-    {
       "id": "701331830",
       "name": "Low Life Yazılı Oto Sticker,araba Sticker Genişlik 15 Cm 2 Adet",
       "slug": "low-life-yazili-oto-sticker-araba-sticker-genislik-15-cm-2-adet-701331830",
@@ -5069,7 +4811,11 @@
       "descriptionHtml": "Genişlik 15 cm Yükseklik 6 cm Paket İçeriği 2 Adet",
       "images": [
         "https://cdn.dsmcdn.com/ty986/product/media/images/20230812/16/402661888/927171161/1/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty984/product/media/images/20230812/16/402661888/927171161/2/2_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty984/product/media/images/20230812/16/402661888/927171161/2/2_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty986/product/media/images/20230812/16/402661866/927201039/1/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty985/product/media/images/20230812/16/402661866/927201039/2/2_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty986/product/media/images/20230812/16/402661938/927200293/1/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty984/product/media/images/20230812/16/402661938/927200293/2/2_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -5079,11 +4825,38 @@
             "Renk": "Kırmızı",
             "Özellik": "Kendinden Yapışkanlı"
           },
-          "price": 199,
-          "salePrice": 199,
+          "price": 100,
+          "salePrice": 100,
+          "stock": 1000
+        },
+        {
+          "barcode": "lowliferensiyah",
+          "sku": "lowsi",
+          "attributes": {
+            "Renk": "Siyah",
+            "Özellik": "Kendinden Yapışkanlı"
+          },
+          "price": 100,
+          "salePrice": 100,
+          "stock": 1000
+        },
+        {
+          "barcode": "lowliferenbeyaz",
+          "sku": "lowbe",
+          "attributes": {
+            "Renk": "Beyaz",
+            "Özellik": "Kendinden Yapışkanlı"
+          },
+          "price": 100,
+          "salePrice": 100,
           "stock": 1000
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9002",
+        "name": "Araba Sticker & Aksesuar",
+        "slug": "araba-sticker-aksesuar"
+      }
     },
     {
       "id": "682159687",
@@ -5110,7 +4883,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "680972322",
@@ -5137,7 +4915,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "672536626",
@@ -5169,62 +4952,6 @@
       ]
     },
     {
-      "id": "664859034",
-      "name": "25 X 3 Cm Batarya Pil Wifi Icon Oto Sticker Araba Cam",
-      "slug": "25-x-3-cm-batarya-pil-wifi-icon-oto-sticker-araba-cam-664859034",
-      "brand": "AVERY",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Ürün Ölçüsü 25x3 cm Paket içeriği 1 adet",
-      "images": [
-        "https://cdn.dsmcdn.com/ty985/product/media/images/20230812/15/402639339/879638595/1/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty986/product/media/images/20230812/15/402639339/879638595/2/2_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "PİLŞARJDURUMUSİYAH",
-          "sku": "abc3",
-          "attributes": {
-            "Renk": "Siyah"
-          },
-          "price": 149,
-          "salePrice": 149,
-          "stock": 1000
-        }
-      ]
-    },
-    {
-      "id": "664225412",
-      "name": "25 X 3 Cm Batarya Pil Wifi Icon Oto Sticker Araba Cam",
-      "slug": "25-x-3-cm-batarya-pil-wifi-icon-oto-sticker-araba-cam-664225412",
-      "brand": "AVERY",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "Ürün Ölçüsü 25x3 cm Paket içeriği 1 adet",
-      "images": [
-        "https://cdn.dsmcdn.com/ty984/product/media/images/20230812/15/402639394/878702581/1/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty986/product/media/images/20230812/15/402639394/878702581/2/2_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "PİLŞARJDURUMUBEYAZ",
-          "sku": "abc2",
-          "attributes": {
-            "Renk": "Beyaz"
-          },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 998
-        }
-      ]
-    },
-    {
       "id": "664225329",
       "name": "25 X 3 Cm Batarya Pil Wifi Icon Oto Sticker Araba Cam",
       "slug": "25-x-3-cm-batarya-pil-wifi-icon-oto-sticker-araba-cam-664225329",
@@ -5237,7 +4964,11 @@
       "descriptionHtml": "Ürün Ölçüsü 25x3 cm Paket içeriği 1 adet",
       "images": [
         "https://cdn.dsmcdn.com/ty986/product/media/images/20230812/15/402639326/878702418/1/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty986/product/media/images/20230812/15/402639326/878702418/2/2_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty986/product/media/images/20230812/15/402639326/878702418/2/2_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty984/product/media/images/20230812/15/402639394/878702581/1/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty986/product/media/images/20230812/15/402639394/878702581/2/2_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty985/product/media/images/20230812/15/402639339/879638595/1/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty986/product/media/images/20230812/15/402639339/879638595/2/2_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -5246,11 +4977,36 @@
           "attributes": {
             "Renk": "Kırmızı"
           },
-          "price": 199,
-          "salePrice": 199,
+          "price": 99,
+          "salePrice": 99,
+          "stock": 1000
+        },
+        {
+          "barcode": "PİLŞARJDURUMUBEYAZ",
+          "sku": "abc2",
+          "attributes": {
+            "Renk": "Beyaz"
+          },
+          "price": 99,
+          "salePrice": 99,
+          "stock": 998
+        },
+        {
+          "barcode": "PİLŞARJDURUMUSİYAH",
+          "sku": "abc3",
+          "attributes": {
+            "Renk": "Siyah"
+          },
+          "price": 149,
+          "salePrice": 149,
           "stock": 1000
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9002",
+        "name": "Araba Sticker & Aksesuar",
+        "slug": "araba-sticker-aksesuar"
+      }
     },
     {
       "id": "656212742",
@@ -5273,8 +5029,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 50,
-          "salePrice": 50,
+          "price": 74,
+          "salePrice": 74,
           "stock": 19956
         }
       ]
@@ -5298,8 +5054,7 @@
           "barcode": "TX0805A6CE9394",
           "sku": "hj",
           "attributes": {
-            "Menşei": "TR",
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
+            "Menşei": "TR"
           },
           "price": 441,
           "salePrice": 441,
@@ -5408,8 +5163,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 355,
-          "salePrice": 355,
+          "price": 449,
+          "salePrice": 449,
           "stock": 193
         }
       ]
@@ -5435,8 +5190,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 249,
-          "salePrice": 249,
+          "price": 199,
+          "salePrice": 199,
           "stock": 824
         }
       ]
@@ -5466,33 +5221,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
-    },
-    {
-      "id": "463667312",
-      "name": "Mondial Drift L Reklektif Jant Şerit Sticker Beyaz Kırmızı Uyumlu",
-      "slug": "mondial-drift-l-reklektif-jant-serit-sticker-beyaz-kirmizi-uyumlu-463667312",
-      "brand": "Favori",
-      "category": {
-        "id": "2181",
-        "name": "Motosiklet Jant Şerit",
-        "slug": "motosiklet-jant-serit"
-      },
-      "descriptionHtml": "Mondial drift için özel hazırlanmıştır. Lastik ve janta birebir uyar. 1 set yani 1 motora yetecek kadar şerit gönderilir. Alman malı REKLEKTİF Folyo kullanılmıştır. Işıkta yansıyan folyodur.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1517/product/media/images/prod/QC/20240901/12/f8304229-a777-396c-9ec3-41c4fd26d005/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1515/product/media/images/prod/QC/20240901/12/83b7eca3-d844-372c-9a52-b2178c91cedc/1_org_zoom.jpg"
       ],
-      "variants": [
-        {
-          "barcode": "728582965925258",
-          "sku": "drf1",
-          "attributes": {},
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        }
-      ]
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "461957335",
@@ -5507,7 +5241,9 @@
       "descriptionHtml": "Mondial drift için özel hazırlanmıştır. Lastik ve janta birebir uyar. 1 set yani 1 motora yetecek kadar şerit gönderilir. Alman malı REKLEKTİF Folyo kullanılmıştır. Işıkta yansıyan folyodur. Favori markası kalitesindedir. ürün açıklamasında aradığınız detaylı bilgi yok ise lütfen bizimle iletişime geçiniz. Sorularınız 30 dk içerisinde cevaplanacaktır :) Locco Store.",
       "images": [
         "https://cdn.dsmcdn.com/ty1517/product/media/images/prod/QC/20240901/12/b6eba9a4-bdf1-3c15-a733-76ade582a7b3/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1515/product/media/images/prod/QC/20240901/12/baff59b2-3f58-3cb9-870a-0494dae1900c/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1515/product/media/images/prod/QC/20240901/12/baff59b2-3f58-3cb9-870a-0494dae1900c/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1517/product/media/images/prod/QC/20240901/12/f8304229-a777-396c-9ec3-41c4fd26d005/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1515/product/media/images/prod/QC/20240901/12/83b7eca3-d844-372c-9a52-b2178c91cedc/1_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -5582,7 +5318,8 @@
       },
       "descriptionHtml": "Mondial drift l Motosiklet'için tasarlanmış far sticker'i. Diğer modellere sıtıcker uyum sağlayabilir. l far ölçüsü ortalama (4.5)dir. Venom stcker Dişler siyah gözler 1 çift ve 1 beyaz gönderilir. İstediğinizi yapıştırabilirsiniz. renk reflektör olarak güncellenmiştir. Gece ışığı yansıtmaktadır.",
       "images": [
-        "https://cdn.dsmcdn.com/ty1556/product/media/images/ty1551/prod/QC/20240918/02/c17b1b20-5b27-3e96-82e5-641286a5cf95/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1556/product/media/images/ty1551/prod/QC/20240918/02/c17b1b20-5b27-3e96-82e5-641286a5cf95/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty963/product/media/images/20230708/20/392240546/976579769/1/1_org_zoom.jpg"
       ],
       "variants": [
         {
@@ -5593,16 +5330,29 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
           "stock": 0
+        },
+        {
+          "barcode": "444gr01897500",
+          "sku": "fvnm",
+          "attributes": {},
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "379241445",
@@ -5621,23 +5371,6 @@
       ],
       "variants": [
         {
-          "barcode": "Tasarımhediyenmotosticker00032",
-          "sku": "svenm",
-          "attributes": {
-            "Renk": "Siyah",
-            "Özellik": "Diğer",
-            "Menşei": "TR",
-            "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        },
-        {
           "barcode": "90290529852895",
           "sku": "",
           "attributes": {
@@ -5645,16 +5378,38 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
+          "barcode": "Tasarımhediyenmotosticker00032",
+          "sku": "svenm",
+          "attributes": {
+            "Renk": "Siyah",
+            "Özellik": "Diğer",
+            "Menşei": "TR",
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "366662381",
@@ -5712,7 +5467,12 @@
           "salePrice": 799,
           "stock": 20000
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9002",
+        "name": "Araba Sticker & Aksesuar",
+        "slug": "araba-sticker-aksesuar"
+      }
     },
     {
       "id": "363732944",
@@ -5736,16 +5496,21 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
           },
           "price": 0,
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9002",
+        "name": "Araba Sticker & Aksesuar",
+        "slug": "araba-sticker-aksesuar"
+      }
     },
     {
       "id": "357033974",
@@ -5822,14 +5587,19 @@
             "Özellik": "Uzun",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilebilir, Satıcı ile İletişime Geçiniz.",
-            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)",
-            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr"
+            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr",
+            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)"
           },
           "price": 99,
           "salePrice": 99,
           "stock": 89
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9003",
+        "name": "Dini & Kaligrafi Sticker",
+        "slug": "dini-kaligrafi-sticker"
+      }
     },
     {
       "id": "318247853",
@@ -5860,7 +5630,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9002",
+        "name": "Araba Sticker & Aksesuar",
+        "slug": "araba-sticker-aksesuar"
+      }
     },
     {
       "id": "313986168",
@@ -5909,11 +5684,11 @@
           "barcode": "956322485129131",
           "sku": "ayyou",
           "attributes": {
-            "Renk": "Beyaz",
-            "Şekil": "Dikdörtgen",
-            "Menşei": "TR",
+            "Renk": "beyaz",
             "Materyal": "Plastik",
-            "Çeşit": "Duvar Aynası"
+            "Çeşit": "Duvar Aynası",
+            "Şekil": "Dikdörtgen",
+            "Menşei": "TR"
           },
           "price": 199,
           "salePrice": 199,
@@ -5947,7 +5722,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "265880806",
@@ -5983,7 +5763,12 @@
           "salePrice": 199,
           "stock": 198
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9002",
+        "name": "Araba Sticker & Aksesuar",
+        "slug": "araba-sticker-aksesuar"
+      }
     },
     {
       "id": "261420587",
@@ -6121,7 +5906,12 @@
           "salePrice": 99,
           "stock": 997
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9002",
+        "name": "Araba Sticker & Aksesuar",
+        "slug": "araba-sticker-aksesuar"
+      }
     },
     {
       "id": "218488439",
@@ -6177,7 +5967,12 @@
           "salePrice": 99,
           "stock": 997
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9002",
+        "name": "Araba Sticker & Aksesuar",
+        "slug": "araba-sticker-aksesuar"
+      }
     },
     {
       "id": "215427636",
@@ -6226,12 +6021,12 @@
           "barcode": "727701680168",
           "sku": "daines",
           "attributes": {
-            "Menşei": "TR",
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
+            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz.",
+            "Menşei": "TR"
           },
           "price": 199,
           "salePrice": 199,
-          "stock": 19947
+          "stock": 19949
         }
       ]
     },
@@ -6259,8 +6054,8 @@
             "Materyal": "Metal",
             "Tema / Stil": "Modern"
           },
-          "price": 199,
-          "salePrice": 199,
+          "price": 99,
+          "salePrice": 99,
           "stock": 189
         }
       ]
@@ -6291,7 +6086,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9002",
+        "name": "Araba Sticker & Aksesuar",
+        "slug": "araba-sticker-aksesuar"
+      }
     },
     {
       "id": "142151214",
@@ -6376,12 +6176,17 @@
           "salePrice": 662,
           "stock": 999
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
-      "id": "113807207",
-      "name": "Royal Stance Oto Sticker 30x10 Cm Siyah",
-      "slug": "royal-stance-oto-sticker-30x10-cm-siyah-113807207",
+      "id": "113800892",
+      "name": "Royal Stance Oto Sticker 30x10 Cm Kırmızı",
+      "slug": "royal-stance-oto-sticker-30x10-cm-kirmizi-113800892",
       "brand": "SA Printpro",
       "category": {
         "id": "1973",
@@ -6390,9 +6195,24 @@
       },
       "descriptionHtml": "ÜRÜN : Kendinden Yapışkanlı Folyo Stickerlarımız Yüksek Kaliteli, Özelleştirilebilir Ve Dayanıklıdır. Kullanımı Ve Uygulaması Kolay Olan Stickerlarımız,Suya,Güneş Işığına Ve Hava Koşullarına İster Otomobiliniz,İster İşletmeniz,İster Kişisel Kullanımınız İçin İdealdir. RENK SEÇENEĞİ : Ürünlerin Siyah Rengi İlanda Gösterilendir. Ayrıca ( BEYAZ. SİYAH. KIRMIZI. SARI. GRİ ) Olmak üzere 5 Ayrı Mevcuttur. Dilediğiniz Satıcıya Sor Kısmından Belirterek Alabilirsiniz. Tercihi Yapılmayan Siparişlerde Görseldeki Gönderilir. UYGULAMA : Yapacağınız Alanı Kir Ve Tozdan Ayırın. Yüzeyde Kir Ve Tozun Olmaması Stickerin Sağlam Yapışması Ve Uzun Ömürlü Olması Önemli Ve Gereklidir. Arka Kısımda Kalan Fon Kağıdını Taşıyıcı Transferden Dikkatlice Bu İşlemi Yaparken Tüm Parçalarının Taşıyıcıya Geçtiğinden Emin Olun. Transferi Belirlemiş Olduğunuz Yüzeye Üstten Başlayarak Plastik Bir Kart İle Bastırıp Aşağıya Doğru Yapıştırın. Yapıştırdığınız Şeffaf Transferin Üzerinden Desene Baskı Yaparak Düzeye Yapışmasını Sağlayın. Köşesinden Alandan Yavaşça Ve Sıyırın. Çekerken Parçaların Taşıyıcıdan Ayrılıp Alana Yapıştığından Artık Stickeriniz Kullanıma Hazır. Tebrikler.",
       "images": [
+        "https://cdn.dsmcdn.com/ty294/product/media/images/20220113/12/25936726/184602697/1/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty296/product/media/images/20220113/12/25936463/184609592/1/1_org_zoom.jpg"
       ],
       "variants": [
+        {
+          "barcode": "royalstancekırmızı065",
+          "sku": "royl",
+          "attributes": {
+            "Renk": "Kırmızı",
+            "Menşei": "TR",
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
         {
           "barcode": "royalstancesiyah065",
           "sku": "royls",
@@ -6407,38 +6227,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
-    },
-    {
-      "id": "113800892",
-      "name": "Royal Stance Oto Sticker 30x10 Cm Kırmızı",
-      "slug": "royal-stance-oto-sticker-30x10-cm-kirmizi-113800892",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "ÜRÜN : Kendinden Yapışkanlı Folyo Stickerlarımız Yüksek Kaliteli, Özelleştirilebilir Ve Dayanıklıdır. Kullanımı Ve Uygulaması Kolay Olan Stickerlarımız,Suya,Güneş Işığına Ve Hava Koşullarına İster Otomobiliniz,İster İşletmeniz,İster Kişisel Kullanımınız İçin İdealdir. RENK SEÇENEĞİ : Ürünlerin Siyah Rengi İlanda Gösterilendir. Ayrıca ( BEYAZ. SİYAH. KIRMIZI. SARI. GRİ ) Olmak üzere 5 Ayrı Mevcuttur. Dilediğiniz Satıcıya Sor Kısmından Belirterek Alabilirsiniz. Tercihi Yapılmayan Siparişlerde Görseldeki Gönderilir. UYGULAMA : Yapacağınız Alanı Kir Ve Tozdan Ayırın. Yüzeyde Kir Ve Tozun Olmaması Stickerin Sağlam Yapışması Ve Uzun Ömürlü Olması Önemli Ve Gereklidir. Arka Kısımda Kalan Fon Kağıdını Taşıyıcı Transferden Dikkatlice Bu İşlemi Yaparken Tüm Parçalarının Taşıyıcıya Geçtiğinden Emin Olun. Transferi Belirlemiş Olduğunuz Yüzeye Üstten Başlayarak Plastik Bir Kart İle Bastırıp Aşağıya Doğru Yapıştırın. Yapıştırdığınız Şeffaf Transferin Üzerinden Desene Baskı Yaparak Düzeye Yapışmasını Sağlayın. Köşesinden Alandan Yavaşça Ve Sıyırın. Çekerken Parçaların Taşıyıcıdan Ayrılıp Alana Yapıştığından Artık Stickeriniz Kullanıma Hazır. Tebrikler.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty294/product/media/images/20220113/12/25936726/184602697/1/1_org_zoom.jpg"
       ],
-      "variants": [
-        {
-          "barcode": "royalstancekırmızı065",
-          "sku": "royl",
-          "attributes": {
-            "Renk": "Kırmızı",
-            "Menşei": "TR",
-            "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        }
-      ]
+      "categoryOverride": {
+        "id": "9002",
+        "name": "Araba Sticker & Aksesuar",
+        "slug": "araba-sticker-aksesuar"
+      }
     },
     {
       "id": "99250617",
@@ -6521,7 +6315,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9004",
+        "name": "Duvar & Dekor Sticker",
+        "slug": "duvar-dekor-sticker"
+      }
     },
     {
       "id": "79908073",
@@ -6552,8 +6351,8 @@
             "Kullanım Talimatı/Uyarıları": "temiz zemine uygulanmalıdır.",
             "Menşei": "TR"
           },
-          "price": 292,
-          "salePrice": 292,
+          "price": 277,
+          "salePrice": 277,
           "stock": 20000
         }
       ]
@@ -6610,7 +6409,12 @@
           "salePrice": 89,
           "stock": 1993
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9003",
+        "name": "Dini & Kaligrafi Sticker",
+        "slug": "dini-kaligrafi-sticker"
+      }
     },
     {
       "id": "72218367",
@@ -6660,8 +6464,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 479,
-          "salePrice": 479,
+          "price": 666,
+          "salePrice": 499,
           "stock": 1545
         }
       ]
@@ -6847,8 +6651,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 345,
-          "salePrice": 345,
+          "price": 421,
+          "salePrice": 421,
           "stock": 183
         }
       ]
@@ -6985,7 +6789,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "50885652",
@@ -7016,7 +6825,12 @@
           "salePrice": 199,
           "stock": 1996
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     },
     {
       "id": "38866229",
@@ -7045,7 +6859,12 @@
           "salePrice": 350,
           "stock": 1992
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9003",
+        "name": "Dini & Kaligrafi Sticker",
+        "slug": "dini-kaligrafi-sticker"
+      }
     },
     {
       "id": "34200620",
@@ -7097,7 +6916,12 @@
           "salePrice": 0,
           "stock": 0
         }
-      ]
+      ],
+      "categoryOverride": {
+        "id": "9001",
+        "name": "Motosiklet Sticker & Granaj",
+        "slug": "motosiklet-sticker-granaj"
+      }
     }
   ]
 }

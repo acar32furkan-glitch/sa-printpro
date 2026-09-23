@@ -6,6 +6,9 @@ import { buildCanonical } from '../lib/seo.js'
 
 const canonicalUrl = buildCanonical('/kvkk-aydinlatma-metni')
 
+// Kurumsal bilgiler tek merkezi kaynaktan (src/config/site.js → company) gelir.
+const company = siteConfig.company || {}
+
 const breadcrumbItems = [
   { label: 'Ana Sayfa', href: '/' },
   { label: 'KVKK Aydınlatma Metni' },
@@ -17,11 +20,11 @@ const sections = [
     body: `6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") m.10 uyarınca, kişisel verilerinizin işlenmesine ilişkin olarak aydınlatılmanız amacıyla bu metin hazırlanmıştır.
 
 Veri Sorumlusu: ${siteConfig.name}
-Ticari Unvan: [DOLDURULACAK: ticari unvan]
-Adres: [DOLDURULACAK: açık adres]
-Vergi Dairesi / VKN: [DOLDURULACAK: vergi dairesi ve vergi kimlik numarası]
-E-posta: ${siteConfig.contact.email}
-Telefon: +${siteConfig.contact.whatsapp}`,
+Ticari Unvan: ${company.legalName}
+Adres: ${company.address}
+Vergi Dairesi / VKN: ${company.taxOffice} / ${company.taxNumber}
+E-posta: ${company.email || siteConfig.contact.email}
+Telefon: ${company.phone || `+${siteConfig.contact.whatsapp}`}`,
   },
   {
     title: '2. İşlenen Kişisel Veriler ve Toplama Yöntemi',
@@ -75,7 +78,7 @@ g) Münhasıran otomatik sistemler ile analiz edilmesi nedeniyle aleyhine bir so
     body: `Yukarıda belirtilen haklarınıza ilişkin taleplerinizi;
 
 • ${siteConfig.contact.email} adresine e-posta göndererek, veya
-• Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ'e uygun yazılı başvuru ile [DOLDURULACAK: açık adres] adresine ileterek
+• Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ'e uygun yazılı başvuru ile ${company.address} adresine ileterek
 
 veri sorumlusuna iletebilirsiniz. Başvurunuzda ad-soyad, imza, T.C. kimlik numarası, tebligata esas adres ve talep konusu bilgilerinin yer alması gerekmektedir. Başvurularınız, niteliğine göre en geç 30 (otuz) gün içinde ücretsiz olarak sonuçlandırılır.`,
   },

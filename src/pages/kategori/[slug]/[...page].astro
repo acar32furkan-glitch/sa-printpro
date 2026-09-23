@@ -27,6 +27,10 @@ export function getStaticPaths() {
     const products = getSortedProducts(getProductsByCategory(category.slug))
     const totalPages = getTotalPages(products.length, PAGE_SIZE)
 
+    // FAZ 4 — G4.1: Marka sayaçları YALNIZCA bu kategorinin ürünleri
+    // üzerinden hesaplanır (sitewide sayım hatası düzeltildi).
+    const brands = getAllBrandsWithCounts(products)
+
     for (let page = 1; page <= totalPages; page += 1) {
       paths.push({
         params: {
@@ -39,6 +43,7 @@ export function getStaticPaths() {
           page,
           totalPages,
           products: paginate(products, page, PAGE_SIZE),
+          brands,
         },
       })
     }
@@ -47,12 +52,10 @@ export function getStaticPaths() {
   return paths
 }
 
-const { category, page, totalPages, products } = Astro.props
+const { category, page, totalPages, products, brands } = Astro.props
 
 // İstemci adasına CDN URL'i sızmasın: yalnızca yerel görselleri gönder.
 const clientProducts = products.map(toClientProduct)
-
-const brands = getAllBrandsWithCounts()
 
 const basePath = `/kategori/${category.slug}`
 const canonicalUrl = buildCanonical(pageUrl(basePath, page))
@@ -166,7 +169,12 @@ const breadcrumbJsonLd = {
         </p>
       ) : (
         <div class="mt-8">
-          <ProductGridStatic client:idle products={clientProducts} brands={brands} />
+          <ProductGridStatic
+            client:idle
+            products={clientProducts}
+            brands={brands}
+            totalCount={category.count}
+          />
         </div>
       )
     }

@@ -94,14 +94,28 @@ function readInitialState() {
  * @param {object} props
  * @param {Array<object>} props.products Sayfadaki ürünler (en fazla 24)
  * @param {Array<{name: string, slug: string, count: number}>} [props.brands]
+ * @param {number} [props.totalCount] Kategori/liste toplam ürün sayısı.
+ *   Verilmezse sayfadaki ürün sayısına düşer (geriye dönük uyumlu).
  */
-export default function ProductGridStatic({ products = [], brands = [] }) {
+export default function ProductGridStatic({
+  products = [],
+  brands = [],
+  totalCount,
+}) {
   const safeProducts = useMemo(
     () => (Array.isArray(products) ? products : []),
     [products]
   )
 
   const safeBrands = useMemo(() => (Array.isArray(brands) ? brands : []), [brands])
+
+  // FAZ 4 — G4.2: "Tümü" sayacı, sayfadaki 24 ürünü değil KATEGORİ TOPLAMINI
+  // göstermelidir. `totalCount` verilmezse (ör. /urunler sayfası) sayfadaki
+  // ürün sayısına düşülür.
+  const allCount = useMemo(() => {
+    const value = Number(totalCount)
+    return Number.isFinite(value) && value >= 0 ? value : safeProducts.length
+  }, [totalCount, safeProducts.length])
 
   const [state, setState] = useState(readInitialState)
 
@@ -192,7 +206,7 @@ export default function ProductGridStatic({ products = [], brands = [] }) {
               }`}
             >
               Tümü
-              <span className="ml-1.5 font-normal opacity-70">{safeProducts.length}</span>
+              <span className="ml-1.5 font-normal opacity-70">{allCount}</span>
             </button>
 
             {safeBrands.map((brand) => {

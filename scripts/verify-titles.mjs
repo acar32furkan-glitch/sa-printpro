@@ -13,6 +13,32 @@ import { join, relative } from 'node:path'
 const DIST = 'dist'
 const MAX = 60
 
+// HTML entity'leri. `&` karakteri kaynak kodda `\u0026` ile yazılır; böylece
+// editör/araç katmanı entity'leri yanlışlıkla çözmez.
+const AMP = '\u0026'
+
+/**
+ * HTML entity'lerini çözer.
+ *
+ * KÖK SORUN: `<title>` içindeki `&` karakteri HTML'de `&` (5 karakter)
+ * olarak kaçışlanır. Ham HTML uzunluğu ölçüldüğünde başlık olduğundan uzun
+ * görünür; oysa Google SERP'te kaçışlanmamış metin (`&` = 1 karakter) gösterilir.
+ * Bu yüzden uzunluk, entity'ler çözüldükten sonra ölçülmelidir.
+ *
+ * @param {string} value
+ * @returns {string}
+ */
+function decodeEntities(value) {
+  return String(value)
+    .replace(new RegExp(`${AMP}amp;`, 'g'), AMP)
+    .replace(new RegExp(`${AMP}lt;`, 'g'), '<')
+    .replace(new RegExp(`${AMP}gt;`, 'g'), '>')
+    .replace(new RegExp(`${AMP}quot;`, 'g'), '"')
+    .replace(new RegExp(`${AMP}#0*39;`, 'g'), "'")
+    .replace(new RegExp(`${AMP}apos;`, 'g'), "'")
+    .replace(new RegExp(`${AMP}nbsp;`, 'g'), ' ')
+}
+
 // Google Search Console doğrulama dosyası gerçek bir sayfa değildir; başlık
 // denetiminden hariç tutulur (qa-audit.mjs ile aynı kural).
 const NON_PAGE_HTML = /google[0-9a-f]+\.html$/i
@@ -36,7 +62,8 @@ for (const file of files) {
     rows.push({ page: '/' + relative(DIST, file).replace(/\\/g, '/'), len: 0, title: '(YOK)' })
     continue
   }
-  const title = m[1].trim()
+  // Uzunluk, SERP'te gösterilen (entity'leri çözülmüş) metin üzerinden ölçülür.
+  const title = decodeEntities(m[1].trim())
   rows.push({
     page: '/' + relative(DIST, file).replace(/\\/g, '/'),
     len: title.length,

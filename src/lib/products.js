@@ -1,4 +1,5 @@
 import productsData from '../data/products.json'
+import productRedirectsData from '../data/product-redirects.json'
 import { featuredSlugs } from '../config/featured.js'
 import { siteConfig } from '../config/site.js'
 
@@ -553,9 +554,45 @@ export const CATEGORY_MAP = {
 }
 
 /**
+ * FAZ 4 — G3.1: `arma-sticker-fosfor-serit` kategorisi bölündükten sonra
+ * oluşan yeni alt kategorilerin görünen adları.
+ *
+ * `scripts/reclassify-categories.mjs` her ürüne `categoryOverride` alanı
+ * ekler; `resolveCategory` bu slug'ı bu haritadan okur. Böylece ham
+ * `products.json` kategori alanı değişmeden kalır (Trendyol sync güvenliği).
+ *
+ * @type {Record<string, {name: string, slug: string}>}
+ */
+export const CATEGORY_OVERRIDE_NAMES = {
+  'motosiklet-sticker-granaj': {
+    name: 'Motosiklet Sticker & Granaj',
+    slug: 'motosiklet-sticker-granaj',
+  },
+  'araba-sticker-aksesuar': {
+    name: 'Araba Sticker & Aksesuar',
+    slug: 'araba-sticker-aksesuar',
+  },
+  'dini-kaligrafi-sticker': {
+    name: 'Dini & Kaligrafi Sticker',
+    slug: 'dini-kaligrafi-sticker',
+  },
+  'duvar-dekor-sticker': {
+    name: 'Duvar & Dekor Sticker',
+    slug: 'duvar-dekor-sticker',
+  },
+  'ayna-cam-sticker': {
+    name: 'Ayna & Cam Sticker',
+    slug: 'ayna-cam-sticker',
+  },
+}
+
+/**
  * Eski (kaldırılan) kategori slug'larından yeni birleşik slug'lara 301
  * yönlendirme haritası. `worker/index.js` bu haritayı kullanır; ayrıca
  * dokümantasyon/doğrulama amaçlı burada da tutulur.
+ *
+ * FAZ 4 — G3.3: `arma-sticker-fosfor-serit` bölündüğü için eski kategori
+ * URL'i en büyük alt kategoriye (Motosiklet Sticker & Granaj) yönlendirilir.
  *
  * @type {Record<string, string>}
  */
@@ -564,16 +601,52 @@ export const CATEGORY_REDIRECTS = {
   'duvar-sticker': 'duvar-dekorasyon',
   'duvar-dekorasyon-urunu': 'duvar-dekorasyon',
   'motosiklet-luzumlu-urun': 'tankpad-sticker',
+  'arma-sticker-fosfor-serit': 'motosiklet-sticker-granaj',
 }
+
+/**
+ * FAZ 4 — G2.4: Birebir duplicate ürünler birleştirildiği için eski ürün
+ * slug'ları artık statik olarak ÜRETİLMEZ. Bu harita, eski ürün URL'lerini
+ * master ürüne kalıcı (301) olarak yönlendirir.
+ *
+ * Kalıcı veri kaynağı `src/data/product-redirects.json` dosyasıdır;
+ * `scripts/merge-duplicates.mjs` bu dosyayı idempotent olarak üretir ve
+ * `worker/index.js` içindeki `PRODUCT_REDIRECTS` bloğunu senkronlar.
+ *
+ * Anahtar: eski ürün slug'ı. Değer: master ürün slug'ı.
+ *
+ * @type {Record<string, string>}
+ */
+export const PRODUCT_REDIRECTS = productRedirectsData
 
 /**
  * Bir ürünün ham kategorisini birleşik görünen kategoriye çevirir.
  * Eşleme yoksa ham kategori aynen döndürülür.
  *
+ * FAZ 4 — G3.1: `scripts/reclassify-categories.mjs` tarafından eklenen
+ * `categoryOverride` alanı EN YÜKSEK önceliğe sahiptir. Böylece ham
+ * `products.json` kategori alanı değişmeden kalır ve Trendyol sync'i
+ * override'ı silmez.
+ *
+ * Öncelik sırası:
+ *   1. `categoryOverride` (script ile atanan yeni alt kategori)
+ *   2. `CATEGORY_MAP` (FAZ B birleştirme katmanı)
+ *   3. Ham kategori (aynen)
+ *
  * @param {{id?: string, name?: string, slug?: string}|undefined} category
+ * @param {{id?: string, name?: string, slug?: string}|undefined} [override]
  * @returns {{id: string, name: string, slug: string}|undefined}
  */
-export function resolveCategory(category) {
+export function resolveCategory(category, override) {
+  if (override && override.slug) {
+    const known = CATEGORY_OVERRIDE_NAMES[override.slug]
+    return {
+      id: override.id || known?.id || category?.id,
+      name: override.name || known?.name || override.slug,
+      slug: override.slug,
+    }
+  }
+
   if (!category) {
     return undefined
   }
@@ -601,7 +674,7 @@ export function getAllCategories() {
   const map = new Map()
 
   for (const product of getAllProducts()) {
-    const category = resolveCategory(product.category)
+    const category = resolveCategory(product.category, product.categoryOverride)
     if (!category) {
       continue
     }
@@ -631,7 +704,7 @@ export function getAllCategories() {
  */
 export function getProductsByCategory(categorySlug) {
   return getAllProducts().filter((product) => {
-    const category = resolveCategory(product.category)
+    const category = resolveCategory(product.category, product.categoryOverride)
     return category && category.slug === categorySlug
   })
 }
@@ -1032,15 +1105,25 @@ export function detectCompatibleModels(product) {
  * Builds the list of motorcycle brands that actually have products, each with
  * its product count. Brands with zero products are filtered out.
  *
+ * FAZ 4 — G4.1: Opsiyonel `products` parametresi ile sayaçlar YALNIZCA
+ * verilen ürün kümesi üzerinden hesaplanır. Kategori sayfaları bu parametreye
+ * kategoriye ait ürünleri geçirerek sitewide sayım hatasını önler.
+ *
+ * GERİYE DÖNÜK UYUMLU: Parametre verilmezse tüm katalog üzerinden sayar
+ * (mevcut çağrılar — `index.astro`, `urunler/[...page].astro` — değişmez).
+ *
+ * @param {Array<object>} [products] Sayım yapılacak ürün kümesi.
  * @returns {Array<{name: string, slug: string, count: number}>}
  */
-export function getAllBrandsWithCounts() {
+export function getAllBrandsWithCounts(products) {
   const brands = Array.isArray(siteConfig.motorcycleBrands)
     ? siteConfig.motorcycleBrands
     : []
   const counts = new Map()
 
-  for (const product of getAllProducts()) {
+  const source = Array.isArray(products) ? products : getAllProducts()
+
+  for (const product of source) {
     const brand = detectProductBrand(product)
     counts.set(brand.slug, (counts.get(brand.slug) || 0) + 1)
   }

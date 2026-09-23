@@ -130,7 +130,12 @@ const description = (
   </section>
 
   <section class="mx-auto max-w-6xl px-4 py-8" aria-label="Ürünler">
-    <ProductGridStatic client:idle products={clientProducts} brands={brands} />
+    <ProductGridStatic
+      client:idle
+      products={clientProducts}
+      brands={brands}
+      totalCount={totalProducts}
+    />
     <Pagination
       basePath={basePath}
       currentPage={page}

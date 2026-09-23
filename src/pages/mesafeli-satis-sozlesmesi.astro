@@ -13,18 +13,21 @@ const breadcrumbItems = [
 
 const whatsappDisplay = `+${siteConfig.contact.whatsapp}`
 
+// Kurumsal bilgiler tek merkezi kaynaktan (src/config/site.js → company) gelir.
+const company = siteConfig.company || {}
+
 const sections = [
   {
     title: '1. Taraflar',
     body: `İşbu Mesafeli Satış Sözleşmesi ("Sözleşme"), 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği hükümleri uyarınca aşağıdaki taraflar arasında elektronik ortamda akdedilmiştir.
 
 SATICI:
-Ticari Unvan: [DOLDURULACAK: ticari unvan]
-Adres: [DOLDURULACAK: açık adres]
-Vergi Dairesi / VKN: [DOLDURULACAK: vergi dairesi ve vergi kimlik numarası]
-Telefon: ${whatsappDisplay}
-E-posta: ${siteConfig.contact.email}
-MERSİS No: [DOLDURULACAK: MERSİS numarası]
+Ticari Unvan: ${company.legalName}
+Adres: ${company.address}
+Vergi Dairesi / VKN: ${company.taxOffice} / ${company.taxNumber}
+Telefon: ${company.phone || whatsappDisplay}
+E-posta: ${company.email || siteConfig.contact.email}
+MERSİS No: ${company.mersis}
 
 ALICI:
 Sipariş sırasında WhatsApp yazışması ve/veya ödeme sayfası üzerinden ad, soyad, teslimat adresi, telefon ve e-posta bilgilerini bildiren tüketici.`,

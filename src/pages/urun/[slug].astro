@@ -103,7 +103,10 @@ const inStock = totalStock > 0
 
 // FAZ B — B3: Ham kategoriyi birleşik görünen kategoriye çevir; breadcrumb,
 // kategori linkleri ve ilgili ürünler yeni birleşik kategoriyle tutarlı olsun.
-const category = resolveCategory(product.category) || product.category
+// FAZ 4 — G3.1: `categoryOverride` (script ile atanan alt kategori) en yüksek
+// önceliğe sahiptir; aksi halde ürün sayfası eski kategoriye link verir.
+const category =
+  resolveCategory(product.category, product.categoryOverride) || product.category
 
 const canonicalUrl = buildCanonical(`/urun/${product.slug}`)
 const categoryUrl = buildCanonical(`/kategori/${category.slug}`)

@@ -13,6 +13,9 @@ const breadcrumbItems = [
 
 const whatsappDisplay = `+${siteConfig.contact.whatsapp}`
 
+// Kurumsal bilgiler tek merkezi kaynaktan (src/config/site.js → company) gelir.
+const company = siteConfig.company || {}
+
 const steps = [
   {
     title: '1. Adım — Talebinizi İletin',
@@ -41,8 +44,8 @@ const sections = [
     title: 'İade Adresi',
     body: `İade gönderimleri aşağıdaki adrese yapılmalıdır:
 
-[DOLDURULACAK: iade adresi — açık adres, ilçe, il, posta kodu]
-Alıcı: [DOLDURULACAK: iade alıcı adı / ticari unvan]
+${company.returnAddress}
+Alıcı: ${company.returnRecipient}
 
 Lütfen iade paketinizin içine sipariş numaranızı ve iletişim bilgilerinizi ekleyin.`,
   },

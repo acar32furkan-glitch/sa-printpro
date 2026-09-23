@@ -26,10 +26,59 @@ const DEFAULT_TOKEN_ENDPOINT = 'https://www.shopier.com/oauth/token';
  * Anahtar: eski kategori slug'i. Deger: yeni kategori slug'i.
  */
 const CATEGORY_REDIRECTS = {
-  ayna: 'duvar-dekorasyon',
-  'duvar-sticker': 'duvar-dekorasyon',
+  'arma-sticker-fosfor-serit': 'motosiklet-sticker-granaj',
+  'ayna': 'duvar-dekorasyon',
   'duvar-dekorasyon-urunu': 'duvar-dekorasyon',
+  'duvar-sticker': 'duvar-dekorasyon',
   'motosiklet-luzumlu-urun': 'tankpad-sticker',
+};
+
+/**
+ * FAZ 4 — G2.4: Birebir duplicate urunler birlestirildigi icin eski urun
+ * slug'lari artik statik olarak URETILMEZ. Bu harita, eski urun URL'lerini
+ * master urune kalici (301) olarak yonlendirir.
+ *
+ * Anahtar: eski urun slug'i. Deger: master urun slug'i.
+ */
+const PRODUCT_REDIRECTS = {
+  '25-x-3-cm-batarya-pil-wifi-icon-oto-sticker-araba-cam-664225412': '25-x-3-cm-batarya-pil-wifi-icon-oto-sticker-araba-cam-664225329',
+  '25-x-3-cm-batarya-pil-wifi-icon-oto-sticker-araba-cam-664859034': '25-x-3-cm-batarya-pil-wifi-icon-oto-sticker-araba-cam-664225329',
+  'araba-makyaj-ayna-etiket-sticker-bugunde-cok-guzelsin-771995552': 'araba-makyaj-ayna-etiket-sticker-bugunde-cok-guzelsin-771992890',
+  'araba-makyaj-ayna-etiket-sticker-bugunde-cok-guzelsin-771996004': 'araba-makyaj-ayna-etiket-sticker-bugunde-cok-guzelsin-771992890',
+  'cumhuriyet-in-100-yil-yasinda-sticker-etiket-turk-bayragi-2-adet-787370155': 'cumhuriyet-in-100-yil-yasinda-sticker-etiket-turk-bayragi-2-adet-787369867',
+  'cumhuriyet-in-100-yil-yasinda-sticker-etiket-turk-bayragi-2-adet-787370179': 'cumhuriyet-in-100-yil-yasinda-sticker-etiket-turk-bayragi-2-adet-787369867',
+  'hard-core-rider-sticker-araba-motosiklet-14cm-18cm-768694343': 'hard-core-rider-sticker-araba-motosiklet-14cm-18cm-768694575',
+  'hard-core-rider-sticker-araba-motosiklet-14cm-18cm-768694717': 'hard-core-rider-sticker-araba-motosiklet-14cm-18cm-768694575',
+  'kask-goz-reflektif-sticker-motosiklet-araba-794968582': 'kask-goz-reflektif-sticker-motosiklet-araba-794968642',
+  'kask-goz-reflektif-sticker-motosiklet-araba-795117404': 'kask-goz-reflektif-sticker-motosiklet-araba-794968642',
+  'kask-kedi-pati-sticker-etiket-motosiklet-araba-reflektif-beyaz-795117733': 'kask-kedi-pati-sticker-etiket-motosiklet-araba-siyah-794969127',
+  'kask-kedi-pati-sticker-etiket-motosiklet-araba-reflektif-kirmizi-795117712': 'kask-kedi-pati-sticker-etiket-motosiklet-araba-siyah-794969127',
+  'kask-kedi-pati-sticker-etiket-motosiklet-araba-reflektif-mavi-795117410': 'kask-kedi-pati-sticker-etiket-motosiklet-araba-siyah-794969127',
+  'kask-sticker-etiket-yapistirma-araba-motosiklet-beyaz-794967404': 'kask-sticker-etiket-yapistirma-araba-motosiklet-794967388',
+  'kask-sticker-etiket-yapistirma-araba-motosiklet-florasan-sari-794967382': 'kask-sticker-etiket-yapistirma-araba-motosiklet-794967388',
+  'kask-sticker-etiket-yapistirma-araba-motosiklet-kirmizi-794967407': 'kask-sticker-etiket-yapistirma-araba-motosiklet-794967388',
+  'kask-sticker-etiket-yapistirma-araba-motosiklet-mavi-794967405': 'kask-sticker-etiket-yapistirma-araba-motosiklet-794967388',
+  'ktm-motosiklet-jant-seridi-ready-to-race-ktm-duke-ici-sticker-etiket-791786204': 'ktm-motosiklet-jant-seridi-ready-to-race-ktm-duke-ici-sticker-etiket-791786585',
+  'ktm-motosikletiniz-icin-yuksek-kaliteli-sticker-seti-ktm-etiket-yapistirma-ready-to-race-791775743': 'ktm-motosikletiniz-icin-yuksek-kaliteli-sticker-seti-ktm-etiket-yapistirma-ready-to-race-791780041',
+  'ktm-motosikletiniz-icin-yuksek-kaliteli-sticker-seti-ktm-etiket-yapistirma-ready-to-race-791778351': 'ktm-motosikletiniz-icin-yuksek-kaliteli-sticker-seti-ktm-etiket-yapistirma-ready-to-race-791780041',
+  'ktm-motosikletiniz-icin-yuksek-kaliteli-sticker-seti-ktm-etiket-yapistirma-ready-to-race-791779711': 'ktm-motosikletiniz-icin-yuksek-kaliteli-sticker-seti-ktm-etiket-yapistirma-ready-to-race-791780041',
+  'limited-edition-sticker-otomobil-araba-etiket-yapistirma-honda-jdm-japon-792957793': 'limited-edition-sticker-otomobil-araba-etiket-yapistirma-honda-jdm-japon-792957806',
+  'limited-edition-sticker-otomobil-araba-etiket-yapistirma-honda-jdm-japon-792957803': 'limited-edition-sticker-otomobil-araba-etiket-yapistirma-honda-jdm-japon-792957806',
+  'low-life-yazili-oto-sticker-araba-sticker-genislik-15-cm-2-adet-701347090': 'low-life-yazili-oto-sticker-araba-sticker-genislik-15-cm-2-adet-701331830',
+  'low-life-yazili-oto-sticker-araba-sticker-genislik-15-cm-2-adet-701347372': 'low-life-yazili-oto-sticker-araba-sticker-genislik-15-cm-2-adet-701331830',
+  'made-in-japan-araba-sticker-etiket-yapistirma-honda-jdm-japon-792955964': 'made-in-japan-araba-sticker-etiket-yapistirma-honda-jdm-japon-792955940',
+  'made-in-japan-araba-sticker-etiket-yapistirma-honda-jdm-japon-792955983': 'made-in-japan-araba-sticker-etiket-yapistirma-honda-jdm-japon-792955940',
+  'mondial-drift-kafa-granaj-sticker-yapistirma-etiket-792365703': 'mondial-drift-kafa-granaj-sticker-yapistirma-etiket-792322343',
+  'mondial-drift-kafa-granaj-sticker-yapistirma-etiket-792365733': 'mondial-drift-kafa-granaj-sticker-yapistirma-etiket-792322343',
+  'mondial-drift-l-125-motorsiklet-venom-far-sticker-etiket-742310708': 'mondial-drift-l-125-motorsiklet-venom-far-sticker-etiket-379247293',
+  'mondial-drift-l-reklektif-jant-serit-sticker-beyaz-kirmizi-uyumlu-463667312': 'mondial-drift-uyumlu-l-reklektif-jant-serit-sticker-kirmizi-beyaz-461957335',
+  'motosiklet-jant-seridi-reflektif-florasan-sari-sticker-etiket-araba-serit-794966442': 'motosiklet-jant-seridi-reflektif-sticker-etiket-araba-serit-beyaz-794966419',
+  'motosiklet-jant-seridi-reflektif-kirmizi-sticker-etiket-araba-794966449': 'motosiklet-jant-seridi-reflektif-sticker-etiket-araba-serit-beyaz-794966419',
+  'motosiklet-jant-seridi-reflektif-mavi-sticker-etiket-araba-serit-lacivert-794966464': 'motosiklet-jant-seridi-reflektif-sticker-etiket-araba-serit-beyaz-794966419',
+  'motosiklet-jant-seridi-reflektif-sticker-etiket-araba-serit-siyah-794966416': 'motosiklet-jant-seridi-reflektif-sticker-etiket-araba-serit-beyaz-794966419',
+  'royal-stance-oto-sticker-30x10-cm-siyah-113807207': 'royal-stance-oto-sticker-30x10-cm-kirmizi-113800892',
+  'wanted-motorsiklet-laptop-cam-kask-araba-sticker-18x7-cm-757791366': 'wanted-motorsiklet-laptop-cam-kask-araba-sticker-18x7-cm-757791365',
+  'yamaha-r7-jant-seridi-kirmizi-reflektif-sticker-etiket-792066881': 'yamaha-r7-jant-seridi-mavi-reflektif-sticker-etiket-792066506',
 };
 
 /**
@@ -81,6 +130,27 @@ function resolveCategoryRedirect(pathname) {
   }
 
   return `/kategori/${target}`;
+}
+
+/**
+ * `/urun/<slug>` yolunu (opsiyonel son egik cizgi ile) ayristirir ve eski
+ * (birlestirilmis) urun slug'larini master urune esler. Eslesme yoksa `null`.
+ *
+ * @param {string} pathname
+ * @returns {string|null} Yonlendirilecek hedef yol ya da null.
+ */
+function resolveProductRedirect(pathname) {
+  const match = /^\/urun\/([^/]+)\/?$/.exec(pathname);
+  if (!match) {
+    return null;
+  }
+
+  const target = PRODUCT_REDIRECTS[match[1]];
+  if (!target) {
+    return null;
+  }
+
+  return `/urun/${target}`;
 }
 
 /** Basit HTML kacis — kullanici girdisini yanita basmadan once temizler. */
@@ -376,6 +446,15 @@ export default {
       if (redirectTarget) {
         const location = new URL(redirectTarget, url.origin);
         // Query string (varsa) korunur; boylece UTM/izleme parametreleri kaybolmaz.
+        location.search = url.search;
+        return Response.redirect(location.toString(), 301);
+      }
+
+      // FAZ 4 — G2.4: Birebir duplicate urunler birlestirildigi icin eski urun
+      // URL'lerini master urune 301 ile yonlendir.
+      const productTarget = resolveProductRedirect(pathname);
+      if (productTarget) {
+        const location = new URL(productTarget, url.origin);
         location.search = url.search;
         return Response.redirect(location.toString(), 301);
       }

@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/build-search-index.mjs && node scripts/generate-feed.mjs && astro build",
+    "build": "node scripts/check-company-info.mjs && node scripts/build-search-index.mjs && node scripts/generate-feed.mjs && astro build",
     "preview": "astro preview",
     "lint": "eslint .",
     "audit": "node scripts/qa-audit.mjs",
@@ -19,7 +19,12 @@
     "repair-catalog": "node scripts/repair-catalog.mjs",
     "normalize-brands": "node scripts/normalize-brands.mjs",
     "test:cart": "node scripts/test-cart.mjs",
-    "enrich": "node scripts/enrich-catalog-ai.mjs"
+    "enrich": "node scripts/enrich-catalog-ai.mjs",
+    "verify:faz4": "node scripts/verify-faz4.mjs",
+    "check:company": "node scripts/check-company-info.mjs",
+    "find:duplicates": "node scripts/find-duplicates.mjs",
+    "merge:duplicates": "node scripts/merge-duplicates.mjs",
+    "reclassify": "node scripts/reclassify-categories.mjs"
   },
   "keywords": [
     "astro",
