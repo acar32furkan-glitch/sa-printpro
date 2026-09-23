@@ -1,5 +1,11 @@
 ---
 import { siteConfig } from '../config/site.js'
+
+// Logo dosyaları `scripts/optimize-logos.mjs` ile 400x170 px'e küçültülür
+// (navbar'da 85x36 px gösterilir; 2x retina için yeterli). WebP kopyaları da
+// üretilir ve `<picture>` ile öncelikli sunulur — PNG yalnızca fallback'tir.
+const logoWidth = 400
+const logoHeight = 170
 ---
 
 <a
@@ -7,18 +13,27 @@ import { siteConfig } from '../config/site.js'
   class="group inline-flex shrink-0 items-center rounded-lg transition-opacity hover:opacity-80"
   aria-label={`${siteConfig.name} — ana sayfa`}
 >
-  <img
-    src={`/${siteConfig.logoFile}`}
-    alt={siteConfig.name}
-    width="800"
-    height="339"
-    class="h-9 w-auto object-contain dark:hidden"
-  />
-  <img
-    src={`/${siteConfig.logoDarkFile}`}
-    alt={siteConfig.name}
-    width="800"
-    height="339"
-    class="hidden h-9 w-auto object-contain dark:block"
-  />
+  <picture>
+    <source srcset="/logo.webp" type="image/webp" />
+    <img
+      src={`/${siteConfig.logoFile}`}
+      alt={siteConfig.name}
+      width={logoWidth}
+      height={logoHeight}
+      fetchpriority="high"
+      decoding="async"
+      class="h-9 w-auto object-contain dark:hidden"
+    />
+  </picture>
+  <picture>
+    <source srcset="/logo-dark.webp" type="image/webp" />
+    <img
+      src={`/${siteConfig.logoDarkFile}`}
+      alt={siteConfig.name}
+      width={logoWidth}
+      height={logoHeight}
+      decoding="async"
+      class="hidden h-9 w-auto object-contain dark:block"
+    />
+  </picture>
 </a>

@@ -51,10 +51,15 @@ const JOBS = [
   },
 ]
 
-/** Çıktı genişliği (yatay logolar için). */
-const LOGO_WIDTH = 800
+/**
+ * Çıktı genişliği (yatay logolar için). Navbar'da 85x36 px gösterilir;
+ * 400 px 2x retina için yeterlidir ve transfer boyutunu ~%95 azaltır.
+ * Daha büyük bir kaynak gerekirse `scripts/optimize-logos.mjs` ile
+ * WebP kopyaları da üretilir.
+ */
+const LOGO_WIDTH = 400
 /** Çıktı boyutu (kare ikon için). */
-const ICON_SIZE = 512
+const ICON_SIZE = 192
 
 /**
  * `--tolerance=N` CLI parametresini ayrıştırır. Varsayılan 32.

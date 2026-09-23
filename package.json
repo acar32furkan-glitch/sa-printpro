@@ -20,6 +20,7 @@
     "normalize-brands": "node scripts/normalize-brands.mjs",
     "test:cart": "node scripts/test-cart.mjs",
     "enrich": "node scripts/enrich-catalog-ai.mjs",
+    "optimize:logos": "node scripts/optimize-logos.mjs",
     "verify:faz4": "node scripts/verify-faz4.mjs",
     "check:company": "node scripts/check-company-info.mjs",
     "find:duplicates": "node scripts/find-duplicates.mjs",
