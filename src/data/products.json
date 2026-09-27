@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T10:20:42.540Z",
+  "generatedAt": "2026-09-27T19:54:35.031Z",
   "products": [
     {
       "id": "1160687379",
@@ -290,19 +290,6 @@
       ],
       "variants": [
         {
-          "barcode": "TYBB3TF1EK3LGSW429",
-          "sku": "yrm",
-          "attributes": {
-            "Renk": "Beyaz",
-            "Özellik": "Katı",
-            "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
-            "Menşei": "TR"
-          },
-          "price": 227,
-          "salePrice": 227,
-          "stock": 19995
-        },
-        {
           "barcode": "TYBXGCJPFDPPDV3J40",
           "sku": "yrm kp",
           "attributes": {
@@ -311,9 +298,22 @@
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
             "Menşei": "TR"
           },
-          "price": 227,
-          "salePrice": 227,
-          "stock": 19995
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
+          "barcode": "TYBB3TF1EK3LGSW429",
+          "sku": "yrm",
+          "attributes": {
+            "Renk": "Beyaz",
+            "Özellik": "Katı",
+            "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
+            "Menşei": "TR"
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -4887,7 +4887,7 @@
           },
           "price": 467,
           "salePrice": 467,
-          "stock": 999
+          "stock": 997
         }
       ]
     },
@@ -4915,7 +4915,7 @@
           },
           "price": 170,
           "salePrice": 170,
-          "stock": 19992
+          "stock": 19990
         }
       ]
     },
@@ -5600,10 +5600,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (ön)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5743,10 +5743,10 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5981,10 +5981,10 @@
             "Özellik": "Kendinden Yapışkanlı",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": ""
           },
           "price": 199,
           "salePrice": 199,
