@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T11:02:29.779Z",
+  "generatedAt": "2026-09-29T21:07:32.932Z",
   "products": [
     {
       "id": "1160687379",
@@ -464,9 +464,9 @@
             "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": ""
           },
-          "price": 309,
-          "salePrice": 309,
-          "stock": 19919
+          "price": 195,
+          "salePrice": 195,
+          "stock": 19918
         }
       ]
     },
@@ -491,8 +491,8 @@
           "barcode": "TYB1TMAX4D3EE3EZ61",
           "sku": "drft kalın",
           "attributes": {
-            "Özellik": "Hava",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Özellik": "Hava"
           },
           "price": 300,
           "salePrice": 300,
@@ -808,8 +808,8 @@
           "barcode": "242225811",
           "sku": "jm",
           "attributes": {
-            "Menşei": "TR",
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
+            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz.",
+            "Menşei": "TR"
           },
           "price": 0,
           "salePrice": 0,
@@ -838,8 +838,8 @@
           "sku": "",
           "attributes": {
             "Renk": "Beyaz",
-            "Menşei": "TR",
-            "Özellik": "Uzun"
+            "Özellik": "Uzun",
+            "Menşei": "TR"
           },
           "price": 299,
           "salePrice": 299,
@@ -2666,7 +2666,7 @@
           "barcode": "738287467837738",
           "sku": "",
           "attributes": {
-            "Renk": "Reflektif beyaz",
+            "Renk": "Beyaz",
             "Özellik": "Gece"
           },
           "price": 261,
@@ -4411,24 +4411,24 @@
       ],
       "variants": [
         {
-          "barcode": "29572975290749260",
-          "sku": "ktm12",
-          "attributes": {
-            "Menşei": "TR"
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 5
-        },
-        {
           "barcode": "2876824768972486752897",
           "sku": "ktm",
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 5
+          "price": 299,
+          "salePrice": 299,
+          "stock": 1938
+        },
+        {
+          "barcode": "29572975290749260",
+          "sku": "ktm12",
+          "attributes": {
+            "Menşei": "TR"
+          },
+          "price": 299,
+          "salePrice": 299,
+          "stock": 1938
         }
       ]
     },
@@ -5743,10 +5743,10 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5860,8 +5860,8 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -5916,11 +5916,11 @@
           "barcode": "956322485129131",
           "sku": "ayyou",
           "attributes": {
-            "Renk": "Beyaz",
-            "Şekil": "Dikdörtgen",
-            "Menşei": "TR",
+            "Renk": "beyaz",
             "Materyal": "Plastik",
-            "Çeşit": "Duvar Aynası"
+            "Çeşit": "Duvar Aynası",
+            "Şekil": "Dikdörtgen",
+            "Menşei": "TR"
           },
           "price": 199,
           "salePrice": 199,
@@ -6410,8 +6410,8 @@
             "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -6558,9 +6558,9 @@
           "barcode": "JŞ-2",
           "sku": "pc",
           "attributes": {
-            "Özellik": "Diğer",
             "Kullanım Talimatı/Uyarıları": "temiz zemine uygulanmalıdır.",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Özellik": "Diğer"
           },
           "price": 292,
           "salePrice": 292,
