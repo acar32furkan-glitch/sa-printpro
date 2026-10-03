@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T10:11:44.299Z",
+  "generatedAt": "2026-10-03T19:34:18.589Z",
   "products": [
     {
       "id": "1160687379",
@@ -290,8 +290,8 @@
       ],
       "variants": [
         {
-          "barcode": "TYBXGCJPFDPPDV3J40",
-          "sku": "yrm kp",
+          "barcode": "TYBB3TF1EK3LGSW429",
+          "sku": "yrm",
           "attributes": {
             "Renk": "Beyaz",
             "Özellik": "Katı",
@@ -303,8 +303,8 @@
           "stock": 0
         },
         {
-          "barcode": "TYBB3TF1EK3LGSW429",
-          "sku": "yrm",
+          "barcode": "TYBXGCJPFDPPDV3J40",
+          "sku": "yrm kp",
           "attributes": {
             "Renk": "Beyaz",
             "Özellik": "Katı",
@@ -3523,7 +3523,7 @@
           },
           "price": 239,
           "salePrice": 239,
-          "stock": 19902
+          "stock": 19901
         }
       ]
     },
@@ -3551,9 +3551,9 @@
             "Renk": "Siyah",
             "Özellik": "Hava"
           },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 1977
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         },
         {
           "barcode": "2134567235668",
@@ -3562,9 +3562,9 @@
             "Renk": "Siyah",
             "Özellik": "Hava"
           },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 1977
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -4416,9 +4416,9 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 299,
-          "salePrice": 299,
-          "stock": 1938
+          "price": 0,
+          "salePrice": 0,
+          "stock": 5
         },
         {
           "barcode": "29572975290749260",
@@ -4426,9 +4426,9 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 299,
-          "salePrice": 299,
-          "stock": 1938
+          "price": 0,
+          "salePrice": 0,
+          "stock": 5
         }
       ]
     },
@@ -5743,10 +5743,10 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -6410,8 +6410,8 @@
             "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
