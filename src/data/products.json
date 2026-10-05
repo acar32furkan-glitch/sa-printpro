@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-04T19:53:39.320Z",
+  "generatedAt": "2026-10-05T11:54:42.615Z",
   "products": [
     {
       "id": "1160687379",
@@ -143,7 +143,7 @@
           },
           "price": 197,
           "salePrice": 197,
-          "stock": 19987
+          "stock": 19984
         }
       ]
     },
@@ -3545,26 +3545,26 @@
       ],
       "variants": [
         {
-          "barcode": "1325467898254",
-          "sku": "13ktm",
-          "attributes": {
-            "Renk": "Siyah",
-            "Özellik": "Hava"
-          },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 1977
-        },
-        {
           "barcode": "2134567235668",
           "sku": "13ktm",
           "attributes": {
             "Renk": "Siyah",
             "Özellik": "Hava"
           },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 1977
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
+          "barcode": "1325467898254",
+          "sku": "13ktm",
+          "attributes": {
+            "Renk": "Siyah",
+            "Özellik": "Hava"
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -3595,7 +3595,7 @@
           },
           "price": 180,
           "salePrice": 180,
-          "stock": 1940
+          "stock": 1939
         }
       ]
     },
@@ -4411,24 +4411,24 @@
       ],
       "variants": [
         {
-          "barcode": "2876824768972486752897",
-          "sku": "ktm",
-          "attributes": {
-            "Menşei": "TR"
-          },
-          "price": 299,
-          "salePrice": 299,
-          "stock": 1937
-        },
-        {
           "barcode": "29572975290749260",
           "sku": "ktm12",
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 299,
-          "salePrice": 299,
-          "stock": 1937
+          "price": 0,
+          "salePrice": 0,
+          "stock": 5
+        },
+        {
+          "barcode": "2876824768972486752897",
+          "sku": "ktm",
+          "attributes": {
+            "Menşei": "TR"
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 5
         }
       ]
     },
@@ -4913,9 +4913,9 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 19985
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -5600,10 +5600,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (arka)": "",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
           },
           "price": 0,
           "salePrice": 0,
@@ -5628,23 +5628,6 @@
       ],
       "variants": [
         {
-          "barcode": "90290529852895",
-          "sku": "",
-          "attributes": {
-            "Renk": "Siyah",
-            "Özellik": "Diğer",
-            "Menşei": "TR",
-            "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        },
-        {
           "barcode": "Tasarımhediyenmotosticker00032",
           "sku": "svenm",
           "attributes": {
@@ -5652,10 +5635,27 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Paket Görseli (arka)": ""
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
+          "barcode": "90290529852895",
+          "sku": "",
+          "attributes": {
+            "Renk": "Siyah",
+            "Özellik": "Diğer",
+            "Menşei": "TR",
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5829,8 +5829,8 @@
             "Özellik": "Uzun",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilebilir, Satıcı ile İletişime Geçiniz.",
-            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr",
-            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)"
+            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)",
+            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr"
           },
           "price": 99,
           "salePrice": 99,
@@ -5981,10 +5981,10 @@
             "Özellik": "Kendinden Yapışkanlı",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Paket Görseli (arka)": ""
           },
           "price": 199,
           "salePrice": 199,
@@ -6410,8 +6410,8 @@
             "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
