@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T11:33:47.948Z",
+  "generatedAt": "2026-10-09T11:38:20.636Z",
   "products": [
     {
       "id": "1160687379",
@@ -290,8 +290,8 @@
       ],
       "variants": [
         {
-          "barcode": "TYBXGCJPFDPPDV3J40",
-          "sku": "yrm kp",
+          "barcode": "TYBB3TF1EK3LGSW429",
+          "sku": "yrm",
           "attributes": {
             "Renk": "Beyaz",
             "Özellik": "Katı",
@@ -303,8 +303,8 @@
           "stock": 0
         },
         {
-          "barcode": "TYBB3TF1EK3LGSW429",
-          "sku": "yrm",
+          "barcode": "TYBXGCJPFDPPDV3J40",
+          "sku": "yrm kp",
           "attributes": {
             "Renk": "Beyaz",
             "Özellik": "Katı",
@@ -4411,8 +4411,8 @@
       ],
       "variants": [
         {
-          "barcode": "29572975290749260",
-          "sku": "ktm12",
+          "barcode": "2876824768972486752897",
+          "sku": "ktm",
           "attributes": {
             "Menşei": "TR"
           },
@@ -4421,8 +4421,8 @@
           "stock": 1937
         },
         {
-          "barcode": "2876824768972486752897",
-          "sku": "ktm",
+          "barcode": "29572975290749260",
+          "sku": "ktm12",
           "attributes": {
             "Menşei": "TR"
           },
@@ -5601,10 +5601,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (arka)": "",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
           },
           "price": 0,
           "salePrice": 0,
@@ -5629,23 +5629,6 @@
       ],
       "variants": [
         {
-          "barcode": "90290529852895",
-          "sku": "",
-          "attributes": {
-            "Renk": "Siyah",
-            "Özellik": "Diğer",
-            "Menşei": "TR",
-            "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        },
-        {
           "barcode": "Tasarımhediyenmotosticker00032",
           "sku": "svenm",
           "attributes": {
@@ -5653,10 +5636,27 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
+          "barcode": "90290529852895",
+          "sku": "",
+          "attributes": {
+            "Renk": "Siyah",
+            "Özellik": "Diğer",
+            "Menşei": "TR",
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5861,8 +5861,8 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -5982,10 +5982,10 @@
             "Özellik": "Kendinden Yapışkanlı",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
           },
           "price": 199,
           "salePrice": 199,
@@ -6411,8 +6411,8 @@
             "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
