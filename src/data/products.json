@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T21:27:22.315Z",
+  "generatedAt": "2026-10-10T10:51:39.935Z",
   "products": [
     {
       "id": "1160687379",
@@ -52,8 +52,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 350,
-          "salePrice": 350,
+          "price": 249,
+          "salePrice": 249,
           "stock": 19985
         }
       ]
@@ -237,7 +237,7 @@
           },
           "price": 199,
           "salePrice": 199,
-          "stock": 19820
+          "stock": 19819
         }
       ]
     },
@@ -464,8 +464,8 @@
             "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": ""
           },
-          "price": 199,
-          "salePrice": 199,
+          "price": 221,
+          "salePrice": 221,
           "stock": 19914
         }
       ]
@@ -723,8 +723,8 @@
           "attributes": {
             "Menşei": "TR"
           },
-          "price": 300,
-          "salePrice": 300,
+          "price": 242,
+          "salePrice": 242,
           "stock": 1989
         }
       ]
@@ -3586,15 +3586,26 @@
       ],
       "variants": [
         {
+          "barcode": "21324356787654",
+          "sku": "13ktm",
+          "attributes": {
+            "Renk": "BeyazTuruncu.13cm",
+            "Özellik": "Hava"
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
           "barcode": "12524676253325",
           "sku": "13ktm",
           "attributes": {
-            "Renk": "Beyaz",
+            "Renk": "BeyazTuruncu.13cm",
             "Özellik": "Hava"
           },
-          "price": 180,
-          "salePrice": 180,
-          "stock": 1939
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -3654,35 +3665,6 @@
           "price": 249,
           "salePrice": 249,
           "stock": 970
-        }
-      ]
-    },
-    {
-      "id": "791771193",
-      "name": "ktm sticker ktm etiket yapıştırma, Ready To Race sticket ktm",
-      "slug": "ktm-sticker-ktm-etiket-yapistirma-ready-to-race-sticket-ktm-791771193",
-      "brand": "SA Printpro",
-      "category": {
-        "id": "1973",
-        "name": "Arma Sticker & Fosfor Şerit",
-        "slug": "arma-sticker-fosfor-serit"
-      },
-      "descriptionHtml": "duke 125 ktm sticker ktm 125 200 390 stickers ktm kit ktm bike ktm adventure ktm 125 ktm 1190 decal for 250 ktm rc 200 ktm 2017 ktm logo ktm ktm 250 set ktm accessories ktm ktm 1290 super ktm 390 original stickers.",
-      "images": [
-        "https://cdn.dsmcdn.com/ty1105/product/media/images/prod/SPM/PIM/20231225/20/23d14972-176b-3fd2-b0ba-42bc14095df3/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1104/product/media/images/prod/SPM/PIM/20231225/20/b072849b-ae24-3108-aba8-f9009214e6ac/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1106/product/media/images/prod/SPM/PIM/20231225/20/16de2dec-0afc-3232-9de2-462c73bc42ec/1_org_zoom.jpg"
-      ],
-      "variants": [
-        {
-          "barcode": "21324356787654",
-          "sku": "13ktm",
-          "attributes": {
-            "Renk": "SiyahTuruncu.13cm"
-          },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 1999
         }
       ]
     },
@@ -5600,10 +5582,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5635,10 +5617,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5652,10 +5634,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5743,10 +5725,10 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": "",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
           },
           "price": 0,
           "salePrice": 0,
@@ -5860,8 +5842,8 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -6441,8 +6423,8 @@
             "Renk": "Kırmızı",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -7078,7 +7060,7 @@
           "attributes": {},
           "price": 199,
           "salePrice": 199,
-          "stock": 122
+          "stock": 121
         }
       ]
     },
