@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T20:10:34.411Z",
+  "generatedAt": "2026-10-16T09:22:56.125Z",
   "products": [
     {
       "id": "1160687379",
@@ -3586,7 +3586,7 @@
       ],
       "variants": [
         {
-          "barcode": "21324356787654",
+          "barcode": "12524676253325",
           "sku": "13ktm",
           "attributes": {
             "Renk": "BeyazTuruncu.13cm",
@@ -3597,7 +3597,7 @@
           "stock": 0
         },
         {
-          "barcode": "12524676253325",
+          "barcode": "21324356787654",
           "sku": "13ktm",
           "attributes": {
             "Renk": "BeyazTuruncu.13cm",
@@ -5582,10 +5582,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5617,10 +5617,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (arka)": "",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
           },
           "price": 0,
           "salePrice": 0,
@@ -5634,10 +5634,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (arka)": "",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
           },
           "price": 0,
           "salePrice": 0,
