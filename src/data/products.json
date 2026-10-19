@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T10:22:30.115Z",
+  "generatedAt": "2026-10-19T10:28:50.118Z",
   "products": [
     {
       "id": "1160687379",
@@ -298,9 +298,9 @@
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
             "Menşei": "TR"
           },
-          "price": 227,
-          "salePrice": 227,
-          "stock": 19995
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         },
         {
           "barcode": "TYBB3TF1EK3LGSW429",
@@ -311,9 +311,9 @@
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
             "Menşei": "TR"
           },
-          "price": 227,
-          "salePrice": 227,
-          "stock": 19995
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -5582,10 +5582,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (arka)": "",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
           },
           "price": 0,
           "salePrice": 0,
@@ -5610,8 +5610,8 @@
       ],
       "variants": [
         {
-          "barcode": "Tasarımhediyenmotosticker00032",
-          "sku": "svenm",
+          "barcode": "90290529852895",
+          "sku": "",
           "attributes": {
             "Renk": "Siyah",
             "Özellik": "Diğer",
@@ -5627,8 +5627,8 @@
           "stock": 0
         },
         {
-          "barcode": "90290529852895",
-          "sku": "",
+          "barcode": "Tasarımhediyenmotosticker00032",
+          "sku": "svenm",
           "attributes": {
             "Renk": "Siyah",
             "Özellik": "Diğer",
@@ -5725,10 +5725,10 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
           },
           "price": 0,
           "salePrice": 0,
@@ -5811,8 +5811,8 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilebilir, Satıcı ile İletişime Geçiniz.",
             "Özellik": "Uzun",
-            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)",
-            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr"
+            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr",
+            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)"
           },
           "price": 99,
           "salePrice": 99,
@@ -5963,10 +5963,10 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
           },
           "price": 199,
           "salePrice": 199,
