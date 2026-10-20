@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T21:19:52.459Z",
+  "generatedAt": "2026-10-20T09:42:22.842Z",
   "products": [
     {
       "id": "1160687379",
@@ -776,8 +776,9 @@
           "sku": "youlo",
           "attributes": {
             "Renk": "Siyah",
-            "Özellik": "Hava",
             "Kullanım Talimatı/Uyarıları": "Yüzeyi Temizleyin Yapıştırılacak kuru ve temiz bir bezle silin. Toz, kir ve yağ kalmamasına dikkat edin. Sticker’ı Hazırlayın Koruyucu şeffaf filmi dikkatlice kaldırın. Yapıştırma yüzeye yavaşça yapıştırın. Hava kabarcığı oluşmaması için ortadan kenarlara doğru bastırın. Son Kontrol Tamamen yapıştığından emin olun. İlk 24 saat su ve kimyasal temastan koruyun.",
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Özellik": "Hava",
             "Menşei": "TR"
           },
           "price": 146,
@@ -5617,10 +5618,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5634,10 +5635,10 @@
             "Özellik": "Diğer",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5811,8 +5812,8 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilebilir, Satıcı ile İletişime Geçiniz.",
             "Özellik": "Uzun",
-            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)",
-            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr"
+            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr",
+            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)"
           },
           "price": 99,
           "salePrice": 99,
@@ -5842,8 +5843,8 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -5963,10 +5964,10 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
           },
           "price": 199,
           "salePrice": 199,
@@ -6390,8 +6391,8 @@
             "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -6440,18 +6441,18 @@
         "name": "Tankpad & Sticker",
         "slug": "tankpad-sticker"
       },
-      "descriptionHtml": "Motosiklet YedekParça. Honda Ürün Adi:Honda REFLEKTÖR BEYAZ I PCX UYUMLU 1 SET JANT SERIDI. SevenKardesler Motor.",
+      "descriptionHtml": "Motosiklet YedekParça. Honda Ürün Adi:Honda REFLEKTÖR BEYAZ I FORZA UYUMLU 1 SET JANT SERIDI. SevenKardesler Motor.",
       "images": [
-        "https://cdn.dsmcdn.com/ty1573/prod/QC/20240927/02/f5e8382e-bf22-3fa2-8160-091bd63f5bcb/1_org_zoom.jpg",
-        "https://cdn.dsmcdn.com/ty1574/prod/QC/20240927/02/4d5c2451-f4f5-3f1e-b027-3d22ad9bbdc5/1_org_zoom.jpg"
+        "https://cdn.dsmcdn.com/ty1617/prod/QC/20241229/01/770e4c3f-5905-3aa1-bb1d-06a30524f540/1_org_zoom.jpg",
+        "https://cdn.dsmcdn.com/ty1618/prod/QC/20241229/01/d716362f-0778-3ce6-b604-43727b699bfd/1_org_zoom.jpg"
       ],
       "variants": [
         {
           "barcode": "RM-8690012561038",
           "sku": "frza",
           "attributes": {
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz.",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
           },
           "price": 277,
           "salePrice": 277,
