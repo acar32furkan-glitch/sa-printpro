@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T20:16:40.199Z",
+  "generatedAt": "2026-10-21T09:43:50.890Z",
   "products": [
     {
       "id": "1160687379",
@@ -198,10 +198,10 @@
           "sku": "nmaxm",
           "attributes": {
             "Renk": "Beyaz",
-            "Özellik": "Kendinden Yapışkanlı",
             "Kullanım Talimatı/Uyarıları": "Ürün adında belirtilen marka model için geçerlidir.",
             "Menşei": "TR",
-            "Tamir Edilebilirlik": "Tamir Edilmez."
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 300,
           "salePrice": 300,
@@ -290,19 +290,6 @@
       ],
       "variants": [
         {
-          "barcode": "TYBXGCJPFDPPDV3J40",
-          "sku": "yrm kp",
-          "attributes": {
-            "Renk": "Beyaz",
-            "Özellik": "Katı",
-            "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
-            "Menşei": "TR"
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        },
-        {
           "barcode": "TYBB3TF1EK3LGSW429",
           "sku": "yrm",
           "attributes": {
@@ -311,9 +298,22 @@
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
             "Menşei": "TR"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "price": 227,
+          "salePrice": 227,
+          "stock": 19994
+        },
+        {
+          "barcode": "TYBXGCJPFDPPDV3J40",
+          "sku": "yrm kp",
+          "attributes": {
+            "Renk": "Beyaz",
+            "Özellik": "Katı",
+            "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
+            "Menşei": "TR"
+          },
+          "price": 227,
+          "salePrice": 227,
+          "stock": 19994
         }
       ]
     },
@@ -1840,7 +1840,7 @@
           },
           "price": 291,
           "salePrice": 291,
-          "stock": 197
+          "stock": 196
         }
       ]
     },
@@ -3493,8 +3493,8 @@
           "attributes": {
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
           },
-          "price": 371,
-          "salePrice": 371,
+          "price": 341,
+          "salePrice": 341,
           "stock": 1903
         }
       ]
@@ -3521,8 +3521,8 @@
             "Menşei": "TR",
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
           },
-          "price": 241,
-          "salePrice": 241,
+          "price": 249,
+          "salePrice": 249,
           "stock": 19892
         }
       ]
@@ -5695,8 +5695,9 @@
           "sku": "c5prç",
           "attributes": {
             "Renk": "Siyah",
-            "Özellik": "Su Geçirmez",
-            "Menşei": "TR"
+            "Kullanım Talimatı/Uyarıları": "Lütfen! Yapıştırmadan Önce Yüzey Alanını Temizleyin.",
+            "Menşei": "TR",
+            "Özellik": "Su Geçirmez"
           },
           "price": 799,
           "salePrice": 799,
@@ -5726,10 +5727,10 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5812,8 +5813,8 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilebilir, Satıcı ile İletişime Geçiniz.",
             "Özellik": "Uzun",
-            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)",
-            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr"
+            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr",
+            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)"
           },
           "price": 99,
           "salePrice": 99,
@@ -5964,10 +5965,10 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı",
-            "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": ""
           },
           "price": 199,
           "salePrice": 199,
@@ -6389,8 +6390,8 @@
             "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
