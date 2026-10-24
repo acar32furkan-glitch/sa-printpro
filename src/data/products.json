@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T09:16:36.460Z",
+  "generatedAt": "2026-10-24T19:07:40.847Z",
   "products": [
     {
       "id": "1160687379",
@@ -290,19 +290,6 @@
       ],
       "variants": [
         {
-          "barcode": "TYBB3TF1EK3LGSW429",
-          "sku": "yrm",
-          "attributes": {
-            "Renk": "Beyaz",
-            "Özellik": "Katı",
-            "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
-            "Menşei": "TR"
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        },
-        {
           "barcode": "TYBXGCJPFDPPDV3J40",
           "sku": "yrm kp",
           "attributes": {
@@ -311,9 +298,22 @@
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
             "Menşei": "TR"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "price": 227,
+          "salePrice": 227,
+          "stock": 19993
+        },
+        {
+          "barcode": "TYBB3TF1EK3LGSW429",
+          "sku": "yrm",
+          "attributes": {
+            "Renk": "Beyaz",
+            "Özellik": "Katı",
+            "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
+            "Menşei": "TR"
+          },
+          "price": 227,
+          "salePrice": 227,
+          "stock": 19993
         }
       ]
     },
@@ -681,7 +681,7 @@
         "name": "Arma Sticker & Fosfor Şerit",
         "slug": "arma-sticker-fosfor-serit"
       },
-      "descriptionHtml": "Ürün Rüzgardan Veya Sudan Etkilenmez Folyodan Üretilmiştir. Ölçüler : 20x5cm. Dayanıklılık: Kullanım alanlarınıza bağlı olarak uzun süreli dayanaklılık sunar. . Alanı : Araç motor vb. kısacası aklınıza gelebilecek çoğu yüzeyde sunar (Metal cam gibi yüzeyler). 1 ADET Gönderilir . . Ürüne bakıldığı yöne göre renk değiştirir. . Yanında Uygulama Hakkında Bir Bilgi Kağıdı Gönderilir. . Güzel Günlerde Kullanın :).",
+      "descriptionHtml": "Ürün Rüzgardan Veya Sudan Etkilenmez Folyodan Üretilmiştir. Ölçüler : 15x4cm. Dayanıklılık: Kullanım alanlarınıza bağlı olarak uzun süreli dayanaklılık sunar. . Alanı : Araç motor vb. kısacası aklınıza gelebilecek çoğu yüzeyde sunar (Metal cam gibi yüzeyler). 1 ADET Gönderilir . . Ürüne bakıldığı yöne göre renk değiştirir. . Yanında Uygulama Hakkında Bir Bilgi Kağıdı Gönderilir. . Güzel Günlerde Kullanın :).",
       "images": [
         "https://cdn.dsmcdn.com/ty1768/prod/QC_ENRICHMENT/20251008/23/823273f7-015d-3ae2-860f-3136ea5898d0/1_org_zoom.jpg"
       ],
@@ -692,9 +692,9 @@
           "attributes": {
             "Renk": "Gri",
             "Özellik": "Uzun",
-            "Kullanım Talimatı/Uyarıları": "paket içerisinde klavuz gönderilir",
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
-            "Tamir Edilebilirlik": "Tamir Edilmez."
+            "Kullanım Talimatı/Uyarıları": "paket içerisinde klavuz gönderilir"
           },
           "price": 25,
           "salePrice": 25,
@@ -5427,7 +5427,7 @@
           },
           "price": 199,
           "salePrice": 199,
-          "stock": 822
+          "stock": 821
         }
       ]
     },
@@ -5727,10 +5727,10 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": "",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
           },
           "price": 0,
           "salePrice": 0,
@@ -5813,8 +5813,8 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilebilir, Satıcı ile İletişime Geçiniz.",
             "Özellik": "Uzun",
-            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)",
-            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr"
+            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr",
+            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)"
           },
           "price": 99,
           "salePrice": 99,
@@ -5844,8 +5844,8 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -5965,10 +5965,10 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 199,
           "salePrice": 199,
@@ -6390,8 +6390,8 @@
             "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
