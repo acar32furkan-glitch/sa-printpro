@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T21:18:19.870Z",
+  "generatedAt": "2026-10-27T10:06:35.882Z",
   "products": [
     {
       "id": "1160687379",
@@ -167,10 +167,10 @@
           "sku": "gredy",
           "attributes": {
             "Renk": "çok renkli",
-            "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Kullanım Talimatı/Uyarıları": "Lütfen! Yapıştırmadan Önce Yüzey Alanını Temizleyin."
+            "Kullanım Talimatı/Uyarıları": "Lütfen! Yapıştırmadan Önce Yüzey Alanını Temizleyin.",
+            "Menşei": "TR"
           },
           "price": 0,
           "salePrice": 0,
@@ -198,10 +198,10 @@
           "sku": "nmaxm",
           "attributes": {
             "Renk": "Beyaz",
-            "Kullanım Talimatı/Uyarıları": "Ürün adında belirtilen marka model için geçerlidir.",
-            "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Özellik": "Kendinden Yapışkanlı"
+            "Özellik": "Kendinden Yapışkanlı",
+            "Kullanım Talimatı/Uyarıları": "Ürün adında belirtilen marka model için geçerlidir.",
+            "Menşei": "TR"
           },
           "price": 300,
           "salePrice": 300,
@@ -263,9 +263,9 @@
           "attributes": {
             "Renk": "Beyaz",
             "Özellik": "Kendinden Yapışkanlı",
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Kullanım Talimatı/Uyarıları": "Lütfen! Yapıştırmadan Önce Yüzey Alanını Temizleyin.",
-            "Menşei": "TR",
-            "Tamir Edilebilirlik": "Tamir Edilmez."
+            "Menşei": "TR"
           },
           "price": 350,
           "salePrice": 350,
@@ -290,26 +290,26 @@
       ],
       "variants": [
         {
-          "barcode": "TYBXGCJPFDPPDV3J40",
-          "sku": "yrm kp",
+          "barcode": "TYBB3TF1EK3LGSW429",
+          "sku": "yrm",
           "attributes": {
             "Renk": "Beyaz",
-            "Özellik": "Katı",
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Özellik": "Katı"
           },
           "price": 227,
           "salePrice": 227,
           "stock": 19993
         },
         {
-          "barcode": "TYBB3TF1EK3LGSW429",
-          "sku": "yrm",
+          "barcode": "TYBXGCJPFDPPDV3J40",
+          "sku": "yrm kp",
           "attributes": {
             "Renk": "Beyaz",
-            "Özellik": "Katı",
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Özellik": "Katı"
           },
           "price": 227,
           "salePrice": 227,
@@ -401,9 +401,9 @@
           "sku": "roll",
           "attributes": {
             "Renk": "Beyaz",
-            "Menşei": "TR",
+            "Kullanım Talimatı/Uyarıları": "İyice Yapıştığına Emin Olunuz",
             "Özellik": "Suya Dayanıklı",
-            "Kullanım Talimatı/Uyarıları": "İyice Yapıştığına Emin Olunuz"
+            "Menşei": "TR"
           },
           "price": 0,
           "salePrice": 0,
@@ -776,10 +776,10 @@
           "sku": "youlo",
           "attributes": {
             "Renk": "Siyah",
-            "Kullanım Talimatı/Uyarıları": "Yüzeyi Temizleyin Yapıştırılacak kuru ve temiz bir bezle silin. Toz, kir ve yağ kalmamasına dikkat edin. Sticker’ı Hazırlayın Koruyucu şeffaf filmi dikkatlice kaldırın. Yapıştırma yüzeye yavaşça yapıştırın. Hava kabarcığı oluşmaması için ortadan kenarlara doğru bastırın. Son Kontrol Tamamen yapıştığından emin olun. İlk 24 saat su ve kimyasal temastan koruyun.",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Özellik": "Hava",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Kullanım Talimatı/Uyarıları": "Yüzeyi Temizleyin Yapıştırılacak kuru ve temiz bir bezle silin. Toz, kir ve yağ kalmamasına dikkat edin. Sticker’ı Hazırlayın Koruyucu şeffaf filmi dikkatlice kaldırın. Yapıştırma yüzeye yavaşça yapıştırın. Hava kabarcığı oluşmaması için ortadan kenarlara doğru bastırın. Son Kontrol Tamamen yapıştığından emin olun. İlk 24 saat su ve kimyasal temastan koruyun."
           },
           "price": 146,
           "salePrice": 146,
@@ -1060,7 +1060,7 @@
           "barcode": "42519763241",
           "sku": "mor",
           "attributes": {
-            "Renk": "Mor"
+            "Renk": "MOR"
           },
           "price": 0,
           "salePrice": 0,
@@ -1093,7 +1093,7 @@
           "barcode": "929184757875834",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 299,
@@ -1161,7 +1161,7 @@
           "barcode": "929184757875853",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah"
+            "Renk": "siyah"
           },
           "price": 291,
           "salePrice": 291,
@@ -1259,7 +1259,7 @@
           "barcode": "929184757875839",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 291,
@@ -1395,9 +1395,9 @@
           "barcode": "929184757875847",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah",
-            "Özellik": "Kendinden Yapışkanlı",
-            "Menşei": "TR"
+            "Renk": "siyah",
+            "Menşei": "TR",
+            "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 291,
           "salePrice": 291,
@@ -1430,7 +1430,7 @@
           "barcode": "929184757875846",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah"
+            "Renk": "siyah"
           },
           "price": 291,
           "salePrice": 291,
@@ -1463,9 +1463,9 @@
           "barcode": "929184757875870",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah",
-            "Menşei": "TR",
-            "Özellik": "Kendinden Yapışkanlı"
+            "Renk": "siyah",
+            "Özellik": "Kendinden Yapışkanlı",
+            "Menşei": "TR"
           },
           "price": 291,
           "salePrice": 291,
@@ -1802,7 +1802,7 @@
           "barcode": "929184757875872",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah"
+            "Renk": "siyah"
           },
           "price": 261,
           "salePrice": 261,
@@ -1903,7 +1903,7 @@
           "barcode": "929184757875841",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 261,
@@ -1937,7 +1937,7 @@
           "barcode": "929184757875843",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah"
+            "Renk": "siyah"
           },
           "price": 281,
           "salePrice": 281,
@@ -2004,7 +2004,7 @@
           "barcode": "929184757875860",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 261,
@@ -2038,7 +2038,7 @@
           "barcode": "929184757875859",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah"
+            "Renk": "siyah"
           },
           "price": 261,
           "salePrice": 261,
@@ -2173,7 +2173,7 @@
           "barcode": "929184757875858",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 291,
@@ -2240,7 +2240,7 @@
           "barcode": "929184757875854",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 261,
@@ -2274,7 +2274,7 @@
           "barcode": "929184757875852",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 261,
@@ -2376,7 +2376,7 @@
           "barcode": "929184757875842",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 999,
@@ -2410,7 +2410,7 @@
           "barcode": "929184757875864",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah"
+            "Renk": "siyah"
           },
           "price": 999,
           "salePrice": 273.15,
@@ -2477,7 +2477,7 @@
           "barcode": "929184757875863",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 261,
@@ -2511,7 +2511,7 @@
           "barcode": "929184757875855",
           "sku": "",
           "attributes": {
-            "Renk": "siyah"
+            "Renk": "Siyah"
           },
           "price": 261,
           "salePrice": 261,
@@ -2637,7 +2637,7 @@
           "barcode": "02874737927477473",
           "sku": "",
           "attributes": {
-            "Renk": "Reflektif mavi",
+            "Renk": "Mavi",
             "Özellik": "Gece"
           },
           "price": 261,
@@ -3024,7 +3024,7 @@
           "barcode": "948847477372783636",
           "sku": "glosarıflorasan",
           "attributes": {
-            "Renk": "Sarı",
+            "Renk": "Florasan Sarı",
             "Özellik": "Su Geçirmez"
           },
           "price": 261,
@@ -3121,7 +3121,7 @@
           "barcode": "65768565354686",
           "sku": "led",
           "attributes": {
-            "Renk": "Siyah"
+            "Renk": "siyah"
           },
           "price": 152,
           "salePrice": 152,
@@ -3150,7 +3150,7 @@
           "barcode": "25436576875464",
           "sku": "led",
           "attributes": {
-            "Renk": "Beyaz"
+            "Renk": "beyaz"
           },
           "price": 152,
           "salePrice": 152,
@@ -3179,7 +3179,7 @@
           "barcode": "243576857564534",
           "sku": "led",
           "attributes": {
-            "Renk": "Kırmızı"
+            "Renk": "kırmızı"
           },
           "price": 211,
           "salePrice": 211,
@@ -3327,7 +3327,7 @@
           "barcode": "342543898756445",
           "sku": "kfk12",
           "attributes": {
-            "Renk": "Mavi",
+            "Renk": "Reflektif Mavi",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 191,
@@ -3383,7 +3383,7 @@
           "barcode": "132435647586543",
           "sku": "kfk12",
           "attributes": {
-            "Renk": "Sarı",
+            "Renk": "Neon Sarı",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 222,
@@ -3548,23 +3548,23 @@
           "barcode": "2134567235668",
           "sku": "13ktm",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "SiyahTuruncu.20cm",
             "Özellik": "Hava"
           },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 1976
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         },
         {
           "barcode": "1325467898254",
           "sku": "13ktm",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "SiyahTuruncu.20cm",
             "Özellik": "Hava"
           },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 1976
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -3974,7 +3974,7 @@
           "barcode": "MRG3301636619",
           "sku": "saass",
           "attributes": {
-            "Renk": "Çok Renkli",
+            "Renk": "renkli",
             "Özellik": "Uzun",
             "Menşei": "TR"
           },
@@ -4393,8 +4393,8 @@
       ],
       "variants": [
         {
-          "barcode": "2876824768972486752897",
-          "sku": "ktm",
+          "barcode": "29572975290749260",
+          "sku": "ktm12",
           "attributes": {
             "Menşei": "TR"
           },
@@ -4403,8 +4403,8 @@
           "stock": 5
         },
         {
-          "barcode": "29572975290749260",
-          "sku": "ktm12",
+          "barcode": "2876824768972486752897",
+          "sku": "ktm",
           "attributes": {
             "Menşei": "TR"
           },
@@ -5088,7 +5088,7 @@
           "barcode": "2591001263300",
           "sku": "sanyyong",
           "attributes": {
-            "Renk": "Siyah"
+            "Renk": "siyah"
           },
           "price": 0,
           "salePrice": 0,
@@ -5115,7 +5115,7 @@
           "barcode": "2591001263249",
           "sku": "saab",
           "attributes": {
-            "Renk": "Siyah"
+            "Renk": "siyah"
           },
           "price": 0,
           "salePrice": 0,
@@ -5579,7 +5579,7 @@
           "barcode": "1247841879147814",
           "sku": "venm",
           "attributes": {
-            "Renk": "Tek Siyah",
+            "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Özellik": "Diğer",
@@ -5611,13 +5611,13 @@
       ],
       "variants": [
         {
-          "barcode": "Tasarımhediyenmotosticker00032",
-          "sku": "svenm",
+          "barcode": "90290529852895",
+          "sku": "",
           "attributes": {
-            "Renk": "Siyah",
-            "Özellik": "Diğer",
-            "Menşei": "TR",
+            "Renk": "Siyah Beyaz",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Menşei": "TR",
+            "Özellik": "Diğer",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
@@ -5628,13 +5628,13 @@
           "stock": 0
         },
         {
-          "barcode": "90290529852895",
-          "sku": "",
+          "barcode": "Tasarımhediyenmotosticker00032",
+          "sku": "svenm",
           "attributes": {
-            "Renk": "Siyah",
-            "Özellik": "Diğer",
-            "Menşei": "TR",
+            "Renk": "Siyah Beyaz",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Menşei": "TR",
+            "Özellik": "Diğer",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
@@ -5841,7 +5841,7 @@
           "barcode": "sıralıyıldızbeyaz",
           "sku": "YLDZ",
           "attributes": {
-            "Renk": "Beyaz",
+            "Renk": "beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Üretici Adı": "NKT GROUP",
@@ -5965,10 +5965,10 @@
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
           },
           "price": 199,
           "salePrice": 199,
@@ -6164,7 +6164,7 @@
           "barcode": "carsestckr01",
           "sku": "pil",
           "attributes": {
-            "Renk": "Çok Renkli"
+            "Renk": "reflektör"
           },
           "price": 99,
           "salePrice": 99,
@@ -6504,8 +6504,8 @@
           "barcode": "TX6ED82A2E1830",
           "sku": "tam12",
           "attributes": {
-            "Özellik": "Kendinden Yapışkanlı",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 0,
           "salePrice": 0,
@@ -6592,7 +6592,7 @@
           "barcode": "5613219",
           "sku": "tr",
           "attributes": {
-            "Renk": "beyaz",
+            "Renk": "Beyaz",
             "Özellik": "Uzun",
             "Menşei": "TR"
           },
