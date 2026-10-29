@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T21:29:32.893Z",
+  "generatedAt": "2026-10-29T11:10:06.462Z",
   "products": [
     {
       "id": "1160687379",
@@ -109,9 +109,9 @@
           "barcode": "TYBDDXOBSPAJXYM779",
           "sku": "DRFT",
           "attributes": {
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz.",
+            "Menşei": "TR",
             "Kullanım Talimatı/Uyarıları": "kuru ve temiz bölgeye uygulayınız",
-            "Menşei": "TR"
+            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
           },
           "price": 299,
           "salePrice": 299,
@@ -298,9 +298,9 @@
             "Menşei": "TR",
             "Özellik": "Katı"
           },
-          "price": 227,
-          "salePrice": 227,
-          "stock": 19993
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         },
         {
           "barcode": "TYBXGCJPFDPPDV3J40",
@@ -311,9 +311,9 @@
             "Menşei": "TR",
             "Özellik": "Katı"
           },
-          "price": 227,
-          "salePrice": 227,
-          "stock": 19993
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -461,8 +461,8 @@
           "sku": "drft",
           "attributes": {
             "Menşei": "TR",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (arka)": "",
+            "Paket Görseli (ön)": ""
           },
           "price": 221,
           "salePrice": 221,
@@ -615,7 +615,7 @@
           },
           "price": 350,
           "salePrice": 350,
-          "stock": 19997
+          "stock": 19996
         }
       ]
     },
@@ -3545,7 +3545,7 @@
       ],
       "variants": [
         {
-          "barcode": "1325467898254",
+          "barcode": "2134567235668",
           "sku": "13ktm",
           "attributes": {
             "Renk": "Siyah",
@@ -3556,7 +3556,7 @@
           "stock": 1976
         },
         {
-          "barcode": "2134567235668",
+          "barcode": "1325467898254",
           "sku": "13ktm",
           "attributes": {
             "Renk": "Siyah",
@@ -3828,8 +3828,8 @@
           "sku": "",
           "attributes": {
             "Renk": "Beyaz",
-            "Özellik": "Hava",
             "Menşei": "TR",
+            "Özellik": "Hava",
             "Üretici Adı": "MUHAMMED YUSUF GÜVEN / guvenmuhammedyusuf@gmail.com"
           },
           "price": 0,
@@ -3975,8 +3975,8 @@
           "sku": "saass",
           "attributes": {
             "Renk": "renkli",
-            "Özellik": "Uzun",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Özellik": "Uzun"
           },
           "price": 515,
           "salePrice": 515,
@@ -4065,7 +4065,7 @@
           "barcode": "1897518917491837",
           "sku": "syh",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "siyah",
             "Özellik": "Hava"
           },
           "price": 199,
@@ -5579,7 +5579,7 @@
           "barcode": "1247841879147814",
           "sku": "venm",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "Tek Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Özellik": "Diğer",
@@ -5611,23 +5611,6 @@
       ],
       "variants": [
         {
-          "barcode": "90290529852895",
-          "sku": "",
-          "attributes": {
-            "Renk": "Siyah Beyaz",
-            "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Menşei": "TR",
-            "Özellik": "Diğer",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        },
-        {
           "barcode": "Tasarımhediyenmotosticker00032",
           "sku": "svenm",
           "attributes": {
@@ -5635,10 +5618,27 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Diğer",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
+          "barcode": "90290529852895",
+          "sku": "",
+          "attributes": {
+            "Renk": "Siyah Beyaz",
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Menşei": "TR",
+            "Özellik": "Diğer",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5727,10 +5727,10 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5962,9 +5962,9 @@
           "sku": "arbda b",
           "attributes": {
             "Renk": "Beyaz",
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı",
-            "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
@@ -6219,8 +6219,8 @@
           "barcode": "727701680168",
           "sku": "daines",
           "attributes": {
-            "Menşei": "TR",
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
+            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz.",
+            "Menşei": "TR"
           },
           "price": 199,
           "salePrice": 199,
@@ -6390,8 +6390,8 @@
             "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
