@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T10:42:41.294Z",
+  "generatedAt": "2026-10-31T20:21:01.882Z",
   "products": [
     {
       "id": "1160687379",
@@ -198,10 +198,10 @@
           "sku": "nmaxm",
           "attributes": {
             "Renk": "Beyaz",
+            "Kullanım Talimatı/Uyarıları": "Ürün adında belirtilen marka model için geçerlidir.",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Özellik": "Kendinden Yapışkanlı",
-            "Kullanım Talimatı/Uyarıları": "Ürün adında belirtilen marka model için geçerlidir."
+            "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 300,
           "salePrice": 300,
@@ -370,8 +370,8 @@
           "sku": "yarım kp",
           "attributes": {
             "Renk": "Beyaz",
-            "Özellik": "Suya Dayanıklı",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Özellik": "Suya Dayanıklı"
           },
           "price": 0,
           "salePrice": 0,
@@ -432,8 +432,8 @@
           "sku": "g",
           "attributes": {
             "Renk": "Çok Renkli",
-            "Özellik": "Kendinden Yapışkanlı",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 0,
           "salePrice": 0,
@@ -1395,7 +1395,7 @@
           "barcode": "929184757875847",
           "sku": "",
           "attributes": {
-            "Renk": "siyah",
+            "Renk": "Siyah",
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı"
           },
@@ -1463,9 +1463,9 @@
           "barcode": "929184757875870",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah",
-            "Menşei": "TR",
-            "Özellik": "Kendinden Yapışkanlı"
+            "Renk": "siyah",
+            "Özellik": "Kendinden Yapışkanlı",
+            "Menşei": "TR"
           },
           "price": 291,
           "salePrice": 291,
@@ -1806,7 +1806,7 @@
           },
           "price": 261,
           "salePrice": 261,
-          "stock": 192
+          "stock": 191
         }
       ]
     },
@@ -1970,7 +1970,7 @@
           "barcode": "929184757875836",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "siyah",
             "Özellik": "Diğer"
           },
           "price": 320,
@@ -2173,7 +2173,7 @@
           "barcode": "929184757875858",
           "sku": "",
           "attributes": {
-            "Renk": "siyah",
+            "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 291,
@@ -2207,7 +2207,7 @@
           "barcode": "929184757875837",
           "sku": "",
           "attributes": {
-            "Renk": "siyah"
+            "Renk": "Siyah"
           },
           "price": 261,
           "salePrice": 261,
@@ -2376,7 +2376,7 @@
           "barcode": "929184757875842",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 999,
@@ -2410,7 +2410,7 @@
           "barcode": "929184757875864",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah"
+            "Renk": "siyah"
           },
           "price": 999,
           "salePrice": 273.15,
@@ -3240,7 +3240,7 @@
           "barcode": "38582582855853",
           "sku": "jdm",
           "attributes": {
-            "Renk": "beyaz",
+            "Renk": "Beyaz",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 199,
@@ -3271,7 +3271,7 @@
           "barcode": "28528694582966",
           "sku": "jdm",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "price": 199,
@@ -5583,10 +5583,10 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Özellik": "Diğer",
+            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (ön)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5618,10 +5618,10 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Diğer",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (arka)": "",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
           },
           "price": 0,
           "salePrice": 0,
@@ -5635,10 +5635,10 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Diğer",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (arka)": "",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
           },
           "price": 0,
           "salePrice": 0,
@@ -6450,8 +6450,8 @@
           "barcode": "RM-8690012561038",
           "sku": "frza",
           "attributes": {
-            "Menşei": "TR",
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
+            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz.",
+            "Menşei": "TR"
           },
           "price": 277,
           "salePrice": 277,
@@ -6538,9 +6538,9 @@
           "barcode": "JŞ-2",
           "sku": "pc",
           "attributes": {
+            "Menşei": "TR",
             "Kullanım Talimatı/Uyarıları": "temiz zemine uygulanmalıdır.",
-            "Özellik": "Diğer",
-            "Menşei": "TR"
+            "Özellik": "Diğer"
           },
           "price": 292,
           "salePrice": 292,
