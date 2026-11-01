@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T11:38:23.841Z",
+  "generatedAt": "2026-11-01T20:53:27.341Z",
   "products": [
     {
       "id": "1160687379",
@@ -237,7 +237,7 @@
           },
           "price": 199,
           "salePrice": 199,
-          "stock": 19813
+          "stock": 19812
         }
       ]
     },
@@ -615,7 +615,7 @@
           },
           "price": 350,
           "salePrice": 350,
-          "stock": 19996
+          "stock": 19995
         }
       ]
     },
@@ -3523,7 +3523,7 @@
           },
           "price": 249,
           "salePrice": 249,
-          "stock": 19887
+          "stock": 19886
         }
       ]
     },
@@ -4006,6 +4006,7 @@
           "sku": "krmz",
           "attributes": {
             "Renk": "Kırmızı",
+            "Menşei": "TR",
             "Özellik": "Hava"
           },
           "price": 199,
@@ -4024,7 +4025,7 @@
         "name": "Arma Sticker & Fosfor Şerit",
         "slug": "arma-sticker-fosfor-serit"
       },
-      "descriptionHtml": "Otomobil araba makyaj aynası sticker, \" Bugünde çok güzelsin \" Sticker boyutu (8cm - 1.2 cm)dir. Yapıştırması basittir. Yapıştırmadan önce zemini alkol veya kolanya ile temizleyiniz aksi halde zor yapışır.",
+      "descriptionHtml": "Otomobil araba makyaj aynası sticker, &quot. Bugünde çok güzelsin Sticker boyutu (8cm - 1.2 cm)dir. . Yapıştırması basittir. . Yapıştırmadan önce zemini alkol veya kolanya ile temizleyiniz aksi halde zor yapışır.",
       "images": [
         "https://cdn.dsmcdn.com/ty1137/product/media/images/prod/SPM/PIM/20240117/23/70fef13c-4c3a-3f22-9a2a-93669ce493ee/1_org_zoom.jpg",
         "https://cdn.dsmcdn.com/ty1139/product/media/images/prod/SPM/PIM/20240117/23/7a9b92d6-354a-32ba-99c3-5300d5450f92/1_org_zoom.jpg",
@@ -4035,7 +4036,8 @@
           "barcode": "2747242498944",
           "sku": "byz",
           "attributes": {
-            "Renk": "Beyaz",
+            "Renk": "beyaz",
+            "Menşei": "TR",
             "Özellik": "Hava"
           },
           "price": 199,
@@ -4066,7 +4068,8 @@
           "sku": "syh",
           "attributes": {
             "Renk": "siyah",
-            "Özellik": "Hava"
+            "Özellik": "Hava",
+            "Menşei": "TR"
           },
           "price": 199,
           "salePrice": 199,
@@ -4238,7 +4241,7 @@
           },
           "price": 199,
           "salePrice": 199,
-          "stock": 1835
+          "stock": 1834
         }
       ]
     },
@@ -4265,7 +4268,7 @@
           },
           "price": 199,
           "salePrice": 199,
-          "stock": 1902
+          "stock": 1901
         }
       ]
     },
@@ -4393,8 +4396,8 @@
       ],
       "variants": [
         {
-          "barcode": "29572975290749260",
-          "sku": "ktm12",
+          "barcode": "2876824768972486752897",
+          "sku": "ktm",
           "attributes": {
             "Menşei": "TR"
           },
@@ -4403,8 +4406,8 @@
           "stock": 1934
         },
         {
-          "barcode": "2876824768972486752897",
-          "sku": "ktm",
+          "barcode": "29572975290749260",
+          "sku": "ktm12",
           "attributes": {
             "Menşei": "TR"
           },
@@ -4509,8 +4512,8 @@
           "sku": "wntedd",
           "attributes": {
             "Renk": "Siyah",
-            "Özellik": "Uzun",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Özellik": "Uzun"
           },
           "price": 0,
           "salePrice": 0,
@@ -4971,10 +4974,10 @@
           "barcode": "fdsfghsthsrhrse",
           "sku": "nc",
           "attributes": {
-            "Diğer Özellikler": ".",
             "Menşei": "TR",
             "Kullanım Talimatı/Uyarıları": ".",
-            "Tamir Edilebilirlik": "Tamir Edilmez."
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Diğer Özellikler": "."
           },
           "price": 399,
           "salePrice": 399,
@@ -5583,10 +5586,10 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Özellik": "Diğer",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
           },
           "price": 0,
           "salePrice": 0,
@@ -5727,10 +5730,10 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (ön)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5813,8 +5816,8 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilebilir, Satıcı ile İletişime Geçiniz.",
             "Özellik": "Uzun",
-            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr",
-            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)"
+            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)",
+            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr"
           },
           "price": 99,
           "salePrice": 99,
@@ -6219,8 +6222,8 @@
           "barcode": "727701680168",
           "sku": "daines",
           "attributes": {
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz.",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
           },
           "price": 199,
           "salePrice": 199,
