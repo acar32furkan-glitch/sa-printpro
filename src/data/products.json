@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T22:23:56.300Z",
+  "generatedAt": "2026-11-05T12:50:03.712Z",
   "products": [
     {
       "id": "1200707154",
@@ -26,7 +26,7 @@
           },
           "price": 50,
           "salePrice": 50,
-          "stock": 19987
+          "stock": 19984
         }
       ]
     },
@@ -327,9 +327,9 @@
             "Menşei": "TR",
             "Özellik": "Katı"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "price": 227,
+          "salePrice": 227,
+          "stock": 19993
         },
         {
           "barcode": "TYBB3TF1EK3LGSW429",
@@ -340,9 +340,9 @@
             "Menşei": "TR",
             "Özellik": "Katı"
           },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "price": 227,
+          "salePrice": 227,
+          "stock": 19993
         }
       ]
     },
@@ -5615,10 +5615,10 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Özellik": "Diğer",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5650,10 +5650,10 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Diğer",
+            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (ön)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5667,10 +5667,10 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Diğer",
+            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (ön)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5845,8 +5845,8 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilebilir, Satıcı ile İletişime Geçiniz.",
             "Özellik": "Uzun",
-            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)",
-            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr"
+            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr",
+            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)"
           },
           "price": 99,
           "salePrice": 99,
@@ -6422,8 +6422,8 @@
             "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -6615,7 +6615,7 @@
         "name": "Arma Sticker & Fosfor Şerit",
         "slug": "arma-sticker-fosfor-serit"
       },
-      "descriptionHtml": "Ebat 60x44 cm. Ürün folyo kesim makinasında kesilerek, transfer folyosuna alınmış, Alman veya Amerikan menşeili (Avery, Oracal, 3M marka) 0,075 mm kalınlıkta kendinden renkli ve yapışkanlı folyodan üretilmiştir. Montaj için alet profesyonellik gerektirmez. düz bir yüzey (Tercihen cam masa) üzerine serilerek, plastik kart yardımıyla üzerinden geçtikten sonra, arka koruyucu kağıdı çıkarılarak, istenilen yüzeye yine bir kenarından başlanarak yapıştırılır. Son olarak üzerindeki folyosu sökülür. yapıştırıldıktan sonra tek parça sökülemeyeceğiçin, yapıştırırken hizalamaya dikkat ddilmelidir. Suya, neme, -40°C ile +80°C arası sıcaklıklara dayanıklıdır. İdeal uygulama sıcaklığı 18°C - 25°C arasındadır. Kuru ve yağsız, temiz",
+      "descriptionHtml": "Türk bayrağının sembollerini taşıyan ay yıldız sticker'lar, araçlarınıza veya kişisel eşyalarınıza gururla taşıyabileceğiniz bir aksesuardır. Beyaz renkli tasarımıyla dikkat çeken bu renklerini ve anlamını yansıtır. Uzun boyutu sayesinde daha geniş alanlara kolayca uygulanabilir ve çekici bir görünüm sağlar. Türkiye menşeli olup, yerli üretimdir ve kalite standartlarına uygun olarak üretilmiştir.",
       "images": [
         "https://cdn.dsmcdn.com/ty1538/product/media/images/ty1537/prod/QC/20240912/11/a3e8b0e7-b674-3091-ab37-722f3f9d645d/1_org_zoom.jpg"
       ],
