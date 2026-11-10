@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T00:32:05.156Z",
+  "generatedAt": "2026-11-10T13:06:13.293Z",
   "products": [
     {
       "id": "1200707154",
@@ -266,7 +266,7 @@
           },
           "price": 199,
           "salePrice": 199,
-          "stock": 19811
+          "stock": 19810
         }
       ]
     },
@@ -1970,7 +1970,7 @@
           },
           "price": 281,
           "salePrice": 281,
-          "stock": 983
+          "stock": 982
         }
       ]
     },
@@ -3574,26 +3574,26 @@
       ],
       "variants": [
         {
-          "barcode": "2134567235668",
-          "sku": "13ktm",
-          "attributes": {
-            "Renk": "SiyahTuruncu.20cm",
-            "Özellik": "Hava"
-          },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 1976
-        },
-        {
           "barcode": "1325467898254",
           "sku": "13ktm",
           "attributes": {
             "Renk": "SiyahTuruncu.20cm",
             "Özellik": "Hava"
           },
-          "price": 199,
-          "salePrice": 199,
-          "stock": 1976
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
+          "barcode": "2134567235668",
+          "sku": "13ktm",
+          "attributes": {
+            "Renk": "SiyahTuruncu.20cm",
+            "Özellik": "Hava"
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -5643,23 +5643,6 @@
       ],
       "variants": [
         {
-          "barcode": "90290529852895",
-          "sku": "",
-          "attributes": {
-            "Renk": "Siyah Beyaz",
-            "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Menşei": "TR",
-            "Özellik": "Diğer",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
-          },
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
-        },
-        {
           "barcode": "Tasarımhediyenmotosticker00032",
           "sku": "svenm",
           "attributes": {
@@ -5667,10 +5650,27 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Diğer",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
+          },
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
+          "barcode": "90290529852895",
+          "sku": "",
+          "attributes": {
+            "Renk": "Siyah Beyaz",
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Menşei": "TR",
+            "Özellik": "Diğer",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "price": 0,
           "salePrice": 0,
@@ -5727,9 +5727,9 @@
           "sku": "c5prç",
           "attributes": {
             "Renk": "Siyah",
-            "Kullanım Talimatı/Uyarıları": "Lütfen! Yapıştırmadan Önce Yüzey Alanını Temizleyin.",
             "Menşei": "TR",
-            "Özellik": "Su Geçirmez"
+            "Özellik": "Su Geçirmez",
+            "Kullanım Talimatı/Uyarıları": "Lütfen! Yapıştırmadan Önce Yüzey Alanını Temizleyin."
           },
           "price": 799,
           "salePrice": 799,
@@ -5997,10 +5997,10 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
           },
           "price": 199,
           "salePrice": 199,
@@ -6422,8 +6422,8 @@
             "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "price": 0,
           "salePrice": 0,
@@ -6684,7 +6684,7 @@
           },
           "price": 479,
           "salePrice": 479,
-          "stock": 1545
+          "stock": 1544
         }
       ]
     },
