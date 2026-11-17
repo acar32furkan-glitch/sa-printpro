@@ -17,6 +17,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { PRICING_VERSION, pricingConfig } from '../src/lib/pricing.js';
 
 // ---------------------------------------------------------------------------
 // Sabitler
@@ -749,8 +750,14 @@ function normalizeProduct(raw, priceMap) {
       barcode,
       sku: String(v?.stockCode ?? v?.productCode ?? v?.sku ?? raw?.stockCode ?? ''),
       attributes: normalizeAttributes(effectiveAttrs),
-      price,
-      salePrice,
+      // FAZ A — PRICE-02: Trendyol'dan gelen HAM fiyatlar `base*` alanlarında
+      // saklanır. Vitrine çıkan `price`/`salePrice` ise `priceMultiplier`
+      // uygulanmış hâlidir; böylece senkron her çalıştığında %20 artış
+      // sıfırlanmaz ve geri alma (restore) mümkün kalır.
+      basePrice: price,
+      baseSalePrice: salePrice,
+      price: Math.round(price * pricingConfig.priceMultiplier),
+      salePrice: Math.round(salePrice * pricingConfig.priceMultiplier),
       stock
     };
   });
@@ -879,6 +886,9 @@ async function main() {
   // 4) Katalog nesnesi
   const catalog = {
     generatedAt: new Date().toISOString(),
+    // FAZ A — fiyat çarpanı izlenebilirliği (verify-price-multiplier.mjs okur).
+    pricingVersion: PRICING_VERSION,
+    priceMultiplier: pricingConfig.priceMultiplier,
     products
   };
   const serialized = JSON.stringify(catalog, null, 2) + '\n';

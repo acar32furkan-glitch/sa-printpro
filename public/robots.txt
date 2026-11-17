@@ -1,5 +1,12 @@
 User-agent: *
 Allow: /
+# SEO-09: Filtre/sıralama parametreli URL'ler taranmasın. Bu sayfalar
+# sunucuda aynı HTML'i üretir ve canonical temiz taban URL'i gösterir; tarama
+# engeli yinelenen/boş içerik riskini kaldırır (kullanıcı deneyimi etkilenmez).
+Disallow: /*?sort=
+Disallow: /*?inStock=
+Disallow: /*?brand=
+Disallow: /*?q=
 # NOT: /sepet, /siparis-basarili ve /siparis-basarisiz sayfaları artık
 # robots.txt ile ENGELLENMEZ. Bu sayfalar zaten `noindex, follow` meta
 # etiketi taşır; Google'ın noindex direktifini okuyabilmesi için sayfaların

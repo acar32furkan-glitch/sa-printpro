@@ -7,11 +7,13 @@ import {
   getSnapshot,
   getServerSnapshot,
   updateQty,
+  updatePrice,
   removeItem,
   clear,
   getItemKey,
   formatPrice,
 } from '../../lib/cart.js'
+import { getDirectPrice, getTotals } from '../../lib/pricing.js'
 
 /**
  * Sunucuda boş dizi, istemcide localStorage içeriğini döndürür.
@@ -47,12 +49,15 @@ function resolveShopierUrl(map, barcode) {
 }
 
 /**
- * Sepetin tamamını özetleyen Türkçe WhatsApp mesajı üretir.
+ * Sipariş listesinin tamamını özetleyen Türkçe WhatsApp mesajı üretir.
+ *
+ * FAZ A2 — CART-03: ara toplam, kargo ve genel toplam `getTotals()` çıktısından
+ * yazılır; mesajda görünen tutar ile ekrandaki tutar her zaman aynıdır.
  * @param {Array<object>} items
- * @param {number} total
+ * @param {{subtotal: number, shippingFee: number, total: number}} totals
  * @returns {string}
  */
-function buildWhatsappMessage(items, total) {
+function buildWhatsappMessage(items, totals) {
   const lines = items.map((item, index) => {
     const variant = item.variant ? ` (${item.variant})` : ''
     return `${index + 1}. ${item.name}${variant} x${item.qty} = ${formatPrice(
@@ -60,12 +65,19 @@ function buildWhatsappMessage(items, total) {
     )}`
   })
 
+  const shippingLine =
+    totals.shippingFee > 0 ? `Kargo: ${formatPrice(totals.shippingFee)}` : 'Kargo: Ücretsiz'
+
   return [
     'Merhaba, aşağıdaki ürünler için sipariş vermek istiyorum:',
     '',
     ...lines,
     '',
-    `Toplam: ${formatPrice(total)}`,
+    `Ara toplam: ${formatPrice(totals.subtotal)}`,
+    shippingLine,
+    `Toplam: ${formatPrice(totals.total)}`,
+    '',
+    'Ön Bilgilendirme Formu ve Mesafeli Satış Sözleşmesi tarafımdan onaylanmıştır.',
   ].join('\n')
 }
 
@@ -106,25 +118,27 @@ export default function CartView() {
   // nazik uyarı. Sepet bu durumda ASLA temizlenmez.
   const [checkoutNotice, setCheckoutNotice] = useState(null)
 
-  const total = useMemo(
-    () => items.reduce((sum, item) => sum + item.price * item.qty, 0),
-    [items]
-  )
+  // FAZ A — CAT-02: katalog + WhatsApp modunda sepet bir "sipariş listesi"dir.
+  const isOrderList = siteConfig.features?.enableWhatsappOrder === true
 
-  const count = useMemo(
-    () => items.reduce((sum, item) => sum + item.qty, 0),
-    [items]
-  )
+  // FAZ A2 — CART-03: ara toplam, kargo (420 TL eşik) ve genel toplam TEK
+  // kaynaktan (`lib/pricing.js`) hesaplanır.
+  const totals = useMemo(() => getTotals(items), [items])
+  const total = totals.total
+  const count = totals.itemCount
 
   // Shopier yönlendirmesi YALNIZCA tek satırlık sepetlerde güvenlidir: Shopier
   // ürün URL'i tek bir ürünü temsil eder ve sepetin geri kalanını sessizce
   // düşürür. Birden fazla satır varsa WhatsApp akışına düşülür; böylece hiçbir
   // ürün kaybolmaz.
+  // FAZ A — CAT-01: `enableShopier` kapalıyken bu yol tamamen devre dışıdır.
+  const enableShopier = siteConfig.features?.enableShopier === true
   const allHaveShopier = useMemo(
     () =>
+      enableShopier &&
       items.length === 1 &&
       Boolean(resolveShopierUrl(shopierMap, items[0]?.barcode)),
-    [items]
+    [items, enableShopier]
   )
 
   // GA4 `view_cart`: sepet sayfası açıldığında yalnızca BİR kez fırlatılır.
@@ -138,12 +152,64 @@ export default function CartView() {
     trackViewCart(items, total)
   }, [items, total])
 
+  // CART-04: Sepet satırlarındaki fiyatlar `localStorage` kaynaklıdır ve
+  // değiştirilebilir. Sayfa açıldığında katalog fiyatıyla karşılaştırılır;
+  // fark varsa satır güncellenir ve kullanıcı bilgilendirilir.
+  const [priceNotice, setPriceNotice] = useState(null)
+  const priceChecked = useRef(false)
+  useEffect(() => {
+    if (priceChecked.current || items.length === 0) {
+      return
+    }
+    priceChecked.current = true
+    let cancelled = false
+
+    fetch('/search-index.json')
+      .then((response) => (response.ok ? response.json() : []))
+      .then((index) => {
+        if (cancelled || !Array.isArray(index)) {
+          return
+        }
+        const byBarcode = new Map(
+          index.map((entry) => [String(entry.barcode || entry.id || ''), entry])
+        )
+        let updatedCount = 0
+
+        for (const item of items) {
+          const entry = byBarcode.get(String(item.barcode || item.id || ''))
+          if (!entry) {
+            continue
+          }
+          const catalogPrice = getDirectPrice(
+            Number(entry.salePrice) || Number(entry.price) || 0
+          )
+          if (catalogPrice > 0 && Math.abs(catalogPrice - Number(item.price)) > 0.01) {
+            updatePrice(getItemKey(item), catalogPrice)
+            updatedCount += 1
+          }
+        }
+
+        if (updatedCount > 0) {
+          setPriceNotice(
+            `${updatedCount} ürünün fiyatı güncel katalogla eşitlendi. Sipariş özetini kontrol edin.`
+          )
+        }
+      })
+      .catch(() => {
+        // Katalog indeksi alınamazsa mevcut fiyatlar korunur.
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [items])
+
   const whatsappNumber = String(siteConfig.contact.whatsapp || '').replace(/\D/g, '')
 
   const whatsappUrl = useMemo(() => {
-    const message = buildWhatsappMessage(items, total)
+    const message = buildWhatsappMessage(items, totals)
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
-  }, [items, total, whatsappNumber])
+  }, [items, totals, whatsappNumber])
 
   /**
    * Checkout: GA4 `begin_checkout` fırlatır. Tüm ürünlerin Shopier linki
@@ -198,14 +264,30 @@ export default function CartView() {
     // Ödeme sağlayıcısı hazır değilse WhatsApp akışına düş.
     if (typeof window !== 'undefined') {
       try {
+        // FAZ A2: katalog modunda sipariş WhatsApp'tan alınır. GA4'te
+        // `purchase` YERİNE `whatsapp_order` olayı fırlatılır.
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'whatsapp_order', {
+            currency: 'TRY',
+            value: totals.total,
+            shipping: totals.shippingFee,
+            items: items.map((item) => ({
+              item_id: item.barcode || item.id,
+              item_name: item.name,
+              item_variant: item.variant,
+              price: Number(item.price) || 0,
+              quantity: Number(item.qty) || 1,
+            })),
+          })
+        }
         window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
       } catch {
         setCheckoutNotice(
-          'WhatsApp yönlendirmesi açılamadı. Sepetiniz korunuyor; lütfen tekrar deneyin.'
+          'WhatsApp yönlendirmesi açılamadı. Sipariş listeniz korunuyor; lütfen tekrar deneyin.'
         )
       }
     }
-  }, [items, total, allHaveShopier, whatsappUrl, termsAccepted])
+  }, [items, total, totals, allHaveShopier, whatsappUrl, termsAccepted])
 
   if (items.length === 0) {
     return (
@@ -215,11 +297,12 @@ export default function CartView() {
           aria-hidden="true"
         />
         <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-          Sepetiniz boş
+          {isOrderList ? 'Sipariş listeniz boş' : 'Sepetiniz boş'}
         </h2>
         <p className="max-w-md text-sm text-zinc-500 dark:text-zinc-400">
-          Beğendiğiniz reflektif sticker ve güvenlik etiketi ürünlerini sepete
-          ekleyerek tek seferde sipariş verebilirsiniz.
+          {isOrderList
+            ? 'Beğendiğiniz ürünleri listeye ekleyin; listenizi tek tıkla WhatsApp üzerinden bize gönderin.'
+            : 'Beğendiğiniz reflektif sticker ve güvenlik etiketi ürünlerini sepete ekleyerek tek seferde sipariş verebilirsiniz.'}
         </p>
         <a
           href="/urunler/"
@@ -322,10 +405,19 @@ export default function CartView() {
         <li>
           <button
             type="button"
-            onClick={() => clear()}
+            onClick={() => {
+              // CART-06: yanlış tıklamada liste kaybolmasın — onay istenir.
+              const confirmed =
+                typeof window === 'undefined' ||
+                window.confirm('Listedeki tüm ürünler kaldırılacak. Emin misiniz?')
+              if (!confirmed) {
+                return
+              }
+              clear()
+            }}
             className="text-xs font-medium text-zinc-500 transition-colors hover:text-red-600 dark:text-zinc-400 dark:hover:text-red-400"
           >
-            Sepeti Boşalt
+            {isOrderList ? 'Listeyi Temizle' : 'Sepeti Boşalt'}
           </button>
         </li>
       </ul>
@@ -341,13 +433,31 @@ export default function CartView() {
             <dt className="text-zinc-500 dark:text-zinc-400">Ürün adedi</dt>
             <dd className="font-medium text-zinc-900 dark:text-zinc-100">{count}</dd>
           </div>
+          <div className="flex items-center justify-between">
+            <dt className="text-zinc-500 dark:text-zinc-400">Ara toplam</dt>
+            <dd className="font-medium text-zinc-900 dark:text-zinc-100">
+              {formatPrice(totals.subtotal)}
+            </dd>
+          </div>
+          <div className="flex items-center justify-between">
+            <dt className="text-zinc-500 dark:text-zinc-400">Kargo</dt>
+            <dd className="font-medium text-zinc-900 dark:text-zinc-100">
+              {totals.shippingFee === 0 ? 'Ücretsiz' : formatPrice(totals.shippingFee)}
+            </dd>
+          </div>
           <div className="flex items-center justify-between border-t border-zinc-200 pt-2 dark:border-zinc-800">
             <dt className="font-medium text-zinc-900 dark:text-zinc-100">Toplam</dt>
             <dd className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
-              {formatPrice(total)}
+              {formatPrice(totals.total)}
             </dd>
           </div>
         </dl>
+
+        <p className="rounded-lg bg-emerald-50 px-3 py-2 text-xs font-medium text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300">
+          {totals.freeShippingQualified
+            ? `Ücretsiz kargo kazandınız (${formatPrice(totals.freeShippingThreshold)} ve üzeri).`
+            : `Ücretsiz kargoya ${formatPrice(totals.freeShippingRemaining)} kaldı.`}
+        </p>
 
         <label className="flex cursor-pointer items-start gap-2.5 rounded-lg border border-zinc-200 bg-zinc-50 p-3 text-xs leading-relaxed text-zinc-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400">
           <input
@@ -370,7 +480,17 @@ export default function CartView() {
             >
               Mesafeli Satış Sözleşmesi
             </a>
-            {'’ni ve Ön Bilgilendirme Formu’nu okudum, onaylıyorum.'}
+            {'’ni ve '}
+            {/* CART-07: Ön Bilgilendirme Formu ayrı bir yasal belgedir. */}
+            <a
+              href="/on-bilgilendirme-formu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-zinc-900 underline underline-offset-2 hover:text-emerald-700 dark:text-zinc-100 dark:hover:text-emerald-400"
+            >
+              Ön Bilgilendirme Formu
+            </a>
+            {'’nu okudum, onaylıyorum.'}
           </span>
         </label>
 
@@ -380,6 +500,15 @@ export default function CartView() {
             className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs font-medium text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-400"
           >
             Siparişi tamamlamak için lütfen sözleşme onayını işaretleyin.
+          </p>
+        )}
+
+        {priceNotice && (
+          <p
+            role="status"
+            className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-medium text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950 dark:text-emerald-300"
+          >
+            {priceNotice}
           </p>
         )}
 

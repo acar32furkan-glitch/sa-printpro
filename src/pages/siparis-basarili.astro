@@ -9,6 +9,11 @@ const canonicalUrl = buildCanonical('/siparis-basarili')
 
 const whatsappNumber = String(siteConfig.contact.whatsapp || '').replace(/\D/g, '')
 const whatsappUrl = `https://wa.me/${whatsappNumber}`
+
+// FAZ A — AN-02 / CAT-04: `purchase` olayı yalnız gerçek ödeme sağlayıcısı
+// (Shopier) aktifken fırlatılır. Katalog modunda ödeme olmadığı için olay da
+// sepet temizliği de yapılmaz.
+const enablePurchaseTracking = siteConfig.features?.enableShopier === true
 ---
 
 <Layout
@@ -82,7 +87,7 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}`
     </div>
   </section>
 
-  <script is:inline>
+  <script is:inline define:vars={{ enablePurchaseTracking }}>
     // Sipariş numarası query string'de varsa göster (ör. ?order=12345).
     (function () {
       try {
@@ -109,6 +114,10 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}`
     // gönderilmez (duplicate purchase önlenir).
     (function () {
       try {
+        // Katalog modu: ödeme doğrulanmadan "satış" kaydı oluşturulmaz.
+        if (!enablePurchaseTracking) {
+          return
+        }
         if (typeof window.gtag !== 'function') {
           return
         }

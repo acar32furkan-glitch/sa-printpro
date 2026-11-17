@@ -1,25 +1,10 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
 import { Search, X } from 'lucide-react'
+import { formatPrice } from '../../lib/pricing.js'
 
 const SEARCH_INDEX_URL = '/search-index.json'
 const DEBOUNCE_MS = 200
 const MAX_RESULTS = 6
-
-/**
- * Formats a numeric price as a Turkish Lira string.
- * @param {number} value
- * @returns {string}
- */
-function formatPrice(value) {
-  const numeric = Number(value)
-  if (!Number.isFinite(numeric) || numeric <= 0) {
-    return ''
-  }
-  return `${numeric.toLocaleString('tr-TR', {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
-  })} TL`
-}
 
 /**
  * Normalizes a string for Turkish-aware, case-insensitive comparison.
@@ -138,12 +123,32 @@ function filterIndex(index, query) {
 export default function SearchBar({
   placeholder = 'Ürün / barkod ara...',
   autoFocus = false,
+  // A11Y-05: 404 gibi sayfalarda `<label for>` bağlanabilsin diye dışarıdan
+  // input id'si verilebilir.
+  inputId,
   onNavigate,
 }) {
-  const [query, setQuery] = useState('')
+  // A11Y-01: Bileşen aynı sayfada birden fazla kez render ediliyor
+  // (navbar + mobil menü + 404). Sabit `search-results` id'si geçersiz HTML ve
+  // hatalı `aria-controls` referansı üretiyordu; `useId()` tekil id verir.
+  const resultsId = useId()
+  // UX-05: paylaşılabilir `?q=` bağlantıları arama kutusunu doldurur.
+  // SSR'da değer boş, tarayıcıda dolu olabildiği için input'ta
+  // `suppressHydrationWarning` kullanılır.
+  const [query, setQuery] = useState(() => {
+    if (typeof window === 'undefined') {
+      return ''
+    }
+    try {
+      return new URLSearchParams(window.location.search).get('q') || ''
+    } catch {
+      return ''
+    }
+  })
   const [debouncedQuery, setDebouncedQuery] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const [index, setIndex] = useState([])
+
 
   const containerRef = useRef(null)
   const indexRef = useRef(null)
@@ -283,13 +288,17 @@ export default function SearchBar({
         />
         <input
           type="search"
+          id={inputId}
           value={query}
+          suppressHydrationWarning
           onChange={handleChange}
           onFocus={handleFocus}
           placeholder={placeholder}
           aria-label="Ürün ara"
+          role="combobox"
+          aria-autocomplete="list"
           aria-expanded={showDropdown}
-          aria-controls="search-results"
+          aria-controls={resultsId}
           autoComplete="off"
           autoFocus={autoFocus}
           className="w-full rounded-lg border border-zinc-300 bg-white py-2 pl-9 pr-9 text-xs text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-500 dark:focus:border-zinc-100 dark:focus-visible:ring-zinc-100 dark:focus-visible:ring-offset-zinc-900"
@@ -308,8 +317,9 @@ export default function SearchBar({
 
       {showDropdown && (
         <div
-          id="search-results"
-          role="listbox"
+          id={resultsId}
+          role="region"
+          aria-label="Arama sonuçları"
           className="absolute left-0 right-0 top-full z-50 mt-2 max-h-96 overflow-y-auto rounded-lg border border-zinc-300 bg-white shadow-lift dark:border-zinc-700 dark:bg-zinc-900"
         >
           {/* Header row. */}
@@ -343,11 +353,13 @@ export default function SearchBar({
                     <span className="h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800">
                       {product.image && (
                         <img
-                          src={product.image}
+                          src={product.thumb || product.image}
                           alt={product.name}
-                          className="h-full w-full object-cover"
+                          width="96"
+                          height="96"
                           loading="lazy"
                           decoding="async"
+                          className="h-full w-full object-cover"
                         />
                       )}
                     </span>

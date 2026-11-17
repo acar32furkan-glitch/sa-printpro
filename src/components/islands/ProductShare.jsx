@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Share2, MessageCircle, Check } from 'lucide-react'
+import { siteConfig } from '../../config/site.js'
 
 /**
  * Builds the absolute product URL from the current location, falling back to
@@ -11,7 +12,8 @@ function resolveUrl(slug) {
   if (typeof window !== 'undefined' && window.location?.origin) {
     return `${window.location.origin}/urun/${slug}/`
   }
-  return `https://saprintpro.com/urun/${slug}/`
+  // QA-06: alan adı sabit kodlanmaz; `site.js` tek kaynak.
+  return `${siteConfig.domain}/urun/${slug}/`
 }
 
 /**

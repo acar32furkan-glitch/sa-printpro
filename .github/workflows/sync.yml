@@ -41,7 +41,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          # CONF-01: Node 20 EOL — LTS 24'e yükseltildi.
+          node-version: '24'
           cache: 'npm'
 
       # 3) Bağımlılıkları kur (peer-dependency çakışmaları için legacy flag)

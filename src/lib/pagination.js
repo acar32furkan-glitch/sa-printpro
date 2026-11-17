@@ -7,7 +7,15 @@
  * sayfaları aynı mantığı paylaşır.
  */
 
-/** Bir sayfada gösterilecek ürün sayısı. */
+/**
+ * Bir sayfada gösterilecek ürün sayısı.
+ *
+ * UX-01: Değer 24'te tutulur. 48'e çıkarıldığında build süresi ~2 dk'dan
+ * ~4 dk'ya, sayfa ağırlığı iki katına çıktı (48 kart + island hidrasyonu) ve
+ * mobil LCP olumsuz etkilendi. Statik sayfalama nedeniyle sıralamanın sayfa
+ * bazlı olduğu arayüzde açıkça belirtilir (SortFilterBar etiketleri) ve
+ * filtre/sıralama URL'leri robots.txt ile taramaya kapatılmıştır.
+ */
 export const PAGE_SIZE = 24
 
 /**

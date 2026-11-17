@@ -139,7 +139,32 @@ const legalLinks = [
             </li>
           ))
         }
+        <li>
+          {/* PRIV-03: Kullanıcı çerez rızasını dilediği zaman sıfırlayabilir. */}
+          <button
+            type="button"
+            data-consent-reset
+            class="text-xs font-medium text-zinc-500 underline underline-offset-2 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+          >
+            Çerez Tercihleri
+          </button>
+        </li>
       </ul>
     </div>
   </div>
+
+  <script is:inline>
+    // PRIV-03: "Çerez Tercihleri" → kayıtlı rıza silinir, banner yeniden görünür.
+    document.addEventListener('click', function (event) {
+      var target = event.target
+      if (!target || typeof target.closest !== 'function') return
+      if (!target.closest('[data-consent-reset]')) return
+      try {
+        window.localStorage.removeItem('sa-cookie-consent')
+      } catch (error) {
+        // Storage erişilemezse sessizce geç.
+      }
+      window.location.reload()
+    })
+  </script>
 </footer>

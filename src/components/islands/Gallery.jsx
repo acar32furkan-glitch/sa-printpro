@@ -34,6 +34,8 @@ export default function Gallery({ images = [], title = '' }) {
           <img
             key={activeImage}
             src={activeImage}
+            width="800"
+            height="1000"
             alt={
               title
                 ? `${title} - Motosiklet Reflektif Sticker SA Printpro`
@@ -64,7 +66,7 @@ export default function Gallery({ images = [], title = '' }) {
                   type="button"
                   onClick={() => setActiveIndex(index)}
                   aria-label={`${index + 1}. görseli göster`}
-                  aria-current={isActive}
+                  aria-pressed={isActive}
                   className={`block aspect-square w-full overflow-hidden rounded-lg border bg-zinc-100 transition-all duration-200 ease-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 dark:bg-zinc-900 dark:focus-visible:ring-zinc-100 dark:focus-visible:ring-offset-zinc-900 ${
                     isActive
                       ? 'border-zinc-900 ring-1 ring-zinc-900 dark:border-zinc-100 dark:ring-zinc-100'
@@ -73,11 +75,9 @@ export default function Gallery({ images = [], title = '' }) {
                 >
                   <img
                     src={image}
-                    alt={
-                      title
-                        ? `${title} - Motosiklet Reflektif Sticker SA Printpro`
-                        : 'Motosiklet Reflektif Sticker SA Printpro'
-                    }
+                    width="200"
+                    height="200"
+                    alt={title ? `${title} — ${index + 1}. görsel` : `${index + 1}. ürün görseli`}
                     className="h-full w-full object-cover"
                     loading="lazy"
                     decoding="async"

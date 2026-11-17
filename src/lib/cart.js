@@ -89,7 +89,11 @@ function normalizeItem(item) {
     return null
   }
 
-  const qty = Math.max(1, Math.floor(toNumber(item.qty) || 1))
+  // CART-05: varyant stoğu üst sınırı. 0/geçersiz ise sınırsız kabul edilir.
+  const rawMaxQty = Math.floor(toNumber(item.maxQty))
+  const maxQty = rawMaxQty > 0 ? rawMaxQty : null
+
+  const qty = clampQty(Math.floor(toNumber(item.qty) || 1), maxQty)
 
   return {
     id,
@@ -100,7 +104,20 @@ function normalizeItem(item) {
     price: Math.max(0, toNumber(item.price)),
     qty,
     image: String(item.image ?? '').trim(),
+    maxQty,
   }
+}
+
+/**
+ * Adedi geçerli aralığa kırpar (en az 1, en fazla `maxQty`).
+ * @param {number} qty
+ * @param {number|null|undefined} maxQty
+ * @returns {number}
+ */
+function clampQty(qty, maxQty) {
+  const safeQty = Math.max(1, Math.floor(toNumber(qty) || 1))
+  const limit = Math.floor(toNumber(maxQty))
+  return limit > 0 ? Math.min(safeQty, limit) : safeQty
 }
 
 /**
@@ -314,7 +331,10 @@ export function addItem(item) {
   const existing = items.find((entry) => isSameLine(entry, normalized))
 
   if (existing) {
-    existing.qty += normalized.qty
+    // CART-05: stok üst sınırı aşılamaz.
+    const maxQty = normalized.maxQty ?? existing.maxQty ?? null
+    existing.maxQty = maxQty
+    existing.qty = clampQty(existing.qty + normalized.qty, maxQty)
     // Fiyat/görsel güncellenmiş olabilir; taze değerleri koru.
     existing.price = normalized.price || existing.price
     existing.name = normalized.name || existing.name
@@ -365,11 +385,39 @@ export function updateQty(key, qty) {
   } else {
     for (const entry of items) {
       if (lineKey(entry) === target) {
-        entry.qty = nextQty
+        // CART-05: stok üst sınırı uygulanır.
+        entry.qty = clampQty(nextQty, entry.maxQty)
         break
       }
     }
   }
+
+  writeRaw(items)
+  return items
+}
+
+/**
+ * CART-04: Bir satırın birim fiyatını günceller.
+ *
+ * `localStorage` içeriği kullanıcı tarafından değiştirilebildiği ve katalog
+ * fiyatları zamanla değişebildiği için, sepet ekranı açıldığında satır fiyatı
+ * katalogdan doğrulanır ve fark varsa bu fonksiyonla tazelenir.
+ *
+ * @param {string} key Barkod ya da `id::variant` biçiminde anahtar.
+ * @param {number} price Yeni birim fiyat (pozitif).
+ * @returns {Array<object>} Güncel sepet.
+ */
+export function updatePrice(key, price) {
+  const target = String(key ?? '')
+  const nextPrice = Math.max(0, toNumber(price))
+
+  if (target === '' || nextPrice <= 0) {
+    return getItems()
+  }
+
+  const items = readRaw().map((entry) =>
+    lineKey(entry) === target ? { ...entry, price: nextPrice } : entry
+  )
 
   writeRaw(items)
   return items
@@ -411,13 +459,9 @@ export function getItemKey(item) {
 
 /**
  * Fiyatı Türk Lirası biçiminde biçimlendirir.
- * @param {number} value
- * @returns {string}
+ *
+ * FAZ A — PRICE-01: Biçimlendirme artık `lib/pricing.js` içindeki TEK
+ * kaynaktan gelir; burada yalnızca geriye dönük uyumluluk için yeniden
+ * dışa aktarılır (CartView bu yolu import ediyor).
  */
-export function formatPrice(value) {
-  const numeric = toNumber(value)
-  return `${numeric.toLocaleString('tr-TR', {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
-  })} TL`
-}
+export { formatPrice } from './pricing.js'

@@ -8,25 +8,15 @@ import {
   Info,
 } from 'lucide-react'
 import { siteConfig } from '../../config/site.js'
-import { getTrendyolProductUrl, calculateDirectPrice } from '../../lib/products.js'
+import { getTrendyolProductUrl } from '../../lib/products.js'
+import {
+  formatPrice,
+  getDirectDiscountPercent,
+  getDirectPrice,
+  getStockLabel,
+} from '../../lib/pricing.js'
 import shopierMap from '../../config/shopier.json'
 import AddToCartButton from './AddToCartButton.jsx'
-
-/**
- * Formats a numeric price as a Turkish Lira string.
- * @param {number} value
- * @returns {string}
- */
-function formatPrice(value) {
-  const numeric = Number(value)
-  if (!Number.isFinite(numeric)) {
-    return ''
-  }
-  return `${numeric.toLocaleString('tr-TR', {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
-  })} TL`
-}
 
 /**
  * Builds a human readable attribute summary, e.g. "Renk: Beyaz, Boyut: 16cm".
@@ -211,10 +201,10 @@ export default function VariantSelector({ product, shopier }) {
   // Trendyol liste fiyatı (indirim varsa salePrice, yoksa price).
   const trendyolPrice = hasDiscount ? salePrice : price
 
-  // Web'e özel doğrudan satış fiyatı — son hanesi her zaman 5.
-  const directPrice = enableDirectDiscount ? calculateDirectPrice(trendyolPrice) : 0
-  const directDiscountRate = Number(features.directDiscountRate) || 0
-  const directDiscountPercent = Math.round(directDiscountRate * 100)
+  // Web'e özel doğrudan satış fiyatı — son hanesi her zaman 5 (tek kaynak).
+  const directPrice = enableDirectDiscount ? getDirectPrice(trendyolPrice) : 0
+  // PRICE-03: rozet sabit config yüzdesi yerine gerçek (yuvarlanmış) oranı yazar.
+  const directDiscountPercent = getDirectDiscountPercent(trendyolPrice)
   const showDirectPrice = enableDirectDiscount && directPrice > 0 && trendyolPrice > 0
 
   // Trendyol Boost CTA — hedef link seçili varyanta göre anlık güncellenir.
@@ -262,6 +252,8 @@ export default function VariantSelector({ product, shopier }) {
     barcode,
     price: showDirectPrice ? directPrice : trendyolPrice,
     qty: 1,
+    // CART-05: seçili varyantın stok sınırı (sepette aşılamaz).
+    maxQty: stock > 0 ? stock : null,
     image: Array.isArray(product?.images) ? product.images[0] || '' : '',
   }
 
@@ -389,7 +381,7 @@ export default function VariantSelector({ product, shopier }) {
         {inStock ? (
           <span className="inline-flex items-center gap-1.5 font-medium text-emerald-700 dark:text-emerald-400">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-            Stokta ({stock} adet)
+            Stokta ({getStockLabel(stock)})
           </span>
         ) : (
           <span className="inline-flex items-center gap-1.5 font-medium text-zinc-500 dark:text-zinc-400">
@@ -483,30 +475,29 @@ export default function VariantSelector({ product, shopier }) {
               </a>
             )}
 
-            {/* Stok tükenmiş görünse de atölye üretimi bilgilendirme rozeti. */}
+            {/* UX-03: Tükendi durumunda tek ve net bir yol sunulur — sipariş
+                üzerine üretim bilgisi + WhatsApp CTA. "Sepete Ekle" butonu
+                aşağıda gizlenir; çelişkili iki mesaj aynı ekranda görünmez. */}
             {!inStock && (
               <p className="flex items-start gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2.5 text-xs leading-relaxed text-emerald-800 dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300">
                 <Info className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                 <span>
-                  Bu ürün stokta tükenmiş görünse de SA Printpro atölyesinde
-                  siparişiniz üzerine aynı gün özel basılmaktadır.
+                  Bu ürün şu anda stokta yok. SA Printpro atölyesinde sipariş
+                  üzerine üretilir; WhatsApp üzerinden üretim süresi ve teslim
+                  tarihini öğrenebilirsiniz.
                 </span>
               </p>
             )}
           </>
         )}
 
-        {/* Sepete Ekle — mevcut WhatsApp/Shopier butonlarının YANINA eklenir. */}
-        {trendyolPrice > 0 && (
-          <AddToCartButton
-            item={cartItem}
-            disabled={!inStock}
-            className="w-full py-3"
-          />
+        {/* Listeye Ekle — stokta olmayan üründe gösterilmez (UX-03). */}
+        {trendyolPrice > 0 && inStock && (
+          <AddToCartButton item={cartItem} className="w-full py-3" />
         )}
 
         <p className="flex items-center justify-center gap-2 text-xs text-zinc-400 dark:text-zinc-500">
-          Güvenli ödeme · 2 günde kargoda
+          WhatsApp ile sipariş · 2 günde kargoda
         </p>
       </div>
     </div>

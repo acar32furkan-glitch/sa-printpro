@@ -1,4 +1,4 @@
-import { useCallback, useState, useSyncExternalStore } from 'react'
+import { useCallback, useEffect, useState, useSyncExternalStore } from 'react'
 import { Cookie } from 'lucide-react'
 import { getConsent, setConsent } from '../../lib/consent.js'
 
@@ -65,21 +65,40 @@ export default function CookieBanner() {
     emitConsentChange()
   }, [])
 
+  // A11Y-03: Banner açıkken ESC ile kapatma (rıza verilmedi = reddet).
+  useEffect(() => {
+    if (decided || consent !== null || typeof document === 'undefined') {
+      return undefined
+    }
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        handleReject()
+      }
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [decided, consent, handleReject])
+
   // Karar verilmişse (bu oturumda veya daha önce) banner gösterilmez.
   if (decided || consent !== null) {
     return null
   }
 
+  // A11Y-03: Bu bir modal değil, sayfayı bloklamayan bir bölgedir.
+  // `role="region"` + `aria-labelledby` kullanılır; `aria-live` kaldırıldı
+  // (tüm banner'ın anons edilmesi gürültü üretiyordu).
   return (
     <div
-      role="dialog"
-      aria-live="polite"
-      aria-label="Çerez bildirimi"
+      role="region"
+      aria-labelledby="cookie-banner-title"
       className="fixed bottom-4 right-4 z-50 w-[calc(100%-2rem)] max-w-sm animate-fade-in-up rounded-lg border border-zinc-300 bg-white shadow-lift dark:border-zinc-700 dark:bg-zinc-900"
     >
       {/* Header strip. */}
       <div className="flex items-center justify-between border-b border-zinc-200 bg-zinc-50 px-3 py-2 dark:border-zinc-800 dark:bg-zinc-950">
-        <span className="flex items-center gap-2 text-xs font-medium text-zinc-600 dark:text-zinc-300">
+        <span
+          id="cookie-banner-title"
+          className="flex items-center gap-2 text-xs font-medium text-zinc-600 dark:text-zinc-300"
+        >
           <Cookie className="h-3.5 w-3.5" aria-hidden="true" />
           Çerez Bildirimi
         </span>

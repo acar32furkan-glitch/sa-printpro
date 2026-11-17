@@ -10,6 +10,8 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { pricingConfig } from '../src/config/pricing.js'
+import { siteConfig } from '../src/config/site.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const rootDir = resolve(__dirname, '..')
@@ -17,9 +19,11 @@ const rootDir = resolve(__dirname, '..')
 const SOURCE_FILE = resolve(rootDir, 'src/data/products.json')
 const OUTPUT_FILE = resolve(rootDir, 'public/google-merchant.xml')
 
-const SITE_URL = 'https://saprintpro.com'
-const BRAND = 'SA Printpro'
-const CURRENCY = 'TRY'
+// QA-06: alan adı ve marka sabit kodlanmaz; `site.js` tek kaynak.
+const SITE_URL = siteConfig.domain
+const BRAND = siteConfig.name
+// QA-07: para birimi tek kaynaktan (`pricing.js`).
+const CURRENCY = pricingConfig.currency
 
 /**
  * Escapes a string for safe inclusion in XML text/attribute nodes.
@@ -45,6 +49,9 @@ function toPlainText(value) {
   const amp = '\u0026'
   const named = {
     [`${amp}nbsp;`]: ' ',
+    // DATA-05: kaynak veride görülen bozuk entity (`&nbsp.`) temizlenir.
+    [`${amp}nbsp.`]: ' ',
+    [`${amp}nbsp,`]: ' ',
     [`${amp}amp;`]: '\u0026',
     [`${amp}quot;`]: '"',
     [`${amp}#39;`]: "'",
@@ -123,6 +130,43 @@ function cheapestPrice(product) {
 }
 
 /**
+ * SEO-03: Barkod yalnızca 13/14 haneli ve tamamen rakamsa GTIN olarak gönderilir.
+ * @param {object} variant
+ * @returns {string|null}
+ */
+function resolveGtin(variant) {
+  const raw = String(variant?.barcode ?? '').replace(/\D/g, '')
+  return raw.length === 13 || raw.length === 14 ? raw : null
+}
+
+/**
+ * SEO-03: Google ürün taksonomisi için kaba kategori eşlemesi.
+ * Merchant Center'da "eksik google_product_category" uyarısını kaldırır.
+ */
+const GOOGLE_CATEGORY_RULES = [
+  { keywords: ['duvar', 'dekor'], category: 'Home & Garden > Decor' },
+  { keywords: ['ofis', 'kırtasiye'], category: 'Office Supplies' },
+  {
+    keywords: ['motosiklet', 'jant', 'sticker', 'reflekt', 'araç', 'tankpad', 'kask'],
+    category: 'Vehicles & Parts > Vehicle Parts & Accessories',
+  },
+]
+
+/**
+ * @param {string} categoryName
+ * @returns {string}
+ */
+function resolveGoogleCategory(categoryName) {
+  const haystack = String(categoryName || '').toLowerCase()
+  for (const rule of GOOGLE_CATEGORY_RULES) {
+    if (rule.keywords.some((keyword) => haystack.includes(keyword))) {
+      return rule.category
+    }
+  }
+  return 'Arts & Entertainment > Hobbies & Creative Arts'
+}
+
+/**
  * Builds a single `<item>` block for a product.
  * @param {object} product
  * @returns {string|null}
@@ -145,16 +189,27 @@ function buildItem(product) {
   const variants = Array.isArray(product?.variants) ? product.variants : []
   const firstVariant = variants[0] || {}
   const id = firstVariant.barcode || firstVariant.sku || String(product.id || slug)
-  const link = `${SITE_URL}/urun/${slug}`
+  // SEO-05: site `trailingSlash: 'always'` kullanıyor; feed linki de slash'li
+  // olmalı, aksi halde her tıklama 308 yönlendirme yer.
+  const link = `${SITE_URL}/urun/${slug}/`
   const availability = totalStock(product) > 0 ? 'in_stock' : 'out_of_stock'
 
   const title = toPlainText(product.name)
   const description =
     toPlainText(product.descriptionHtml) || `${title} — ${BRAND}`
 
+  const gtin = resolveGtin(firstVariant)
+  const googleCategory = resolveGoogleCategory(product?.category?.name)
+  const productType = String(product?.category?.name || '')
+
+  // SEO-03: kargo bilgisi — 420 TL ve üzeri ücretsiz (tek kaynak: pricing.js).
+  const shippingFee =
+    price >= pricingConfig.freeShippingThreshold ? 0 : pricingConfig.shippingFee
+
   return [
     '    <item>',
     `      <g:id>${escapeXml(id)}</g:id>`,
+    gtin ? `      <g:gtin>${escapeXml(gtin)}</g:gtin>` : null,
     `      <g:title>${escapeXml(title)}</g:title>`,
     `      <g:description>${escapeXml(description)}</g:description>`,
     `      <g:link>${escapeXml(link)}</g:link>`,
@@ -162,9 +217,19 @@ function buildItem(product) {
     `      <g:availability>${availability}</g:availability>`,
     `      <g:price>${price} ${CURRENCY}</g:price>`,
     `      <g:brand>${escapeXml(BRAND)}</g:brand>`,
+    `      <g:google_product_category>${escapeXml(googleCategory)}</g:google_product_category>`,
+    productType
+      ? `      <g:product_type>${escapeXml(productType)}</g:product_type>`
+      : null,
+    '      <g:shipping>',
+    '        <g:country>TR</g:country>',
+    `        <g:price>${shippingFee.toFixed(2)} ${CURRENCY}</g:price>`,
+    '      </g:shipping>',
     '      <g:condition>new</g:condition>',
     '    </item>',
-  ].join('\n')
+  ]
+    .filter((line) => line !== null)
+    .join('\n')
 }
 
 async function main() {

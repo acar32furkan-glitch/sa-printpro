@@ -1,7 +1,20 @@
 import productsData from '../data/products.json'
 import productRedirectsData from '../data/product-redirects.json'
+import categoryRedirectsData from '../data/category-redirects.json'
+import imageManifestData from '../data/image-manifest.json'
 import { featuredSlugs } from '../config/featured.js'
 import { siteConfig } from '../config/site.js'
+import { getDirectPrice } from './pricing.js'
+
+/**
+ * DATA-01: Yerel görsel varlığı, build öncesi üretilen manifest'ten okunur
+ * (`scripts/build-image-manifest.mjs`). Böylece `node:fs` çağrısı ve
+ * `globalThis.__SA_PRINTPRO_FS__` köprüsü tamamen kaldırılmıştır; aynı kod
+ * hem SSR (build) hem tarayıcı (island) tarafında güvenle çalışır.
+ */
+const LOCAL_IMAGES = new Set(
+  Array.isArray(imageManifestData?.images) ? imageManifestData.images : []
+)
 
 /**
  * Normalizes a string for Turkish-aware, case-insensitive comparison.
@@ -221,7 +234,8 @@ export function sanitizeCatalogText(text) {
       if (hit === -1) {
         break
       }
-      result += output.slice(cursor, hit) + 'SA Printpro'
+      // QA-05: Marka adı sabit kodlanmaz; tek kaynaktan (`siteConfig.name`).
+      result += output.slice(cursor, hit) + siteConfig.name
       cursor = hit + normalizedBrand.length
       searchFrom = cursor
     }
@@ -426,24 +440,7 @@ export function getProductPrimaryImage(product) {
   }
 
   const localPath = `/uploads/products/${product.id}.webp`
-
-  // Yalnızca Node (build/SSG) ortamında dosya sistemi kontrolü yapılabilir.
-  // Tarayıcıda `process.versions.node` bulunmaz; bu durumda CDN görseline düşülür.
-  if (typeof process === 'undefined' || !process.versions?.node) {
-    return cdnImage
-  }
-
-  try {
-    // `node:fs` yalnızca Node ortamında yüklenir; tarayıcı paketine sızmaz.
-    const { existsSync } = globalThis.__SA_PRINTPRO_FS__ || {}
-    if (typeof existsSync !== 'function') {
-      return cdnImage
-    }
-    const absolute = `${process.cwd()}/public${localPath}`
-    return existsSync(absolute) ? localPath : cdnImage
-  } catch {
-    return cdnImage
-  }
+  return LOCAL_IMAGES.has(localPath) ? localPath : cdnImage
 }
 
 /**
@@ -470,24 +467,47 @@ export function getProductImages(product) {
     return images
   }
 
-  // Yalnızca Node (build/SSG) ortamında dosya sistemi kontrolü yapılabilir.
-  const isNode = typeof process !== 'undefined' && Boolean(process.versions?.node)
-  const existsSync = isNode
-    ? globalThis.__SA_PRINTPRO_FS__?.existsSync
-    : undefined
-
   return images.map((cdnImage, index) => {
-    if (typeof existsSync !== 'function') {
-      return cdnImage
-    }
     const localPath = `/uploads/products/${product.id}-${index}.webp`
-    try {
-      const absolute = `${process.cwd()}/public${localPath}`
-      return existsSync(absolute) ? localPath : cdnImage
-    } catch {
-      return cdnImage
-    }
+    return LOCAL_IMAGES.has(localPath) ? localPath : cdnImage
   })
+}
+
+/**
+ * PERF-06: Kart bileşenlerinin ihtiyaç duyduğu MİNİMAL ürün projeksiyonu.
+ *
+ * `toClientProduct` ürünün tüm alanlarını (açıklama, tüm görseller, ek
+ * alanlar) hidrasyon payload'ına yazıyordu; 24 ürünlük sayfalarda HTML
+ * şişiyordu. Bu fonksiyon yalnızca kartın gerçekten okuduğu alanları taşır.
+ *
+ * @param {object} product
+ * @returns {object}
+ */
+export function toCardProduct(product) {
+  if (!product) {
+    return product
+  }
+
+  const variants = Array.isArray(product.variants) ? product.variants : []
+  const localImage = getProductPrimaryImage(product)
+  const image =
+    typeof localImage === 'string' && localImage.startsWith('/uploads/') ? localImage : ''
+
+  return {
+    id: product.id,
+    name: product.name,
+    slug: product.slug,
+    brand: product.brand,
+    images: image ? [image] : [],
+    variants: variants.map((variant) => ({
+      barcode: variant?.barcode || '',
+      sku: variant?.sku || '',
+      attributes: variant?.attributes || {},
+      price: Number(variant?.price) || 0,
+      salePrice: Number(variant?.salePrice) || 0,
+      stock: Number(variant?.stock) || 0,
+    })),
+  }
 }
 
 /**
@@ -596,13 +616,10 @@ export const CATEGORY_OVERRIDE_NAMES = {
  *
  * @type {Record<string, string>}
  */
-export const CATEGORY_REDIRECTS = {
-  ayna: 'duvar-dekorasyon',
-  'duvar-sticker': 'duvar-dekorasyon',
-  'duvar-dekorasyon-urunu': 'duvar-dekorasyon',
-  'motosiklet-luzumlu-urun': 'tankpad-sticker',
-  'arma-sticker-fosfor-serit': 'motosiklet-sticker-granaj',
-}
+// DATA-06: Tek veri kaynağı `src/data/category-redirects.json`.
+// (Önceden JSON'da 1, burada 5 kayıt vardı; yeni bir birleştirmede 301'lerin
+// bir kısmı kayboluyordu.)
+export const CATEGORY_REDIRECTS = categoryRedirectsData
 
 /**
  * FAZ 4 — G2.4: Birebir duplicate ürünler birleştirildiği için eski ürün
@@ -844,16 +861,6 @@ export function getTrendyolProductUrl(product, variant) {
 }
 
 /**
- * Calculates the web-exclusive direct-sale price for a given list price.
- *
- * Applies the configured `directDiscountRate` and then rounds to a value whose
- * last digit is always 5 (e.g. 199 -> 155, 120 -> 95). A floor of 5 TL keeps
- * the result sane for very cheap items.
- *
- * @param {number} price
- * @returns {number}
- */
-/**
  * Hammadde / malzeme markaları. Bunlar ürünün ÜRETİCİ markası değildir; vinil,
  * folyo gibi girdilerin tedarikçi markalarıdır. Vitrinde "MARKA: Oracal" olarak
  * gösterildiğinde "%100 Orijinal SA Printpro Üretimi" mesajıyla çelişiyor ve
@@ -954,26 +961,18 @@ export function resolveProductBrand(product) {
 }
 
 /**
- * Calculates the web-exclusive direct-sale price for a given list price.
+ * Web'e özel doğrudan satış fiyatını hesaplar.
  *
- * Applies the configured `directDiscountRate` and then rounds to a value whose
- * last digit is always 5 (e.g. 199 -> 155, 120 -> 95). A floor of 5 TL keeps
- * the result sane for very cheap items.
+ * FAZ A: Hesaplama artık [`src/lib/pricing.js`](./pricing.js) içindeki
+ * `getDirectPrice()` fonksiyonundadır (tek fiyat doğrusu). Bu sarmalayıcı,
+ * mevcut çağrı noktalarını kırmamak için korunmuştur; yeni kod doğrudan
+ * `getDirectPrice()` kullanmalıdır.
  *
  * @param {number} price
  * @returns {number}
  */
 export function calculateDirectPrice(price) {
-  const numeric = Number(price)
-  if (!Number.isFinite(numeric) || numeric <= 0) {
-    return 0
-  }
-
-  const rate = Number(siteConfig.features?.directDiscountRate)
-  const safeRate = Number.isFinite(rate) ? rate : 0
-  const raw = numeric * (1 - safeRate)
-
-  return Math.max(5, Math.round((raw - 5) / 10) * 10 + 5)
+  return getDirectPrice(price)
 }
 
 /**

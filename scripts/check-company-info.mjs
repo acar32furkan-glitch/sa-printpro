@@ -73,12 +73,16 @@ function readCompanyBlock() {
 }
 
 function main() {
+  // LEGAL-02: `--strict` ile eksik kurumsal bilgi build'i DURDURUR (prod/CI).
+  // Varsayılan mod uyarıdır; lokal geliştirmeyi bloklamaz.
+  const strict = process.argv.includes('--strict')
+
   let company
   try {
     company = readCompanyBlock()
   } catch (error) {
     console.warn('⚠️  Kurumsal bilgi kontrolü atlandı:', error.message)
-    process.exit(0)
+    process.exit(strict ? 1 : 0)
   }
 
   const missing = REQUIRED_FIELDS.filter(([key]) => isMissing(company[key]))
@@ -103,11 +107,18 @@ function main() {
 
   console.log(
     '\n⚠️  Bu bilgiler doldurulmadan fatura kesilemez. İlk gerçek satıştan önce\n' +
-      '   `src/config/site.js` içindeki `company` bloğunu eksiksiz doldurun.\n' +
-      '   (Bu kontrol build\'i durdurmaz; yalnızca uyarır.)',
+      '   `src/config/site.js` içindeki `company` bloğunu eksiksiz doldurun.',
   )
 
-  // Build'i kırmamak için her durumda başarılı çık.
+  if (strict) {
+    console.error('\n❌ --strict: eksik kurumsal bilgi nedeniyle işlem durduruldu.')
+    process.exit(1)
+  }
+
+  // Varsayılan mod: build'i kırmadan uyar.
+  console.log(
+    '   (Uyarı modu: build durdurulmadı. Zorunlu kontrol için --strict kullanın.)',
+  )
   process.exit(0)
 }
 

@@ -1,3 +1,9 @@
+import { pricingConfig } from './pricing.js'
+
+// SEO-02: cayma/iade süresi TEK kaynak. Rozet, JSON-LD (`merchantReturnDays`),
+// llms.txt ve iade sayfası aynı değeri kullanmalıdır (14 vs 15 çelişkisi).
+const RETURN_DAYS = 14
+
 export const siteConfig = {
   name: 'SA Printpro',
   domain: 'https://saprintpro.com',
@@ -11,9 +17,10 @@ export const siteConfig = {
   },
   badges: {
     shipping: '2 Günde Kargoda',
-    returns: '14 Gün İade',
-    freeShipping: '350 TL Üzeri Kargo Bedava',
-    freeShippingThreshold: 350,
+    returns: `${RETURN_DAYS} Gün İade`,
+    // FAZ A — PRICE-06: eşik ve metin tek kaynaktan (`pricing.js`).
+    freeShipping: `${pricingConfig.freeShippingThreshold} TL Üzeri Kargo Bedava`,
+    freeShippingThreshold: pricingConfig.freeShippingThreshold,
   },
   // Kurumsal/şeffaflık bilgileri. TEK MERKEZİ KAYNAK: yasal sayfalar (mesafeli
   // satış, KVKK, iade) ve footer bu bloğu referans alır; elle placeholder
@@ -35,6 +42,16 @@ export const siteConfig = {
     returnAddress: '',
     returnRecipient: '',
   },
+  // SEO-02: yasal/ölçülebilir politika değerleri (tek kaynak).
+  policies: {
+    returnDays: RETURN_DAYS,
+  },
+  // LEGAL-04: Yasal sayfalarda "Son güncelleme" gerçek tarih olarak gösterilir
+  // (önceden yalnızca yıl basılıyordu ve build yılına göre değişiyordu).
+  legal: {
+    lastUpdated: '2026-11-16',
+    lastUpdatedLabel: '16 Kasım 2026',
+  },
   ga4Id: 'G-HK6Q53CMG1',
   searchConsoleVerification: 'google419bc019c17c40b5',
   merchantCenterVerification: 'qStkrwJrl6uF-imyYuA0nvG2eFIdtyF3I8CSr_jVYmM',
@@ -43,10 +60,19 @@ export const siteConfig = {
     // false yapılırsa sitedeki tüm Trendyol butonları ve rozetleri gizlenir,
     // doğrudan satış (Shopier/WhatsApp) birincil olur.
     enableTrendyolCta: false,
+    // FAZ A — CAT-01: KATALOG MODU ana bayrağı.
+    // false → sepet/ödeme (checkout) akışı kapalı; sepet yalnız "sipariş
+    // listesi" olarak çalışır ve sipariş WhatsApp üzerinden alınır.
+    enableCommerce: false,
+    // FAZ A — CAT-01: Shopier (kartlı ödeme) entegrasyonu kapalı.
+    // true yapıldığında `shopier.json` eşlemesi ve Shopier CTA'ları devreye girer.
+    enableShopier: false,
+    // FAZ A — CAT-03: WhatsApp sipariş akışı (katalog modunda birincil yol).
+    enableWhatsappOrder: true,
     // Web'e özel indirimli fiyat gösterimi.
     enableDirectDiscount: true,
-    // Doğrudan satış indirim oranı (0.20 = %20).
-    directDiscountRate: 0.2,
+    // FAZ A — PRICE-01: oran artık `pricing.js` içindeki TEK kaynaktan gelir.
+    directDiscountRate: pricingConfig.directDiscountRate,
   },
   motorcycleBrands: [
     { name: 'Honda', slug: 'honda', keywords: ['honda', 'pcx', 'cbr', 'forza', 'activa', 'dio'] },

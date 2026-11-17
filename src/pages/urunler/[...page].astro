@@ -8,7 +8,7 @@ import {
   getAllBrandsWithCounts,
   getAllCategories,
   getSortedProducts,
-  toClientProduct,
+  toCardProduct,
 } from '../../lib/products.js'
 import { PAGE_SIZE, getTotalPages, pageUrl, paginate } from '../../lib/pagination.js'
 
@@ -40,8 +40,8 @@ export function getStaticPaths() {
 
 const { page, totalPages, products } = Astro.props
 
-// İstemci adasına CDN URL'i sızmasın: yalnızca yerel görselleri gönder.
-const clientProducts = products.map(toClientProduct)
+// PERF-06: istemciye yalnızca kartın ihtiyaç duyduğu alanlar gönderilir.
+const clientProducts = products.map(toCardProduct)
 
 const allProducts = getSortedProducts()
 const totalProducts = allProducts.length

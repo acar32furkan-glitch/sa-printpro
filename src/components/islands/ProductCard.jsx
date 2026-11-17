@@ -1,26 +1,13 @@
 import { siteConfig } from '../../config/site.js'
+import { getProductPrimaryImage, normalizeProductTitle } from '../../lib/products.js'
 import {
-  calculateDirectPrice,
-  getProductPrimaryImage,
-  normalizeProductTitle,
-} from '../../lib/products.js'
+  formatPrice,
+  getDirectDiscountPercent,
+  getDirectPrice,
+  getEffectivePrice,
+  getListPrice,
+} from '../../lib/pricing.js'
 import AddToCartButton from './AddToCartButton.jsx'
-
-/**
- * Formats a numeric price as a Turkish Lira string.
- * @param {number} value
- * @returns {string}
- */
-function formatPrice(value) {
-  const numeric = Number(value)
-  if (!Number.isFinite(numeric)) {
-    return ''
-  }
-  return `${numeric.toLocaleString('tr-TR', {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
-  })} TL`
-}
 
 /**
  * React product card used inside interactive islands (grids, related strips).
@@ -29,39 +16,26 @@ function formatPrice(value) {
  * @param {object} props
  * @param {object} props.product
  */
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, priority = false }) {
   const variants = Array.isArray(product?.variants) ? product.variants : []
 
-  /**
-   * Effective selling price: prefer a positive `salePrice`, else `price`.
-   * Trendyol returns `salePrice: 0` for non-listed items, which must not be
-   * treated as a real price.
-   */
-  const effectivePrice = (variant) => {
-    const sale = Number(variant?.salePrice)
-    if (Number.isFinite(sale) && sale > 0) {
-      return sale
-    }
-    const base = Number(variant?.price)
-    return Number.isFinite(base) && base > 0 ? base : null
-  }
-
-  const pricedVariants = variants.filter((variant) => effectivePrice(variant) !== null)
+  // FAZ A — fiyat mantığı tek kaynaktan (`lib/pricing.js`) okunur.
+  const pricedVariants = variants.filter((variant) => getEffectivePrice(variant) !== null)
 
   const cheapest = pricedVariants.reduce((min, variant) => {
-    const value = effectivePrice(variant)
-    if (min === null || value < min) {
-      return value
+    const value = getEffectivePrice(variant)
+    if (value === null) {
+      return min
     }
-    return min
+    return min === null || value < min ? value : min
   }, null)
 
   const salePrice = cheapest ?? 0
   const hasPrice = cheapest !== null && cheapest > 0
 
   const basePrice = pricedVariants.reduce((max, variant) => {
-    const value = Number(variant.price)
-    if (!Number.isFinite(value) || value <= 0) {
+    const value = getListPrice(variant)
+    if (value === null) {
       return max
     }
     return max === null || value > max ? value : max
@@ -78,8 +52,9 @@ export default function ProductCard({ product }) {
   const features = siteConfig.features || {}
   const enableTrendyolCta = features.enableTrendyolCta === true
   const enableDirectDiscount = features.enableDirectDiscount !== false
-  const directDiscountPercent = Math.round((Number(features.directDiscountRate) || 0) * 100)
-  const directPrice = enableDirectDiscount ? calculateDirectPrice(salePrice) : 0
+  // PRICE-03: rozet sabit config yüzdesi yerine GERÇEK (yuvarlanmış) oranı yazar.
+  const directDiscountPercent = getDirectDiscountPercent(salePrice)
+  const directPrice = enableDirectDiscount ? getDirectPrice(salePrice) : 0
   const showDirectPrice = enableDirectDiscount && hasPrice && directPrice > 0
 
   const totalStock = variants.reduce(
@@ -105,9 +80,9 @@ export default function ProductCard({ product }) {
   // Kart üzerinde gösterilen `salePrice`/`directPrice` en ucuz varyanta ait
   // olabilir; bu değerleri sepete yazmak, barkodu başka bir varyanta ait olan
   // bir satır için yanlış fiyat oluşturur (yanlış tahsilat riski).
-  const defaultVariantPrice = effectivePrice(defaultVariant) ?? 0
+  const defaultVariantPrice = getEffectivePrice(defaultVariant) ?? 0
   const defaultVariantDirectPrice = enableDirectDiscount
-    ? calculateDirectPrice(defaultVariantPrice)
+    ? getDirectPrice(defaultVariantPrice)
     : 0
   const defaultVariantShowDirect =
     enableDirectDiscount && defaultVariantPrice > 0 && defaultVariantDirectPrice > 0
@@ -116,6 +91,8 @@ export default function ProductCard({ product }) {
     id: String(product.id ?? ''),
     name: displayName,
     slug: product.slug,
+    // CART-05: varsayılan varyantın stok sınırı (sepette aşılamaz).
+    maxQty: Number(defaultVariant?.stock) > 0 ? Number(defaultVariant.stock) : null,
     variant: defaultVariant?.attributes
       ? Object.entries(defaultVariant.attributes)
           .map(([key, value]) => `${key}: ${value}`)
@@ -137,7 +114,10 @@ export default function ProductCard({ product }) {
           <img
             src={image}
             alt={displayName}
-            loading="lazy"
+            width="800"
+            height="1000"
+            loading={priority ? 'eager' : 'lazy'}
+            fetchPriority={priority ? 'high' : 'auto'}
             decoding="async"
             className="h-full w-full object-cover transition-transform duration-500 ease-smooth group-hover:scale-105"
           />
@@ -173,7 +153,10 @@ export default function ProductCard({ product }) {
         )}
 
         {!inStock && (
-          <span className="absolute inset-0 flex items-center justify-center bg-white/70 backdrop-blur-[1px] dark:bg-zinc-950/70">
+          <span
+            className="absolute inset-0 flex items-center justify-center bg-white/70 backdrop-blur-[1px] dark:bg-zinc-950/70"
+            aria-hidden="true"
+          >
             <span className="badge-out">Tükendi</span>
           </span>
         )}
@@ -225,27 +208,6 @@ export default function ProductCard({ product }) {
             </div>
           )}
 
-          <span className="flex items-center gap-1.5 text-xs">
-            {inStock ? (
-              <>
-                <span
-                  className="h-1.5 w-1.5 rounded-full bg-emerald-500"
-                  aria-hidden="true"
-                />
-                <span className="text-emerald-700 dark:text-emerald-400">
-                  Stokta
-                </span>
-              </>
-            ) : (
-              <>
-                <span
-                  className="h-1.5 w-1.5 rounded-full bg-zinc-400"
-                  aria-hidden="true"
-                />
-                <span className="text-zinc-500 dark:text-zinc-400">Tükendi</span>
-              </>
-            )}
-          </span>
         </div>
 
         {hasPrice && (

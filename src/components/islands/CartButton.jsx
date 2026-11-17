@@ -1,6 +1,11 @@
 import { useSyncExternalStore } from 'react'
 import { ShoppingCart } from 'lucide-react'
 import { subscribe, getCount } from '../../lib/cart.js'
+import { siteConfig } from '../../config/site.js'
+
+// FAZ A — CAT-02: Katalog + WhatsApp modunda sepet, "sipariş listesi" rolündedir.
+const isOrderList = siteConfig.features?.enableWhatsappOrder === true
+const LIST_LABEL = isOrderList ? 'Sipariş Listem' : 'Sepetim'
 
 /**
  * Sunucu render'ında `0`, istemcide gerçek değeri döndürür. Bu sayede
@@ -34,7 +39,7 @@ export default function CartButton() {
     <a
       href="/sepet/"
       aria-label={
-        count > 0 ? `Sepetim, ${count} ürün` : 'Sepetim, sepet boş'
+        count > 0 ? `${LIST_LABEL}, ${count} ürün` : `${LIST_LABEL}, liste boş`
       }
       className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-300 bg-white text-zinc-700 transition-all duration-200 ease-smooth hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-600 dark:hover:bg-zinc-800"
     >

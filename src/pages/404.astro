@@ -1,5 +1,4 @@
 ---
-import { existsSync } from 'node:fs'
 import Layout from '../layouts/Layout.astro'
 import SearchBar from '../components/islands/SearchBar.jsx'
 import { siteConfig } from '../config/site.js'
@@ -10,11 +9,6 @@ import {
   getSortedProducts,
   normalizeProductTitle,
 } from '../lib/products.js'
-
-// `getProductPrimaryImage` yerel dosya kontrolü için `node:fs`'e ihtiyaç duyar.
-// Bu bağımlılığı tarayıcı paketinden uzak tutmak için yalnızca SSG (Node)
-// bağlamında global bir köprü üzerinden enjekte ederiz.
-globalThis.__SA_PRINTPRO_FS__ = { existsSync }
 
 // SEVİYE 3 — UX: Kullanıcıyı kaybetmemek için 404 sayfasında arama kutusu,
 // popüler kategoriler ve öne çıkan ürünler sunulur.
@@ -54,9 +48,8 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       >
         Ürün veya barkod ara
       </label>
-      <div id="notfound-search">
-        <SearchBar client:load placeholder="Ürün / barkod ara..." />
-      </div>
+      {/* A11Y-05: label doğrudan input'a bağlanır (önceden bir div'i işaret ediyordu). */}
+      <SearchBar client:load inputId="notfound-search" placeholder="Ürün / barkod ara..." />
     </div>
 
     <div class="mt-6 flex flex-wrap items-center justify-center gap-3">

@@ -18,6 +18,7 @@ const rootDir = resolve(__dirname, '..')
 
 const SOURCE_FILE = resolve(rootDir, 'src/data/products.json')
 const OUTPUT_FILE = resolve(rootDir, 'public/search-index.json')
+const IMAGE_MANIFEST_FILE = resolve(rootDir, 'src/data/image-manifest.json')
 
 /**
  * Returns the effective selling price for a variant: a positive `salePrice`
@@ -78,13 +79,40 @@ async function main() {
   const data = JSON.parse(raw)
   const products = Array.isArray(data?.products) ? data.products : []
 
+  // DATA-02: yalnızca GERÇEKTEN var olan yerel görseller indekse yazılır; aksi
+  // halde arama dropdown'ında kırık görsel oluşuyordu. Manifest, build başında
+  // `scripts/build-image-manifest.mjs` tarafından üretilir.
+  const manifestRaw = await readFile(IMAGE_MANIFEST_FILE, 'utf8').catch(
+    () => '{"images":[],"thumbs":[]}'
+  )
+  let manifestData = { images: [], thumbs: [] }
+  try {
+    manifestData = JSON.parse(manifestRaw) || manifestData
+  } catch {
+    manifestData = { images: [], thumbs: [] }
+  }
+  const localImageSet = new Set(
+    Array.isArray(manifestData.images) ? manifestData.images : []
+  )
+  const localThumbSet = new Set(
+    Array.isArray(manifestData.thumbs) ? manifestData.thumbs : []
+  )
+
   const index = products.map((product) => {
     const { price, salePrice } = resolvePrices(product)
 
     // Yerelleştirilmiş görsel yolu: `process-images.mjs` her ürünün ilk
     // görselini `/uploads/products/{id}.webp` olarak üretir. Ham Trendyol CDN
     // URL'i arama indeksine sızmasın diye yerel yol tercih edilir.
-    const localImage = product?.id ? `/uploads/products/${product.id}.webp` : null
+    const candidateImage = product?.id ? `/uploads/products/${product.id}.webp` : null
+    const localImage =
+      candidateImage && localImageSet.has(candidateImage) ? candidateImage : null
+
+    // PERF-02: 48x48 kutu için 96x96 küçük görsel (varsa).
+    const candidateThumb = product?.id
+      ? `/uploads/products/${product.id}-thumb.webp`
+      : null
+    const thumb = candidateThumb && localThumbSet.has(candidateThumb) ? candidateThumb : null
 
     return {
       id: product.id,
@@ -93,6 +121,7 @@ async function main() {
       category: product?.category?.name || '',
       barcode: resolveBarcode(product),
       image: localImage,
+      thumb,
       price,
       salePrice,
     }

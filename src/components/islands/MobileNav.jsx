@@ -2,6 +2,10 @@ import { useCallback, useEffect, useState, useSyncExternalStore } from 'react'
 import { Menu, Search, ShoppingCart, X } from 'lucide-react'
 import SearchBar from './SearchBar.jsx'
 import { subscribe, getCount } from '../../lib/cart.js'
+import { siteConfig } from '../../config/site.js'
+
+// FAZ A — CAT-02: katalog + WhatsApp modunda sepet, "sipariş listesi"dir.
+const isOrderList = siteConfig.features?.enableWhatsappOrder === true
 
 /**
  * Sunucuda 0, istemcide gerçek sepet adedini döndürür (hidrasyon güvenli).
@@ -92,14 +96,25 @@ export default function MobileNav({ links = [], currentPath = '/' }) {
         )}
       </button>
 
+      {/* A11Y-06: Kaplama artık dialog semantiği taşır; ESC ile kapanır. */}
       {searchOpen && (
-        <div className="fixed inset-x-0 top-[88px] z-40 animate-fade-in border-b border-zinc-200 bg-white/95 p-4 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/95">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Ürün arama"
+          className="fixed inset-x-0 top-16 z-40 animate-fade-in border-b border-zinc-200 bg-white/95 p-4 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/95"
+        >
           <SearchBar autoFocus onNavigate={closeAll} />
         </div>
       )}
 
       {menuOpen && (
-        <div className="fixed inset-x-0 top-[88px] z-40 animate-fade-in border-b border-zinc-200 bg-white/95 p-4 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/95">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobil menü"
+          className="fixed inset-x-0 top-16 z-40 animate-fade-in border-b border-zinc-200 bg-white/95 p-4 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/95"
+        >
           <ul className="flex flex-col gap-1">
             <li>
               <a
@@ -114,7 +129,7 @@ export default function MobileNav({ links = [], currentPath = '/' }) {
               >
                 <span className="flex items-center gap-2">
                   <ShoppingCart className="h-4 w-4" aria-hidden="true" />
-                  Sepetim
+                  {isOrderList ? 'Sipariş Listem' : 'Sepetim'}
                 </span>
                 {cartCount > 0 && (
                   <span className="inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-emerald-600 px-1 text-2xs font-bold text-white">

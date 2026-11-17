@@ -16,6 +16,23 @@ const whatsappDisplay = `+${siteConfig.contact.whatsapp}`
 // Kurumsal bilgiler tek merkezi kaynaktan (src/config/site.js → company) gelir.
 const company = siteConfig.company || {}
 
+// LEGAL-03: İade adresi tanımlı değilse boş bir bölüm göstermek yerine
+// müşteriye somut bir iletişim yolu sunulur.
+const returnAddressLines = [
+  company.returnAddress,
+  company.returnRecipient ? `Alıcı: ${company.returnRecipient}` : '',
+]
+  .filter(Boolean)
+  .join('\n')
+
+const returnAddressBody = returnAddressLines
+  ? `İade gönderimleri aşağıdaki adrese yapılmalıdır:
+
+${returnAddressLines}
+
+Lütfen iade paketinizin içine sipariş numaranızı ve iletişim bilgilerinizi ekleyin.`
+  : `İade adresi, iade talebiniz onaylandığında WhatsApp (${whatsappDisplay}) veya ${siteConfig.contact.email} üzerinden tarafınıza iletilir. İade paketinizin içine sipariş numaranızı ve iletişim bilgilerinizi eklemeyi unutmayın.`
+
 const steps = [
   {
     title: '1. Adım — Talebinizi İletin',
@@ -42,13 +59,7 @@ const sections = [
   },
   {
     title: 'İade Adresi',
-    body: `İade gönderimleri aşağıdaki adrese yapılmalıdır:
-
-${[company.returnAddress, company.returnRecipient ? `Alıcı: ${company.returnRecipient}` : '']
-      .filter(Boolean)
-      .join('\n')}
-
-Lütfen iade paketinizin içine sipariş numaranızı ve iletişim bilgilerinizi ekleyin.`,
+    body: returnAddressBody,
   },
   {
     title: 'Kargo Masrafını Kim Öder?',
@@ -101,7 +112,7 @@ Tarih: [DOLDURULACAK: tarih]
       İade ve Cayma Hakkı
     </h1>
     <p class="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
-      Son güncelleme: {new Date().getFullYear()}
+      Son güncelleme: {siteConfig.legal.lastUpdatedLabel}
     </p>
 
     <section class="mt-8">

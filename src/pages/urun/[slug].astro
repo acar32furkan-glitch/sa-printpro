@@ -1,5 +1,4 @@
 ---
-import { existsSync } from 'node:fs'
 import Layout from '../../layouts/Layout.astro'
 import Breadcrumb from '../../components/Breadcrumb.astro'
 import ProductCard from '../../components/ProductCard.astro'
@@ -31,11 +30,6 @@ export function getStaticPaths() {
 }
 
 const { product } = Astro.props
-
-// FAZ 11: `getProductPrimaryImage` yerel dosya kontrolü için `node:fs`'e
-// ihtiyaç duyar. Bu bağımlılığı tarayıcı paketinden uzak tutmak için yalnızca
-// SSG (Node) bağlamında global bir köprü üzerinden enjekte ederiz.
-globalThis.__SA_PRINTPRO_FS__ = { existsSync }
 
 // FAZ 11: DeepSeek ile üretilmiş zenginleştirilmiş içerik (varsa).
 const aiData = aiEnrichedData?.[product.id] || null
@@ -75,12 +69,26 @@ const islandProduct = {
   ),
 }
 
-const pricedVariants = variants.filter((variant) =>
-  Number.isFinite(Number(variant.salePrice ?? variant.price))
-)
+/**
+ * AN-01: Varyantın gerçek satış fiyatı (yalnız POZİTİF değer).
+ *
+ * Trendyol satışta olmayan ürünlerde `salePrice: 0` döndürüyor; eski filtre
+ * `??` kullandığı için 0'ı geçerli sayıp `lowestPrice`'u 0'a düşürüyor,
+ * GA4 `view_item` ve JSON-LD `lowPrice` alanlarına "0 TL" yazıyordu.
+ */
+function variantPrice(variant) {
+  const sale = Number(variant?.salePrice)
+  if (Number.isFinite(sale) && sale > 0) {
+    return sale
+  }
+  const base = Number(variant?.price)
+  return Number.isFinite(base) && base > 0 ? base : 0
+}
+
+const pricedVariants = variants.filter((variant) => variantPrice(variant) > 0)
 
 const lowestPrice = pricedVariants.reduce((min, variant) => {
-  const value = Number(variant.salePrice ?? variant.price)
+  const value = variantPrice(variant)
   if (min === null || value < min) {
     return value
   }
@@ -88,7 +96,7 @@ const lowestPrice = pricedVariants.reduce((min, variant) => {
 }, null)
 
 const highestPrice = pricedVariants.reduce((max, variant) => {
-  const value = Number(variant.salePrice ?? variant.price)
+  const value = variantPrice(variant)
   if (max === null || value > max) {
     return value
   }
@@ -297,17 +305,20 @@ const aiFaqs = Array.isArray(aiData?.faqs)
       }))
   : []
 
+// SEO-06: Şablon SSS'ler ürün adıyla çeşitlendirilir; ayrıca FAQPage yapısal
+// verisi YALNIZCA ürüne özgü (AI) SSS varsa basılır. Aksi halde yüzlerce
+// sayfada birebir aynı FAQPage yayınlanıyordu (yinelenen yapısal veri riski).
 const staticFaqs = [
   {
-    question: 'Bu ürün reflektif mi?',
+    question: `${displayTitle} reflektif mi?`,
     answer: `${displayTitle}, gece ve düşük ışık koşullarında yüksek görünürlük sağlayan reflektif bir üründür.`,
   },
   {
-    question: 'Kargo süresi ne kadar?',
+    question: `${displayTitle} kargo süresi ne kadar?`,
     answer: `${siteConfig.badges.shipping}. ${siteConfig.badges.freeShipping} (${siteConfig.badges.freeShippingThreshold} TL ve üzeri siparişlerde).`,
   },
   {
-    question: 'Nasıl uygulanır?',
+    question: `${displayTitle} nasıl uygulanır?`,
     answer:
       'Yüzeyi toz ve yağdan arındırın, koruyucu folyoyu çıkarıp etiketi hizalayarak yerleştirin ve merkezden kenarlara doğru bastırın. Tam yapışma için 24 saat yıkamayın.',
   },
@@ -345,7 +356,8 @@ const merchantReturnPolicy = {
   '@type': 'MerchantReturnPolicy',
   applicableCountry: 'TR',
   returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-  merchantReturnDays: 15,
+  // SEO-02: tek kaynak (`siteConfig.policies.returnDays`), rozet ve metinlerle aynı.
+  merchantReturnDays: siteConfig.policies?.returnDays ?? 14,
   returnMethod: 'https://schema.org/ReturnByMail',
   returnFees: 'https://schema.org/FreeReturn',
 }
@@ -432,6 +444,16 @@ const primaryVariant = variants[0] || {}
 const productSku = primaryVariant.sku || product.id
 const productMpn = primaryVariant.barcode || undefined
 
+// SEO-04: Barkod 13/14 haneli ve tamamen rakamsa GTIN olarak da bildirilir;
+// böylece Google ürünü pazaryerlerindeki aynı ürünle eşleştirebilir.
+const gtinDigits = String(primaryVariant.barcode ?? '').replace(/\D/g, '')
+const productGtin =
+  gtinDigits.length === 13
+    ? { gtin13: gtinDigits }
+    : gtinDigits.length === 14
+      ? { gtin14: gtinDigits }
+      : {}
+
 const productJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Product',
@@ -440,6 +462,7 @@ const productJsonLd = {
   image: imageObjects,
   sku: productSku,
   ...(productMpn ? { mpn: productMpn } : {}),
+  ...productGtin,
   brand: {
     '@type': 'Brand',
     name: brandInfo.name,
@@ -456,6 +479,10 @@ const productJsonLd = {
             ? 'https://schema.org/InStock'
             : 'https://schema.org/OutOfStock',
           url: canonicalUrl,
+          seller: {
+            '@type': 'Organization',
+            name: siteConfig.name,
+          },
           hasMerchantReturnPolicy: merchantReturnPolicy,
           shippingDetails,
         },
@@ -531,18 +558,23 @@ const breadcrumbJsonLd = {
   ],
 }
 
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.answer,
-    },
-  })),
-}
+// SEO-06: Yalnızca ürüne özgü (AI üretimi) SSS varsa FAQPage basılır.
+// Şablon SSS'ler sayfada görünür ama yapısal veriye yazılmaz.
+const faqJsonLd =
+  aiFaqs.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: aiFaqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer,
+          },
+        })),
+      }
+    : null
 ---
 
 <Layout
@@ -764,7 +796,7 @@ const faqJsonLd = {
     type="application/ld+json"
     set:html={JSON.stringify(breadcrumbJsonLd)}
   />
-  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+  {faqJsonLd && <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
 
   <!--
     GA4 e-ticaret: `view_item` olayı. Ürün detay sayfası görüntülendiğinde
@@ -778,13 +810,13 @@ const faqJsonLd = {
     if (typeof window.gtag !== 'function') return;
     window.gtag('event', 'view_item', {
       currency: 'TRY',
-      value: ${Number(product.price) || 0},
+      value: ${Number(lowestPrice) || 0},
       items: [{
         item_id: ${JSON.stringify(String(product.id || ''))},
         item_name: ${JSON.stringify(String(product.name || ''))},
-        item_brand: ${JSON.stringify(String(product.brand || ''))},
+        item_brand: ${JSON.stringify(String(brandInfo?.name || product.brand || ''))},
         item_category: ${JSON.stringify(String(product.category?.name || ''))},
-        price: ${Number(product.price) || 0},
+        price: ${Number(lowestPrice) || 0},
         quantity: 1
       }]
     });

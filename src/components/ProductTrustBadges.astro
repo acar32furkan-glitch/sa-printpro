@@ -4,6 +4,11 @@ import { siteConfig } from '../config/site.js'
 
 // Trendyol CTA kapalıyken güven rozeti Trendyol'suz metne döner.
 const enableTrendyolCta = siteConfig.features?.enableTrendyolCta === true
+// FAZ A — CAT-05: Shopier kapalıyken "kartlı ödeme" vaadi verilmez.
+const enableShopier = siteConfig.features?.enableShopier === true
+const paymentLabel = enableShopier
+  ? 'Shopier ve WhatsApp üzerinden güvenli ödeme'
+  : 'WhatsApp üzerinden hızlı sipariş ve destek'
 
 const badges = [
   {
@@ -15,10 +20,10 @@ const badges = [
     icon: ShieldCheck,
     title: enableTrendyolCta
       ? 'Trendyol Güvencesi & Hızlı Kargo'
-      : 'Hızlı Kargo & Güvenli Alışveriş',
+      : 'Hızlı Kargo & Güvenli Sipariş',
     description: enableTrendyolCta
       ? 'Trendyol altyapısıyla güvenli ödeme ve 2 günde kargoda.'
-      : 'Shopier ve WhatsApp üzerinden güvenli ödeme, 2 günde kargoda.',
+      : `${paymentLabel}, 2 günde kargoda.`,
   },
   {
     icon: Sun,

@@ -1,6 +1,13 @@
 import { useCallback, useState } from 'react'
 import { Check, ShoppingCart } from 'lucide-react'
 import { addItem } from '../../lib/cart.js'
+import { siteConfig } from '../../config/site.js'
+
+// FAZ A — CAT-03: Katalog + WhatsApp modunda sepet bir "sipariş listesi"dir.
+const isOrderList = siteConfig.features?.enableWhatsappOrder === true
+const DEFAULT_LABEL = isOrderList ? 'Listeye Ekle' : 'Sepete Ekle'
+const ADDED_LABEL = isOrderList ? 'Listeye Eklendi' : 'Sepete Eklendi'
+const ACTION_LABEL = isOrderList ? 'listeye ekle' : 'sepete ekle'
 
 /**
  * GA4 `add_to_cart` olayını fırlatır (gtag guard'lı). Mevcut
@@ -39,7 +46,7 @@ function trackAddToCart(item) {
 export default function AddToCartButton({
   item,
   className = '',
-  label = 'Sepete Ekle',
+  label = DEFAULT_LABEL,
   disabled = false,
 }) {
   const [added, setAdded] = useState(false)
@@ -63,13 +70,13 @@ export default function AddToCartButton({
       type="button"
       onClick={handleClick}
       disabled={disabled}
-      aria-label={disabled ? 'Stokta yok' : `${item?.name || 'Ürün'} sepete ekle`}
+      aria-label={disabled ? 'Stokta yok' : `${item?.name || 'Ürün'} ${ACTION_LABEL}`}
       className={`inline-flex items-center justify-center gap-2 rounded-lg border border-zinc-900 bg-white px-4 py-2.5 text-sm font-semibold text-zinc-900 transition-all duration-200 ease-smooth hover:bg-zinc-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-100 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-100 dark:hover:text-zinc-900 dark:focus-visible:ring-zinc-100 dark:focus-visible:ring-offset-zinc-900 ${className}`}
     >
       {added ? (
         <>
           <Check className="h-4 w-4" aria-hidden="true" />
-          Sepete Eklendi
+          {ADDED_LABEL}
         </>
       ) : (
         <>

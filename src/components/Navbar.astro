@@ -77,7 +77,8 @@ const currentPath = Astro.url.pathname
       <div class="hidden w-56 sm:block lg:w-72">
         <SearchBar client:idle />
       </div>
-      <CartButton client:load />
+      {/* PERF-04: sepet sayacı ilk boyamayı bloklamaz. */}
+      <CartButton client:idle />
       <ThemeToggle client:load />
       <MobileNav client:load links={links} currentPath={currentPath} />
     </div>

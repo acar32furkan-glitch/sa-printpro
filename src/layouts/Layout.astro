@@ -4,13 +4,17 @@ import Navbar from '../components/Navbar.astro'
 import Footer from '../components/Footer.astro'
 import CookieBanner from '../components/islands/CookieBanner.jsx'
 import { siteConfig } from '../config/site.js'
+import { buildCanonical } from '../lib/seo.js'
 import '../styles/globals.css'
 
 const {
   title = siteConfig.name,
   description = `${siteConfig.name} — reflektif sticker ve güvenlik etiketi ürünleri.`,
   image = `${siteConfig.domain}/${siteConfig.logoFile}`,
-  canonicalUrl = Astro.url.href,
+  // SEO-01: varsayılan canonical YALNIZCA pathname'den üretilir. `?q=`,
+  // `?sort=`, `?fbclid` gibi parametreler canonical'a sızmaz; aksi halde
+  // arama motorları aynı sayfayı farklı URL'ler olarak görür.
+  canonicalUrl = buildCanonical(Astro.url.pathname),
   type = 'website',
   noindex = false,
   // FAZ B — B4: Statik sayfalama için rel="prev"/rel="next" hedefleri.
@@ -114,31 +118,19 @@ gtag('config', '${ga4Id}');`}
       hem de harici bir platforma bağımlılık izi kalmaz.
     -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!--
-      Font CSS'i render-blocking olmaktan çıkar: `media="print"` ile düşük
-      öncelikte indirilir, yüklendiğinde `onload` ile `all`'a çevrilir.
-      `display=swap` sayesinde metin font yüklenmeden de görünür kalır.
-      `<noscript>` fallback'i JS kapalı istemciler için stilleri garanti eder.
+      PERF-03: Inter artık SELF-HOST edilir (`public/fonts`, variable font).
+      Google Fonts'a preconnect/preload/stylesheet isteği kaldırıldı; böylece
+      kritik yolda 3. taraf bağlantısı ve `onload` inline event hack'i kalmaz.
+      @font-face tanımları `src/styles/globals.css` içindedir.
     -->
     <link
       rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="/fonts/inter-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      />
-    </noscript>
 
     <Seo
       title={title}
@@ -193,7 +185,8 @@ gtag('config', '${ga4Id}');`}
       set:html={JSON.stringify(organizationJsonLd)}
     />
 
-    <CookieBanner client:load />
+    {/* PERF-04: banner kritik yolda değil — hidrasyon boşta yapılır. */}
+    <CookieBanner client:idle />
 
     {
       whatsappNumber !== '' && (

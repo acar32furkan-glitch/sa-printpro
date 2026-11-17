@@ -1,10 +1,12 @@
 import { useCallback, useState } from 'react'
 import { ArrowDownUp } from 'lucide-react'
 
+// UX-01: Statik sayfalama nedeniyle sıralama o sayfadaki ürünlere uygulanır;
+// etiketler bunu açıkça belirtir (yanıltıcı "tüm katalog" izlenimi vermez).
 const SORT_OPTIONS = [
   { value: 'default', label: 'Varsayılan' },
-  { value: 'price-asc', label: 'Fiyat: Artan' },
-  { value: 'price-desc', label: 'Fiyat: Azalan' },
+  { value: 'price-asc', label: 'Fiyat: Artan (bu sayfa)' },
+  { value: 'price-desc', label: 'Fiyat: Azalan (bu sayfa)' },
 ]
 
 /**

@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Breadcrumb from '../components/Breadcrumb.astro'
+import { siteConfig } from '../config/site.js'
+import { buildCanonical } from '../lib/seo.js'
+import { pricingConfig } from '../config/pricing.js'
+
+// CART-07: Mesafeli Sözleşmeler Yönetmeliği'nde Ön Bilgilendirme Formu ayrı
+// bir zorunlu belgedir. Sipariş WhatsApp üzerinden alındığı için bu form,
+// sipariş öncesi satıcı kimliği + bedel + cayma hakkı bilgisini sunar.
+
+const canonicalUrl = buildCanonical('/on-bilgilendirme-formu')
+
+const whatsappDisplay = `+${siteConfig.contact.whatsapp}`
+const company = siteConfig.company || {}
+
+const breadcrumbItems = [
+  { label: 'Ana Sayfa', href: '/' },
+  { label: 'Ön Bilgilendirme Formu' },
+]
+
+const taxLine = [company.taxOffice, company.taxNumber].filter(Boolean).join(' / ')
+
+// Koşullu satırlar: eksik kurumsal alanlar metinde boş satır bırakmaz.
+const sellerLines = [
+  company.legalName ? `Ticari Unvan: ${company.legalName}` : '',
+  company.address ? `Adres: ${company.address}` : '',
+  taxLine ? `Vergi Dairesi / VKN: ${taxLine}` : '',
+  company.mersis ? `MERSİS No: ${company.mersis}` : '',
+  `E-posta: ${company.email || siteConfig.contact.email}`,
+  `Telefon: ${company.phone || whatsappDisplay}`,
+]
+  .filter(Boolean)
+  .join('\n')
+
+const sections = [
+  {
+    title: '1. Satıcı Bilgileri',
+    body: `${sellerLines}
+
+Sipariş ve destek kanalları: WhatsApp (${whatsappDisplay}) ve ${siteConfig.contact.email}.`,
+  },
+  {
+    title: '2. Sözleşme Konusu Ürün ve Bedel',
+    body: `Sözleşme konusu, ALICI'nın sipariş listesinde yer alan ve satıcı tarafından WhatsApp üzerinden teyit edilen ürünlerdir.
+
+• Ürün adı, varyantı ve adedi: Sipariş listesinde ve WhatsApp sipariş özetinde belirtilir.
+• Satış bedeli: Sipariş özetinde gösterilen, ürünlerin KDV dahil toplam bedelidir.
+• Kargo bedeli: ${pricingConfig.freeShippingThreshold} TL ve üzeri siparişlerde ücretsizdir; altındaki siparişlerde kargo bedeli sipariş özetinde ayrıca gösterilir.
+• Ödeme yöntemi: Sipariş, WhatsApp üzerinden teyit edilir; ödeme yöntemi ve hesap bilgileri satıcı tarafından ALICI'ya bildirilir. Sitede kartlı ödeme alınmaz.`,
+  },
+  {
+    title: '3. Teslimat',
+    body: `Ürünler, sipariş teyidini takiben en geç 30 (otuz) gün içinde, ALICI'nın bildirdiği teslimat adresine kargo ile gönderilir. Uygulamada hedef süre 2 (iki) iş günüdür. Kargo takip bilgisi gönderim sonrası paylaşılır.
+
+Teslimat, ALICI'nın belirttiği adreste ALICI'ya veya ALICI'nın gösterdiği üçüncü kişiye yapılır.`,
+  },
+  {
+    title: '4. Cayma Hakkı',
+    body: `ALICI, ürünü teslim aldığı tarihten itibaren ${siteConfig.policies?.returnDays ?? 14} (on dört) gün içinde hiçbir gerekçe göstermeksizin ve cezai şart ödemeksizin cayma hakkına sahiptir.
+
+Cayma hakkını kullanmak için WhatsApp (${whatsappDisplay}) veya ${siteConfig.contact.email} üzerinden yazılı bildirim yeterlidir.
+
+Cayma hakkının kullanılamayacağı ürünler: ALICI'nın istekleri doğrultusunda kişiye özel hazırlanan ürünler, koruyucu unsurları açılmış ürünler, niteliği itibarıyla iade edilemeyecek ve çabuk bozulma riski taşıyan ürünler.
+
+Cayma hakkı kapsamındaki iadelerde kargo masrafı satıcıya aittir. Ayrıntılı süreç için İade ve Cayma Hakkı sayfasını inceleyebilirsiniz.`,
+  },
+  {
+    title: '5. Uyuşmazlık ve Şikâyet',
+    body: `Taleplerinizi ve şikâyetlerinizi WhatsApp (${whatsappDisplay}) veya ${siteConfig.contact.email} üzerinden iletebilirsiniz.
+
+Tüketici uyuşmazlıklarında, Ticaret Bakanlığı'nca ilan edilen parasal sınırlar dahilinde ALICI'nın yerleşim yerindeki Tüketici Hakem Heyetleri; aşan durumlarda Tüketici Mahkemeleri yetkilidir.`,
+  },
+]
+---
+
+<Layout
+  title="Ön Bilgilendirme Formu"
+  description={`${siteConfig.name} ön bilgilendirme formu: satıcı bilgileri, ürün ve bedel, teslimat, cayma hakkı ve şikâyet kanalları.`}
+  canonicalUrl={canonicalUrl}
+>
+  <div class="mx-auto max-w-6xl px-4">
+    <Breadcrumb items={breadcrumbItems} />
+  </div>
+
+  <article class="mx-auto max-w-3xl px-4 pb-16">
+    <h1 class="text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl dark:text-zinc-50">
+      Ön Bilgilendirme Formu
+    </h1>
+    <p class="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+      Son güncelleme: {siteConfig.legal.lastUpdatedLabel}
+    </p>
+
+    <p class="mt-6 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+      İşbu Ön Bilgilendirme Formu, 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve
+      Mesafeli Sözleşmeler Yönetmeliği uyarınca, sipariş öncesinde ALICI'yı satıcı,
+      ürün, bedel, teslimat ve cayma hakkı konularında bilgilendirmek amacıyla
+      hazırlanmıştır.
+    </p>
+
+    <div class="mt-8 flex flex-col gap-6">
+      {
+        sections.map((section) => (
+          <section>
+            <h2 class="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+              {section.title}
+            </h2>
+            <p class="mt-2 whitespace-pre-line text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              {section.body}
+            </p>
+          </section>
+        ))
+      }
+    </div>
+
+    <div class="mt-10 rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
+      İlgili belgeler:
+      <a
+        href="/mesafeli-satis-sozlesmesi/"
+        class="font-medium text-zinc-900 underline underline-offset-2 hover:text-emerald-700 dark:text-zinc-100 dark:hover:text-emerald-400"
+      >
+        Mesafeli Satış Sözleşmesi
+      </a>
+      ·
+      <a
+        href="/iade-ve-cayma-hakki/"
+        class="font-medium text-zinc-900 underline underline-offset-2 hover:text-emerald-700 dark:text-zinc-100 dark:hover:text-emerald-400"
+      >
+        İade ve Cayma Hakkı
+      </a>
+    </div>
+  </article>
+</Layout>

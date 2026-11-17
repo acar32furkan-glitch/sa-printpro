@@ -29,3 +29,7 @@ sa-printpro-site-analiz-raporu.md
 sa-printpro-faz4-master-prompt.md
 trendyol-showcase-master-prompt-astro-v7.md
 plans/
+# Playwright MCP artefaktları (yerel test çıktıları)
+.playwright-mcp/
+live-console-errors.txt
+astro-check.txt
