@@ -32,4 +32,5 @@ plans/
 # Playwright MCP artefaktları (yerel test çıktıları)
 .playwright-mcp/
 live-console-errors.txt
+live-console-after-deploy.txt
 astro-check.txt
