@@ -78,7 +78,7 @@ const legalLinks = [
             <li>
               <a
                 href={channel.href}
-                target="_blank"
+                target={String(channel.href).startsWith('mailto:') ? undefined : '_blank'}
                 rel="noopener noreferrer"
                 class="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
               >

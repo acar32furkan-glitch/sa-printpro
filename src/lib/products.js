@@ -497,7 +497,9 @@ export function toCardProduct(product) {
     id: product.id,
     name: product.name,
     slug: product.slug,
-    brand: product.brand,
+    // Ham marka adı (ör. pazaryeri mağaza adı "CEBECİOTO") istemci payload'ına
+    // sızmasın: kart markayı göstermese bile kaynakta görünüyordu.
+    brand: resolveProductBrand(product).name,
     images: image ? [image] : [],
     variants: variants.map((variant) => ({
       barcode: variant?.barcode || '',
