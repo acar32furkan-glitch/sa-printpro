@@ -1,5 +1,7 @@
 {
-  "generatedAt": "2026-11-17T00:38:25.086Z",
+  "generatedAt": "2026-11-17T13:57:03.727Z",
+  "pricingVersion": "2026-11-16-v1",
+  "priceMultiplier": 1.2,
   "products": [
     {
       "id": "1200707154",
@@ -24,11 +26,11 @@
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 50,
+          "baseSalePrice": 50,
           "price": 60,
           "salePrice": 60,
-          "stock": 19984,
-          "basePrice": 50,
-          "baseSalePrice": 50
+          "stock": 19984
         }
       ]
     },
@@ -54,11 +56,11 @@
             "Menşei": "TR",
             "Kullanım Talimatı/Uyarıları": "Kimyasaldan (jant parlatıcı vb.) arındırılmış temiz jant'a uygulayınız"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 19936,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 19936
         }
       ]
     },
@@ -85,11 +87,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 249,
+          "baseSalePrice": 249,
           "price": 299,
           "salePrice": 299,
-          "stock": 19968,
-          "basePrice": 249,
-          "baseSalePrice": 249
+          "stock": 19968
         }
       ]
     },
@@ -118,11 +120,11 @@
             "Menşei": "TR",
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
           },
+          "basePrice": 350,
+          "baseSalePrice": 350,
           "price": 420,
           "salePrice": 420,
-          "stock": 10000,
-          "basePrice": 350,
-          "baseSalePrice": 350
+          "stock": 10000
         }
       ]
     },
@@ -150,11 +152,11 @@
             "Kullanım Talimatı/Uyarıları": "kuru ve temiz bölgeye uygulayınız",
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
           },
+          "basePrice": 299,
+          "baseSalePrice": 299,
           "price": 359,
           "salePrice": 359,
-          "stock": 19999,
-          "basePrice": 299,
-          "baseSalePrice": 299
+          "stock": 19999
         }
       ]
     },
@@ -180,11 +182,11 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez."
           },
+          "basePrice": 249,
+          "baseSalePrice": 249,
           "price": 299,
           "salePrice": 299,
-          "stock": 19980,
-          "basePrice": 249,
-          "baseSalePrice": 249
+          "stock": 19980
         }
       ]
     },
@@ -213,6 +215,8 @@
             "Kullanım Talimatı/Uyarıları": "Lütfen! Yapıştırmadan Önce Yüzey Alanını Temizleyin.",
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -244,11 +248,11 @@
             "Özellik": "Kendinden Yapışkanlı",
             "Kullanım Talimatı/Uyarıları": "Ürün adında belirtilen marka model için geçerlidir."
           },
+          "basePrice": 300,
+          "baseSalePrice": 300,
           "price": 360,
           "salePrice": 360,
-          "stock": 19999,
-          "basePrice": 300,
-          "baseSalePrice": 300
+          "stock": 19999
         }
       ]
     },
@@ -278,11 +282,11 @@
             "Kullanım Talimatı/Uyarıları": "Temiz yüzeye görseldeki şekilde yapıştırırsanız aynı görüntüyü alcaksınız.",
             "Paket Görseli (ön)": ""
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 19807,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 19806
         }
       ]
     },
@@ -312,11 +316,11 @@
             "Özellik": "Kendinden Yapışkanlı",
             "Tamir Edilebilirlik": "Tamir Edilmez."
           },
+          "basePrice": 350,
+          "baseSalePrice": 350,
           "price": 420,
           "salePrice": 420,
-          "stock": 20000,
-          "basePrice": 350,
-          "baseSalePrice": 350
+          "stock": 20000
         }
       ]
     },
@@ -345,6 +349,8 @@
             "Menşei": "TR",
             "Özellik": "Katı"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -358,6 +364,8 @@
             "Menşei": "TR",
             "Özellik": "Katı"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -389,11 +397,11 @@
             "Menşei": "TR",
             "Kullanım Talimatı/Uyarıları": "Yüzeyi temiz bir bezle silin ve kurulayın. Ardından elinizle doğrudan uygulayabilirsiniz."
           },
+          "basePrice": 50,
+          "baseSalePrice": 50,
           "price": 60,
           "salePrice": 60,
-          "stock": 19971,
-          "basePrice": 50,
-          "baseSalePrice": 50
+          "stock": 19971
         }
       ]
     },
@@ -422,6 +430,8 @@
             "Özellik": "Suya Dayanıklı",
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -454,6 +464,8 @@
             "Menşei": "TR",
             "Kullanım Talimatı/Uyarıları": "İyice Yapıştığına Emin Olunuz"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -484,6 +496,8 @@
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -513,11 +527,11 @@
             "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": ""
           },
+          "basePrice": 221,
+          "baseSalePrice": 221,
           "price": 265,
           "salePrice": 265,
-          "stock": 19913,
-          "basePrice": 221,
-          "baseSalePrice": 221
+          "stock": 19913
         }
       ]
     },
@@ -545,11 +559,11 @@
             "Özellik": "Hava",
             "Menşei": "TR"
           },
+          "basePrice": 248,
+          "baseSalePrice": 248,
           "price": 298,
           "salePrice": 298,
-          "stock": 9963,
-          "basePrice": 248,
-          "baseSalePrice": 248
+          "stock": 9963
         }
       ]
     },
@@ -581,11 +595,11 @@
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 50,
+          "baseSalePrice": 50,
           "price": 60,
           "salePrice": 60,
-          "stock": 19943,
-          "basePrice": 50,
-          "baseSalePrice": 50
+          "stock": 19943
         }
       ]
     },
@@ -613,6 +627,8 @@
             "Özellik": "Uzun",
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -641,6 +657,8 @@
           "attributes": {
             "Beden": "Tek Ebat"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -668,11 +686,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 350,
+          "baseSalePrice": 350,
           "price": 420,
           "salePrice": 420,
-          "stock": 19995,
-          "basePrice": 350,
-          "baseSalePrice": 350
+          "stock": 19995
         }
       ]
     },
@@ -696,6 +714,8 @@
           "barcode": "TYBWUHQRZZ4F1JSL85",
           "sku": "",
           "attributes": {},
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -722,6 +742,8 @@
           "barcode": "123456758977654",
           "sku": "haerley1depo",
           "attributes": {},
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -753,11 +775,11 @@
             "Menşei": "TR",
             "Kullanım Talimatı/Uyarıları": "paket içerisinde klavuz gönderilir"
           },
+          "basePrice": 50,
+          "baseSalePrice": 50,
           "price": 60,
           "salePrice": 60,
-          "stock": 19994,
-          "basePrice": 50,
-          "baseSalePrice": 50
+          "stock": 19994
         }
       ]
     },
@@ -782,11 +804,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 240,
+          "baseSalePrice": 240,
           "price": 288,
           "salePrice": 288,
-          "stock": 1987,
-          "basePrice": 240,
-          "baseSalePrice": 240
+          "stock": 1987
         }
       ]
     },
@@ -811,11 +833,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 350,
+          "baseSalePrice": 350,
           "price": 420,
           "salePrice": 420,
-          "stock": 9087,
-          "basePrice": 350,
-          "baseSalePrice": 350
+          "stock": 9087
         }
       ]
     },
@@ -844,11 +866,11 @@
             "Özellik": "Hava",
             "Menşei": "TR"
           },
+          "basePrice": 146,
+          "baseSalePrice": 146,
           "price": 175,
           "salePrice": 175,
-          "stock": 19990,
-          "basePrice": 146,
-          "baseSalePrice": 146
+          "stock": 19990
         }
       ]
     },
@@ -876,6 +898,8 @@
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz.",
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -906,11 +930,11 @@
             "Özellik": "Uzun",
             "Menşei": "TR"
           },
+          "basePrice": 299,
+          "baseSalePrice": 299,
           "price": 359,
           "salePrice": 359,
-          "stock": 967,
-          "basePrice": 299,
-          "baseSalePrice": 299
+          "stock": 967
         }
       ]
     },
@@ -935,6 +959,8 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -960,11 +986,11 @@
           "barcode": "TYBJJU5D0849Q67W29",
           "sku": "",
           "attributes": {},
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 9974,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 9974
         }
       ]
     },
@@ -989,11 +1015,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 999,
+          "baseSalePrice": 999,
           "price": 1199,
           "salePrice": 1199,
-          "stock": 0,
-          "basePrice": 999,
-          "baseSalePrice": 999
+          "stock": 0
         }
       ]
     },
@@ -1020,11 +1046,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 551,
+          "baseSalePrice": 551,
           "price": 661,
           "salePrice": 661,
-          "stock": 0,
-          "basePrice": 551,
-          "baseSalePrice": 551
+          "stock": 0
         }
       ]
     },
@@ -1050,11 +1076,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 1400,
+          "baseSalePrice": 1400,
           "price": 1680,
           "salePrice": 1680,
-          "stock": 0,
-          "basePrice": 1400,
-          "baseSalePrice": 1400
+          "stock": 0
         }
       ]
     },
@@ -1082,11 +1108,11 @@
             "Menşei": "TR",
             "Özellik": "Uzun"
           },
+          "basePrice": 621,
+          "baseSalePrice": 621,
           "price": 745,
           "salePrice": 745,
-          "stock": 9986,
-          "basePrice": 621,
-          "baseSalePrice": 621
+          "stock": 9986
         }
       ]
     },
@@ -1112,11 +1138,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 350,
+          "baseSalePrice": 350,
           "price": 420,
           "salePrice": 420,
-          "stock": 19977,
-          "basePrice": 350,
-          "baseSalePrice": 350
+          "stock": 19977
         }
       ]
     },
@@ -1141,6 +1167,8 @@
           "attributes": {
             "Renk": "MOR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -1175,11 +1203,11 @@
             "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 299,
+          "baseSalePrice": 299,
           "price": 359,
           "salePrice": 359,
-          "stock": 987,
-          "basePrice": 299,
-          "baseSalePrice": 299
+          "stock": 987
         }
       ]
     },
@@ -1211,11 +1239,11 @@
             "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 998,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 998
         }
       ]
     },
@@ -1246,11 +1274,11 @@
           "attributes": {
             "Renk": "siyah"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 998,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 998
         }
       ]
     },
@@ -1281,11 +1309,11 @@
           "attributes": {
             "Renk": "Siyah"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 998,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 998
         }
       ]
     },
@@ -1316,11 +1344,11 @@
           "attributes": {
             "Renk": "Siyah"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 991,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 991
         }
       ]
     },
@@ -1351,11 +1379,11 @@
             "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 990,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 990
         }
       ]
     },
@@ -1387,11 +1415,11 @@
             "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 951,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 951
         }
       ]
     },
@@ -1423,11 +1451,11 @@
             "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 1000,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 1000
         }
       ]
     },
@@ -1459,11 +1487,11 @@
             "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 997,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 997
         }
       ]
     },
@@ -1496,11 +1524,11 @@
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 996,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 996
         }
       ]
     },
@@ -1531,11 +1559,11 @@
           "attributes": {
             "Renk": "Siyah"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 998,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 998
         }
       ]
     },
@@ -1568,11 +1596,11 @@
             "Özellik": "Kendinden Yapışkanlı",
             "Menşei": "TR"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 999,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 999
         }
       ]
     },
@@ -1604,11 +1632,11 @@
             "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 299,
+          "baseSalePrice": 258,
           "price": 359,
           "salePrice": 310,
-          "stock": 999,
-          "basePrice": 299,
-          "baseSalePrice": 258
+          "stock": 999
         }
       ]
     },
@@ -1640,11 +1668,11 @@
             "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 998,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 998
         }
       ]
     },
@@ -1676,11 +1704,11 @@
             "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 299,
+          "baseSalePrice": 258,
           "price": 359,
           "salePrice": 310,
-          "stock": 1000,
-          "basePrice": 299,
-          "baseSalePrice": 258
+          "stock": 1000
         }
       ]
     },
@@ -1712,11 +1740,11 @@
             "Renk": "Siyah",
             "Menşei": "TR"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 998,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 998
         }
       ]
     },
@@ -1747,11 +1775,11 @@
           "attributes": {
             "Renk": "Siyah"
           },
+          "basePrice": 281,
+          "baseSalePrice": 281,
           "price": 337,
           "salePrice": 337,
-          "stock": 93,
-          "basePrice": 281,
-          "baseSalePrice": 281
+          "stock": 93
         }
       ]
     },
@@ -1783,11 +1811,11 @@
             "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 224,
+          "baseSalePrice": 224,
           "price": 269,
           "salePrice": 269,
-          "stock": 19990,
-          "basePrice": 224,
-          "baseSalePrice": 224
+          "stock": 19990
         }
       ]
     },
@@ -1819,11 +1847,11 @@
             "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 993,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 993
         }
       ]
     },
@@ -1854,11 +1882,11 @@
           "attributes": {
             "Renk": "siyah"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 10003,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 10003
         }
       ]
     },
@@ -1890,11 +1918,11 @@
             "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 199,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 199
         }
       ]
     },
@@ -1925,11 +1953,11 @@
           "attributes": {
             "Renk": "Siyah"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 191,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 191
         }
       ]
     },
@@ -1961,11 +1989,11 @@
             "Renk": "Siyah",
             "Özellik": "Diğer"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 196,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 196
         }
       ]
     },
@@ -1997,11 +2025,11 @@
             "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 195,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 195
         }
       ]
     },
@@ -2033,11 +2061,11 @@
             "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 998,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 998
         }
       ]
     },
@@ -2068,11 +2096,11 @@
           "attributes": {
             "Renk": "Siyah"
           },
+          "basePrice": 281,
+          "baseSalePrice": 281,
           "price": 337,
           "salePrice": 337,
-          "stock": 982,
-          "basePrice": 281,
-          "baseSalePrice": 281
+          "stock": 982
         }
       ]
     },
@@ -2104,11 +2132,11 @@
             "Renk": "Siyah",
             "Özellik": "Diğer"
           },
+          "basePrice": 320,
+          "baseSalePrice": 320,
           "price": 384,
           "salePrice": 384,
-          "stock": 979,
-          "basePrice": 320,
-          "baseSalePrice": 320
+          "stock": 979
         }
       ]
     },
@@ -2140,11 +2168,11 @@
             "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 997,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 997
         }
       ]
     },
@@ -2175,11 +2203,11 @@
           "attributes": {
             "Renk": "siyah"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 999,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 999
         }
       ]
     },
@@ -2211,11 +2239,11 @@
             "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 999,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 999
         }
       ]
     },
@@ -2247,11 +2275,11 @@
             "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 991,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 991
         }
       ]
     },
@@ -2283,11 +2311,11 @@
             "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 998,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 998
         }
       ]
     },
@@ -2319,11 +2347,11 @@
             "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 291,
+          "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 11108,
-          "basePrice": 291,
-          "baseSalePrice": 291
+          "stock": 11108
         }
       ]
     },
@@ -2354,11 +2382,11 @@
           "attributes": {
             "Renk": "Siyah"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 993,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 993
         }
       ]
     },
@@ -2390,11 +2418,11 @@
             "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 984,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 984
         }
       ]
     },
@@ -2426,11 +2454,11 @@
             "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 997,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 997
         }
       ]
     },
@@ -2462,11 +2490,11 @@
             "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 299,
+          "baseSalePrice": 239,
           "price": 359,
           "salePrice": 287,
-          "stock": 999,
-          "basePrice": 299,
-          "baseSalePrice": 239
+          "stock": 999
         }
       ]
     },
@@ -2498,11 +2526,11 @@
             "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 999,
+          "baseSalePrice": 276,
           "price": 1199,
           "salePrice": 331,
-          "stock": 993,
-          "basePrice": 999,
-          "baseSalePrice": 276
+          "stock": 993
         }
       ]
     },
@@ -2534,11 +2562,11 @@
             "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 999,
+          "baseSalePrice": 273,
           "price": 1199,
           "salePrice": 328,
-          "stock": 996,
-          "basePrice": 999,
-          "baseSalePrice": 273
+          "stock": 996
         }
       ]
     },
@@ -2569,11 +2597,11 @@
           "attributes": {
             "Renk": "Siyah"
           },
+          "basePrice": 999,
+          "baseSalePrice": 273.15,
           "price": 1199,
           "salePrice": 328,
-          "stock": 991,
-          "basePrice": 999,
-          "baseSalePrice": 273.15
+          "stock": 991
         }
       ]
     },
@@ -2605,11 +2633,11 @@
             "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 999,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 999
         }
       ]
     },
@@ -2641,11 +2669,11 @@
             "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 999,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 999
         }
       ]
     },
@@ -2676,11 +2704,11 @@
           "attributes": {
             "Renk": "Siyah"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 999,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 999
         }
       ]
     },
@@ -2712,11 +2740,11 @@
             "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 997,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 997
         }
       ]
     },
@@ -2745,11 +2773,11 @@
             "Renk": "Çok Renkli",
             "Özellik": "Gece"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 998,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 998
         }
       ]
     },
@@ -2778,11 +2806,11 @@
             "Renk": "Kırmızı",
             "Özellik": "Gece"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 996,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 996
         }
       ]
     },
@@ -2811,11 +2839,11 @@
             "Renk": "Mavi",
             "Özellik": "Gece"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 997,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 997
         }
       ]
     },
@@ -2842,11 +2870,11 @@
             "Renk": "Beyaz",
             "Özellik": "Gece"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 1996,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 1996
         }
       ]
     },
@@ -2875,11 +2903,11 @@
             "Renk": "Siyah",
             "Özellik": "Gece"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 96,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 96
         }
       ]
     },
@@ -2906,11 +2934,11 @@
             "Renk": "Siyah",
             "Özellik": "Gece"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 199,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 199
         }
       ]
     },
@@ -2937,11 +2965,11 @@
             "Renk": "Florasan sarı",
             "Özellik": "Gece"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 0,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 0
         }
       ]
     },
@@ -2972,11 +3000,11 @@
           "attributes": {
             "Renk": "Kırmızı"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 999,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 999
         }
       ]
     },
@@ -3007,11 +3035,11 @@
           "attributes": {
             "Renk": "Mavi"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 199,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 199
         }
       ]
     },
@@ -3042,11 +3070,11 @@
           "attributes": {
             "Renk": "Beyaz"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 199,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 199
         }
       ]
     },
@@ -3077,11 +3105,11 @@
           "attributes": {
             "Renk": "Siyah"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 199,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 199
         }
       ]
     },
@@ -3112,11 +3140,11 @@
           "attributes": {
             "Renk": "Florasan sarı"
           },
-          "price": 313,
-          "salePrice": 313,
-          "stock": 0,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "basePrice": 0,
+          "baseSalePrice": 0,
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -3149,11 +3177,11 @@
             "Renk": "Mavi",
             "Özellik": "Su Geçirmez"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 91,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 91
         }
       ]
     },
@@ -3186,11 +3214,11 @@
             "Renk": "Kırmızı",
             "Özellik": "Su Geçirmez"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 91,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 91
         }
       ]
     },
@@ -3222,11 +3250,11 @@
             "Renk": "Sarı",
             "Özellik": "Su Geçirmez"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 0,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 0
         }
       ]
     },
@@ -3259,11 +3287,11 @@
             "Renk": "Beyaz",
             "Özellik": "Su Geçirmez"
           },
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 197,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 197
         }
       ]
     },
@@ -3292,11 +3320,11 @@
             "Renk": "Siyah",
             "Özellik": "Su Geçirmez"
           },
+          "basePrice": 299,
+          "baseSalePrice": 291,
           "price": 359,
           "salePrice": 349,
-          "stock": 999,
-          "basePrice": 299,
-          "baseSalePrice": 291
+          "stock": 999
         }
       ]
     },
@@ -3324,11 +3352,11 @@
           "attributes": {
             "Renk": "siyah"
           },
+          "basePrice": 152,
+          "baseSalePrice": 152,
           "price": 182,
           "salePrice": 182,
-          "stock": 19991,
-          "basePrice": 152,
-          "baseSalePrice": 152
+          "stock": 19991
         }
       ]
     },
@@ -3355,11 +3383,11 @@
           "attributes": {
             "Renk": "beyaz"
           },
+          "basePrice": 152,
+          "baseSalePrice": 152,
           "price": 182,
           "salePrice": 182,
-          "stock": 1983,
-          "basePrice": 152,
-          "baseSalePrice": 152
+          "stock": 1983
         }
       ]
     },
@@ -3386,11 +3414,11 @@
           "attributes": {
             "Renk": "kırmızı"
           },
+          "basePrice": 211,
+          "baseSalePrice": 211,
           "price": 253,
           "salePrice": 253,
-          "stock": 989,
-          "basePrice": 211,
-          "baseSalePrice": 211
+          "stock": 989
         }
       ]
     },
@@ -3419,11 +3447,11 @@
             "Renk": "kırmızı",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 191,
+          "baseSalePrice": 191,
           "price": 229,
           "salePrice": 229,
-          "stock": 980,
-          "basePrice": 191,
-          "baseSalePrice": 191
+          "stock": 980
         }
       ]
     },
@@ -3452,11 +3480,11 @@
             "Renk": "Beyaz",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 984,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 984
         }
       ]
     },
@@ -3485,11 +3513,11 @@
             "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 995,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 995
         }
       ]
     },
@@ -3515,11 +3543,11 @@
             "Renk": "Reflektif Kırmızı",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 211,
+          "baseSalePrice": 211,
           "price": 253,
           "salePrice": 253,
-          "stock": 989,
-          "basePrice": 211,
-          "baseSalePrice": 211
+          "stock": 989
         }
       ]
     },
@@ -3545,11 +3573,11 @@
             "Renk": "Reflektif Mavi",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 191,
+          "baseSalePrice": 191,
           "price": 229,
           "salePrice": 229,
-          "stock": 1996,
-          "basePrice": 191,
-          "baseSalePrice": 191
+          "stock": 1996
         }
       ]
     },
@@ -3575,11 +3603,11 @@
             "Renk": "Beyaz",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 177,
+          "baseSalePrice": 177,
           "price": 212,
           "salePrice": 212,
-          "stock": 996,
-          "basePrice": 177,
-          "baseSalePrice": 177
+          "stock": 996
         }
       ]
     },
@@ -3605,11 +3633,11 @@
             "Renk": "Neon Sarı",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 222,
+          "baseSalePrice": 124,
           "price": 266,
           "salePrice": 149,
-          "stock": 1997,
-          "basePrice": 222,
-          "baseSalePrice": 124
+          "stock": 1997
         }
       ]
     },
@@ -3633,11 +3661,11 @@
           "barcode": "1453367865756455",
           "sku": "r711",
           "attributes": {},
+          "basePrice": 464,
+          "baseSalePrice": 464,
           "price": 557,
           "salePrice": 557,
-          "stock": 20000,
-          "basePrice": 464,
-          "baseSalePrice": 464
+          "stock": 20000
         }
       ]
     },
@@ -3661,11 +3689,11 @@
           "barcode": "1735862614132763",
           "sku": "r711",
           "attributes": {},
+          "basePrice": 472,
+          "baseSalePrice": 472,
           "price": 566,
           "salePrice": 566,
-          "stock": 20000,
-          "basePrice": 472,
-          "baseSalePrice": 472
+          "stock": 20000
         }
       ]
     },
@@ -3691,11 +3719,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 460,
+          "baseSalePrice": 460,
           "price": 552,
           "salePrice": 552,
-          "stock": 964,
-          "basePrice": 460,
-          "baseSalePrice": 460
+          "stock": 964
         }
       ]
     },
@@ -3720,11 +3748,11 @@
           "attributes": {
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
           },
+          "basePrice": 341,
+          "baseSalePrice": 341,
           "price": 409,
           "salePrice": 409,
-          "stock": 1900,
-          "basePrice": 341,
-          "baseSalePrice": 341
+          "stock": 1900
         }
       ]
     },
@@ -3750,11 +3778,11 @@
             "Menşei": "TR",
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
           },
+          "basePrice": 249,
+          "baseSalePrice": 249,
           "price": 299,
           "salePrice": 299,
-          "stock": 19885,
-          "basePrice": 249,
-          "baseSalePrice": 249
+          "stock": 19885
         }
       ]
     },
@@ -3782,6 +3810,8 @@
             "Renk": "SiyahTuruncu.20cm",
             "Özellik": "Hava"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -3793,6 +3823,8 @@
             "Renk": "SiyahTuruncu.20cm",
             "Özellik": "Hava"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -3824,6 +3856,8 @@
             "Renk": "BeyazTuruncu.13cm",
             "Özellik": "Hava"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -3835,6 +3869,8 @@
             "Renk": "BeyazTuruncu.13cm",
             "Özellik": "Hava"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -3864,11 +3900,11 @@
           "attributes": {
             "Renk": "BeyazTuruncu.9cm"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 1999,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 1999
         }
       ]
     },
@@ -3896,11 +3932,11 @@
             "Renk": "BeyazTuruncu.20cm",
             "Özellik": "Hava"
           },
+          "basePrice": 249,
+          "baseSalePrice": 249,
           "price": 299,
           "salePrice": 299,
-          "stock": 970,
-          "basePrice": 249,
-          "baseSalePrice": 249
+          "stock": 970
         }
       ]
     },
@@ -3927,11 +3963,11 @@
           "attributes": {
             "Renk": "Kırmızı"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 195,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 195
         }
       ]
     },
@@ -3958,11 +3994,11 @@
           "attributes": {
             "Renk": "Siyah"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 199,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 199
         }
       ]
     },
@@ -3989,11 +4025,11 @@
           "attributes": {
             "Renk": "Beyaz"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 199,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 199
         }
       ]
     },
@@ -4020,11 +4056,11 @@
           "attributes": {
             "Boyut/Ebat": "60 x 42"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 1,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 1
         },
         {
           "barcode": "123576456452764",
@@ -4032,11 +4068,11 @@
           "attributes": {
             "Boyut/Ebat": "75 x 55"
           },
+          "basePrice": 299,
+          "baseSalePrice": 299,
           "price": 359,
           "salePrice": 359,
-          "stock": 1,
-          "basePrice": 299,
-          "baseSalePrice": 299
+          "stock": 1
         },
         {
           "barcode": "27652897267892897",
@@ -4044,11 +4080,11 @@
           "attributes": {
             "Boyut/Ebat": "50 x 35"
           },
+          "basePrice": 139,
+          "baseSalePrice": 139,
           "price": 167,
           "salePrice": 167,
-          "stock": 1,
-          "basePrice": 139,
-          "baseSalePrice": 139
+          "stock": 1
         }
       ]
     },
@@ -4079,6 +4115,8 @@
             "Özellik": "Hava",
             "Üretici Adı": "MUHAMMED YUSUF GÜVEN / guvenmuhammedyusuf@gmail.com"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 1
@@ -4110,11 +4148,11 @@
             "Özellik": "Kendinden Yapışkanlı",
             "Menşei": "TR"
           },
+          "basePrice": 284,
+          "baseSalePrice": 284,
           "price": 341,
           "salePrice": 341,
-          "stock": 9902,
-          "basePrice": 284,
-          "baseSalePrice": 284
+          "stock": 9902
         }
       ]
     },
@@ -4140,6 +4178,8 @@
             "Renk": "Beyaz",
             "Özellik": "Uzun"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -4171,11 +4211,11 @@
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 350,
+          "baseSalePrice": 350,
           "price": 420,
           "salePrice": 420,
-          "stock": 958,
-          "basePrice": 350,
-          "baseSalePrice": 350
+          "stock": 958
         }
       ]
     },
@@ -4200,11 +4240,11 @@
           "attributes": {
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
           },
+          "basePrice": 222,
+          "baseSalePrice": 197,
           "price": 266,
           "salePrice": 236,
-          "stock": 1999,
-          "basePrice": 222,
-          "baseSalePrice": 197
+          "stock": 1999
         }
       ]
     },
@@ -4231,11 +4271,11 @@
             "Özellik": "Uzun",
             "Menşei": "TR"
           },
+          "basePrice": 515,
+          "baseSalePrice": 515,
           "price": 618,
           "salePrice": 618,
-          "stock": 20000,
-          "basePrice": 515,
-          "baseSalePrice": 515
+          "stock": 20000
         }
       ]
     },
@@ -4264,11 +4304,11 @@
             "Menşei": "TR",
             "Özellik": "Hava"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 1989,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 1989
         }
       ]
     },
@@ -4297,11 +4337,11 @@
             "Menşei": "TR",
             "Özellik": "Hava"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 1964,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 1964
         }
       ]
     },
@@ -4330,11 +4370,11 @@
             "Özellik": "Hava",
             "Menşei": "TR"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 1984,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 1984
         }
       ]
     },
@@ -4360,6 +4400,8 @@
             "Renk": "Kırmızı",
             "Özellik": "Uzun"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -4390,6 +4432,8 @@
             "Renk": "Beyaz",
             "Özellik": "Uzun"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -4418,6 +4462,8 @@
             "Renk": "Siyah",
             "Özellik": "Uzun"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -4447,11 +4493,11 @@
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz.",
             "Menşei": "TR"
           },
+          "basePrice": 335,
+          "baseSalePrice": 335,
           "price": 402,
           "salePrice": 402,
-          "stock": 19999,
-          "basePrice": 335,
-          "baseSalePrice": 335
+          "stock": 19999
         }
       ]
     },
@@ -4474,6 +4520,8 @@
           "barcode": "TYBV1GUR80SQ5E0X10",
           "sku": "",
           "attributes": {},
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -4502,11 +4550,11 @@
             "Menşei": "TR",
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 1832,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 1832
         }
       ]
     },
@@ -4531,11 +4579,11 @@
           "attributes": {
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 1900,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 1900
         }
       ]
     },
@@ -4560,11 +4608,11 @@
           "attributes": {
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
           },
+          "basePrice": 442,
+          "baseSalePrice": 442,
           "price": 530,
           "salePrice": 530,
-          "stock": 1992,
-          "basePrice": 442,
-          "baseSalePrice": 442
+          "stock": 1992
         }
       ]
     },
@@ -4589,11 +4637,11 @@
           "attributes": {
             "Renk": "Siyah"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 982,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 982
         }
       ]
     },
@@ -4620,11 +4668,11 @@
             "Renk": "Siyah",
             "Menşei": "TR"
           },
+          "basePrice": 411,
+          "baseSalePrice": 411,
           "price": 493,
           "salePrice": 493,
-          "stock": 19998,
-          "basePrice": 411,
-          "baseSalePrice": 411
+          "stock": 19998
         }
       ]
     },
@@ -4647,11 +4695,11 @@
           "barcode": "24967290763747",
           "sku": "cfm",
           "attributes": {},
+          "basePrice": 444,
+          "baseSalePrice": 432,
           "price": 533,
           "salePrice": 518,
-          "stock": 1992,
-          "basePrice": 444,
-          "baseSalePrice": 432
+          "stock": 1992
         }
       ]
     },
@@ -4676,9 +4724,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
-          "stock": 5
+          "stock": 0
         },
         {
           "barcode": "2876824768972486752897",
@@ -4686,9 +4736,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
-          "stock": 5
+          "stock": 0
         }
       ]
     },
@@ -4711,11 +4763,11 @@
           "barcode": "138718963517853173509",
           "sku": "drfk",
           "attributes": {},
+          "basePrice": 248,
+          "baseSalePrice": 248,
           "price": 298,
           "salePrice": 298,
-          "stock": 1986,
-          "basePrice": 248,
-          "baseSalePrice": 248
+          "stock": 1986
         }
       ]
     },
@@ -4738,11 +4790,11 @@
           "barcode": "29689287538658784",
           "sku": "ktm13",
           "attributes": {},
+          "basePrice": 282,
+          "baseSalePrice": 282,
           "price": 338,
           "salePrice": 338,
-          "stock": 1990,
-          "basePrice": 282,
-          "baseSalePrice": 282
+          "stock": 1990
         }
       ]
     },
@@ -4765,11 +4817,11 @@
           "barcode": "23957247289735097290727",
           "sku": "drf1",
           "attributes": {},
+          "basePrice": 249,
+          "baseSalePrice": 249,
           "price": 299,
           "salePrice": 299,
-          "stock": 181,
-          "basePrice": 249,
-          "baseSalePrice": 249
+          "stock": 181
         }
       ]
     },
@@ -4796,6 +4848,8 @@
             "Menşei": "TR",
             "Özellik": "Uzun"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -4825,6 +4879,8 @@
             "Özellik": "Uzun",
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -4854,11 +4910,11 @@
           "attributes": {
             "Menşei": "CK"
           },
+          "basePrice": 6050,
+          "baseSalePrice": 6050,
           "price": 7260,
           "salePrice": 7260,
-          "stock": 0,
-          "basePrice": 6050,
-          "baseSalePrice": 6050
+          "stock": 0
         }
       ]
     },
@@ -4886,11 +4942,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 149,
+          "baseSalePrice": 149,
           "price": 179,
           "salePrice": 179,
-          "stock": 1000,
-          "basePrice": 149,
-          "baseSalePrice": 149
+          "stock": 1000
         }
       ]
     },
@@ -4917,11 +4973,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 149,
+          "baseSalePrice": 149,
           "price": 179,
           "salePrice": 179,
-          "stock": 965,
-          "basePrice": 149,
-          "baseSalePrice": 149
+          "stock": 965
         }
       ]
     },
@@ -4947,11 +5003,11 @@
             "Renk": "Siyah",
             "Menşei": "TR"
           },
+          "basePrice": 221,
+          "baseSalePrice": 221,
           "price": 265,
           "salePrice": 265,
-          "stock": 997,
-          "basePrice": 221,
-          "baseSalePrice": 221
+          "stock": 997
         }
       ]
     },
@@ -4976,11 +5032,11 @@
           "barcode": "789789987878987",
           "sku": "ksc30",
           "attributes": {},
+          "basePrice": 900,
+          "baseSalePrice": 900,
           "price": 1080,
           "salePrice": 1080,
-          "stock": 2,
-          "basePrice": 900,
-          "baseSalePrice": 900
+          "stock": 2
         }
       ]
     },
@@ -5005,11 +5061,11 @@
           "barcode": "89786542978247645",
           "sku": "ksc45",
           "attributes": {},
+          "basePrice": 690,
+          "baseSalePrice": 690,
           "price": 828,
           "salePrice": 828,
-          "stock": 3,
-          "basePrice": 690,
-          "baseSalePrice": 690
+          "stock": 3
         }
       ]
     },
@@ -5034,11 +5090,11 @@
           "barcode": "83769376489368",
           "sku": "ksc60",
           "attributes": {},
+          "basePrice": 730,
+          "baseSalePrice": 730,
           "price": 876,
           "salePrice": 876,
-          "stock": 0,
-          "basePrice": 730,
-          "baseSalePrice": 730
+          "stock": 0
         }
       ]
     },
@@ -5061,11 +5117,11 @@
           "barcode": "rtfgstrhtjhujuyjuygtgı",
           "sku": "",
           "attributes": {},
+          "basePrice": 261,
+          "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 974,
-          "basePrice": 261,
-          "baseSalePrice": 261
+          "stock": 974
         }
       ]
     },
@@ -5088,11 +5144,11 @@
           "barcode": "TGHTHUJHUJTYUJY",
           "sku": "r25",
           "attributes": {},
+          "basePrice": 281,
+          "baseSalePrice": 281,
           "price": 337,
           "salePrice": 337,
-          "stock": 33,
-          "basePrice": 281,
-          "baseSalePrice": 281
+          "stock": 33
         }
       ]
     },
@@ -5115,6 +5171,8 @@
           "barcode": "tkdmrjnt032",
           "sku": "dvnm",
           "attributes": {},
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5141,6 +5199,8 @@
           "barcode": "911hs11791536",
           "sku": "",
           "attributes": {},
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5169,11 +5229,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 249,
+          "baseSalePrice": 249,
           "price": 299,
           "salePrice": 299,
-          "stock": 995,
-          "basePrice": 249,
-          "baseSalePrice": 249
+          "stock": 995
         }
       ]
     },
@@ -5199,6 +5259,8 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5224,6 +5286,8 @@
           "barcode": "877be09745227",
           "sku": "rks",
           "attributes": {},
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5249,6 +5313,8 @@
           "barcode": "444gr01897500",
           "sku": "fvnm",
           "attributes": {},
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5280,11 +5346,11 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Diğer Özellikler": "."
           },
+          "basePrice": 399,
+          "baseSalePrice": 399,
           "price": 479,
           "salePrice": 479,
-          "stock": 196,
-          "basePrice": 399,
-          "baseSalePrice": 399
+          "stock": 196
         }
       ]
     },
@@ -5311,11 +5377,11 @@
             "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 1000,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 1000
         }
       ]
     },
@@ -5342,11 +5408,11 @@
             "Renk": "Beyaz",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 1000,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 1000
         }
       ]
     },
@@ -5373,11 +5439,11 @@
             "Renk": "Kırmızı",
             "Özellik": "Kendinden Yapışkanlı"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 1000,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 1000
         }
       ]
     },
@@ -5402,6 +5468,8 @@
           "attributes": {
             "Renk": "Siyah"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5429,6 +5497,8 @@
           "attributes": {
             "Renk": "siyah"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5458,6 +5528,8 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5487,11 +5559,11 @@
             "Renk": "Siyah",
             "Menşei": "TR"
           },
+          "basePrice": 149,
+          "baseSalePrice": 149,
           "price": 179,
           "salePrice": 179,
-          "stock": 1000,
-          "basePrice": 149,
-          "baseSalePrice": 149
+          "stock": 1000
         }
       ]
     },
@@ -5518,11 +5590,11 @@
             "Renk": "Beyaz",
             "Menşei": "TR"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 998,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 998
         }
       ]
     },
@@ -5549,11 +5621,11 @@
             "Renk": "Kırmızı",
             "Menşei": "TR"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 1000,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 1000
         }
       ]
     },
@@ -5578,11 +5650,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 50,
+          "baseSalePrice": 50,
           "price": 60,
           "salePrice": 60,
-          "stock": 19946,
-          "basePrice": 50,
-          "baseSalePrice": 50
+          "stock": 19946
         }
       ]
     },
@@ -5609,11 +5681,11 @@
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz.",
             "Menşei": "TR"
           },
+          "basePrice": 441,
+          "baseSalePrice": 441,
           "price": 529,
           "salePrice": 529,
-          "stock": 983,
-          "basePrice": 441,
-          "baseSalePrice": 441
+          "stock": 983
         }
       ]
     },
@@ -5638,11 +5710,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 930,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 930
         }
       ]
     },
@@ -5668,6 +5740,8 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5695,11 +5769,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 441,
+          "baseSalePrice": 441,
           "price": 529,
           "salePrice": 529,
-          "stock": 0,
-          "basePrice": 441,
-          "baseSalePrice": 441
+          "stock": 0
         }
       ]
     },
@@ -5724,11 +5798,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 355,
+          "baseSalePrice": 355,
           "price": 426,
           "salePrice": 426,
-          "stock": 193,
-          "basePrice": 355,
-          "baseSalePrice": 355
+          "stock": 193
         }
       ]
     },
@@ -5753,11 +5827,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 821,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 821
         }
       ]
     },
@@ -5782,6 +5856,8 @@
           "attributes": {
             "Renk": "Beyaz"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5808,6 +5884,8 @@
           "barcode": "728582965925258",
           "sku": "drf1",
           "attributes": {},
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5834,6 +5912,8 @@
           "barcode": "789274287520572",
           "sku": "drf2",
           "attributes": {},
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5859,6 +5939,8 @@
           "barcode": "FDFGDHBDTHTDD",
           "sku": "rks2",
           "attributes": {},
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5884,11 +5966,11 @@
           "barcode": "jhlkuıflfukulfylfylkf",
           "sku": "",
           "attributes": {},
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 1000,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 1000
         }
       ]
     },
@@ -5920,6 +6002,8 @@
             "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": ""
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5950,11 +6034,13 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Diğer",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5967,11 +6053,13 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Diğer",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -5999,11 +6087,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 200,
+          "baseSalePrice": 185,
           "price": 240,
           "salePrice": 222,
-          "stock": 986,
-          "basePrice": 200,
-          "baseSalePrice": 185
+          "stock": 986
         }
       ]
     },
@@ -6033,11 +6121,11 @@
             "Özellik": "Su Geçirmez",
             "Kullanım Talimatı/Uyarıları": "Lütfen! Yapıştırmadan Önce Yüzey Alanını Temizleyin."
           },
+          "basePrice": 799,
+          "baseSalePrice": 799,
           "price": 959,
           "salePrice": 959,
-          "stock": 20000,
-          "basePrice": 799,
-          "baseSalePrice": 799
+          "stock": 20000
         }
       ]
     },
@@ -6063,11 +6151,13 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Paket Görseli (arka)": ""
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -6093,11 +6183,11 @@
           "barcode": "ıııloııuuuuyttryrer56",
           "sku": "dıo",
           "attributes": {},
-          "price": 179,
-          "salePrice": 179,
-          "stock": 0,
-          "basePrice": 149,
-          "baseSalePrice": 149
+          "basePrice": 0,
+          "baseSalePrice": 0,
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -6122,6 +6212,8 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -6154,11 +6246,11 @@
             "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)",
             "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr"
           },
+          "basePrice": 99,
+          "baseSalePrice": 99,
           "price": 119,
           "salePrice": 119,
-          "stock": 89,
-          "basePrice": 99,
-          "baseSalePrice": 99
+          "stock": 89
         }
       ]
     },
@@ -6184,9 +6276,11 @@
             "Renk": "beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -6214,11 +6308,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 350,
+          "baseSalePrice": 350,
           "price": 420,
           "salePrice": 420,
-          "stock": 941,
-          "basePrice": 350,
-          "baseSalePrice": 350
+          "stock": 941
         }
       ]
     },
@@ -6248,11 +6342,11 @@
             "Şekil": "Dikdörtgen",
             "Menşei": "TR"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 1110,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 1110
         }
       ]
     },
@@ -6278,6 +6372,8 @@
             "Renk": "Kırmızı",
             "Özellik": "Hava"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -6314,11 +6410,11 @@
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 198,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 198
         }
       ]
     },
@@ -6341,11 +6437,11 @@
           "barcode": "RM-8690012560977",
           "sku": "",
           "attributes": {},
+          "basePrice": 353,
+          "baseSalePrice": 353,
           "price": 424,
           "salePrice": 424,
-          "stock": 197,
-          "basePrice": 353,
-          "baseSalePrice": 353
+          "stock": 197
         }
       ]
     },
@@ -6374,11 +6470,11 @@
             "Menşei": "TR",
             "Özellik": "Diğer"
           },
+          "basePrice": 248,
+          "baseSalePrice": 248,
           "price": 298,
           "salePrice": 298,
-          "stock": 19996,
-          "basePrice": 248,
-          "baseSalePrice": 248
+          "stock": 19996
         }
       ]
     },
@@ -6401,6 +6497,8 @@
           "barcode": "tystryry",
           "sku": "dines",
           "attributes": {},
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -6429,6 +6527,8 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -6458,11 +6558,11 @@
             "Özellik": "Kendinden Yapışkanlı",
             "Menşei": "TR"
           },
+          "basePrice": 99,
+          "baseSalePrice": 99,
           "price": 119,
           "salePrice": 119,
-          "stock": 997,
-          "basePrice": 99,
-          "baseSalePrice": 99
+          "stock": 997
         }
       ]
     },
@@ -6487,11 +6587,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 812,
+          "baseSalePrice": 812,
           "price": 974,
           "salePrice": 974,
-          "stock": 0,
-          "basePrice": 812,
-          "baseSalePrice": 812
+          "stock": 0
         }
       ]
     },
@@ -6520,11 +6620,11 @@
           "attributes": {
             "Renk": "reflektör"
           },
+          "basePrice": 99,
+          "baseSalePrice": 99,
           "price": 119,
           "salePrice": 119,
-          "stock": 997,
-          "basePrice": 99,
-          "baseSalePrice": 99
+          "stock": 997
         }
       ]
     },
@@ -6549,6 +6649,8 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -6578,11 +6680,11 @@
             "Menşei": "TR",
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 19947,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 19947
         }
       ]
     },
@@ -6608,11 +6710,11 @@
           "attributes": {
             "Boyut/Ebat": "210 x 295"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 189,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 189
         }
       ]
     },
@@ -6638,6 +6740,8 @@
             "Renk": "Siyah",
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -6665,6 +6769,8 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -6693,11 +6799,11 @@
             "Yaş Grubu": "Yetişkin",
             "Menşei": "UM"
           },
+          "basePrice": 250,
+          "baseSalePrice": 250,
           "price": 300,
           "salePrice": 300,
-          "stock": 9996,
-          "basePrice": 250,
-          "baseSalePrice": 250
+          "stock": 9996
         }
       ]
     },
@@ -6724,11 +6830,11 @@
             "Yaş Grubu": "Yetişkin",
             "Menşei": "TR"
           },
+          "basePrice": 662,
+          "baseSalePrice": 662,
           "price": 794,
           "salePrice": 794,
-          "stock": 999,
-          "basePrice": 662,
-          "baseSalePrice": 662
+          "stock": 999
         }
       ]
     },
@@ -6757,6 +6863,8 @@
             "Birincil İthalatçı Adı": "NKT GROUP",
             "Üretici Adı": "NKT GROUP"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -6788,6 +6896,8 @@
             "Üretici Adı": "NKT GROUP",
             "Birincil İthalatçı Adı": "NKT GROUP"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -6817,11 +6927,11 @@
             "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz.",
             "Menşei": "TR"
           },
+          "basePrice": 277,
+          "baseSalePrice": 277,
           "price": 332,
           "salePrice": 332,
-          "stock": 95,
-          "basePrice": 277,
-          "baseSalePrice": 277
+          "stock": 95
         }
       ]
     },
@@ -6844,11 +6954,11 @@
           "barcode": "ewa",
           "sku": "abs1",
           "attributes": {},
+          "basePrice": 167,
+          "baseSalePrice": 167,
           "price": 200,
           "salePrice": 200,
-          "stock": 1988,
-          "basePrice": 167,
-          "baseSalePrice": 167
+          "stock": 1988
         }
       ]
     },
@@ -6875,6 +6985,8 @@
             "Özellik": "Kendinden Yapışkanlı",
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -6910,11 +7022,11 @@
             "Kullanım Talimatı/Uyarıları": "temiz zemine uygulanmalıdır.",
             "Özellik": "Diğer"
           },
+          "basePrice": 292,
+          "baseSalePrice": 292,
           "price": 350,
           "salePrice": 350,
-          "stock": 20000,
-          "basePrice": 292,
-          "baseSalePrice": 292
+          "stock": 20000
         }
       ]
     },
@@ -6937,11 +7049,11 @@
           "barcode": "76rfffhy3",
           "sku": "NMZY",
           "attributes": {},
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 1985,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 1985
         }
       ]
     },
@@ -6968,11 +7080,11 @@
             "Özellik": "Uzun",
             "Menşei": "TR"
           },
+          "basePrice": 99,
+          "baseSalePrice": 89,
           "price": 119,
           "salePrice": 107,
-          "stock": 1993,
-          "basePrice": 99,
-          "baseSalePrice": 89
+          "stock": 1993
         }
       ]
     },
@@ -6997,6 +7109,8 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -7024,11 +7138,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 479,
+          "baseSalePrice": 479,
           "price": 575,
           "salePrice": 575,
-          "stock": 1544,
-          "basePrice": 479,
-          "baseSalePrice": 479
+          "stock": 1544
         }
       ]
     },
@@ -7051,6 +7165,8 @@
           "barcode": "135798MLTA",
           "sku": "r1",
           "attributes": {},
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -7078,6 +7194,8 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -7105,6 +7223,8 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -7132,6 +7252,8 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -7159,6 +7281,8 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -7186,6 +7310,8 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -7213,11 +7339,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 345,
+          "baseSalePrice": 345,
           "price": 414,
           "salePrice": 414,
-          "stock": 179,
-          "basePrice": 345,
-          "baseSalePrice": 345
+          "stock": 179
         }
       ]
     },
@@ -7242,11 +7368,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 401,
+          "baseSalePrice": 401,
           "price": 481,
           "salePrice": 481,
-          "stock": 85,
-          "basePrice": 401,
-          "baseSalePrice": 401
+          "stock": 85
         }
       ]
     },
@@ -7271,11 +7397,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 332,
+          "baseSalePrice": 332,
           "price": 398,
           "salePrice": 398,
-          "stock": 90,
-          "basePrice": 332,
-          "baseSalePrice": 332
+          "stock": 90
         }
       ]
     },
@@ -7298,6 +7424,8 @@
           "barcode": "13572MLTA",
           "sku": "cbr 650",
           "attributes": {},
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -7325,11 +7453,11 @@
           "attributes": {
             "Menşei": "TR"
           },
+          "basePrice": 555,
+          "baseSalePrice": 461,
           "price": 666,
           "salePrice": 553,
-          "stock": 99,
-          "basePrice": 555,
-          "baseSalePrice": 461
+          "stock": 99
         }
       ]
     },
@@ -7355,6 +7483,8 @@
             "Renk": "beyaz",
             "Menşei": "TR"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
@@ -7386,11 +7516,11 @@
           "attributes": {
             "Renk": "Çok Renkli"
           },
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 1996,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 1996
         }
       ]
     },
@@ -7417,11 +7547,11 @@
             "Özellik": "Su Geçirmez",
             "Menşei": "TR"
           },
+          "basePrice": 350,
+          "baseSalePrice": 350,
           "price": 420,
           "salePrice": 420,
-          "stock": 1992,
-          "basePrice": 350,
-          "baseSalePrice": 350
+          "stock": 1992
         }
       ]
     },
@@ -7444,11 +7574,11 @@
           "barcode": "656555555",
           "sku": "",
           "attributes": {},
+          "basePrice": 199,
+          "baseSalePrice": 199,
           "price": 239,
           "salePrice": 239,
-          "stock": 121,
-          "basePrice": 199,
-          "baseSalePrice": 199
+          "stock": 121
         }
       ]
     },
@@ -7473,14 +7603,13 @@
           "attributes": {
             "Renk": "Beyaz"
           },
+          "basePrice": 0,
+          "baseSalePrice": 0,
           "price": 0,
           "salePrice": 0,
           "stock": 0
         }
       ]
     }
-  ],
-  "pricingVersion": "2026-11-16-v1",
-  "priceMultiplier": 1.2,
-  "pricedAt": "2026-11-17T12:30:49.962Z"
+  ]
 }
