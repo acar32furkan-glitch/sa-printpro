@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T13:32:35.179Z",
+  "generatedAt": "2026-11-18T23:12:21.917Z",
   "pricingVersion": "2026-11-16-v1",
   "priceMultiplier": 1.2,
   "products": [
@@ -179,8 +179,8 @@
           "barcode": "TYB6PF0NQDEAKXZU86",
           "sku": "yrmdr",
           "attributes": {
-            "Menşei": "TR",
-            "Tamir Edilebilirlik": "Tamir Edilmez."
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Menşei": "TR"
           },
           "basePrice": 249,
           "baseSalePrice": 249,
@@ -210,10 +210,10 @@
           "sku": "gredy",
           "attributes": {
             "Renk": "çok renkli",
-            "Özellik": "Kendinden Yapışkanlı",
-            "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Kullanım Talimatı/Uyarıları": "Lütfen! Yapıştırmadan Önce Yüzey Alanını Temizleyin.",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Özellik": "Kendinden Yapışkanlı",
+            "Tamir Edilebilirlik": "Tamir Edilmez."
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -311,10 +311,10 @@
           "sku": "sakl",
           "attributes": {
             "Renk": "Beyaz",
-            "Kullanım Talimatı/Uyarıları": "Lütfen! Yapıştırmadan Önce Yüzey Alanını Temizleyin.",
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı",
-            "Tamir Edilebilirlik": "Tamir Edilmez."
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Kullanım Talimatı/Uyarıları": "Lütfen! Yapıştırmadan Önce Yüzey Alanını Temizleyin."
           },
           "basePrice": 350,
           "baseSalePrice": 350,
@@ -769,7 +769,7 @@
           "barcode": "573896893768",
           "sku": "K.AT",
           "attributes": {
-            "Renk": "Gri",
+            "Renk": "gri",
             "Özellik": "Uzun",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
@@ -861,10 +861,10 @@
           "sku": "youlo",
           "attributes": {
             "Renk": "Siyah",
-            "Kullanım Talimatı/Uyarıları": "Yüzeyi Temizleyin Yapıştırılacak kuru ve temiz bir bezle silin. Toz, kir ve yağ kalmamasına dikkat edin. Sticker’ı Hazırlayın Koruyucu şeffaf filmi dikkatlice kaldırın. Yapıştırma yüzeye yavaşça yapıştırın. Hava kabarcığı oluşmaması için ortadan kenarlara doğru bastırın. Son Kontrol Tamamen yapıştığından emin olun. İlk 24 saat su ve kimyasal temastan koruyun.",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Özellik": "Hava",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Kullanım Talimatı/Uyarıları": "Yüzeyi Temizleyin Yapıştırılacak kuru ve temiz bir bezle silin. Toz, kir ve yağ kalmamasına dikkat edin. Sticker’ı Hazırlayın Koruyucu şeffaf filmi dikkatlice kaldırın. Yapıştırma yüzeye yavaşça yapıştırın. Hava kabarcığı oluşmaması için ortadan kenarlara doğru bastırın. Son Kontrol Tamamen yapıştığından emin olun. İlk 24 saat su ve kimyasal temastan koruyun."
           },
           "basePrice": 146,
           "baseSalePrice": 146,
@@ -5341,10 +5341,10 @@
           "barcode": "fdsfghsthsrhrse",
           "sku": "nc",
           "attributes": {
-            "Menşei": "TR",
             "Kullanım Talimatı/Uyarıları": ".",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Diğer Özellikler": "."
+            "Diğer Özellikler": ".",
+            "Menşei": "TR"
           },
           "basePrice": 399,
           "baseSalePrice": 399,
@@ -5997,10 +5997,10 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Özellik": "Diğer",
+            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (ön)": ""
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -6027,8 +6027,8 @@
       ],
       "variants": [
         {
-          "barcode": "Tasarımhediyenmotosticker00032",
-          "sku": "svenm",
+          "barcode": "90290529852895",
+          "sku": "",
           "attributes": {
             "Renk": "Siyah Beyaz",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
@@ -6046,8 +6046,8 @@
           "stock": 0
         },
         {
-          "barcode": "90290529852895",
-          "sku": "",
+          "barcode": "Tasarımhediyenmotosticker00032",
+          "sku": "svenm",
           "attributes": {
             "Renk": "Siyah Beyaz",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
@@ -6151,10 +6151,10 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": ""
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -6276,8 +6276,8 @@
             "Renk": "beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -6402,9 +6402,9 @@
           "sku": "arbda b",
           "attributes": {
             "Renk": "Beyaz",
-            "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı",
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
@@ -6860,8 +6860,8 @@
             "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
