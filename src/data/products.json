@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T13:59:31.231Z",
+  "generatedAt": "2026-11-19T23:18:50.927Z",
   "pricingVersion": "2026-11-16-v1",
   "priceMultiplier": 1.2,
   "products": [
@@ -117,8 +117,8 @@
           "sku": "blll",
           "attributes": {
             "Renk": "Beyaz",
-            "Menşei": "TR",
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
+            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz.",
+            "Menşei": "TR"
           },
           "basePrice": 350,
           "baseSalePrice": 350,
@@ -210,10 +210,10 @@
           "sku": "gredy",
           "attributes": {
             "Renk": "çok renkli",
-            "Kullanım Talimatı/Uyarıları": "Lütfen! Yapıştırmadan Önce Yüzey Alanını Temizleyin.",
-            "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı",
-            "Tamir Edilebilirlik": "Tamir Edilmez."
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
+            "Kullanım Talimatı/Uyarıları": "Lütfen! Yapıştırmadan Önce Yüzey Alanını Temizleyin.",
+            "Menşei": "TR"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -243,10 +243,10 @@
           "sku": "nmaxm",
           "attributes": {
             "Renk": "Beyaz",
-            "Menşei": "TR",
-            "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Özellik": "Kendinden Yapışkanlı",
-            "Kullanım Talimatı/Uyarıları": "Ürün adında belirtilen marka model için geçerlidir."
+            "Kullanım Talimatı/Uyarıları": "Ürün adında belirtilen marka model için geçerlidir.",
+            "Menşei": "TR",
+            "Tamir Edilebilirlik": "Tamir Edilmez."
           },
           "basePrice": 300,
           "baseSalePrice": 300,
@@ -311,10 +311,10 @@
           "sku": "sakl",
           "attributes": {
             "Renk": "Beyaz",
-            "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Kullanım Talimatı/Uyarıları": "Lütfen! Yapıştırmadan Önce Yüzey Alanını Temizleyin."
+            "Kullanım Talimatı/Uyarıları": "Lütfen! Yapıştırmadan Önce Yüzey Alanını Temizleyin.",
+            "Menşei": "TR"
           },
           "basePrice": 350,
           "baseSalePrice": 350,
@@ -341,21 +341,6 @@
       ],
       "variants": [
         {
-          "barcode": "TYBB3TF1EK3LGSW429",
-          "sku": "yrm",
-          "attributes": {
-            "Renk": "Beyaz",
-            "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
-            "Menşei": "TR",
-            "Özellik": "Katı"
-          },
-          "basePrice": 227,
-          "baseSalePrice": 227,
-          "price": 272,
-          "salePrice": 272,
-          "stock": 19993
-        },
-        {
           "barcode": "TYBXGCJPFDPPDV3J40",
           "sku": "yrm kp",
           "attributes": {
@@ -364,11 +349,26 @@
             "Menşei": "TR",
             "Özellik": "Katı"
           },
-          "basePrice": 227,
-          "baseSalePrice": 227,
-          "price": 272,
-          "salePrice": 272,
-          "stock": 19993
+          "basePrice": 0,
+          "baseSalePrice": 0,
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
+          "barcode": "TYBB3TF1EK3LGSW429",
+          "sku": "yrm",
+          "attributes": {
+            "Renk": "Beyaz",
+            "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
+            "Menşei": "TR",
+            "Özellik": "Katı"
+          },
+          "basePrice": 0,
+          "baseSalePrice": 0,
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -394,8 +394,8 @@
           "sku": "OPC",
           "attributes": {
             "Renk": "Kırmızı",
-            "Menşei": "TR",
-            "Kullanım Talimatı/Uyarıları": "Yüzeyi temiz bir bezle silin ve kurulayın. Ardından elinizle doğrudan uygulayabilirsiniz."
+            "Kullanım Talimatı/Uyarıları": "Yüzeyi temiz bir bezle silin ve kurulayın. Ardından elinizle doğrudan uygulayabilirsiniz.",
+            "Menşei": "TR"
           },
           "basePrice": 50,
           "baseSalePrice": 50,
@@ -493,8 +493,8 @@
           "sku": "g",
           "attributes": {
             "Renk": "Çok Renkli",
-            "Menşei": "TR",
-            "Özellik": "Kendinden Yapışkanlı"
+            "Özellik": "Kendinden Yapışkanlı",
+            "Menşei": "TR"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -524,8 +524,8 @@
           "sku": "drft",
           "attributes": {
             "Menşei": "TR",
-            "Paket Görseli (arka)": "",
-            "Paket Görseli (ön)": ""
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "basePrice": 221,
           "baseSalePrice": 221,
@@ -592,8 +592,8 @@
           "sku": "kpn",
           "attributes": {
             "Renk": "Çok Renkli",
-            "Menşei": "TR",
-            "Özellik": "Kendinden Yapışkanlı"
+            "Özellik": "Kendinden Yapışkanlı",
+            "Menşei": "TR"
           },
           "basePrice": 50,
           "baseSalePrice": 50,
@@ -769,7 +769,7 @@
           "barcode": "573896893768",
           "sku": "K.AT",
           "attributes": {
-            "Renk": "gri",
+            "Renk": "Gri",
             "Özellik": "Uzun",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
@@ -861,10 +861,10 @@
           "sku": "youlo",
           "attributes": {
             "Renk": "Siyah",
-            "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Özellik": "Hava",
             "Menşei": "TR",
-            "Kullanım Talimatı/Uyarıları": "Yüzeyi Temizleyin Yapıştırılacak kuru ve temiz bir bezle silin. Toz, kir ve yağ kalmamasına dikkat edin. Sticker’ı Hazırlayın Koruyucu şeffaf filmi dikkatlice kaldırın. Yapıştırma yüzeye yavaşça yapıştırın. Hava kabarcığı oluşmaması için ortadan kenarlara doğru bastırın. Son Kontrol Tamamen yapıştığından emin olun. İlk 24 saat su ve kimyasal temastan koruyun."
+            "Kullanım Talimatı/Uyarıları": "Yüzeyi Temizleyin Yapıştırılacak kuru ve temiz bir bezle silin. Toz, kir ve yağ kalmamasına dikkat edin. Sticker’ı Hazırlayın Koruyucu şeffaf filmi dikkatlice kaldırın. Yapıştırma yüzeye yavaşça yapıştırın. Hava kabarcığı oluşmaması için ortadan kenarlara doğru bastırın. Son Kontrol Tamamen yapıştığından emin olun. İlk 24 saat su ve kimyasal temastan koruyun.",
+            "Tamir Edilebilirlik": "Tamir Edilmez."
           },
           "basePrice": 146,
           "baseSalePrice": 146,
@@ -1593,8 +1593,8 @@
           "sku": "",
           "attributes": {
             "Renk": "siyah",
-            "Özellik": "Kendinden Yapışkanlı",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Özellik": "Kendinden Yapışkanlı"
           },
           "basePrice": 291,
           "baseSalePrice": 291,
@@ -1629,7 +1629,7 @@
           "barcode": "929184757875862",
           "sku": "",
           "attributes": {
-            "Renk": "siyah",
+            "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "basePrice": 299,
@@ -1844,7 +1844,7 @@
           "barcode": "929184757875840",
           "sku": "",
           "attributes": {
-            "Renk": "siyah",
+            "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "basePrice": 291,
@@ -2058,7 +2058,7 @@
           "barcode": "929184757875841",
           "sku": "",
           "attributes": {
-            "Renk": "siyah",
+            "Renk": "Siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "basePrice": 261,
@@ -2308,7 +2308,7 @@
           "barcode": "929184757875865",
           "sku": "",
           "attributes": {
-            "Renk": "Siyah",
+            "Renk": "siyah",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "basePrice": 261,
@@ -3138,7 +3138,7 @@
           "barcode": "0197366301093774",
           "sku": "",
           "attributes": {
-            "Renk": "Florasan sarı"
+            "Renk": "Sarı"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -3477,7 +3477,7 @@
           "barcode": "38582582855853",
           "sku": "jdm",
           "attributes": {
-            "Renk": "Beyaz",
+            "Renk": "beyaz",
             "Özellik": "Kendinden Yapışkanlı"
           },
           "basePrice": 199,
@@ -4547,8 +4547,8 @@
           "barcode": "892375897252759072865",
           "sku": "10by",
           "attributes": {
-            "Menşei": "TR",
-            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz."
+            "Bakım Talimatları (Genel)": "Ürünün kullanım ömrünü korumak için ürüne özel bakım talimatlarını takip ediniz.",
+            "Menşei": "TR"
           },
           "basePrice": 199,
           "baseSalePrice": 199,
@@ -4845,8 +4845,8 @@
           "sku": "wntedd",
           "attributes": {
             "Renk": "Siyah",
-            "Menşei": "TR",
-            "Özellik": "Uzun"
+            "Özellik": "Uzun",
+            "Menşei": "TR"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -5654,7 +5654,7 @@
           "baseSalePrice": 50,
           "price": 60,
           "salePrice": 60,
-          "stock": 19946
+          "stock": 19944
         }
       ]
     },
@@ -5997,10 +5997,10 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Özellik": "Diğer",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -6240,11 +6240,11 @@
           "sku": "katürk",
           "attributes": {
             "Renk": "Siyah",
-            "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilebilir, Satıcı ile İletişime Geçiniz.",
             "Özellik": "Uzun",
-            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)",
-            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr"
+            "Menşei": "TR",
+            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr",
+            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)"
           },
           "basePrice": 99,
           "baseSalePrice": 99,
@@ -6402,13 +6402,13 @@
           "sku": "arbda b",
           "attributes": {
             "Renk": "Beyaz",
+            "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı",
-            "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "basePrice": 199,
           "baseSalePrice": 199,
@@ -6982,8 +6982,8 @@
           "barcode": "TX6ED82A2E1830",
           "sku": "tam12",
           "attributes": {
-            "Özellik": "Kendinden Yapışkanlı",
-            "Menşei": "TR"
+            "Menşei": "TR",
+            "Özellik": "Kendinden Yapışkanlı"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -7543,7 +7543,7 @@
           "barcode": "6811893300111",
           "sku": "gazi",
           "attributes": {
-            "Renk": "turkuaz",
+            "Renk": "Çok Renkli",
             "Özellik": "Su Geçirmez",
             "Menşei": "TR"
           },
