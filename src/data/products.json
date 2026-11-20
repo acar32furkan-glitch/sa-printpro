@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T23:18:50.927Z",
+  "generatedAt": "2026-11-20T13:41:13.582Z",
   "pricingVersion": "2026-11-16-v1",
   "priceMultiplier": 1.2,
   "products": [
@@ -349,11 +349,11 @@
             "Menşei": "TR",
             "Özellik": "Katı"
           },
-          "basePrice": 0,
-          "baseSalePrice": 0,
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "basePrice": 227,
+          "baseSalePrice": 227,
+          "price": 272,
+          "salePrice": 272,
+          "stock": 19993
         },
         {
           "barcode": "TYBB3TF1EK3LGSW429",
@@ -364,11 +364,11 @@
             "Menşei": "TR",
             "Özellik": "Katı"
           },
-          "basePrice": 0,
-          "baseSalePrice": 0,
-          "price": 0,
-          "salePrice": 0,
-          "stock": 0
+          "basePrice": 227,
+          "baseSalePrice": 227,
+          "price": 272,
+          "salePrice": 272,
+          "stock": 19993
         }
       ]
     },
@@ -401,7 +401,7 @@
           "baseSalePrice": 50,
           "price": 60,
           "salePrice": 60,
-          "stock": 19971
+          "stock": 19969
         }
       ]
     },
@@ -1348,7 +1348,7 @@
           "baseSalePrice": 291,
           "price": 349,
           "salePrice": 349,
-          "stock": 991
+          "stock": 990
         }
       ]
     },
@@ -2279,7 +2279,7 @@
           "baseSalePrice": 261,
           "price": 313,
           "salePrice": 313,
-          "stock": 991
+          "stock": 990
         }
       ]
     },
@@ -4719,8 +4719,8 @@
       ],
       "variants": [
         {
-          "barcode": "29572975290749260",
-          "sku": "ktm12",
+          "barcode": "2876824768972486752897",
+          "sku": "ktm",
           "attributes": {
             "Menşei": "TR"
           },
@@ -4731,8 +4731,8 @@
           "stock": 0
         },
         {
-          "barcode": "2876824768972486752897",
-          "sku": "ktm",
+          "barcode": "29572975290749260",
+          "sku": "ktm12",
           "attributes": {
             "Menşei": "TR"
           },
@@ -5997,10 +5997,10 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Özellik": "Diğer",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -6151,10 +6151,10 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)"
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": ""
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -6276,8 +6276,8 @@
             "Renk": "beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -7142,7 +7142,7 @@
           "baseSalePrice": 479,
           "price": 575,
           "salePrice": 575,
-          "stock": 1544
+          "stock": 1543
         }
       ]
     },
