@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T22:11:37.426Z",
+  "generatedAt": "2026-11-23T15:29:41.458Z",
   "pricingVersion": "2026-11-16-v1",
   "priceMultiplier": 1.2,
   "products": [
@@ -30,7 +30,7 @@
           "baseSalePrice": 50,
           "price": 60,
           "salePrice": 60,
-          "stock": 19984
+          "stock": 19982
         }
       ]
     },
@@ -328,7 +328,7 @@
       "id": "1047463123",
       "name": "DRİFT L KAPLAMA STİCKER YARIM JANT ŞERİDİ",
       "slug": "drift-l-kaplama-sticker-yarim-jant-seridi-1047463123",
-      "brand": "SA Printpro",
+      "brand": "SA Printpro Sticker",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -341,13 +341,13 @@
       ],
       "variants": [
         {
-          "barcode": "TYBB3TF1EK3LGSW429",
-          "sku": "yrm",
+          "barcode": "TYBXGCJPFDPPDV3J40",
+          "sku": "yrm kp",
           "attributes": {
             "Renk": "Beyaz",
-            "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
             "Menşei": "TR",
-            "Özellik": "Katı"
+            "Özellik": "Katı",
+            "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -356,13 +356,13 @@
           "stock": 0
         },
         {
-          "barcode": "TYBXGCJPFDPPDV3J40",
-          "sku": "yrm kp",
+          "barcode": "TYBB3TF1EK3LGSW429",
+          "sku": "yrm",
           "attributes": {
             "Renk": "Beyaz",
-            "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin",
             "Menşei": "TR",
-            "Özellik": "Katı"
+            "Özellik": "Katı",
+            "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -409,7 +409,7 @@
       "id": "1046100299",
       "name": "Motosiklet Jant Şeridi Sticker Yarım Kaplama Daire 17-18 inch Motor Uyumlu",
       "slug": "motosiklet-jant-seridi-sticker-yarim-kaplama-daire-17-18-inch-motor-uyumlu-1046100299",
-      "brand": "SA Printpro",
+      "brand": "SA Printpro Sticker",
       "category": {
         "id": "1973",
         "name": "Arma Sticker & Fosfor Şerit",
@@ -3804,30 +3804,30 @@
       ],
       "variants": [
         {
-          "barcode": "1325467898254",
-          "sku": "13ktm",
-          "attributes": {
-            "Renk": "SiyahTuruncu.20cm",
-            "Özellik": "Hava"
-          },
-          "basePrice": 199,
-          "baseSalePrice": 199,
-          "price": 239,
-          "salePrice": 239,
-          "stock": 1976
-        },
-        {
           "barcode": "2134567235668",
           "sku": "13ktm",
           "attributes": {
             "Renk": "SiyahTuruncu.20cm",
             "Özellik": "Hava"
           },
-          "basePrice": 199,
-          "baseSalePrice": 199,
-          "price": 239,
-          "salePrice": 239,
-          "stock": 1976
+          "basePrice": 0,
+          "baseSalePrice": 0,
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
+          "barcode": "1325467898254",
+          "sku": "13ktm",
+          "attributes": {
+            "Renk": "SiyahTuruncu.20cm",
+            "Özellik": "Hava"
+          },
+          "basePrice": 0,
+          "baseSalePrice": 0,
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -4719,28 +4719,28 @@
       ],
       "variants": [
         {
-          "barcode": "2876824768972486752897",
-          "sku": "ktm",
-          "attributes": {
-            "Menşei": "TR"
-          },
-          "basePrice": 299,
-          "baseSalePrice": 299,
-          "price": 359,
-          "salePrice": 359,
-          "stock": 1934
-        },
-        {
           "barcode": "29572975290749260",
           "sku": "ktm12",
           "attributes": {
             "Menşei": "TR"
           },
-          "basePrice": 299,
-          "baseSalePrice": 299,
-          "price": 359,
-          "salePrice": 359,
-          "stock": 1934
+          "basePrice": 0,
+          "baseSalePrice": 0,
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
+          "barcode": "2876824768972486752897",
+          "sku": "ktm",
+          "attributes": {
+            "Menşei": "TR"
+          },
+          "basePrice": 0,
+          "baseSalePrice": 0,
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -5997,10 +5997,10 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Özellik": "Diğer",
-            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
             "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": ""
+            "Paket Görseli (arka)": "",
+            "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -6027,8 +6027,8 @@
       ],
       "variants": [
         {
-          "barcode": "Tasarımhediyenmotosticker00032",
-          "sku": "svenm",
+          "barcode": "90290529852895",
+          "sku": "",
           "attributes": {
             "Renk": "Siyah Beyaz",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
@@ -6046,8 +6046,8 @@
           "stock": 0
         },
         {
-          "barcode": "90290529852895",
-          "sku": "",
+          "barcode": "Tasarımhediyenmotosticker00032",
+          "sku": "svenm",
           "attributes": {
             "Renk": "Siyah Beyaz",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
@@ -6151,10 +6151,10 @@
             "Renk": "Beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -6243,14 +6243,14 @@
             "Tamir Edilebilirlik": "Tamir Edilebilir, Satıcı ile İletişime Geçiniz.",
             "Özellik": "Uzun",
             "Menşei": "TR",
-            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)",
-            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr"
+            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr",
+            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)"
           },
           "basePrice": 99,
           "baseSalePrice": 99,
           "price": 119,
           "salePrice": 119,
-          "stock": 89
+          "stock": 88
         }
       ]
     },
@@ -6276,8 +6276,8 @@
             "Renk": "beyaz",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -6405,10 +6405,10 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı",
-            "Paket Görseli (ön)": "",
             "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": ""
           },
           "basePrice": 199,
           "baseSalePrice": 199,
@@ -6860,8 +6860,8 @@
             "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -6893,8 +6893,8 @@
             "Renk": "Kırmızı",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Üretici Adı": "NKT GROUP",
-            "Birincil İthalatçı Adı": "NKT GROUP"
+            "Birincil İthalatçı Adı": "NKT GROUP",
+            "Üretici Adı": "NKT GROUP"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
