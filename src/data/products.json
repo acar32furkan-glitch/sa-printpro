@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T01:11:27.966Z",
+  "generatedAt": "2026-11-25T15:04:59.782Z",
   "pricingVersion": "2026-11-16-v1",
   "priceMultiplier": 1.2,
   "products": [
@@ -30,7 +30,7 @@
           "baseSalePrice": 50,
           "price": 60,
           "salePrice": 60,
-          "stock": 19974
+          "stock": 19970
         }
       ]
     },
@@ -91,7 +91,7 @@
           "baseSalePrice": 249,
           "price": 299,
           "salePrice": 299,
-          "stock": 19966
+          "stock": 19965
         }
       ]
     },
@@ -341,21 +341,6 @@
       ],
       "variants": [
         {
-          "barcode": "TYBB3TF1EK3LGSW429",
-          "sku": "yrm",
-          "attributes": {
-            "Renk": "Beyaz",
-            "Menşei": "TR",
-            "Özellik": "Katı",
-            "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin"
-          },
-          "basePrice": 227,
-          "baseSalePrice": 227,
-          "price": 272,
-          "salePrice": 272,
-          "stock": 19993
-        },
-        {
           "barcode": "TYBXGCJPFDPPDV3J40",
           "sku": "yrm kp",
           "attributes": {
@@ -364,11 +349,26 @@
             "Özellik": "Katı",
             "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin"
           },
-          "basePrice": 227,
-          "baseSalePrice": 227,
-          "price": 272,
-          "salePrice": 272,
-          "stock": 19993
+          "basePrice": 0,
+          "baseSalePrice": 0,
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
+        },
+        {
+          "barcode": "TYBB3TF1EK3LGSW429",
+          "sku": "yrm",
+          "attributes": {
+            "Renk": "Beyaz",
+            "Menşei": "TR",
+            "Özellik": "Katı",
+            "Kullanım Talimatı/Uyarıları": "jantları iyice yıkayıp silin"
+          },
+          "basePrice": 0,
+          "baseSalePrice": 0,
+          "price": 0,
+          "salePrice": 0,
+          "stock": 0
         }
       ]
     },
@@ -3804,7 +3804,7 @@
       ],
       "variants": [
         {
-          "barcode": "2134567235668",
+          "barcode": "1325467898254",
           "sku": "13ktm",
           "attributes": {
             "Renk": "SiyahTuruncu.20cm",
@@ -3817,7 +3817,7 @@
           "stock": 1976
         },
         {
-          "barcode": "1325467898254",
+          "barcode": "2134567235668",
           "sku": "13ktm",
           "attributes": {
             "Renk": "SiyahTuruncu.20cm",
@@ -4719,8 +4719,8 @@
       ],
       "variants": [
         {
-          "barcode": "29572975290749260",
-          "sku": "ktm12",
+          "barcode": "2876824768972486752897",
+          "sku": "ktm",
           "attributes": {
             "Menşei": "TR"
           },
@@ -4731,8 +4731,8 @@
           "stock": 1934
         },
         {
-          "barcode": "2876824768972486752897",
-          "sku": "ktm",
+          "barcode": "29572975290749260",
+          "sku": "ktm12",
           "attributes": {
             "Menşei": "TR"
           },
@@ -5997,10 +5997,10 @@
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Özellik": "Diğer",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
             "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
-            "Paket Görseli (ön)": ""
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -6034,10 +6034,10 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Diğer",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -6053,10 +6053,10 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Diğer",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "basePrice": 0,
           "baseSalePrice": 0,
@@ -6243,8 +6243,8 @@
             "Tamir Edilebilirlik": "Tamir Edilebilir, Satıcı ile İletişime Geçiniz.",
             "Özellik": "Uzun",
             "Menşei": "TR",
-            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr",
-            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)"
+            "Üretici Adı": "Hakan Sönmez (Sönmez Sticker)",
+            "Birincil İthalatçı Adı": "hakan.sonmez.6@hs01.kep.tr"
           },
           "basePrice": 99,
           "baseSalePrice": 99,
@@ -6405,10 +6405,10 @@
             "Tamir Edilebilirlik": "Tamir Edilmez.",
             "Menşei": "TR",
             "Özellik": "Kendinden Yapışkanlı",
-            "Paket Görseli (ön)": "",
-            "Paket Görseli (arka)": "",
             "Üretici Adı": "BAHAR SARAÇOĞLU (Eyba Ticaret)",
-            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr"
+            "Birincil İthalatçı Adı": "bahar.saracoglu@hs03.kep.tr",
+            "Paket Görseli (ön)": "",
+            "Paket Görseli (arka)": ""
           },
           "basePrice": 199,
           "baseSalePrice": 199,
@@ -6860,8 +6860,8 @@
             "Renk": "Siyah",
             "Menşei": "TR",
             "Tamir Edilebilirlik": "Tamir Edilmez.",
-            "Birincil İthalatçı Adı": "NKT GROUP",
-            "Üretici Adı": "NKT GROUP"
+            "Üretici Adı": "NKT GROUP",
+            "Birincil İthalatçı Adı": "NKT GROUP"
           },
           "basePrice": 0,
           "baseSalePrice": 0,
