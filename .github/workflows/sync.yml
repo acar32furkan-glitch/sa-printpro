@@ -21,6 +21,7 @@ on:
 # Commit & push yapabilmek için yazma izni gerekir.
 permissions:
   contents: write
+  actions: write   # değişiklik varsa dağıtım iş akışını tetiklemek için
 
 # Aynı anda birden fazla senkronizasyon çalışmasını engelle.
 concurrency:
@@ -78,6 +79,14 @@ jobs:
           git add src/data/products.json
           git commit -m "chore(data): auto-sync trendyol catalog [skip ci]"
           git push
+
+      # 6b) Dağıtımı tetikle: GITHUB_TOKEN ile yapılan push başka iş akışını kendiliğinden başlatmaz ("[skip ci]" de var),
+      #     bu yüzden deploy.yml elle tetiklenir (workflow_dispatch). Yoksa katalog güncellenir ama vitrin eski kalır.
+      - name: Trigger deploy
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main
 
       # 7) IndexNow ping — katalog değiştiğinde arama motorlarını otomatik bilgilendir
       - name: Notify IndexNow
